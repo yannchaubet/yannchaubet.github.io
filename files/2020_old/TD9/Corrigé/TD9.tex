@@ -1,0 +1,380 @@
+\documentclass[a4paper,12pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Feuille d'exercices 9}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill \texttt{chaubet@dma.ens.fr} } \\
+{2020/2021 \hfill }
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent {\large \textbf{Exercice 1.} \textit{Exemples de mesures invariantes}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item Soit $\varphi : [0,1] \to \R$ continue. On a
+$$
+\int_0^1 (\varphi \circ f) \dd \mu = \int_0^{1/2} (\varphi \circ f) \dd \mu + \int_{1/2}^1 (\varphi \circ f) \dd \mu.
+$$
+ 
+%
+Or en effectuant le changement de variable $x = 1-y$ on a
+$$
+\int_{1/2}^1 \varphi\left(2\sqrt{y(1-y)}\right) \frac{\dd y}{2\sqrt{1-y}} = \int_0^{1/2} \varphi\left(2\sqrt{x(1-x)}\right) \frac{\dd x}{2\sqrt{x}}.
+$$
+
+On obtient
+$$
+\int_0^1 (\varphi \circ f) \dd \mu = \int_0^{1/2}  \varphi\left(2\sqrt{x(1-x)}\right) \frac{\dd x}{2} \left(\frac{1}{\sqrt{x}}+ \frac{1}{\sqrt{1-x}} \right).
+$$
+
+
+
+
+On pose maintenant $u = 2\sqrt{x(1-x)}$, ce qui donne, en utilisant $\sqrt{1-2\sqrt{x(1-x)}} = \sqrt{1-x} - \sqrt{x}$,
+$$
+\begin{aligned}
+\frac{\dd u}{2\sqrt{1-u}} &= \frac{(1-2x) \dd x}{\sqrt{x(1-x)}} \times \frac{1}{2\sqrt{1-2\sqrt{x(1-x)}}}  \\
+ &= \frac{(1-2x) \dd x}{\sqrt{x(1-x)}} \times \frac{1}{2\left(\sqrt{1-x} - \sqrt{x}\right)}  \\
+ &= \frac{(1-2x) \dd x}{\sqrt{x(1-x)}} \times \frac{\sqrt{1-x} + \sqrt{x}}{2(1-2x)}  \\
+ &= \frac{\dd x}{2} \left(\frac{1}{\sqrt{x}}+ \frac{1}{\sqrt{1-x}} \right). 
+\end{aligned}
+$$
+Ainsi on obtient
+$$
+\int_0^1 (\varphi \circ f) \dd \mu = \int_0^1 \varphi(u) \frac{\dd u}{2\sqrt{1-u}} = \int_0^1 \varphi \dd \mu
+$$
+
+\item Pour tout $\varphi \in C^0(M)$ on a, puisque $f^n(x) = x$
+$$
+\begin{aligned}
+\mu(\varphi \circ f) &= \frac{1}{n} \sum_{k=1}^n (\varphi \circ f) (f^k(x))  \\
+&= \frac{1}{n} \varphi(f^k(x))  \\
+&= \mu(\varphi).
+\end{aligned}
+$$
+
+\item Soit $\varphi \in C^0([0,1]).$ On a, si $\lambda$ est la mesure de Lebesgue,
+$$
+\begin{aligned}
+\int_0^1 (\varphi \circ f) \dd \lambda &= \int_0^{1/2} \varphi(2x) \dd x + \int_{1/2}^1 \varphi(2-2x) \dd x  \\
+&= 2 \int_0^{1/2} \varphi(2x) \dd x  \\
+&= \int_0^1 \varphi(x) \dd x.
+\end{aligned}
+$$
+
+\item  Soit $\varphi \in C^0(\T^d)$ et $\tilde \varphi = \varphi \circ \pi$ où $\pi : \R^d \to \T^d$ est la projection naturelle.
+
+
+
+Soit $A \in M_d(\Z)$ avec $\det(A) = \pm 1$, et $f_A : \T^d \to \T^d$ l'automorphisme associé.  Alors 
+$$
+\begin{aligned}
+\int_{\T^d} (\varphi \circ f_A) \dd \mu &= \int_{[0,1]^d} \tilde \varphi(Ax) \dd x  \\
+&= \int_{A([0,1]^d)} \tilde \varphi(x) \dd x \quad \quad \quad \text{car }|\mathrm{det}(A)| = 1  \\
+&= \int_{[0,1]^d} \tilde \varphi(x) \dd x \quad \quad \text{par $1$-périodicité de } \tilde \varphi  \\
+&= \int_{\T^d} \varphi \dd \mu.
+\end{aligned}
+$$
+
+\item  Il suffit de montrer que $\mu([a,b]) = \mu(f^{-1}([a,b])$ pour tout intervalle $[a,b]$ avec $a>0$.
+On a 
+$$
+f(x) \in [a,b] \quad \iff \quad \exists k \in \N_{\geqslant 1},\quad  \frac{1}{x} \in [a,b] + k.
+$$
+Ainsi,
+$$
+\begin{aligned}
+\log(2) ~\mu(f^{-1}([a,b])) &= \sum_{k=1}^\infty \int_{\frac{1}{b+k}}^{\frac{1}{a+k}} \frac{1}{1+t} \dd t  \\
+&= \sum_{k=1}^\infty \left(\log\left(1 + \frac{1}{a+k}\right) - \log\left(1 + \frac{1}{b+k}\right)\right)  \\
+&= \sum_{k=1}^\infty \Bigl(\log(a+k+1)- \log(a+k) \\
+&\quad \quad \quad \quad \quad \quad - \log(b+k+1) + \log(b+k) \Bigr)  \\
+&= \log(b+1) - \log(a+1)  \\
+&= \log(2)~ \mu([a,b]).
+\end{aligned}
+$$
+
+
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Version topologique du th\'eor\`eme de r\'ecurrence de Poincar\'e}} \vspace{1.5mm} 
+
+\noindent Soit $(U_i)_{i \in \N}$ une base dénombrable d'ouverts.  
+\noindent Soit $i \in \N$ ; par le théorème de récurrence de Poincaré, il existe $V_i \subset U_i$ avec $\mu(U_i \setminus V_i) = 0$  tel que
+$$
+\forall x \in V_i, \quad \left|\{n \in \N,~ f^n(x) \in U_i\}\right| = +\infty.
+$$ 
+\noindent On définit l'ensemble $H \subset M$ par
+$$
+H = \bigcup_i (U_i \setminus V_i).
+$$
+Alors $H$ est de mesure nulle.
+\noindent Soit $x \in \complement H$, et $U \ni x$ un voisinage de $x$.  Il existe $i \in \N$ tel que $U_i \subset U$.  Alors $x \in V_i$ et donc $\left|\{n \in \N,~f^n(x) \in U_i\}\right| = +\infty$, ce qui signifie que $x$ est récurrent.
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Existence de mesures invariantes}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item La positivité et l'inégalité triangulaire sont claires. Il reste à montrer que $\dd_*(L,L') = 0 \implies L = L'.$
+
+
+
+Si $\dd_*(L,L') = 0$ alors $(L-L')(f_i) = 0$ pour tout $i$. Soit $f \in E$ et $\varepsilon > 0.$ Soit $i$ tel que $\|f - f_i\| < \varepsilon$.  Alors
+$$
+\left|(L-L')(f)\right| = \left|(L-L')(f-f_i)\right| \leqslant \|L-L'\|_* \|f-f_i\| \leqslant \|L-L'\| \varepsilon.
+$$
+Ceci étant vrai pour tout $\varepsilon > 0,$ on a $L = L'$.
+ 
+
+Montrons que $\dd_*$ engendre la topologie faible, c'est à dire que 
+$$
+L_n \to L \quad \text{$*$-faiblement} \quad \iff \quad \dd_*(L_n, L) \to 0.
+$$
+\underline{$\implies$} : Soit $\varepsilon > 0,$ et $i$ tel que $2^{-i} < \varepsilon$. Alors pour tout $n$ assez grand, on a 
+$$
+\sum_{j<i} \frac{\left|L_n(f_j) - L(f_j)\right|}{2^j (1 + \|f_j\|)} \leqslant \varepsilon.
+$$
+D'autre part on a 
+$$
+\sum_{j \geqslant i}^{+\infty} \frac{\left|L_n(f_j) - L(f_j)\right|}{2^j (1 + \|f_j\|)} \leqslant 2^{-i}(\|L_n\|_* + \|L\|_*) \leqslant \varepsilon (\|L_n\|_* + \|L\|_*).
+$$
+
+Or $\|L_n\| \leqslant 1$ \footnote{En fait toute suite qui converge faiblement est bornée, c'est une conséquence du théorème de Banach-Steinhaus, qui dit que si $E,F$ sont deux Banach, et que $(T_i)$ est une suite de $\Lcal(E,F)$, alors
+$$
+\Bigl(\forall x \in E, \quad \sup_i \|T_i(x)\|_F < +\infty \Bigr) \quad \implies \quad \sup_i \|T_i\|_{\Lcal(E,F)} < +\infty.
+$$
+},  et donc $\dd_*(L_n, L) \leqslant 3 \varepsilon$ si $n$ est assez grand.
+
+
+
+\underline{$\Longleftarrow$} : Supposons que $\dd_*(L_n, L) \to 0$. Soit $f \in E$ et $\varepsilon > 0$. Soit $i \in \N$ tel que $\|f-f_i\| < \varepsilon.$  Alors 
+$$
+\begin{aligned}
+|L_n(f) - L(f)| &\leqslant \varepsilon \|L_n - L\|_* + 2^i (1 + \|f_i\|) \dd_*(L_n,L)  \\
+& \leqslant 2\varepsilon + 2^i(1 + \|f_i\|) \dd_*(L_n,L).
+\end{aligned}
+$$
+
+Si $n$ est assez grand on obtient donc $|L_n(f) - L(f)| < 3\varepsilon,$ ce qui conclut.
+
+
+\item Notons $B^*$ la boule unité. Puisqu'elle est métrisable, il suffit de montrer que toute suite de $B^*$ admet une sous-suite qui converge faiblement.
+
+
+
+Soit $(L_n)$ une suite de $B^*$. On se donne $(f_i) \subset E$ une suite dense de $E$. Alors $(L_n(f_i))_n$ est bornée pour tout $i$.
+
+
+
+Par un procédé d'extraction diagonale, il existe $(n_k)$ telle que $L_{n_k}(f_i) \to g_i \overset{\mathrm{not}}{=} L(f_i)$ pour tout $i$ quand $k \to +\infty.$
+
+
+
+Soit maintenant $f \in E$ et $\varepsilon > 0$.  On a, si $\|f-f_i\| \leqslant \varepsilon,$
+$$
+\begin{aligned}
+\left|L_{n_k}(f) - L_{n_{\ell}}(f)\right| &\leqslant \left|L_{n_k}(f) - L_{n_k}(f_i)\right| + \left|L_{n_k}(f_i) - L_{n_\ell}(f_i)\right|  \\
+& \hspace{5cm}+ \left|L_{n_\ell}(f_i) - L_{n_\ell}(f)\right|  \\
+& \leqslant 2 \varepsilon + |L_{n_k}(f_i) - L_{n_\ell}(f_i)|.
+\end{aligned}
+$$
+
+Ainsi, si $k,\ell$ sont assez grands, on a, puisque $L_{n_k}(f_i) \to L(f_i)$,
+$$
+\left|L_{n_k}(f) - L_{n_{\ell}}(f)\right| \leqslant 3 \varepsilon.
+$$
+
+Ainsi $(L_{n_k}(f))_k$ est de Cauchy et donc converge, vers un réel noté $L(f).$
+
+
+
+
+L'application $L$ est évidemment linéaire et elle vérifie $|L(f)| \leqslant  \lim_k |L_{n_k}(f)| \leqslant \|f\|$, ce qui montre que $L \in B^*.$ Ainsi $B^*$ est compacte.
+
+
+\item On note $\Pcal(f)$ l'espace des probas sur $M$ qui sont invariantes par $f$. 
+
+
+
+Alors pour tous $\mu, \nu \in \Pcal(f),$ on a 
+$$
+t\mu + (1-t) \nu \in \Pcal(f), \quad t \in [0,1],
+$$
+donc $\Pcal(f)$ est connexe par arcs donc connexe.
+
+
+
+C'est un fermé de $B^*$ car si $\mu_n \to \mu$ faiblement, on a pour tout $\varphi \in C^0(M)$,
+$$
+\begin{aligned}
+\int_M (\varphi \circ f) \dd \mu &= \lim_n \int_M (\varphi \circ f) \dd \mu_n  \\
+&= \lim_n \int_M \varphi~ \dd \mu_n \quad \quad \quad \text{car $\mu_n$ est $f$-invariante}  \\
+&= \int_M \varphi~ \dd \mu,
+\end{aligned}
+$$
+et donc $\mu \in \Pcal(f).$
+
+
+
+
+
+
+Enfin, $\Pcal(f)$ est non vide.  En effet, soit $x \in X$ ; on pose 
+$$
+\mu_n = \frac{1}{n} \sum_{k=0}^{n-1} \delta_{f^k(x)}, \quad n \in \N_{\geqslant 1}.
+$$
+
+Alors $\mu_n \in B^*$ et donc il existe $\mu \in B^*$ et une extraction $(n_k)$ telle que $\mu_{n_k} \to \mu$ quand $k \to +\infty.$
+
+
+
+Montrons que $\mu \in \Pcal(f)$. Soit $\varphi \in C^0(M).$ Alors 
+$$
+\begin{aligned}
+\mu_{n_k}(\varphi \circ f) &= \frac{1}{n} \sum_{j=0}^{n_k-1}(\varphi\circ f)(f^j(x))  \\
+&= \frac{1}{n_k} \sum_{j=0}^{n_k - 1} \varphi(f^j(x)) + \frac{\varphi(f^{n_k}(x)) -\varphi(x)}{n_k}  \\
+&= \mu_{n_k}(f) + o(1).
+\end{aligned}
+$$
+
+Par conséquent, on obtient $\mu \in \Pcal(f)$ puisque
+$$
+\mu(\varphi \circ f) = \lim_k \mu_{n_k}(\varphi \circ f) = \lim_k \mu_{n_k}(\varphi) = \mu(\varphi).
+$$
+
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 4.} \textit{Fonctions harmoniques sur une vari\'et\'e ferm\'ee}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item On se ramène au cas $\R^n$ avec une partition de l'unité. On note $\phi_t$ le flot de $X$. Soit $\varphi \in C^\infty_c(\R^n)$.  On a, si $\lambda$ est la mesure de Lebesgue,
+$$
+\begin{aligned}
+\left.\frac{\dd }{\dd t}\right|_{t=0} \int (\varphi \circ \phi_t) \dd \vol_g &= \sum_j \int X^j (\partial_j \varphi) \dd \vol_g  \\
+&= \sum_j \int X^j (\partial_j \varphi) \sqrt{|g|} \dd \lambda \\
+&= - \sum_j \int \varphi~ \partial_j \left(X^j \sqrt{|g|} \right) \dd \lambda  \\
+&= - \int  \varphi \sqrt{|g|}\mathrm{div}_g(X) \dd \lambda. 
+\end{aligned}
+$$
+Ainsi, si la mesure $\vol_g$ est préservée par $\phi_t$ on a nécessairement $\mathrm{div}_g(X) = 0$. 
+
+
+
+Réciproquement, supposons $\mathrm{div}_g(X) = 0$ et prenons $\varphi \in C^\infty_c(\R^n).$ Soit $t \in \R$ ; posons $\tilde \varphi = \varphi \circ \phi_t$.
+
+
+
+
+On a par ce qui précède
+$$
+\begin{aligned}
+0 &= \left.\frac{\dd}{\dd s}\right|_{s=0} \int (\tilde \varphi \circ \phi_s) \dd \vol_g  \\
+&= \left.\frac{\dd}{\dd s}\right|_{s=0} \int  (\varphi \circ \phi_t \circ \phi_s) \dd \vol_g  \\
+&= \left.\frac{\dd}{\dd s}\right|_{s=0} \int  (\varphi \circ \phi_{t+s}) \dd \vol_g  \\
+&= \left.\frac{\dd}{\dd s}\right|_{s=t} \int  (\varphi \circ \phi_{s}) \dd \vol_g. 
+\end{aligned}
+$$
+Par suite l'application $t \mapsto \int (\varphi \circ \phi_t) \dd \vol_g$ est constante pour tout $\varphi \in C^\infty_c(\R^n)$.
+
+
+
+Si $\varphi \in C^0_c(\R^n)$, on utilise un argument d'approximation pour obtenir $\int(\varphi \circ \phi_t ) \dd \vol_g = \int \varphi ~\dd \vol_g$ pour tout $t$. 
+\item Soit $\varphi \in C^\infty_c(M)$ une fonction harmonique. Posons $X = \nabla^{g}\varphi$ ; alors $\mathrm{div}_g(X) = 0$. 
+
+
+
+En particulier, la mesure $\vol_g$ est préservée par le flot de $X$, noté $\phi_t$.
+
+
+
+Par l'\textbf{Exercice 2}, on sait que $\vol_g$-presque tout point est récurrent par l'application $f = \phi_1 : M \to M$. 
+
+
+
+Par l'\textbf{Exercice 1} du TD n°8, on sait que pour tout $x$, $t \mapsto \varphi \circ \phi_{t}(x)$ est strictement décroissante au voisinage de $t=0$ si $\nabla^{g}\varphi(x) \neq 0$.
+
+
+
+Si tel est le cas, alors $\varphi(f(x)) < \varphi(x)$. Posons $\delta = \varphi(x) - \varphi(f(x))$, et $U = \{y \in M,~\varphi(y) > \varphi(x) - \delta / 2\}.$
+
+
+
+Alors $U$ est un voisinage de $x$ et comme $t \mapsto \varphi \circ \phi_t(x)$ décroit, on a $f^k(x) \notin U$ pour tout $k \geqslant 1$, donc $x$ n'est pas récurrent.
+
+
+
+Ainsi, puisque $\vol_g$-presque tout point est récurrent, on a 
+$$
+\nabla^g \varphi = 0 \quad \vol_g\text{-presque partout}.
+$$
+Mais $\nabla^g \varphi$ est lisse et dans les cartes on a $\vol_g = \sqrt{|g|} \dd \lambda$ où $\lambda$ est la mesure de Lebesgue, ce qui implique que $\nabla^g \varphi = 0$, et donc $\varphi$ est constante.
+\end{enumerate}
+\vspace{0.6cm}
+
+
+
+
+
+\end{document}
+ 

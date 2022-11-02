@@ -1,0 +1,314 @@
+\documentclass[a4paper,10pt]{beamer}
+\usetheme{}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+%\usetheme{Boadilla}
+%\usetheme{AnnArbor}
+\usecolortheme{crane}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\usefonttheme{serif}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+%\newcommand{\x}{\times}
+%\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\ra}{\rightarrow}
+\renewcommand{\P}{\mathbf{P}}
+\newcommand{\Repac}{\mathrm{Rep}_{\mathrm{ac}}}
+
+
+\newtheorem{lemme}[theorem]{Lemme}
+\newtheorem{thm}[theorem]{Th\'eor\`eme}
+
+\theoremstyle{plain}
+\newenvironment{remark}
+
+
+
+%\AtBeginSection[]{
+  %{Summary}
+  %\small \tableofcontents[currentsection, hideothersubsections]
+  % 
+%}
+
+\title{\textbf{Syst\`emes dynamiques}}
+\subtitle{TD n¡10}
+\date{24 novembre 2020}
+\author[Yann Chaubet]{Yann Chaubet}
+%\institute[Universit\'e Paris-Sud]{\inst{1} Universit\'e Paris-Sud}
+
+\begin{document}
+
+
+
+\maketitle
+
+
+{Exercice 1}
+On a pour tout $x \in X$ tel que $\sigma^d(x) = x$ avec $d > 0$ minimal, en notant $n = d \ell_n + r_n \text{ avec }r_n < d$
+$$
+\begin{aligned}
+\frac{1}{n}\sum_{k=1}^n f(\sigma^k(x)) &= \sum_{j=1}^{\ell_n} \left(\sum_{y \in \mathcal{O}(x)} f(y)\right) + \frac{1}{n} \sum_{k=d\ell_n + 1}^{n} f(\sigma^k(x))  \\
+&= \frac{1}{n} \ell_n  \left(\sum_{y \in \mathcal{O}(x)} f(y)\right) + o(1/n)  \\
+&= \frac{1}{d} \left(\sum_{y \in \mathcal{O}(x)} f(y)\right) + o(1).
+\end{aligned}
+$$
+
+
+
+{Exercice 2}
+On sait que l'on a $S_n \varphi \to \psi$, $\mu$-presque partout pour une certaine fonction $\psi \in L^1(\mu)$. On note $G$ l'ensemble des points de $X$ telle que $\lim_n S_n \varphi(x)$ existe. 
+ 
+
+Si $x,x' \in X$ on a, puisque $\varphi$ est uniform\'ement continue,
+$$
+|S_n \varphi(x) - S_n\varphi(x')| \leqslant \frac{1}{n} \sum_{k=1}^n |\varphi(f^k(x))-\varphi(f^k(x'))| \leqslant C \varepsilon\left(\dd(x,x')\right) $$
+o\`u $\varepsilon(t) \to 0$ quand $t \to 0$.  Comme $G$ est dense dans $X$ (car $\mu(U) > 0$ pour tout ouvert non vide $U$), on peut d\'efinir $\psi$ partout par $\psi(x) = \lim_{k} \psi(x_k)$ o\`u $x_k \in G$ et $x_k \to x.$  
+
+Ainsi $S_n \varphi \to \psi$ partout, avec $\psi$ continue.  
+
+Montrons que la convergence est uniforme. Soit $\varepsilon > 0$ et $x_1, \dots, x_N \in X$ tels que $\inf_{i=1, \dots, N} \dd(x,x_i) < \delta$ pour tout $x \in X,$ o\`u $\delta > 0$ est choisi de sorte que
+$$
+|\varphi(x)-\varphi(x')|Ê\leqslant \varepsilon, \quad \dd(x,x') < \delta, \quad x,x'\in X.
+$$
+
+
+
+
+Soit $n_0$ assez grand tel que $|S_n\varphi(x_i) - \psi(x_i)| < \varepsilon$ pour tout $n > n_0$ et tout $i = 1,\dots,N.$  
+
+Soit $x \in X$ et $i$ tel que $\dd(x,x_i) < \delta.$ Alors
+$$
+\begin{aligned}
+|S_n\varphi(x) - \psi(x)|Ê&\leqslant |S_n\varphi(x) - S_n\varphi(x_i)| + |S_n\varphi(x_i) - \psi(x_i)|Ê \\
+& \hspace{4.6cm} \quad \quad + |\psi(x_i) - \psi(x)| \\
+& \leqslant 3 \varepsilon.
+\end{aligned}
+$$
+
+
+
+
+
+{Exercice 3}
+Soit $(\varphi_j)$ une suite de $C^0(X)$ qui est dense.  Pour tout $j$, il existe $G_j \subset X$ de mesure totale telle que la limite $\lim_n S_n \varphi_j(x)$ existe pour tout $x\in G_j$.   
+
+On d\'efinit $G$ l'ensemble de mesure totale par
+$$
+G = \bigcap_j G_j.
+$$
+
+Soit maintenant $\varphi \in C^0(X)$, et $x \in G.$ Soit $\varepsilon > 0.$ On prend $j$ tel que $\|\varphi_j - \varphi\|_\infty < \varepsilon.$  Alors pour tous $m,n$,
+$$
+\begin{aligned}
+|S_n \varphi(x) - S_m \varphi(x)| &\leqslant |S_nÊ\varphi(x) - S_n \varphi_j(x)|Ê+ |S_n\varphi_j(x) - S_m \varphi_j(x)|Ê\\
+& \hspace{4.6cm} \quad + |S_m \varphi_j(x) - S_m\varphi(x)|  \\
+& \leqslant 2\varepsilon  + |S_n\varphi_j(x) - S_m\varphi_j(x)|.
+\end{aligned}
+$$
+
+Si $m,n$ sont assez grands alors $|S_n\varphi_j(x) - S_m\varphi_j(x)| \leqslant \varepsilon$ puisque $(S_n\varphi_j(x))_n$ converge car $x \in G \subset G_j.$  
+
+Ainsi, $S_n \varphi(x)$ converge quand $n \to +\infty$ par le crit\`ere de Cauchy.
+
+
+{Exercice 4}
+Soit $x \in X.$ On consid\`ere 
+$$
+\mu_n = \frac{1}{n} \sum_{k=1}^n \delta_{f^k(x)}, \quad n \geqslant 1.
+$$
+ 
+Alors par le TD n¡9, il existe une suite $n_k$ et une mesure de probabilit\'es $f$-invariante $\mu'$ telle que 
+$$
+\mu_{n_k}(\varphi) \to \mu'(\varphi), \quad \varphi \in C^0(X).
+$$
+
+Alors $\mu' = \mu$ par unicit\'e et $\mu'$ est de support total. Par cons\'equent, on a pour tout ouvert non vide $A \subset X$ 
+$$
+\#\{n \in \N,~f^n(x) \in A\} = +\infty.
+$$
+
+
+{Exercice 5}
+\textbf{1.} Pour tout $n$ on a 
+$$
+\int_X |S_n \varphi|^2 \dd \mu = \int_X |\varphi|^2 \dd \mu.
+$$
+
+Par cons\'equent on a $\int_X |\bar \varphi|^2 \dd \mu \leqslant \int_X |\varphi|^2 \dd \mu$ par Fatou, et donc $\bar \varphi \in L^2(\mu).$ 
+
+\textbf{2.} Si $|\varphi| \in L^\infty(\mu)$ on a $\int_X |S_n \varphi - \bar \varphi|^2 \dd \mu \to 0$ par le th\'eor\`eme de convergence domin\'ee.
+
+  Posons $\varphi_k = \varphi 1_{\{|\varphi|\leqslant k\}}.$ Alors 
+$$
+\int_X |\varphi|^2 \dd \mu \geqslant \int_X |\varphi - \varphi_k|^2 \dd \mu \geqslant k^2 \mu(\{|\varphi| > k),
+$$
+
+de sorte que 
+$$
+\mu(\{|\varphi|> k\}) \leqslant \frac{\|\varphi\|_{L^2(\mu)}^2}{k^2}, \quad k > 0.
+$$
+ Il suit que $\varphi_k \to \varphi$ $\mu$ presque partout et donc $\varphi_k \to \varphi$ dans $L^2(\mu)$ par convergence domin\'ee.
+
+
+
+Soit $\varepsilon > 0$ et $k$ assez grand de sorte que $\|\varphi-\varphi_k\|_{L^2(\mu)} < \varepsilon.$  On a 
+$$
+\|S_n\varphi - S_m\varphi\|_{2} \leqslant\|S_n\varphi - S_n\varphi_k\|_2 + \|S_n \varphi_k - S_m \varphi_k\|_2 + \|S_m \varphi_k - S_m \varphi\|_2.
+$$
+On a pour tout $\ell$
+$$
+\|S_\ell \varphi - S_\ell \varphi_k\|_2 \leqslant \frac{1}{\ell} \sum_{j=1}^\ell \|(\varphi - \varphi_k) \circ f^j\|_2 \leqslant \|\varphi - \varphi_k\| < \varepsilon.
+$$
+
+D'autre part, comme $\varphi_k$ est born\'ee on sait que $S_n \varphi_k$ converge dans $L^2(\mu)$ ; on obtient que si $m,n$ sont assez grands, 
+$$
+\|S_n \varphi - S_m \varphi\|_2 < 3 \varepsilon.
+$$
+
+Ainsi $(S_n \varphi)$ converge dans $L^2(\mu)$, vers $\bar \varphi.$
+
+
+{Exercice 6}
+\textbf{1.} On raisonne par r\'ecurrence sur $n$.  Pour $n = 1$ on a $T_n \varphi(x) = \varphi(x) \geqslant \varepsilon \chi_{A_\varepsilon}(x)$.  
+
+On suppose que $\displaystyle{T_n \varphi(x) \geqslant \varepsilon \sum_{k=0}^{n-1} \chi_{A_\varepsilon}(f^k(x)).}$ On a $\varphi(f^n(x)) \geqslant \varepsilon \chi_{A_\varepsilon}(f^n(x))$ par ce qui pr\'ec\`ede.  Ainsi
+$$
+\begin{aligned}
+T_{n+1}\varphi(x) &= T_n \varphi(x) + \varphi(f^n(x))  \\
+& \geqslant \varepsilon \sum_{k=0}^n \chi_{A_\varepsilon}(f^k(x)).
+\end{aligned}
+$$
+ 
+
+\textbf{2.} La question pr\'ec\'edente donne
+$$
+\bar \varphi \geqslant \varepsilon \bar \chi_{A_\varepsilon} \quad\mu\text{-presque partout sur }A_\varepsilon
+$$
+o\`u $\bar \varphi$ et $\bar \chi_{A_\varepsilon}$ sont les fonctions associ\'ees \`a $\varphi$ et $\chi_{A_\varepsilon}$ donn\'ees par le th\'eor\`eme ergodique.  
+
+Puisque $\bar \varphi \circ f = \bar \varphi$ $\mu-$presque partout, l'in\'egalit\'e pr\'ec\'edente est vraie $\mu-$pp sur $B_\varepsilon.$
+
+
+
+Par d\'efinition pour tout $x \in \complement B_\varepsilon$, on a $\chi_{A_\varepsilon}(f^k(x)) = 0$ pour tout $k \in \N.$ Il suit que $\chi_{A_\varepsilon} = 0$ sur $\complement B_\varepsilon$.  
+
+D'autre part on a $\bar \varphi$ par hypoth\`ese puisque $T_n \varphi(x) \to +\infty$ pour $\mu-$presque tout $x$.  Ainsi
+$$
+\begin{aligned}
+\mu(A_\varepsilon) &= \int_X \chi_{A_\varepsilon} \dd \mu  \\
+& = \int_X \bar \chi_{A_\varepsilon} \dd \mu  \\ 
+&= \int_{B_\varepsilon} \bar \chi_{A_\varepsilon}  \\
+& \leqslant \frac{1}{\varepsilon} \int_{B_\varepsilon} \bar \varphi~\dd \mu  \\
+& \leqslant \frac{1}{\varepsilon} \int_X \bar \varphi~ \dd \mu  \\
+& \leqslant \frac{1}{\varepsilon} \int_X \varphi~ \dd \mu  \\
+&\leqslant 0.
+\end{aligned}
+$$
+ 
+On obtient $\mu(A_\varepsilon) = 0$ et donc $\mu(B_\varepsilon) = \mu \left(\bigcup_{k}f^{-k}(A_\varepsilon)\right) = 0$ puisque $f$ pr\'eserve $\mu$. 
+
+
+
+\textbf{3.} On a le 
+\begin{lemme}
+Soit $(a_n)$ une suite r\'eelle telle que $\sum_{n=0}^N a_n \to +\infty$ quand $N \to +\infty.$ Alors il existe $\varepsilon > 0$ et $N_0 > 0$ tels que 
+$$
+\sum_{n=N_0}^N a_n \geqslant \varepsilon, \quad N \geqslant N_0.
+$$
+\end{lemme}
+Admettant le lemme, on obtient que pour tout $x \in X$ tel que $T_N \varphi(x) \to +\infty$ quand $N \to +\infty$, il existe $\varepsilon(x), N_0(x) > 0$ tels que 
+$$
+\sum_{n=N_0(x)}^{N} \varphi(f^n(x)) \geqslant \varepsilon, \quad N \geqslant N_0(x).
+$$
+ Autrement dit, on a $x \in f^{-N_0(x)}(A_\varepsilon(x)) \subset B_{\varepsilon(x)}.$  
+
+
+
+
+
+Ceci implique que l'ensemble 
+$
+\displaystyle{
+\bigcup_{k > 0} B_{1/k}
+}
+$
+est de mesure totale, puisque presque tout $x$ v\'erifie $T_N\varphi(x) \to +\infty$.  
+
+Ainsi, par la question \textbf{2.}, il existe $k$ tel que $B_{1/k}$ est de mesure strictement positive, et donc $\int_\varphi \dd \mu > 0.$  
+
+Il reste \`a montrer le lemme ; soit $(a_n)$ une suite r\'eelle telle que 
+$$
+\sum_{n=0}^N a_n \to +\infty, \quad N \to +\infty.
+$$
+
+On raisonne par l'absurde et on suppose que pour tout $\varepsilon > 0$ et tout $N \geqslant 0$, il existe $N' \geqslant N$ tel que 
+$$
+\sum_{n=N}^{N'} a_n < \varepsilon.
+$$
+ Posons $N_0 = 0$ et $\varepsilon_0 = 1.$ Alors il existe $N' \geqslant 0$ tel que, 
+$$
+\sum_{n=N_0}^{N'} a_n < 1.
+$$
+
+
+
+
+On pose $N_1 = N' + 1$. Alors il existe $N' \geqslant N_1$ tel que 
+$$
+\sum_{n=N_1 + 1}^{N'} a_n < \frac{1}{4}.
+$$
+ En it\'erant ce processus, on construit une suite $N_0 < N_1 < \cdots$ telle que
+$$
+\sum_{n=N_k}^{N_{k+1}-1} a_n < \frac{1}{(k+1)^2}, \quad k \geqslant 0.
+$$
+
+On obtient que 
+$$
+\limsup_k \sum_{n=0}^{N_k-1} a_n < +\infty,
+$$
+ce qui est absurde.
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+

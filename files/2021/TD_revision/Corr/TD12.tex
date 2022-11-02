@@ -1,0 +1,335 @@
+\documentclass[a4paper,10pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Corrig\'e de la feuille de r\'evision}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2021/2022 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent {\large \textbf{Exercice 1.} \textit{Entropie topologique des applications non dilatantes}} \vspace{1.5mm} 
+
+\noindent
+On note $\dd^f_n(x,y) = \max_{k = 0, \dots, n-1} \dd (f^k(x), f^k(y)).$ L'hypoth\`ese de non dilatation implique que
+$
+\dd^f_n(x,y) = \dd(x,y)
+$
+pour tous $x,y \in X$. En particulier, si $M^f(n,\varepsilon)$ est le nombre minimal de $\varepsilon$-boules pour $\dd^f_n$ qu'il faut pour recouvrir $X$, on a $M^f(n,\varepsilon) = M^f(1, \varepsilon)$ pour tout $n$. Ainsi pour tout $\varepsilon > 0$ on a
+$$
+\limsup_n \frac{1}{n} \log M^f(n, \varepsilon) = 0,
+$$
+ce qui donne $h_\mathrm{top}(f) = 0.$
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 1.} \textit{Ergodiciti\'e et m\'elange au sens de C\'esaro}} \vspace{1.5mm} 
+
+\noindent
+On applique le th\'eor\`eme de Birkhoff \`a $\varphi = 1_A$ et on obtient que $S_n 1_A = \frac{1}{n} \sum_{k=0}^{n-1} 1_A \circ f^k \to \int_X 1_A \dd \mu = \mu(A)$, $\mu$-presque partout quand $n \to \infty.$ Par convergence domin\'ee on obtient donc
+$$
+\frac{1}{n} \sum_{k = 0}^{n-1} \mu\left(f^{-k}(A) \cap B\right) =\frac{1}{n} \sum_{k = 0}^{n-1} \int_X 1_{f^{-k}(A)} 1_B \dd \mu = \int_B S_n1_A \dd \mu \longrightarrow \mu(A) \mu(B)
+$$
+quand $n \to \infty$. 
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 1.} \textit{Mesures ergodiques et points extr\'emaux}} \vspace{1.5mm} 
+
+\noindent
+\begin{enumerate}
+\item
+\begin{enumerate}
+\item Supposons la mesure $\mu$ non ergodique. Soit $A$ un bor\'elien invariant par $f$ tel que $0 < \mu(A) < 1$. Alors $B = \complement A$ est aussi invariant, et on peut \'ecrire
+$$
+\mu = \mu(A) \mu_A + (1 - \mu(A)) \mu_{\complement A}
+$$
+o\`u pour tout bor\'elien $B$ de mesure non nulle on a not\'e $\mu_B = \mu(\cdot \cap B) / \mu(B)$. Clairement les mesures $\mu_A$ et $\mu_{\complement A}$ sont distinctes, donc $\mu$ n'est pas un point extr\'emal.
+
+\item Soit $r > 0$. On note $A = \{\varphi \leqslant r\}$, $B = f^{-1}A \setminus A$ et $C = A \setminus f^{-1}A.$ On a $\varphi > r$ sur $B$ et donc
+$$
+\int_B(\varphi - r)\dd \mu = \nu(B) - r \mu(B) \geqslant 0
+$$
+avec \'egalit\'e ssi $\mu(B) = 0.$ On a aussi
+$$
+\nu(C) = \int_{A \setminus f^{-1}A} \varphi \dd \mu \leqslant r \mu(C).
+$$
+Par ailleurs, comme $\nu$ est $f-$invariante,
+$$
+\nu(B) = \nu(f^{-1}A) - \nu(f^{-1}A \cap A) =  \nu(A) - \nu(f^{-1}A \cap A)  = \nu(C).
+$$
+De m\^eme $\mu(B) = \mu(C).$ On obtient finalement
+$$
+\nu(B) \geqslant r\mu(B) = r\mu(C) \geqslant \nu(C) = \nu(B),
+$$
+ce qui implique par une remarque pr\'ec\'edente que $\mu(B) = 0$, et donc $\mu(C) = 0$. On a donc obtenu que
+$$
+\mu\left( A \Delta f^{-1}A\right) = 0
+$$
+pour tout $r > 0$. Ainsi
+$$
+\{\varphi > \varphi \circ f\} = \bigcup_{r \in \mathbb Q_{>0}} \{\varphi > r \geqslant \varphi \circ f\} = \bigcup_{r \in \mathbb Q_{>0}} \{r \geqslant \varphi \circ f\}\setminus\{r \geqslant \varphi\}
+$$
+est de $\mu$-mesure nulle, et donc $\varphi \leqslant \varphi \circ f$ $\mu$-presque partout. En changeant les r\^oles de $\varphi$ et $\varphi \circ f$ on obtient le r\'esultat voulu.
+
+\item
+Soit $\mu \in \mathcal{M}(X,f)$ ergodique. Soient $\mu_1, \mu_2 \in \mathcal{M}(X,f)$ et $t \in \left]0,1\right[$ v\'erifiant $\mu = t\mu_1 + (1-t)\mu_2$. On a clairement, pour tout bor\'elien $A$,
+$$
+\mu(A) = 0 \implies \mu_1(A) = 0.
+$$
+En particulier le th\'eor\`eme de Radon-Nikodym implique l'existence d'une fonction $\varphi \in L^1(\mu)$ telle que $\mu_1 = \varphi \mu.$ Comme $\mu$ et $\mu_1$ sont invariantes par $f$, on a $\varphi = \varphi \circ f$ $\mu-$presque partout par la question pr\'ecedente. Ainsi $\varphi$ est constante $\mu$ presque partout par ergodicit\'e et donc $\mu_1 = \mu.$
+\end{enumerate}
+
+\item Soient $\mu$ et $\nu$ deux mesures ergodiques. Supposons $\mu \neq \nu$. Soit $t \in \left]0, 1\right[$. Alors par ce qui pr\'ec\`ede, on a que la mesure
+$$
+\nu_t = t\mu + (1-t)\nu
+$$
+n'est pas un point extr\'emal et donc n'est pas ergodique. En particulier il existe un bor\'elien $A$ invariant par $f$ tel que $0 < \mu_t(A) < 1$. Or on a $\mu(A) = 0$ ou $1$ et $\nu(A) = 0$ ou $1$, et donc $\mu(A) = 1 - \nu(A) = 1$ ou $\mu(A) = 1 - \nu(A) = 0$. Ceci implique les mesures $\mu$ et $\nu$ sont \'etrang\`eres.
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 1.} \textit{Le th\'eor\`eme de Von Neumann via le th\'eor\`eme de Birkhoff}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item Pour tout $n$ on a 
+$$
+\int_X |S_n \varphi|^2 \dd \mu = \int_X |\varphi|^2 \dd \mu.
+$$
+
+Par cons\'equent on a $\int_X |\bar \varphi|^2 \dd \mu \leqslant \int_X |\varphi|^2 \dd \mu$ par le lemme de Fatou, et donc $\bar \varphi \in L^2(\mu).$ 
+\item Si $|\varphi| \in L^\infty(\mu)$ on a $\int_X |S_n \varphi - \bar \varphi|^2 \dd \mu \to 0$ par le th\'eor\`eme de convergence domin\'ee.
+
+Posons $\varphi_k = \varphi \cdot1_{\{|\varphi|\leqslant k\}}.$ Alors 
+$$
+\int_X |\varphi|^2 \dd \mu \geqslant \int_X |\varphi - \varphi_k|^2 \dd \mu \geqslant k^2 \mu(\{|\varphi| > k),
+$$
+
+de sorte que 
+$$
+\mu(\{|\varphi|> k\}) \leqslant \frac{\|\varphi\|_{L^2(\mu)}^2}{k^2}, \quad k > 0.
+$$
+ Il suit que $\varphi_k \to \varphi$ $\mu$-presque partout et donc $\varphi_k \to \varphi$ dans $L^2(\mu)$ par convergence domin\'ee.
+
+
+
+Soit $\varepsilon > 0$ et $k$ assez grand de sorte que $\|\varphi-\varphi_k\|_{L^2(\mu)} < \varepsilon.$  On a 
+$$
+\|S_n\varphi - S_m\varphi\|_{2} \leqslant\|S_n\varphi - S_n\varphi_k\|_2 + \|S_n \varphi_k - S_m \varphi_k\|_2 + \|S_m \varphi_k - S_m \varphi\|_2.
+$$
+On a pour tout $\ell$
+$$
+\|S_\ell \varphi - S_\ell \varphi_k\|_2 \leqslant \frac{1}{\ell} \sum_{j=1}^\ell \|(\varphi - \varphi_k) \circ f^j\|_2 \leqslant \|\varphi - \varphi_k\| < \varepsilon.
+$$
+
+D'autre part, comme $\varphi_k$ est born\'ee on sait que $S_n \varphi_k$ converge dans $L^2(\mu)$ ; on obtient que si $m,n$ sont assez grands, 
+$$
+\|S_n \varphi - S_m \varphi\|_2 < 3 \varepsilon.
+$$
+
+Ainsi $(S_n \varphi)$ converge dans $L^2(\mu)$, vers $\bar \varphi.$
+\end{enumerate}
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 2.} \textit{Syst\`emes lin\'eaires avec second membre}} \vspace{1.5mm} 
+
+\noindent Soit $A$ une matrice carr\'ee d'ordre $n$, et $z : \R \to \R^n$ une application continue. 
+
+\begin{enumerate}
+\item En cherchant une solution particuli\`ere sous la forme $t \mapsto \e^{tA}c(t)$, on trouve que les solutions sont de la forme
+$$
+x(t) = \e^{tA} \left(x_0 + \int_0^t \e^{-sA}z(s) \dd s\right), \quad t \in \R^n,
+$$
+o\`u $x_0 \in \R^n$.
+\item Soit $\varepsilon > 0$ et $x_0 \in \R^n$. Soit $T > 0$ tel que pour tout $t \geqslant T$ on a $\|z(t)-z_\infty\|_A \leqslant \varepsilon$, o\`u $\|\cdot\|_A$ est une norme adapt\'ee \`a $A$. Alors 
+$$
+\int_0^t\e^{(t-s)A}z(s)\dd s = \int_0^T \e^{(t-s)A}z(s)\dd s + \int_T^t \e^{(t-s)A}z(s)\dd s.
+$$
+On a 
+$$
+\int_T^t \e^{(t-s)A}z(s)\dd s = \int_T^t\e^{(t-s)A}(z(s) - z_\infty) \dd s + \left(\int_T^t \e^{(t-s)A}\dd s \right)z_\infty.
+$$
+Or pour tout $t\geqslant T$ on a 
+$$
+\left\|\int_T^t\e^{(t-s)A}(z(s) - z_\infty) \dd s\right\|_A \leqslant \varepsilon \int_T^t \e^{-a(t-s)} \dd s \leqslant \frac{\varepsilon}{a}.
+$$
+D'autre part, 
+$$
+\int_{T}^t\e^{(t-s)A} \dd s = \e^{tA}\left[-A^{-1}\e^{-sA}\right]_{s=T}^{s=t} = -A^{-1} + A^{-1}\e^{(t-T)A}.
+$$
+En particulier puisque $A$ est une contraction on a
+$$
+\left(\int_T^t \e^{(t-s)A}\dd s \right)z_\infty \to -A^{-1}z_\infty, \quad t \to +\infty.
+$$
+On a aussi que $\displaystyle{\e^{tA} \int_0^T \e^{-s}z(s) \dd s + \e^{tA}x_0 \to 0}$ quand $t \to +\infty$. Tout ce qui pr\'ec\`ede montre que pour $t$ assez grand on a (pour une constante $C$ d\'ependant seulement de $a$)
+$$
+\left\|x(t) +A^{-1}z_\infty\right\| \leqslant C \varepsilon.
+$$
+On a obtenu que 
+$$
+\lim_{t \to +\infty} x(t) = -A^{-1} z_\infty.
+$$
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Entropie des transformations Lipschitziennes}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item Soit $n \geqslant 1$. Il existe $c > 0$ telle que pour tout $\varepsilon > 0$ on a
+$$
+c^{-1} \varepsilon^{-n} \leqslant M([0,1]^n, \varepsilon) \leqslant c  \varepsilon^{-n}.
+$$
+Par suite
+$$
+\frac{-c + n \log 1/ \varepsilon}{\log 1 / \varepsilon} \leqslant \frac{\log M([0,1]^n, \varepsilon)}{\log 1/\varepsilon} \leqslant \frac{n \log 1/\varepsilon}{\log 1 / \varepsilon},
+$$
+ce qui conclut.
+
+\item Soit $L > \max(1, L(f)).$ Alors $\dd(f(x), f(y)) \leqslant L \dd(x,y)$ pour tous $x,y \in X$. Cela implique que
+$$
+f^m\left(B(x, \varepsilon / L^n)\right) \subset B(f^m(x), \varepsilon), \quad 0 \leqslant m \leqslant n,
+$$
+et donc 
+$$
+B(x, \varepsilon / L^n) \subset \bigcap_{m=0}^{n-1} f^{-m} B(f^m(x), \varepsilon) = B_{\dd^f_n}(x, \varepsilon), \quad \forall x, \varepsilon.
+$$
+Ainsi on obtient
+$$
+\begin{aligned}
+\frac{1}{n} \log M^f(n, \varepsilon) &\leqslant \frac{1}{n} \log M(X, \varepsilon / L^n) \\
+&= \frac{\log(L^n/ \varepsilon)}{n} \frac{\log M(X, \varepsilon / L^n)}{\log(L^n/ \varepsilon)} \\
+&= \left(\log L - \frac{\log \varepsilon}{n}\right) \frac{\log M(X, \varepsilon / L^n)}{\log(L^n/ \varepsilon)}.
+\end{aligned}
+$$
+Puisque $\log L > 0$ on obtient 
+$$
+\limsup_n \frac{1}{n} M^f(n, \varepsilon) \leqslant \log(L) \mathrm{bdim}(X),
+$$
+et donc $\htop(f) \leqslant \log(L) \mathrm{bdim}(X)$.
+
+\item Par le cours, l'application doublante $E_2 : [x] \mapsto [2x]$ sur $X = S^1$ satisfait cette \'egalit\'e, puisque $\mathrm{bdim}(S^1) = 1$, et 
+$$\htop(E_2) = \log 2.$$
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 4.} \textit{Moyenne temporelle des temps de retour}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item On applique le th\'eor\`eme de Kac :
+$$
+\int_A \tau \dd \mu = \mu(X) - \mu(A_0^*), \quad A_0^* = \bigcap_{n \geqslant 0} f^{-n}(\complement A).
+$$
+ Or $A_0^*$ est invariant par $f$ : en effet, on a
+$$
+f^{-1}(A_0^*) = \bigcap_{n \geqslant 1} f^{-n}(\complement A),
+$$
+ ce qui donne $A_0^* \subset f^{-1}(A_0^*)$. D'autre part on a
+$$
+f^{-1}(A_0^*) \setminus A_0^* = \{x \in A,~f^n(x) \notin A,~n \geqslant 1\}.
+$$
+ Par le th\'eor\`eme de R\'ecurrence de Poincar\'e, on a donc $\mu(f^{-1}(A_0^*) \setminus A_0^*) = 0$ et donc $A_0^*$ est invariant.  
+
+Par ergodicit\'e de $f$, on obtient $\mu(A_0^*) = 0$ ou $1$.  
+
+Mais $\mu(A_0^*) = 1$ implique en particulier que $\mu(\complement A) = 1$ ce qui est impossible car $\mu(A) > 0.$  
+
+On a bien $\int_A \tau \dd \mu = \mu(X) = 1.$
+\item Il s'agit de montrer que $g$ est ergodique pour $\mu_A = \mu(A \cap \cdot) / \mu(A).$  
+
+Soit $B \subset A$ un ensemble $g$-invariant de mesure non nulle. On note $\tau' : B \to \N_{\geqslant 1}$ le temps de retour associ\'e \`a $B$, qui est d\'efini $\mu$-presque partout sur $B$, et $g'$ l'application de premier retour.  
+
+Puisque $B$ est $g$-invariant, on a $g(x) \in B$ pour presque tout $x \in B$, ce qui donne 
+$$
+g|_B = g' \quad \quad \mu-\text{presque partout sur }B.
+$$ 
+
+En utilisant $\tau' \geqslant \tau$, on obtient que
+$$
+\tau|_B = \tau' \quad \quad \mu-\text{presque partout sur }B.
+$$
+ 
+Par la question \textbf{1.}, on a donc 
+$$
+1 = \int_B \tau' \dd \mu = \int_B \tau \dd \mu = \underset{=1}{\underbrace{\int_A \tau \dd \mu}} - \int_{A \setminus B} \tau \dd \mu,
+$$
+ ce qui donne 
+$$
+0 = \int_{A\setminus B}\tau \dd \mu \geqslant \mu(A \setminus B) \quad \implies \quad \mu(B) = \mu(A).
+$$
+
+
+
+Ainsi $g$ est ergodique pour $\mu_A$, et donc, pour $\mu$-presque tout $x$ de $A$,
+$$
+\lim \frac{1}{n} \sum_{k=1}^n \tau\left(g^k(x)\right) = \frac{1}{\mu(A)}.
+$$
+
+\end{enumerate}
+
+
+
+
+\end{document}
+ 
+ 
+ 
+

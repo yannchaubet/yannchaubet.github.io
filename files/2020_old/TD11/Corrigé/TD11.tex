@@ -1,0 +1,485 @@
+\documentclass[a4paper,12pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Feuille d'exercices 11}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2019/2020 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent {\large \textbf{Exercice 1.} \textit{D\'ecroissance surexponentielle des corr\'elations pour les applications dilatantes du cercle}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item Soient $\varphi, \psi \in L^2(\mu)$, et écrivons
+$$
+\varphi = \sum_{k} c_k \e_k, \quad \psi = \sum_k d_k \e_k,
+$$
+où $\e_k(\theta) = \exp(2i\pi k \theta)$ pour tout $k \in \Z.$
+ 
+
+Alors
+$$
+\psi(m^n\theta) = \sum_k d_k \exp(2i\pi k m^n\theta), \quad \theta \in \R/\Z.
+$$
+
+Ainsi 
+$$
+\begin{aligned}
+\int \varphi (\psi \circ E_m^n) \dd \mu &= \sum_k c_{-km^n} d_k \\
+&= c_0 d_0 + \sum_{k \neq 0} c_{km^n} d_k, 
+\end{aligned}
+$$
+et on a 
+$$
+\left| \sum_{k \neq 0} c_{km^n} d_k\right| \leqslant \left(\sum_{|j|\geqslant m^n}|c_j|^2 \right) \left(\sum_{j\neq0} |d_j|^2\right) \underset{n \to \infty}{\longrightarrow} 0.
+$$
+
+\item 
+\begin{enumerate}
+\item On a 
+$$
+\begin{aligned}
+\int_0^{2\pi} \psi(\theta) \e^{-2ik\pi \theta} \dd \theta  &= \left[\psi(\theta) \frac{\e^{-2i\pi k\theta}}{-2i\pi k}\right]_0^{2\pi} - \frac{1}{-2i\pi k} \int_{0}^{2\pi} \psi'(\theta) \e^{-2i\pi k \theta}\dd \theta  \\
+&= \frac{1}{2i \pi k } \int_0^{2\pi} \psi'(\theta) \e^{-2i\pi k \theta} \dd \theta
+\end{aligned}
+$$
+
+Une récurrence immédiate donne pour tout $N \geqslant 0$
+$$
+\int_0^{2\pi} \psi(\theta)\e^{-2i \pi k \theta} \dd \theta = \frac{1}{(2i k \pi)^N} \int_0^{2\pi} \psi^{(N)}(\theta)\e^{-2ik\pi\theta}\dd \theta.
+$$
+
+En particulier
+$$
+\left|\int_0^{2\pi} \psi(\theta)\e^{-2i \pi k \theta} \dd \theta\right| \leqslant \frac{\left\|\psi^{(N)}\right\|_\infty}{(2\pi)^{N-1}} \frac{1}{|k|^N}.
+$$
+
+\item On a, avec les notations de la question \textbf{1.},
+$$
+\begin{aligned}
+\sum_{j\neq0} |c_{-jm^n}|^2 &\leqslant C \sum_{j\neq 0} \frac{1}{(|j|m^n)^N}  \\
+&\leqslant \frac{C}{m^{nN}} \sum_{j \neq 0} \frac{1}{|j|^N}  \\
+&\leqslant \tilde C \e^{-rn},
+\end{aligned}
+$$
+
+où $r = N \log m.$
+\end{enumerate}
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Presque tous les nombres r\'eels sont normaux}} \vspace{1.5mm} 
+
+\noindent
+Soit $m \geqslant 2$. On pose
+$$
+\chi_{k,m} = \mathbf{1}_{\left[\frac{k}{m}, \frac{k+1}{m}\right[}, \quad k = 0, \dots, m-1.
+$$
+Alors pour tout $x \in [0,1)$ on a 
+$$
+a_j(x) = k \iff \chi_{k,m}(\{m^jx\}) = 1, \quad \{m^jx\} = m^jx - [m^jx].
+$$
+L'application $E_m : \T \to \T$ est mélangeante, donc ergodique pour $\mu$.  Par le théorème ergodique, il existe $A_m \subset \T$ avec $\mathrm{\mu}(A_m) = 1$ tel que pour tout $x \in A_m$ on a
+$$
+\begin{aligned}
+\frac{1}{n} \#\{k,~a_k(x) = j\} &= \frac{1}{n} \sum_{k=1}^n [\chi_{j,m} \circ (E_m)^k] (x)  \underset{k \to +\infty}{\longrightarrow} \int_\T \chi_{j,m} \dd \mu = \frac{1}{m}
+\end{aligned}
+$$
+Ainsi si on pose $A = \bigcap_m A_m$, on a $\mathrm{Leb}(A) = 1$ et tout $x \in A$ est normal.
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 3.} \textit{\'Equidistribution des rotations irrationnelles du cercle}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item Soit $f \in L^1(\mu)$ telle que $f \circ R_\alpha = f$ $\mu$-presque partout.  Notons $f(\theta) = \sum_{k} c_k \e^{2i\pi k \cdot \theta}$.  Alors l'invariance de $f$ donne, pour $\mu$-presque tout $\theta \in \T^d$,
+$$
+\sum_k c_k \e^{2i\pi k \cdot \theta} \e^{2i \pi k \cdot \alpha} = \sum_{k} c_k \e^{2i\pi k \cdot \theta}.
+$$
+
+Ceci implique que 
+$$c_k \e^{2i\pi k \cdot \alpha} = c_k, \quad k \in \Z^d.$$
+ Puisque $(1, \alpha_1, \dots, \alpha_d)$ est libre sur $\Q$, on obtient
+$$
+c_k = 0, \quad k \neq 0,
+$$
+
+c'est-à-dire que $f$ est $\mu$-presque partout égale à une constante.  La transformation $R_\alpha$ n'est pas mélangeante : si $C = [-\varepsilon, \varepsilon]^d$, on a 
+$$R_\alpha^{-j}(C) = \prod_{\ell = 1}^d \bigl[-\varepsilon - j\alpha_\ell, \varepsilon-j\alpha_\ell\bigr] \quad \mod \Z^d.$$
+
+
+
+Ainsi si $\varepsilon > 0$ est assez petit on a $R_{\alpha}^{-j}(C) \cap C = \emptyset$, ce qui conclut. 
+\item C'est le théorème de Birkhoff appliqué à $\textbf{1}_C \in L^1(\mu)$.
+\item On applique l'\textbf{Exercice 2} du TD 10 : $R_\alpha$ est une isométrie et $\mu(U) > 0$ pour tout ouvert non vide $U$, donc $S_n\varphi$ converge uniformément vers une fonction continue $\psi$.  Comme $R_\alpha$ est ergodique pour $\mu$, alors $\psi$ est constante égale à $\int_{\T^d} \varphi \dd \mu.$
+
+\item Soit $\varepsilon > 0$ et $C$ un produit d'intervalles. On se donne deux fonctions lisses $\chi_\varepsilon^\pm : \T^d \to \R$ telles que 
+$$
+\chi_\varepsilon^{-} \leqslant \textbf{1}_C \leqslant \chi_\varepsilon^+ \quad \text{et} \quad \int_{\T^d} |\chi_\varepsilon^\pm - \textbf{1}_C| \dd \mu < \varepsilon.
+$$
+
+Alors pour tout $x \in \T^d$ on a 
+$$
+S_n \chi_\varepsilon^{-}(x) \leqslant S_n \textbf{1}_C(x) \leqslant S_n \chi_\varepsilon(x),
+$$
+ et donc
+$$
+\int \chi_\varepsilon^- \dd \mu \leqslant \liminf_n S_n \textbf{1}_C(x) \leqslant \limsup_n S_n \textbf{1}_C(x) \leqslant \int \chi_\varepsilon^+ \dd \mu.
+$$
+
+
+
+
+On obtient donc
+$$
+\mu(C) - \varepsilon \leqslant \liminf_n S_n \textbf{1}_C(x) \leqslant \limsup_n S_n \textbf{1}_C(x) \leqslant \mu(C) + \varepsilon.
+$$
+
+Le nombre $\varepsilon$ étant arbitraire, on a $S_n \varphi(x)\to \mu(C)$ quand $n \to +\infty.$
+\item Le premier chiffre de $2^n$ est $j \neq 0$ si et seulement si, pour un certain $k \in \N$, on a
+$$
+10^kj \leqslant 2^n < 10^k(j+1),
+$$
+ ce qui équivaut à 
+$$
+\log_{10}(j) + k \leqslant n \log_{10}(2) < \log_{10}(j+1) + k.
+$$
+ 
+Ainsi, en notant $\alpha = \log_{10}(2) \notin \Q$, on a que le premier chiffre de $2^n$ est $j$ si et seulement si
+$$
+R_\alpha^n(0) \in [\log_{10}(j), \log_{10}(j+1)[ \quad \mod \Z.
+$$
+
+La fréquence d'apparition asymptotique de $7$ est donc donnée par
+$$
+\lim_n \frac{1}{n} \sum \textbf{1}_{[\log_{10}(j), \log_{10}(j+1)[}(R_\alpha^n(0)) = \log_{10}(8/7) \approx 5,8\%.
+$$
+
+
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 4.} \textit{M\'elange pour une famille dense de $L^2$}} \vspace{1.5mm}
+
+\noindent
+On pose 
+$$
+\displaystyle{
+E = \left\{ \sum_{|k|\leqslant K} c_k e_k,~c_k \in \C,~K\in \N\right\}.
+}
+$$
+Alors $E$ est dense dans $L^2(\mu)$ ; soient $\varphi, \psi \in L^2(\mu)$ et $\varepsilon > 0$, et $\varphi', \psi' \in E$ tels que $\|\varphi - \varphi'\|_{L^2(\mu)} < \varepsilon$ et $\|\psi - \psi'\|_{L^2(\mu)} < \varepsilon$.  
+Pour tous $\varphi_1, \varphi_2 \in L^2(\mu)$ on notera 
+$$C_n(\varphi_1, \varphi_2) = \int (\varphi_1 \circ f^n) \varphi_2 \dd \mu.$$  
+Alors 
+$$
+\begin{aligned}
+\left|C_n(\varphi, \psi) - \mu(\varphi) \mu(\psi)\right| & \leqslant C_n(|\varphi|, |\psi - \psi'|) + C_n(|\varphi - \varphi'|, |\psi'|) \\
+& \quad \quad + \left|C_n(\varphi', \psi') - \mu(\varphi') \mu(\psi')\right| + \left|\mu(\varphi') \mu(\psi' - \psi)\right| \\
+& \quad \quad + \left|\mu(\varphi'-\varphi)\mu(\psi)\right|  \\
+&\leqslant \|\varphi\|_{L^2(\mu)} \|\psi - \psi'\|_{L^2(\mu)} + \|\psi'\|_{L^2(\mu)} \|\varphi - \varphi'\|_{L^2(\mu)} \\
+& \quad \quad + |C_n(\varphi', \psi') - \mu(\varphi') \mu(\psi')| \\
+&\quad \quad + \varepsilon \left(\|\varphi'\|_{L^2(\mu)} + \|\psi\|_{L^2(\mu)}\right)  \\
+& \leqslant C \varepsilon + \left|C_n(\varphi', \psi') - \mu(\varphi') \mu(\psi')\right|.
+\end{aligned}
+$$
+
+
+
+On obtient donc, avec une constante $C$ dépendant uniquement de $\varphi, \psi$, que pour tout $n \gg 1$,
+$$
+|C_n(\varphi, \psi) - \mu(\varphi) \mu(\psi)| \leqslant (C + 1) \varepsilon
+$$
+
+Cela conclut.
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 5.} \textit{Automorphismes ergodiques du tore}} \vspace{1.5mm} 
+
+\noindent
+\underline{$(ii) \implies (i)$} Vu en cours.  
+\vspace{0.3cm}
+
+\noindent
+\underline{$(i) \implies (iii)$} On suppose $1 \in \mathrm{sp}(A^r)$. Alors il existe $k \in \Z^d$ tel que 
+$$\left({A^{\top}}\right)^r(k) = k.$$ 
+ On définit
+$$
+\varphi(\theta) = \sum_{j=0}^{r-1} \e^{2i\pi k \cdot A^j\theta}, \quad \theta \in (\R/\Z)^d.
+$$
+ Alors
+$$
+\begin{aligned}
+\varphi(A\theta) &= \sum_{j=0}^{r-1}\e^{2i \pi k \cdot A^{j+1}\theta}  \\
+&= \varphi(\theta),
+\end{aligned}
+$$
+où on a utilisé $k \cdot A^r \theta = \left(A^\top\right)^r k \cdot \theta = k \cdot \theta.$
+
+\vspace{0.3cm}
+\noindent
+\underline{$(iii) \implies (ii)$} On suppose que $1 \notin \mathrm{sp}(A^r)$ pour tout $r$.   Soient $k, \ell \in \Z^d$ ; on a 
+$$
+\int (\e_k \circ A^n) \e_\ell \dd \mu = 0
+$$
+si $n$ est assez grand.  En effet on a
+$$(\e_k \circ A^n)(\theta) = \exp(2i\pi k \cdot A^n\theta) = \e_{\left(A^\top\right)^{n} k}(\theta),$$
+et le fait que $1 \notin \mathrm{sp}(A^r)$ pour tout $r$ implique que l'application
+$$
+\Z \ni n \longmapsto \left(A^\top\right)^n k
+$$
+est injective.  En particulier $\left(A^\top\right)^nk \neq \ell$ pour tout $|n|$ assez grand.  
+On peut alors appliquer l'\textbf{Exercice 4} pour conclure, puisque $(\e_k)_{k \in \Z}$ est dense dans $L^2(\T^d).$
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 6.} \textit{Moyenne temporelle des temps de retour}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item On applique le théorème de Kac :
+$$
+\int_A \tau \dd \mu = \mu(X) - \mu(A_0^*), \quad A_0^* = \bigcap_{n \geqslant 0} f^{-n}(\complement A).
+$$
+ Or $A_0^*$ est invariant par $f$ : en effet, on a
+$$
+f^{-1}(A_0^*) = \bigcap_{n \geqslant 1} f^{-n}(\complement A),
+$$
+ ce qui donne $A_0^* \subset f^{-1}(A_0^*)$. D'autre part on a
+$$
+f^{-1}(A_0^*) \setminus A_0^* = \{x \in A,~f^n(x) \notin A,~n \geqslant 1\}.
+$$
+ Par le théorème de Récurrence de Poincaré, on a donc $\mu(f^{-1}(A_0^*) \setminus A_0^*) = 0$ et donc $A_0^*$ est invariant.  
+
+Par ergodicité de $f$, on obtient $\mu(A_0^*) = 0$ ou $1$.  
+
+Mais $\mu(A_0^*) = 1$ implique en particulier que $\mu(\complement A) = 1$ ce qui est impossible car $\mu(A) > 0.$  
+
+On a bien $\int_A \tau \dd \mu = \mu(X) = 1.$
+\item Il s'agit de montrer que $g$ est ergodique pour $\mu_A = \mu(A \cap \cdot) / \mu(A).$  
+
+Soit $B \subset A$ un ensemble $g$-invariant de mesure non nulle. On note $\tau' : B \to \N_{\geqslant 1}$ le temps de retour associé à $B$, qui est défini $\mu$-presque partout sur $B$, et $g'$ l'application de premier retour.  
+
+Puisque $B$ est $g$-invariant, on a $g(x) \in B$ pour presque tout $x \in B$, ce qui donne 
+$$
+g|_B = g' \quad \quad \mu-\text{presque partout sur }B.
+$$ 
+
+En utilisant $\tau' \geqslant \tau$, on obtient que
+$$
+\tau|_B = \tau' \quad \quad \mu-\text{presque partout sur }B.
+$$
+ 
+Par la question \textbf{1.}, on a donc 
+$$
+1 = \int_B \tau' \dd \mu = \int_B \tau \dd \mu = \underset{=1}{\underbrace{\int_A \tau \dd \mu}} - \int_{A \setminus B} \tau \dd \mu,
+$$
+ ce qui donne 
+$$
+0 = \int_{A\setminus B}\tau \dd \mu \geqslant \mu(A \setminus B) \quad \implies \quad \mu(B) = \mu(A).
+$$
+
+
+
+Ainsi $g$ est ergodique pour $\mu_A$, et donc, pour $\mu$-presque tout $x$ de $A$,
+$$
+\lim \frac{1}{n} \sum_{k=1}^n \tau\left(g^k(x)\right) = \frac{1}{\mu(A)}.
+$$
+
+\end{enumerate}
+
+\noindent {\large \textbf{Exercice 7.} \textit{Un crit\`ere pour le m\'elange faible}} \vspace{1.5mm}
+
+
+\begin{enumerate}
+\item Supposons que $\lim_n \frac{1}{n}\sum_{0}^{n-1} |a_k| = 0.$ Pour tout $J \subset \N$ et $n \in \N$ on note
+$$
+\alpha_J(n) = \# \bigl(\{0, \dots, n-1\} \cap J \bigr).
+$$
+ Pour tout $j \geqslant 1$, l'ensemble
+$$
+I_j = \left\{n \geqslant 0,~|a_n| \geqslant \frac{1}{j}\right\}
+$$
+est de densité $0$.  En effet, on a
+$$
+\frac{1}{n}\sum_{k=0}^{n-1} |a_k| \geqslant  \frac{1}{j} \frac{\alpha_{I_j}(n)}{n}.
+$$
+
+Soit $n_j > 0$ tel que pour tout $n \geqslant n_j$ on a 
+$$
+\frac{\alpha_{I_j}(n)}{n} \leqslant \frac{1}{j}.
+$$
+
+On peut supposer $(n_j)$ strictement croissante.
+
+
+
+On pose
+$$
+E = \bigcup_{j \geqslant 1} \bigl(I_{j} \cap [n_j, n_{j+1}[\bigr).
+$$
+ C'est un ensemble de densité $0$ car si $n \in [n_j, n_{j+1}[$ on a $E \cap [0, n[ \subset I_{j} \cap [0,n[$ et donc 
+$$
+\frac{\alpha_{E}(n)}{n} \leqslant \frac{\alpha_{I_j}(n)}{n} \leqslant \frac{1}{j}.
+$$
+ D'autre part, si $n \notin E$ avec $n \in [n_j, n_{j+1}[$, on a 
+$\displaystyle{|a_n|< \frac{1}{j}}$,  et donc 
+\begin{equation}\label{eq:mean}
+\lim_{\substack{n \to +\infty \\n \notin E}} |a_n| = 0.
+\end{equation}
+
+Réciproquement on suppose que (\ref{eq:mean}) est satisfaite.  Soit $\varepsilon > 0$. Il existe $n_0 \geqslant$ tel que 
+$$\alpha_E(n) \leqslant \varepsilon n, \quad  n \geqslant n_0,$$
+
+et 
+$$
+\quad |a_n| \leqslant \varepsilon, \quad n \geqslant n_0, \quad n \notin E.
+$$
+
+
+
+On obtient donc, si $K = \sup_n |a_n|$,
+$$
+\begin{aligned}
+\frac{1}{n} \sum_{k=0}^{n-1} |a_k| &= \frac{1}{n} \left( \sum_{\substack{k < n \\ k \notin E}} |a_k| + \sum_{\substack{k < n_0 \\ k \notin E}} |a_k| + \sum_{\substack{k > n_0 \\ k \notin E}} |a_k| \right)  \\
+&\leqslant \frac{K \alpha_{E}(n)}{n} + \frac{Kn_0}{n} + \varepsilon,
+\end{aligned}
+$$
+ et donc pour tout $n$ assez grand,
+$$
+\frac{1}{n} \sum_{k=0}^{n-1} |a_k| < (2K + 1) \varepsilon,
+$$
+ce qui conclut.  
+\item C'est direct par la question précédente.
+
+\end{enumerate}
+
+
+
+
+\end{document}
+ 
+ \noindent {\large \textbf{Exercice 1.} \textit{M\'elange et ergodicit\'e}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \mathscr{A}, \mu)$ un espace probabilis\'e et $f : X \to X$ une transformation mesurable. 
+\begin{enumerate}
+\item On suppose que $f$ est m\'elangeante pour $\mu$, i.e. pour tous $A,B \subset X$ mesurables,
+$$
+\lim _{n \rightarrow \infty} \mu(A \cap f^{-n}(B)) = \mu(A) \mu(B).
+$$
+Montrer que $f$ est ergodique pour $\mu$.
+\item On suppose que $f$ est ergodique pour $\mu$. Montrer que 
+$$
+\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{k=0}^{n-1} \mu\left(A \cap f^{-k}(B)\right)=\mu(A) \mu(B)
+$$
+\end{enumerate}
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 2.} \textit{\'Equidistribution des rotations irrationnelles du cercle}} \vspace{1.5mm} 
+
+\noindent Soit $\alpha \in \T^d = \R^d/ \Z^d$ et $R_\alpha : \T^d \to \T^d$ donn\'ee par $R_\alpha(x) = x + \alpha.$
+\begin{enumerate}
+\item Montrer que $R_\alpha$ pr\'eserve la mesure de Haar $\mu$ sur $\T^d$.
+\item Soit $\varphi \in L^2(\T^d)$. Montrer qu'il existe $\bar{\varphi} \in L^2(\T^d)$ telle que 
+$$
+\frac{1}{n} \sum_{k=0}^{n-1} \varphi \circ R_\alpha^k \to \bar \varphi,
+$$
+la convergence \'etant presque s¬ûre, mais aussi ayant lieu dans $L^2(\T^d)$.
+\end{enumerate}
+On suppose que la famille $(1, \alpha_1, \dots, \alpha_d)$ est lin\'eairement ind\'ependante sur $\Q$, o\`u $\alpha = (\alpha_1, \dots, \alpha_d).$
+\begin{enumerate}[resume]
+\item Montrer que $\bar{\varphi}$ est presque partout \'egale \`a $\displaystyle{\int_{\T^d} \varphi ~\dd \mu}$.
+\item Soit $C \subset \T^d$ un produit d'intervalles. Montrer que pour $\mu$ presque tout $x \in \T^d$, 
+$$
+\frac{1}{n} \#\Bigl\{k \in \{1, \dots, n\},~x + k\alpha \in C \Bigr\} \underset{n \to +\infty}{\longrightarrow} \mu(C).
+$$
+\item Montrer que la propri\'et\'e pr\'ec\'edente est vraie pour tout $x \in \T^d$. \\
+\textit{Indication : on pourra approximer la fonction indicatrice de $C$ par des fonctions continues et utiliser l'exercice pr\'ec\'edent.}
+\item On consid\`ere la suite des premiers chiffres des puissances de $2$ : $1, 2, 4, 8, 1 \dots$ Montrer que la fr\'equence d'apparition du chiffre $7$ dans cette suite est environ \'egale \`a $5.8\%$.
+\end{enumerate}
+
+\vspace{0.6cm}
+
+
+ 
+ 
+ 
+\noindent {\large \textbf{Exercice 2.} \textit{Ergodicit\'e du d\'ecalage}} \vspace{1.5mm} 
+
+\noindent Soit $q \geq 1$ et $X = \{0, \dots, q-1\}^\N$, muni de la tribu produit et de la probabilit\'e $\mu$ induite par la probabilit\'e uniforme sur $\{0, \dots, q-1\}$. On note $\sigma : X \to X$ le d\'ecalage. 
+
+\begin{enumerate}
+\item Montrer que $\sigma$ est m\'elangeante.
+\end{enumerate}
+On dira qu'un r\'eel $x \in [0,1]$ est normal si, pour tout $q \geq 1$ et tout $j \in \{0, \dots, q-1\}$,
+$$
+\lim_{n \to + \infty} \frac{1}{n}\# \Bigl \{k \in \{1, \dots, n\},~a_k = j \Bigr\} = \frac{1}{q},
+$$
+o\`u $x = 0,a_{1}a_{2}\dots$ est le d\'eveloppement en base $q$ de $x$.
+\begin{enumerate}[resume]
+\item Montrer que presque tout $x$ de $[0,1]$ est normal.
+\end{enumerate}
+

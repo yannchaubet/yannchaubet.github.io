@@ -1,0 +1,231 @@
+\documentclass[a4paper,10pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Feuille d'exercices 4}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill \texttt{chaubet@dma.ens.fr} } \\
+{2020/2021 \hfill }
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent {\large \textbf{Exercice 1.} \textit{Exposants de Lyapunov pour les syst\`emes lin\'eaires}} \vspace{1.5mm} 
+
+\noindent Soit $A$ une matrice r\'eelle carr\'ee d'ordre $n$. Pour tout $x_0 \in \R^n$ non nul, on note
+$$
+\lambda(x_0, A) = \limsup_{|t| \to + \infty} \frac{1}{t} \log \left\|\e^{tA}x_0\right\|.
+$$
+Le nombre $\lambda(x_0,A)$ est appel\'e \textit{exposant de Lyapunov} de la trajectoire $\displaystyle{t \mapsto \e^{tA}x_0}$.
+\begin{enumerate}
+\item Montrer que $\lambda(x_0,A)$ est fini pour tout $x_0 \neq 0$ et ne d\'epend pas de la norme $\|\cdot\|$ choisie.
+\item Montrer que si $B = P^{-1}AP$ avec $P$ inversible, alors pour tout $y_0 \in \R^n$ non nul,
+$$
+\lambda(y_0,B) = \lambda(Py_0,A).
+$$
+\end{enumerate}
+On note $r_1 > \dots > r_\ell$ les parties r\'eelles ordonn\'ees des valeurs propres de $A$, et
+$$
+L_j = \bigoplus C_{\lambda, \bar{\lambda}}, \quad j=1,\dots,m,
+$$
+o\`u la somme directe porte sur les $\lambda \in \mathrm{sp}(A)$ tels que $\Re(\lambda) = r_j$ et $\Im(\lambda) \geq 0$, et o\`u 
+$$C_{\lambda,\bar{\lambda}} = \Bigl\{u \in \R^n~:~ \exists N \in \N,~ (A-\lambda)^N(A-\bar{\lambda})^{N}u = 0 \Bigr\}$$
+est l'espace propre g\'en\'eralis\'e r\'eel associ\'e \`a $\lambda$ et $\bar{\lambda}$ (si $\lambda \in \R$, $C_{\lambda, \bar{\lambda}} = C_\lambda$ est l'espace propre g\'en\'eralis\'e associ\'e \`a $\lambda$). L'espace $L_j$ est appel\'e espace de Lyapunov associ\'e \`a $r_j$.
+\begin{enumerate}[resume]
+\item On suppose que $x_0 \in L(r_j)$ pour un certain $j \in \{1, \dots, \ell\}$. Montrer que 
+$$
+\lim_{t\to \pm \infty} \frac{1}{t} \log \left\| \e^{tA}x_0 \right\| = r_j.
+$$
+\end{enumerate}
+On note pour tout $j \in \{1, \dots, \ell\}$
+$$
+V_{j} =L_{\ell} \oplus \ldots \oplus L_{j}, \quad W_{j} =L_{j} \oplus \ldots \oplus L_{1}.
+$$
+\begin{enumerate}[resume]
+\item Montrer que pour tout $x_0 \in \R^n$ non nul, $\lambda(x_0, A) \in \{r_1, \dots, r_\ell\}$ et que
+$$
+\begin{aligned}
+\lim_{t \to + \infty} \frac{1}{t} \log \left\|\e^{tA} x_0 \right\| &= r_j ~\text{si, et seulement si, } x_0 \in V_j \setminus V_{j+1}, \\
+\lim_{t \to - \infty} \frac{1}{t} \log \left\|\e^{tA} x_0 \right\| &= r_j ~\text{si, et seulement si, } x_0 \in W_j \setminus W_{j-1}.
+\end{aligned}
+$$
+\end{enumerate}
+Pour toute matrice $M$ on note $\mathrm{Lyap}(M) = \Re\bigl(\mathrm{sp}(M)\bigr)$ l'ensemble de ses exposants de Lyapunov, et $L(r,M)$ l'espace de Lyapunov associ\'e \`a $r \in \mathrm{Lyap}(M)$. Soient $a < b$ des r\'eels. On note $U_{a,b}$ l'ensemble des matrices telles que $\{a,b\} \cap \mathrm{Lyap}(M) = \emptyset$ et pour tout $M \in U_{a,b}$ on note
+$$
+L(a,b,M) = \bigoplus_{a < r < b} L(r,M).
+$$
+\begin{enumerate}[resume]
+\item Montrer que $U_{a,b}$ est ouvert et que l'application $M \mapsto \dim L(a,b,M)$ est localement constante sur $U_{a,b}$.
+\iffalse
+\item Montrer qu'il existe une application continue $\pi : U_{a,b} \to \mathrm{Mat}_{n \times n}(\R)$ telle que
+$$
+\pi(M)^2= \pi(M), \quad \mathrm{Im} ~\pi(M) = L(a,b,M), \quad M \in U_{a,b}.
+$$
+\fi
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Stabilit\'e de $0$ pour les syst\`emes lin\'eaires}} \vspace{1.5mm} 
+
+\noindent Soit $A$ une matrice r\'eelle carr\'ee d'ordre $n$. Alors $0$ est un point fixe de l'\'equation diff\'erentielle $\dot{x} = A x$. On dira qu'il est
+\begin{itemize}[label=--]
+\item stable si pour tout $\varepsilon > 0$, il existe $\delta > 0$ tel que pour tout $x \in \R^n$ tel que $\|x\|\leq \delta,$ on a
+$$
+\left\|\e^{tA}x\right\| \leq \varepsilon, \quad t \geq 0~ ;
+$$
+\item asymptotiquement stable s'il existe $\delta > 0$ tel que pour tout $x \in \R^n$ tel que $\|x\|\leq\delta$, on a $\e^{tA}x \underset{t \to +\infty}{\longrightarrow} 0$ ;
+\item exponentiellement stable s'il existe $C \geq 1$ et $\beta, \eta > 0$ tels que pour tout $x \in \R^n$ tel que $\|x\|\leq \eta$, on a
+$$
+\left\|\e^{tA}x\right\| \leq C \|x\|\e^{-t\beta}, \quad t\geq 0.
+$$
+\end{itemize}
+
+\begin{enumerate}
+\item Montrer que les conditions suivantes sont \'equivalentes :
+\begin{enumerate}[label=(\roman*)]
+\item $0$ est un point fixe asymptotiquement stable ;
+\item $0$ est un point fixe exponentiellement stable ;
+\item Toutes les valeurs propres de $A$ ont une partie r\'eelle strictement n\'egative.
+\item Il existe une norme adapt\'ee pour $A$, c'est \`a dire une norme $\|\cdot\|_A$ sur $\R^n$ telle que pour un certain $\beta > 0$,
+$$
+\left\|\e^{tA}x\right\|_A \leq \e^{-\beta t} \|x\|_A, \quad x \in \R^n, \quad t \geq 0.
+$$
+\end{enumerate}
+\end{enumerate}
+Une matrice v\'erifiant les conditions pr\'ec\'edentes sera appel\'ee \textit{contraction lin\'eaire}.
+\begin{enumerate}[resume]
+\item On suppose que toutes les valeurs propres de $A$ ont une partie r\'eelle n\'egative ou nulle. Montrer que $0$ est un point fixe stable si et seulement si toutes les valeurs propres de $A$ de parties r\'eelles nulles sont semi-simples (i.e. les blocs de Jordan complexes sont de taille $1$).
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Syst\`emes linaires topologiquement conjugu\'es}} \vspace{1.5mm} 
+
+\noindent On se donne $A$ et $B$ deux contractions lin\'eaires et $\|\cdot\|_A$ et $\|\cdot\|_B$ des normes adapt\'ees \`a $A$ et $B$ (cf. exercice pr\'ec\'edent). On note
+$$
+S_A = \{x \in \R^n, ~\|x\|_A = 1\}, \quad S_B = \{x \in \R^n, ~\|x\|_B = 1\}.
+$$
+\begin{enumerate}
+\item Montrer qu'il existe une application continue $\tau : \R^n \setminus \{0\} \to \R$ telle que
+$$
+\e^{\tau(x)A}x \in S_A, \quad x \in \R^n\setminus \{0\}.
+$$
+\item Soit $\varphi$ un hom\'eomorphisme $S_A \to S_B$ et $\Phi : \R^n \to \R^n$ l'application d\'efinie par $\Phi(0) = 0$ et 
+$$
+\Phi(x) =  \e^{-\tau(x)B} \varphi\left( \e^{\tau(x)A}x\right), \quad x \in \R^n \setminus \{0\}.
+$$
+Montrer que $\Phi$ est un hom\'eomorphisme de $\R^n$ dans lui-m\^eme et qu'on a
+$$
+\Phi \circ \e^{tA} = \e^{tB} \circ \Phi, \quad t \in \R.
+$$
+\end{enumerate}
+Dans la suite on ne suppose plus que $A$ et $B$ sont des contractions mais qu'elles induisent des flots hyperboliques, i.e. toutes les valeurs propres de $A$ et de $B$ ont une partie r\'eelle non nulle.
+On suppose qu'il existe une famille continue de matrices $A_t,~t\in [0,1]$ telle que $A_0 = A$, $A_1 =B$ et
+$$
+0 \notin \Re\bigl(\mathrm{sp}(A_t)\bigr), \quad t \in [0,1].
+$$
+\begin{enumerate}[resume]
+\item En utilisant la question \textbf{1}.5., montrer que les flots induits par $A$ et $B$ sont conjugu\'es.
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 4.} \textit{Syst\`emes lin\'eaires avec second membre}} \vspace{1.5mm} 
+
+\noindent Soit $A$ une matrice carr\'ee d'ordre $n$, et $z : \R \to \R^n$ une application continue. 
+
+\begin{enumerate}
+\item R\'esoudre l'\'equation diff\'erentielle 
+\begin{equation}\label{eqdiff}
+\dot{x}(t) = A x(t) + z(t).
+\end{equation}
+\item On suppose que $A$ est une contraction lin\'eaire et que $z(t) \to z_\infty \in \R^n$ quand $t \to +\infty$. Montrer que toute solution de (\ref{eqdiff}) converge en grand temps vers une limite \`a d\'eterminer.
+\end{enumerate}
+
+\vspace{0.6cm}
+
+
+\iffalse
+\noindent Soit $A$ une matrice carr\'ee d'ordre $n$. 
+\begin{enumerate}
+\item Montrer que les conditions suivantes sont \'equivalentes :
+\begin{enumerate}[label=(\roman*)]
+\item Toutes les valeurs propres de $A$ ont un module strictement inf\'erieur \`a $1$ ;
+\item Il existe une norme adapt\'ee pour $A$, c'est \`a dire une norme $\|\cdot\|_A$ sur $\R^n$ telle que pour un certain $a < 1$,
+$$
+\left\|A^Nx\right\|_A \leq a^N \|x\|_A, \quad x \in \R^n, \quad N \in \mathbb{N}.
+$$
+\end{enumerate}
+\end{enumerate}
+On se donne dans la suite deux matrices $A$ et $B$ v\'erifiant ces conditions. On suppose qu'il existe une famille continue de matrices inversibles $A_t,  ~t \in [0,1]$, telle que $A_0 = B$, $A_1 = A$ et $\mathrm{sp}(A_t) \subset \{z\in \C,~ |z| < 1\}$ pour tout $t \in [0,1]$. On se donne deux normes $\|\cdot\|_A$ et $\|\cdot\|_B$, adapt\'ees \`a $A$ et $B$. On note
+$$
+D_A = \{x \in \R^n,~\|x\|_A < 1\}, \quad S_A = \{x \in \R^n, ~ \|x\|_A = 1\}
+$$
+et on d\'efinit $D_B$ et $S_B$ identiquement. Finalement on note
+$$
+C_A = \overline{D_A \setminus AD_A}, \quad C_B = \overline{D_B \setminus BD_B}.
+$$
+\begin{enumerate}[resume]
+\item Soit $\tau_A : [0,1] \times \mathbf{S}^{n-1} \to \R_+$ et $h_A : [0,1] \times \mathbf{S}^{n-1} \to F_A$ les applications d\'efinise par
+$$
+h_A(t,x) = \tau_A(t,x)x, \quad \tau_A(t,x) = \frac{t}{\|x\|_A} + \frac{1-t}{\left\|A^{-1}x\right\|_A}, \quad t \in [0,1], \quad x \in \mathbf{S}^{n-1},
+$$
+o\`u $\mathbf{S}^{n-1}$ est la sph\`ere de rayon $1$ dans $\R^n$. On d\'efinit identiquement $\tau_B, h_B$. En utilisant les applications $h_A$ et $h_B$, montrer qu'il existe un hom\'eomorphisme $h : C_A \to C_B$ tel que $h \circ A = B \circ h$
+\item Montrer que les syst\`emes dynamiques discrets associ\'es \`a $A$ et $B$ sont topologiquement conjugu\'es.
+\end{enumerate}
+\fi
+
+\vspace{0.6cm}
+
+\end{document} 

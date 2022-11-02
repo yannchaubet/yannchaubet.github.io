@@ -1,0 +1,351 @@
+\documentclass[a4paper,12pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Corrig\'e n°6}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2020/2021 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent Dans toute la suite, si $p$ est un point fixe hyperbolique d'un diff\'eomorphisme $f$ d'une vari\'et\'e $M$, on note $W^u(f,p)$ et $W^s(f,p)$ (resp. $W^u_\mathrm{loc}(f,p)$ et $W^s_\mathrm{loc}(f,p)$) les vari\'et\'es instables et stables globales (resp. locales) de $p$.
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 1.} \textit{Vari\'et\'e stable locale}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item L'\'enonc\'e est le suivant. Soit $A$ un isomorphisme hyperbolique de $\R^n$, $E = E^s \oplus E^u$ sa d\'ecomposition stable/instable, et $\pi_s, \pi_u$ les projecteurs associ\'es. Soit $\|\cdot\|$ une norme sur $\R^n$ adapt\'ee \`a $A$, c'est-\`a-dire
+$$
+\|x\| = \max\left(\|\pi_s(x)\|_s, \|\pi_u(x)\|_u\right), \quad x \in \R^n,
+$$
+o\`u $\|\cdot\|_s$ et $\|\cdot\|_u$ sont des normes sur $E^s$ et $E^u$ telles que pour un $a < 1$ on a 
+$$
+\left\|A|_{E^s}\right\|_s \leq a, \quad \left\|(A|_{E^u})^{-1}\right\|_u \leq a.
+$$
+Soit $r>0$ et $B = \bar{B}(0,r) = B_s \times B_u$ la boule de rayon $r$ pour $\|\cdot\|$. Soit $\eta : B \to \R^n$ une application qui est Lipschitzienne avec constante de Lipschitz $\kappa < (1-a)$ et telle que $\eta(0) = 0.$ Alors il existe une unique application $h : B_s \to B_u$ telle que
+$$
+\mathrm{Graphe}(h) \overset{\text{def}}{=} \{(x_s, h(x_s)),~x_s \in B_s\} =\left \{ (x_s, x_u) \in B,~ (A+\eta)^n(x_s,x_u) \underset{n \to \infty}{\longrightarrow} 0 \right\}.
+$$
+De plus, $h$ est Lipschitz, et $\mathcal{C}^1$ si $\eta$ l'est.
+
+\item Le probl\`eme \'etant local, on peut supposer que $f$ est un diff\'eomorphisme $U \to V$ o\`u $U$ et $V$ sont des voisinages de $0$ dans $\R^n$, et $p=0$, de sorte qu'en notant $A = (\dd f)_0$ et $\eta = f - (\dd f)_0$ on se ram\`ene \`a la situation du th\'eor\`eme pr\'ec\'edent. On rappelle que l'application $h$ du th\'eor\`eme pr\'ec\'edent est obtenue de la mani\`ere suivante. Soit $\mathcal{S}_0(B)$ les suites \`a valeurs dans $B$ et $\chi : B_s \times \mathcal{S}_0(B) \to \mathcal{S}_0(B)$ d\'efinie par 
+\begin{equation}\label{eq:defchi}
+\chi(x_s, \gamma)(n) =  \left\{
+\begin{matrix} \Bigl(x_s, ~A_u^{-1} [\gamma_u(1) - \eta_u\gamma(0)]\Bigr) &\text{ si } n =0, \\
+\Bigl((A+\eta)_s\gamma(n-1), ~A_u^{-1}[\gamma_u(n+1) - \eta_u \gamma(n)] \Bigr) &\text{ si }n >0,
+\end{matrix} \right.
+\end{equation}
+pour tout $\gamma = (\gamma(n))_{n \in \N}$ et $x_s \in B_s$. Ici on a not\'e $A_u = A|_{E^u}$, $\eta_u = \pi_u \circ \eta$, $(A+\eta)_s = \pi_s \circ (A+\eta)$ et $\gamma_u = \pi_u \circ \gamma$. Alors (voir la d\'emonstration du th\'eor\`eme) il existe une unique application $g : B_s \to \mathcal{S}_0(B)$ telle que 
+\begin{equation}\label{eq:fixpoint0}
+g(x_s) = \chi(x_s, g(x_s)), \quad x_s \in B_s.
+\end{equation}
+L'application $h$ est alors donn\'ee par $h(x_s) = \pi_u[g(x_s)(0)].$ 
+
+En diff\'erenciant, il vient
+\begin{equation}\label{eq:fixpoint}
+(\dd g)_0 (x_s) = (\dd \chi)_{(0,0)} \bigl(x_s,~(\dd g)_0(x_s)\bigr).
+\end{equation}
+En diff\'erenciant $\chi$ au point $(0,0) \in B_s \times \mathcal{S}_0(B)$, on voit aussi que $\dd \chi_{(0,0)} = \tilde \chi,$ o\`u $\tilde \chi$ est d\'efinie comme $\chi$ en rempla\c ant $\eta$ par $(\dd \eta)_0$ dans l'\'equation (\ref{eq:defchi}). 
+
+Par unicit\'e de l'\'equation (\ref{eq:fixpoint0}) (en rempla\c ant $\chi$ par $\tilde \chi$), et par (\ref{eq:fixpoint}), on obtient que la vari\'et\'e stable de $A + (\dd \eta)_0$ est donn\'ee par le graphe de $x_s \mapsto \pi_u[(\dd g)_0(x_s)(0)]$ (car $\dd(\pi_u \circ g) = \pi_u \circ \dd g$ puisque $\pi_u$ est lin\'eaire), c'est \`a dire par le graphe de $x_s \mapsto (\dd h)_0(x_s)$ qui est par d\'efinition l'espace tangent de la vari\'et\'e stable locale de $A + \eta$ en $0$. 
+
+Or, la vari\'et\'e stable de l'application lin\'eaire $A + (\dd \eta)_0$ est l'espace stable de $A + (\dd \eta)_0$ ; cela conclut puisque, avec les identifications faites au d\'ebut de la question, on a $A + (\dd \eta)_0 = (\dd f)_0$. 
+
+\item On se ram\`ene au cas o\`u $f : \R^n \to \R^n$ et $f(0) = 0$. Soit $\R^n = E^s \oplus E^u$ la d\'ecomposition stable et instable associ\'ee \`a $ \dd f_0$. On reprend les notations de la question pr\'ec\'edente et on note $h_s : B_s \to B_u$ et $h_u : B_u \to B_s$ les applications dont les graphes sont les vari\'et\'es stables et instables locales, et on d\'efinit $\psi_{s/u} : B_{s/u} \to B_s \times B_u$ par
+$$
+\psi_s(x_s) = (x_s, h_s(x_s)), \quad \psi_u(x_u) = (h_u(x_u), x_u), \quad (x_s, x_u) \in B_s \times B_u.
+$$
+Alors $\psi_{s/u}$ est un diff\'eomorphisme local $B_{s/u} \to W^{s/u}_\mathrm{loc}(f,0).$
+On d\'efinit $\varphi : B_s \times B_u \to \R^n$ par
+$$
+\varphi(x_s, x_u) = \psi_s(x_s) + \psi_u(x_u), \quad (x_s, x_u) \in B_s \times B_u.
+$$
+Alors $\varphi$ est un diff\'eomorphisme local (sa diff\'erentielle est injective en $0$) qui v\'erifie les conditions demand\'ees. Quitte \`a identifier $E^s$ avec $\R^r$ et $E^u$ avec $\R^{n-r}$, on a les conditions demand\'ees.
+
+\item On \'ecrit $\tilde f(x) = \dd \tilde f_0 (x) + \tilde \eta(x)$ o\`u $\tilde \eta(x) = \mathcal{O}(\|x\|^2).$ Alors (ici $\|\cdot\|_s$ est une norme adapt\'ee pour $\dd \tilde f_0$ qui est contractante sur $\R^r \times \{0\}$)
+$$
+\begin{aligned}
+\left\|\tilde f(\tilde x_s) - \tilde f (\tilde y_s)\right\|_s &\leq \left\| \dd \tilde f_0(\tilde x_s - \tilde y_s) \right\|_s + \left\|\tilde \eta_s(\tilde x_s) - \tilde \eta_s(\tilde y _s)\right\|_s \\
+& \leq a \|\tilde x_s - \tilde y_s\|_s + \varepsilon \|\tilde x_s - \tilde y_s\|_s,
+\end{aligned}
+$$
+pour tout $\tilde x_s, \tilde y_s \in \R^r \times \{0\}$ assez proches de $0$, o\`u $0 < a < 1$ et $\varepsilon > 0$ v\'erifient $a + \varepsilon < 1.$ On peut it\'erer ce raisonnement pour obtenir que
+$$
+\begin{aligned}
+\left\|\tilde f^n(\tilde x_s) - \tilde f^n(\tilde y_s)\right\| &\leq C \left\|\tilde f^n(\tilde x_s) - \tilde f^n(\tilde y_s)\right\|_s \\
+&\leq C (a+\varepsilon) \left \|\tilde f^{n-1}(\tilde x_s) -\tilde f^{n-1}(\tilde x_u) \right\|_s \\
+& \leq \cdots \\
+& \leq C (a + \varepsilon)^n \|\tilde x_s - \tilde y_s\|_s \\
+& \leq C^2 (a + \varepsilon)^n \|\tilde x_s - \tilde y_s\|,
+\end{aligned}
+$$
+o\`u $\|\cdot\| \leq C \|\cdot\|_s \leq C^2 \|\cdot\|.$
+
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Int\'erieur de la vari\'et\'e stable}} \vspace{1.5mm} 
+
+\noindent On a que 
+$$
+W^s(f,p) = \bigcup_{N \geq 0} f^{-N}\left(\overline{W}^s_\mathrm{loc}(f,p)\right).
+$$
+Pour tout $N \geq 0$, on a que $f^{-N}\left(\overline{W}^s_\mathrm{loc}(f,p)\right)$ est un ferm\'e d'int\'erieur vide, puisque $f$ est un diff\'eomorphisme. Le th\'eor\`eme de Baire permet de conclure.
+
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 3.} \textit{Points p\'eriodiques hyperboliques}} \vspace{1.5mm} 
+
+\noindent Par l'exercice \textbf{5}. du TD n°5 (cf. corrig\'e), les points $x \in M$ tels que $f^n(x) = x$ sont isol\'es. Cela conclut par compacit\'e de $M$.
+
+\vspace{0.6cm}
+
+
+
+
+\noindent {\large \textbf{Exercice 4.} \textit{Calculs de vari\'et\'es stables}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item On a $f(0) = 0$ et 
+$$
+\dd f_0 = \begin{pmatrix} -1 & 0 \\ 0 & 1 \end{pmatrix},
+$$
+donc $\dd f_0$ est un op\'erateur hyperbolique. Les solutions de $\dot x = f(x)$ sont donn\'ees par 
+$$
+x_1(t) = c_1 \e^{-t}, \quad x_2(t) = \frac{5\varepsilon c_1^3}{4}\e^{-3t} + c_2 \e^{t}, \quad t \in \R,
+$$
+o\`u $c_1, c_2 \in \R$. On a $c_1 = x_1(0)$ et $c_2 = x_2(0) - 5\varepsilon x_1(0)^3/4$, et donc
+$$
+W^s(0) = \{(a_1, a_2) \in \R^2,~a_2 = 5\varepsilon a_1^3 / 4\}, \quad W^u(0) = \{(a_1, a_2) \in \R^2,~a_1 = 0\}.
+$$
+\item On a $f(0) = 0$ et 
+$$
+\dd f_0 = \begin{pmatrix} -1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 1 \end{pmatrix},
+$$
+donc $\dd f_0$ est un op\'erateur hyperbolique. Les solutions de $\dot x = f(x)$ sont donn\'ees par 
+$$
+x_1(t) = c_1 \e^{-t}, \quad x_2(t) = c_2 \e^{-t} - c_1^2 \e^{-2t}, \quad x_3(t) = c_3 \e^{t} - \frac{1}{3}c_1^2 \e^{-2t},
+$$
+o\`u $c_1, c_2, c_3 \in \R$. On a $c_1 = x_1(0)$, $c_2 = x_2(0) + x_1(0)^2$ et $c_3 = x_3(0) + x_1(0)^2/3$, et donc
+$$
+W^s(0) = \{(a_1, a_2, a_3),~a_3 + a_1^2 / 3 = 0\}, \quad W^u(0) = \{(a_1, a_2, a_3),~a_1 = a_2 = 0\}.
+$$
+%\item $n$ est quelconque et
+%$
+%f(x) = Ax + \bigl( \langle S_1x,x\rangle, \dots, \langle S_nx,x\rangle\bigr)
+%$
+%o\`u $A$ est une matrice r\'eelle dont les valeurs propres ont partie r\'eelle non nulle, et $S_j$ est une matrice sym\'etrique r\'eelle pour tout $j = 1, \dots, n$.
+\end{enumerate}
+
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 5.} \textit{Vari\'et\'e stable de l'application du chat}} \vspace{1.5mm} 
+
+\noindent On note $\mathrm{sp}(L) = \{\lambda, \lambda^{-1}\}$ avec $\lambda > 1$. Soient $u,v \in \R^2$ des vecteurs propres associ\'es \`a $\lambda, \lambda^{-1}$, et $p = [au + bv] \in \T^2$. On a 
+\begin{equation}\label{eq:iteration}
+(f_L)^n(p) = [a \lambda^n u + b \lambda^{-n} v], \quad n \in \N.
+\end{equation}
+Soit $\varepsilon > 0$ assez petit et $U = \{[x]~:~x \in \R^2,~\|x\| < \varepsilon\}$. Alors (\ref{eq:iteration}) montre que l'ensemble stable local de $[0]$,
+$$
+\left\{p \in U~:~\forall n \in \N,~(f_L)^n(p) \in U,~\lim_n (f_L)^n(p) = [0]\right\}
+$$
+est \'egal \`a
+$$
+\{[b v]~:~b\in \R,~\|bv\| < \varepsilon\}.
+$$
+
+\noindent Ceci implique que $W^s([0]) = [\R v]$. On peut choisir $v$ de la forme $(1, \alpha)$ avec $\alpha \notin \Q$, et donc $W^s([0])$ est dense dans $\T^2$.
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 6.} \textit{Le lemme de Morse}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+
+\item Soit $\Phi : M_n(\R) \to M_n(\R)$ d\'efinie par
+$$
+\Phi(M) = M^\top S_0 M, \quad M \in S_n(\R).
+$$
+On a
+$$
+(\dd \Phi)_I \cdot H = H^\top S_0 + S_0 H, \quad H \in M_n(\R).
+$$
+Soit 
+$$F = \{H \in M_n(\R)~:~S_0H \in S_n(\R)\} = S_0^{-1} S_n(\R).$$
+On pose $\tilde \Phi = \Phi|_F$. Alors
+$$(\dd\tilde\Phi)_I(H) = (S_0H)^\top + S_0H = 2 S_0 H$$
+pour tout $H \in T_IF = F$, et donc $\dd \tilde \Phi_0 : F \to S_n(\R)$ est inversible. Par le th\'eor\`eme d'inversion locale, il existe un voisinage $V$ de $I$ dans $F$ tel que $\tilde \Phi|_V : V \to S_n(\R)$ r\'ealise un diff\'eomorphisme sur son image, not\'ee $U$. On pose $\varphi = (\tilde \Phi|_V)^{-1}$ ; alors $\varphi$ r\'ealise les conditions demand\'ees.
+
+\item La formule de Taylor avec reste int\'egral s'\'ecrit
+$$
+f(x) =  x^\top Q(x) x, \quad Q(x) = \frac{1}{2}\left(\int_0^1(1-t)\dd^2f(tx) \dd t\right), \quad x \in \R^n.
+$$
+L'application $x \mapsto Q(x)$ est lisse, ce qui conclut.
+\item On a $Q(0) = \frac{1}{2} \mathrm{Hess}_f(0)$, et donc $Q(0)$ est non d\'eg\'en\'er\'ee. Par la question \textbf{1}., il existe un ouvert $\tilde V$ de $S_n(\R)$ contenant $Q(0)$ et une application lisse $\varphi : \tilde V \to \mathrm{GL}_n(\R)$ telle que
+$$
+Q(x) = \varphi(Q(x))^\top Q(0) \varphi(Q(x)), \quad x \in Q^{-1}(U).
+$$
+Soit $P \in \mathrm{GL}_n(\R)$ et $r \in \{0, \dots, n\}$ tels que
+$$
+Q(0) = P^\top J P, \quad J = \mathrm{diag}(\underset{r \text{ fois}}{\underbrace{1, \dots, 1}}, \underset{n-r \text{ fois}}{\underbrace{-1, \dots, -1}}).
+$$
+On pose $V = Q^{-1}(\tilde V)$ et on d\'efinit  $\psi : V \to \R^n$ par 
+$$
+\psi(x) = P\varphi(Q(x))x, \quad x \in Q^{-1}(\tilde V).
+$$
+Soit $U = \psi(V)$. Alors $\psi : V \to U$ est un $C^\infty$-diff\'eomorphisme d'inverse
+$$
+\nu : x \mapsto \varphi(Q(x))^{-1}P^{-1} x.
+$$
+On obtient pour tout $x \in V$
+$$
+f(x) = x^\top \varphi(Q(x))^\top P^\top J P \varphi(Q(x)) x = \psi(x)^\top J \psi(x),
+$$
+et finalement, pour tout $y \in U$,
+$$
+f(\nu(y)) = y^\top J y,
+$$
+ce qui conclut.
+\item On a 
+$$
+\nabla g(y) = 2 (y_1, \dots, y_r, -y_{r+1}, \dots, -y_n), \quad y = (y_j) \in \R^n.
+$$
+En particulier la solution du syst\`eme $\dot y = \nabla g(y)$ avec condition initiale $(y_1, \dots, y_n) \in U$ s'\'ecrit, pour $|t|$ petit
+$$
+y(t) = (y_1\e^{2t}, \dots, y_r\e^{2t}, y_{r+1} \e^{-2t}, \dots, y_n\e^{-2t}),
+$$
+ce qui montre que $W^s_\mathrm{loc}(0) = \{y_1 = \dots = y_r = 0\}$ et $W^u_\mathrm{loc}(0) = \{y_{r+1} = \dots = y_n = 0\}$.
+\end{enumerate}
+
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 7.} \textit{Lin\'earisation du pendule}} \vspace{1.5mm} 
+
+\noindent Si $t \mapsto (\theta(t), \omega(t))$ est une trajectoire du syst\`eme, on a imm\'ediatement
+$$
+\partial_t H(\theta(t), \omega(t)) =  0.
+$$
+En particulier, la trajectoire avec condition initiale $(\theta, \omega)$ va rester dans l'ensemble $\mathcal{C}_{\varepsilon} =  H^{-1}(\varepsilon)$ o\`u $\varepsilon = H(\theta, \omega)$. On pose pour $\varepsilon > 0$ petit
+$$
+\psi(\theta, \omega) = \left(\mathrm{sgn}(\theta)\arccos\left(1-\frac{\theta^2}{2}\right), ~\omega\right), \quad \theta^2 + \omega^2 \leq \varepsilon.
+$$
+Alors $H(\psi(\theta, \omega)) = \theta^2 + \omega^2$ ; en particulier on a, si $U = \{\theta^2 + \omega^2 \leq \varepsilon\}$,
+$$
+H^{-1}(\varepsilon)\cap U = \psi(C_\varepsilon)
+$$
+o\`u $C_\varepsilon = \{\theta^2 +\omega^2 = \varepsilon\}$. On a $\psi(0) = 0$ et
+$$
+\frac{\dd}{\dd \theta} \left[ \mathrm{sgn}(\theta) \arccos\left(1-\frac{\theta^2}{2}\right)\right] =  \frac{2}{\sqrt{4-\theta^2}}, \quad |\theta| < 2.
+$$
+En particulier $\psi$ est lisse au voisinage de $0$ et on a 
+$
+\dd \psi_0 = \id.
+$
+
+\vspace{0.2cm}
+\noindent Il reste \`a montrer que la trajectoire $\{(\theta(t), \omega(t))~:~ t \in \R\}$ partant d'un point $(\theta_0, \omega_0)$ avec $H(\theta_0, \omega_0) = \delta$ est exactement $H^{-1}(\delta)\cap U$ (ici $\delta < \varepsilon$). Le champ de vecteurs associ\'e au syst\`eme est donn\'e par
+$$
+X(\theta, \omega) = (\omega, \sin \theta), \quad (\theta, \omega) \in \R^2,
+$$
+et donc le seul point d'annulation de $X$ dans un voisinage de l'origine est $0$. De plus $X$ est tangent \`a la vari\'et\'e $\mathcal{C}_\delta$ ; en identifiant $\R/\Z$ et $\mathcal{C}_\delta$ via $\psi$ on obtient donc une application lisse $\gamma : \R \to \R/\Z$, donn\'ee par $\gamma(t) = \psi^{-1}(\theta(t), \omega(t))$, qui v\'erifie $\gamma'(t) \neq 0$ pour tout $t$ (car $X$ est non nul sur $\mathcal{C}_\delta$). Une telle application est n\'ecessairement surjective par le th\'eor\`eme des valeurs interm\'ediaires.
+
+
+\vspace{0.2cm}
+\noindent Le syst\`eme du pendule n'est pas localement conjugu\'e \`a son lin\'earis\'e. En effet, toutes les orbites du syst\`eme lin\'earis\'e sont p\'eriodiques de p\'eriode $2\pi$, tandis que la p\'eriode de la trajectoire partant de $(0, \theta_0)$ (avec $\theta_0 > 0$ petit) est donn\'ee par
+$$
+\tau(\theta_0) = 2\sqrt{2} \int_0^{\theta_0} \frac{\dd \theta}{\sqrt{\cos(\theta) - \cos(\theta_0)}}.
+$$
+Cette quantit\'e n'est pas ind\'ependante de $\theta_0$ ; ainsi le flot du pendule ne peut \^etre conjugu\'e \`a son lin\'earis\'e puisque les conjugaisons pr\'eservent les p\'eriodes.
+
+\iffalse
+\partial_\omega H(\theta(t), \omega(t)) \partial_\theta H(\theta(t), \omega(t)) - \partial_\theta H(\theta(t), \omega(t))\partial_\omega H(\theta(t), \omega(t)) =
+\fi
+
+\vspace{0.6cm}
+\end{document}
+
+\noindent {\large \textbf{Exercice 8.} \textit{Lin\'earisation des s\'eries formelles}} \vspace{1.5mm} 
+
+\noindent Soit $\lambda \in \C$ tel que $\lambda^n \neq 1$ pour tout $n \neq 0$ et $\displaystyle{f(z) = \lambda z + \sum_{n=2}^{+\infty} a_n z^n}$. 
+\begin{enumerate}
+\item Montrer qu'il existe une s\'erie formelle $h(z)$ telle que $(h \circ f)(z) = \lambda h(z)$.
+\item On suppose que $f$ a un rayon de convergence non nul. Montrer que si $|\lambda|$ est assez grand alors $h$ a un rayon de convergence non nul.
+\end{enumerate}
+
+\noindent
+
+
+\noindent {\large \textbf{Exercice 8.} \textit{Flots hamiltoniens}} \vspace{1.5mm} 
+
+\noindent Soit $H : \R^{2n} \to \R$ une fonction lisse. Le champ hamiltonien $X$ associ\'e \`a $H$ est le champ de vecteurs sur $\R^{2n}$ d\'efini par
+
+$$ X(x, \xi) = J \cdot \nabla H (x,\xi), \quad (x,\xi) \in \R^{2n},$$
+o\`u $J = \begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix}$. On suppose qu'il existe une application lisse $A : \R^n \to S_n(\R)$ telle que $A(x)$ est d\'efinie positive pour tout $x$ et
+$$
+H(x,\xi) = \frac{1}{2} \bigl\langle A(x)\xi, \xi \bigr\rangle, \quad (x,\xi) \in \R^{2n}.
+$$
+\vspace{0.6cm}
+
+ 

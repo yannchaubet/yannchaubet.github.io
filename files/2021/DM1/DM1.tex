@@ -1,0 +1,190 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+
+\title{\textsc{Syst\`emes dynamiques} \\ DM 1}
+\date{{Pour le 07/10/21}}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure \hfill Pour toute question} 
+\\
+{2021/2022 \hfill \texttt{chaubet@dma.ens.fr}
+
+
+{\let \newpage \relax \maketitle}
+\maketitle
+
+\section*{Notations et pr\'eliminaires}
+On note $\T = \R / \Z$ le tore de dimension $1$ muni de la topologie quotient, et $\pi : \R \to \T$ la projection canonique. Si $x \in \R$, on note $\hat{x} \in \T$ son image par $\pi$. On note $\Homeo(\T)$ (resp. $\Homeo(\R)$) l'ensemble des hom\'eomorphismes de $\T$ (resp. de $\R$). Si $f \in \Homeo(\T)$, on dit que $F \in \Homeo(\R)$ est un relev\'e de $f$ si $ \pi \circ F = f \circ \pi.$ 
+\\ 
+%%
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item Montrer que tout $f \in \Homeo(\T)$ admet un relev\'e $F \in \Homeo(\R)$ et que tous les autres relev\'es sont de la forme $F + k$ o\`u $k \in \Z$.\\
+\textit{Indication : on pourra consid\'erer le point $\hat x$ envoy\'e sur $\hat{0}$ par $f$ et \'etendre l'application ${\pi_|}_{]0,1[}^{-1} \circ f \circ {\pi_|}_{]x,x+1[}$ de $]x,x+1[$  \`a $\R$ tout entier.}
+%%
+\item
+\begin{enumerate}[label=\textbf{\alph*.}]
+\item Montrer que si $f \in \Homeo(\T)$ alors il existe un entier $d$ tel que pour tout relev\'e $F$ de $f$,
+$$F(x+1) = F(x) + d, \quad x \in \R.$$ 
+\item Montrer que $d = \pm 1$.
+\end{enumerate}
+\end{enumerate}
+Si $d = 1$, on dira que $f$ est un hom\'eomorphisme positif de $\T$ et on notera $f \in \Homeo_+(\T)$. On note $\widetilde{\Homeo}_+(\T)$ l'ensemble de tous les relev\'es des \'el\'ements de $\Homeo_+(\T)$, c'est- \`a-dire l'ensemble de tous les hom\'eomorphismes croissants $F$ de $\R$ tels que $F - \mathrm{id}_{\R}$ est p\'eriodique de p\'eriode $1$. \\ \\
+Si $\alpha \in \R$, on notera $T_\alpha : \R \to \R$ la translation d'angle $\alpha$ d\'efinie par $T_\alpha(x) = x+ \alpha$ pour tout $x \in \R$. Si $\hat{\alpha} \in \R / \Z$, on notera aussi $R_{\hat{\alpha}} : \T \to \T$ la rotation d'angle $\hat{\alpha}$ d\'efinie par $R_{\hat{\alpha}}(\hat{x}) = \hat{x}+ \hat{\alpha}$ pour tout $\hat{x} \in \T$.
+
+%%%%%%
+\section*{Le nombre de rotation de Poincar\'e}
+Le but de cette partie est de montrer le r\'esultat suivant. \\ \\
+\textbf{Th\'eor\`eme.}\textit{
+Soit $F \in \widetilde{\Homeo}_+(\T)$. Alors il existe un unique $\rho \in \R$ tel que pour tout $n \in \Z$ et tout $x \in \R$,
+\begin{equation}\label{eq:rho}
+-1 <  F^n(x) -x - n\rho < 1.
+\end{equation}
+En particulier on a pour tout $x\in \R$, 
+$$
+\rho = \underset{n \to \pm \infty}{\lim} \frac{{F}^n(x)}{n}.
+$$
+Le nombre $\rho$ est appel\'e \emph{nombre de rotation} de $F$ et est not\'e $\rho(F)$.} \\
+
+\noindent Dans toute la suite, on fixe $F \in \widetilde{\Homeo}_+(\T)$ et on note $\varphi = F - \mathrm{id}_\R$. 
+%%
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que pour tous $x,y \in \R$, on a
+$$
+-1 < \varphi(y) - \varphi(x) < 1.
+$$
+\end{enumerate}
+On note pour tout $n \in \Z$
+$$
+m_n = \underset{x \in \R}{\min}\ F^n(x)-x, \quad M_n = \underset{x \in \R}{\max}\ F^n(x) - x.
+$$
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que pour tout $n \geq 1$,
+$$
+0 \leq M_n - m_n < 1.
+$$
+\item Montrer que pour tous $n, n' \geq 1$,
+$$
+{m_{n'}} + m_n \leq m_{n + n'} \leq M_{n+n'} \leq {M_n} + M_{n'}.
+$$
+\item En d\'eduire que
+$$
+\sup_{n \geq 1} \frac{m_n}{n} = \inf_{n \geq 1} \frac{M_n}{n}.
+$$
+\end{enumerate}
+On note $\rho$ cette borne commune.  \\
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que pour tout $n \geq 1$, il existe $z_n \in \R$ tel que
+$$
+F^n(z_n) = z_n + n \rho.
+$$
+\item Montrer que $\rho$ satisfait \eqref{eq:rho} pour tout $n \geq 1$ et conclure.
+\end{enumerate}
+
+%%%%%%
+\section*{Quelques propri\'et\'es du nombre de rotation}
+Dans cette partie, on fixe $p \in \Z$, $q \in \Z_{\geq 1}$, $f \in \Homeo_+(\T)$, un rel \`evement $F \in \widetilde{\Homeo}_+(\T)$ de $f$ et $\alpha \in \R$. \\
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item En utilisant la question \textbf{6.}, montrer que $\rho(F) = p/q$ si, et seulement si, il existe $x \in \R$ tel que $F^q(x) = x + p$. 
+\item Montrer que $\rho(F) > p/q$ (resp. $ \rho(F) < p/q$) si, et seulement si pour tout $x\in \R$, $F^q(x) > x +p$ (resp $F^q(x) < x + p$). 
+\item Montrer que $\rho(T_\alpha) = \alpha.$ 
+\item Montrer que $\rho(F + p) = \rho(F) + p.$ En d\'eduire que pour tout $f \in \Homeo_+(\T)$, la classe $\widehat{\rho(F)} \in \T$ ne d\'epend pas du rel \`evement $F$ choisi. On notera simplement $\rho(f) = \widehat{\rho(F)}$ le \emph{nombre de rotation} de $f$.
+\item Montrer que $\rho(F^q) = q\rho(F)$.
+\end{enumerate}
+\section*{Dynamique des hom\'eomorphismes de nombre de rotation rationnel}
+Ici on fixe $f \in \Homeo_+(\T)$ et $F \in \widetilde{\Homeo}_+(\T)$ un rel \`evement de $f$. 
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que $F \in \widetilde{\Homeo}_+(\T)$ a un point fixe si et seulement si $\rho(F) = 0$. 
+\item Montrer que les ensembles $\alpha$ et $\omega$-limites de tout point de $\R$ est contenu dans $\mathrm{Fix}(F)$, l'ensemble des points fixes de $F$.
+\end{enumerate}
+On suppose maintenant que $\rho(f) = p/q + \Z$ o\`u $p \in \Z$ et $q \geq 1$ sont premiers entre eux. 
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item  Montrer que $f$ a une orbite de p\'eriode $q$ et que toutes les orbites p\'eriodiques de $f$ sont de p\'eriode $q$. 
+\item  Montrer que les ensembles $\alpha$ et $\omega$-limites de tout point de $\T$ est une orbite p\'eriodique de $f$.
+\end{enumerate}
+
+%%%%%%%
+\section*{Le cas irrationnel}
+Dans cette partie on montre le \\ \\
+\textbf{Th\'eor\`eme} (Poincar\'e)\textbf{.} \textit{ Soit $f \in \Homeo_+(\T)$ de nombre de rotation irrationnel (i.e. sans points p\'eriodiques). Alors $f$ est semi-conjugu\'e  \`a la rotation d'angle $\rho(f)$, i.e. il existe une surjection continue $h : \T \to \T$ croissante (i.e. tout rel \`evement $H$ de $h$ est croissant) telle que 
+$$
+h \circ f = R_{\rho(f)} \circ h.
+$$} Soit donc $f \in \Homeo_+(\T)$ de nombre de rotation $\hat{\rho} \in \T$ irrationnel. On fixe $F \in \widetilde{\Homeo}_+(\T)$ un rel \`evement de $f$ et on note $\rho = \rho(F)$. 
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item On fixe $x \in \R$. Montrer que les applications
+$$
+\begin{matrix}
+\psi & : & \Z^2 & \to&  \R & \quad \text{ et }\quad \psi' & : & \Z^2 & \to&  \R \\
+& & (p,q) & \mapsto & q\rho - p & & & (p,q) & \mapsto & F^q(x)-p &
+\end{matrix} 
+$$
+sont injectives. On note $Z$ (resp. $Z'$) l'image de $\psi$ (resp. $\psi'$). Montrer que $Z$ est dense dans $\R$. 
+\item On pose $H = \psi \circ \psi'^{-1} : Z' \to Z$. Montrer que $H$ est croissante et s'\'etend en une fonction continue, croissante $H : \R \to \R$ telle que $H(x+1) = H(x) + 1$. 
+\item Conclure.
+\end{enumerate}
+
+%%%%%%%
+\section*{Le Th\'eor\`eme de Denjoy}
+Si la semi-conjugaison $h$ de la partie pr\'ec\'edente est injective, alors $h$ est un hom\'eomorphisme (car $\T$ est compact) et on dit que $f$ est \textit{topologiquement conjugu\'e}  \`a $R_{\rho(f)}$. On dira que $f$ est $C^1$ si tous ses rel \`evements le sont et on notera $f' : \T \to \R$ sa d\'eriv\'ee. On dira qu'une application $g : \T \to \R$ est  \`a \textit{variation born\'ee} s'il existe une constante $C > 0$ telle que pour tout $q \geq 1$ et toute s\'equence $0 \leq x_1< \dots < x_q < 1$, on a
+$$
+\sum_{i=1}^q |g(\widehat{x_{i+1}}) - g(\widehat{x_i})| \leq C,
+$$
+o \`u $x_{q+1} = x_1$.
+Dans cette partie nous allons montrer le \\ \\
+\textbf{Th\'eor\`eme} (Denjoy)\textbf{.} \textit{Soit $f \in \Homeo_+(\T)$ sans point p\'eriodique et de classe $C^1$ tel que $f' > 0$ et tel que $f'$ est  \`a variation born\'ee. Alors $f$ est topologiquement conjugu\'e  \`a $R_{\rho(f)}$.}\\
+
+\noindent On fixe $f$ comme dans l'\'enonc\'e et $h : \T \to \T$ une semi-conjugaison donn\'ee par la partie pr\'ec\'edente. On dira qu'un intervalle ouvert $I$ de $\T$ est \textit{errant} si $f^n(I)$ est disjoint de $I$ pour tout $n \geq 1$. 
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Soit $\hat{x} \in \T$. Montrer que si $h^{-1}(\{\hat{x}\})$ n'est pas r\'eduit  \`a un point, alors $f$ poss \`ede un intervalle errant. En d\'eduire que si $f$ n'a pas d'intervalle errant, alors $f$ est topologiquement conjugu\'e  \`a $R_{\rho(f)}$. 
+\end{enumerate}
+
+Dans toute la suite, on suppose que $f$ a un intervalle errant $I$ et on note $\ell$ la mesure de Lebesgue sur $\T$. 
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que $\ell(f^n(I)) + \ell(f^{-n}(I)) \to 0$ quand $n \to \infty$. 
+\item Montrer qu'il existe une suite $(q_n)_{n \geq 1}$ d'entiers positifs qui tend vers l'infini, telle que pour tout $n \geq 1$ et tout $\hat{x} \in \T$, il existe un intervalle ferm\'e $I_n$ joignant $\hat{x}$  \`a $f^{q_n}(\hat{x})$ dont les int\'erieurs des it\'er\'es $f^k(I_n)^\circ, \ k = 0, \dots, q_n$, sont disjoints deux  \`a deux. 
+\item Montrer que $\ln f'$ est  \`a variation born\'ee et en d\'eduire l'existence d'une constante $C > 0$ telle que
+$$
+C^{-1} \leq \left(f^{q_n}\right)'(\hat{x}) \left(f^{-q_n}\right)'(\hat{x}) \leq C, \quad \hat{x} \in \T.
+$$
+\item En d\'eduire que $\ell(I) = 0$ et conclure.
+\end{enumerate}
+\end{document} 

@@ -1,0 +1,446 @@
+\documentclass[a4paper,10pt]{beamer}
+\usetheme{}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+%\usetheme{Boadilla}
+%\usetheme{AnnArbor}
+\usecolortheme{crane}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\usefonttheme{serif}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{tikz,tkz-tab}
+\usepackage{graphicx}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+%\newcommand{\x}{\times}
+%\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Scal}{\mathcal{S}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Rcal}{\mathcal{R}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\vol}{\mathrm{vol}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\pau}{}
+\newcommand{\ra}{\rightarrow}
+\renewcommand{\P}{\mathbf{P}}
+\newcommand{\Repac}{\mathrm{Rep}_{\mathrm{ac}}}
+
+
+\newtheorem{lemme}[theorem]{Lemme}
+\newtheorem{thm}[theorem]{Th\'eor\`eme}
+
+\theoremstyle{plain}
+\newenvironment{remark}
+
+
+
+%\AtBeginSection[]{
+  %\begin{frame}{Summary}
+  %\small \tableofcontents[currentsection, hideothersubsections]
+  %\end{frame} 
+%}
+
+\title{\textbf{Syst\`emes dynamiques}}
+\subtitle{TD n¡12}
+\date{8 d\'ecembre 2020}
+\author[Yann Chaubet]{Yann Chaubet}
+%\institute[Universit\'e Paris-Sud]{\inst{1} Universit\'e Paris-Sud}
+
+\begin{document}
+
+
+\begin{frame}
+\maketitle
+\end{frame}
+
+\begin{frame}{Notations}
+Dans la suite, si $(X, \Fcal, \mu)$ est un espace mesur\'e, on fera l'identification 
+$$
+\textrm{alg\`ebres finies de }\Fcal \quad \longleftrightarrow \quad \textrm{partitions finies } \Fcal-\text{mesurables de } X,
+$$
+en identifiant une alg\`ebre avec l'ensemble de ses atomes. \vspace{0.2cm}
+
+On not alors, si $\Pcal$ et $\Qcal$ sont deux partitions finies,
+$$
+\Pcal \vee \Qcal = \{P \cap Q,~P \in \Pcal,~Q\in \Qcal\},
+$$
+et cette notation co•ncide avec l'op\'eration $\vee$ sur les alg\`ebres via l'identification donn\'ee ci dessus.
+\end{frame}
+
+\begin{frame}{Exercice 1}
+\textbf{1.} On pose
+$$
+\phi(x) = -x \log(x), \quad x \in [0,1].
+$$
+\pau
+Alors si $\Pcal = \{P_1, \dots, P_k\}$, on a, avec $p_i = \mu(P_i),$
+$$
+H_\mu(\Pcal) = -\sum_{i} p_i \log p_i =  \sum_i \phi(p_i).
+$$
+\pau
+Par concavit\'e de $\phi$ on a
+$$
+\begin{aligned}
+\frac{1}{k}ÊH_\mu(\Pcal) &= \frac{1}{k} \sum_i \phi(p_i) \pau \\
+&\leqslant \phi \left(\frac{1}{k} \sum_i p_iÊ\right) \pau \\
+&= \phi \left(\frac{1}{k}\right) \pau \\
+&= -\frac{1}{k} \log \frac{1}{k},
+\end{aligned}
+$$
+\pau
+et donc $H_\mu(\Pcal) \leqslant \log k = \log \mathrm{Card}(\Pcal).$
+\end{frame}
+
+\begin{frame}
+\textbf{2.} On note $\Qcal = \{Q_1, \dots, Q_\ell\}$ et $q_j = \mu(Q_j).$ \pau Alors
+$$
+H_\mu(\Pcal |\Qcal) = \sum_j q_j \sum_i \phi(\mu(P_i|Q_j)),
+$$
+\pau et donc 
+$$
+\begin{aligned}
+H_\mu(\Pcal |\Qcal) = 0 &\iff \phi(\mu(P_i|Q_j)) = 0 \quad  \forall i,j \pau \\
+&\iff \mu(P_iÊ|Q_j) = 0 \text{ ou }1 \quad \forall i,j \pau \\
+&\iff P_i \cap Q_j = \emptyset \text{ ou } Q_j \subset P_i \mod 0 \quad \forall i,j \pau \\
+&\iff \Pcal \leqslant \Qcal \mod 0.
+\end{aligned}
+$$
+\pau
+\textbf{3.} On rappelle le
+\begin{lemme}[Jensen]
+Si $\phi : [0,1] \to \R_+$ est strictement concave on a
+$$
+\phi\left(\sum_{i=1}^na_i x_i\right) \geqslant \sum_{i=1}^n a_i \phi(x_i), \quad x_i, a_i \in [0,1], \quad \sum_i a_i = 1,
+$$
+avec \'egalit\'e si et seulement si $x_i = x_j$ d\`es que $a_i, a_j \neq 0.$
+\end{lemme}
+\end{frame}
+
+\begin{frame}
+On obtient
+$$
+\begin{aligned}
+H_\mu(\Pcal |\Qcal) &= \sum_j q_j \sum_i \phi(\mu(P_i|Q_j)) \pau \\
+&= \sum_{ij} q_j \phi(\mu(P_i|Q_j)) \pau \\
+&\leqslant \sum_i \phi\left(\sum_j q_j\mu(P_i|Q_j)\right) \pau \\
+&= \sum_i \phi\left(\sum_j \mu(P_i \cap Q_j)\right) \pau \\ 
+&= \sum_i \phi(\mu(P_i)) \pau \\
+&= H(\Pcal),
+\end{aligned}
+$$
+\pau avec \'egalit\'e si et seulement si
+$$
+\mu(P_i|Q_j) = \mu(P_i|Q_{j'}), \quad j,j' = 1, \dots, \ell, \quad i = 1, \dots, k.
+$$
+\pau On note $c_i = \mu(P_i |Q_j)$ pour n'importe quel $j$.
+\end{frame}
+
+
+\begin{frame}
+Alors $\sum_j q_j c_i = \sum_j \mu(P_i|Q_j) = \mu(P_i)$ de sorte que $c_i = p_i.$ \pau On obtient donc
+$$
+\mu(P_i|Q_j) = \mu(P_i) \quad \forall i,j,
+$$
+\pau de sorte que
+$$
+\mu(P_i \cap Q_j) = \mu(P_i) \mu(Q_j) \quad \forall i,j.
+$$
+\pau
+\textbf{4.} On a, en notant $\tilde p_i = \nu(P_i)$,
+$$
+\begin{aligned}
+tH_\mu(\Pcal) + (1-t) H_\nu(\Pcal) &= t \sum_i \phi(p_i) + (1-t) \sum_i \phi(\tilde p_i) \pau \\
+&\leqslant \phi\left(tp_i + (1-t)\tilde p_i\right) \pau \\
+&= H_{t\mu + (1-t)\nu}(\Pcal).
+\end{aligned}
+$$
+\end{frame}
+
+
+
+\begin{frame}{Exercice 2}
+\textbf{1.} On a montr\'e que pour toute partition $\Pcal$ on a 
+$$
+tH_\mu(\Pcal) + (1-t) H_\nu(\Pcal) \leqslant H_{t\mu + (1-t)\nu}(\Pcal).
+$$
+\pau
+On a donc pour toutes partitions $\Pcal, \Qcal$,
+$$
+\begin{aligned}
+tH_\mu(\Pcal) + (1-t) H_\nu(\Qcal) &\leqslant tH_\mu(\Pcal \vee \Qcal) + (1-t) H_\nu(\Pcal \vee \Qcal) \pau \\
+&\leqslant  H_{t\mu + (1-t)\nu}(\Pcal \vee \Qcal).
+\end{aligned}
+$$
+\pau Puisque $\Pcal^n_f \vee \Qcal^n_f = (\Pcal \vee \Qcal)^n_f$ on obtient
+$$
+th_\mu(f, \Pcal) + (1-t)h_\mu(f,\Qcal) \leqslant h_{t\mu + (1-t)\nu}(f, \Pcal \vee \Qcal) \leqslant h_{t\mu + (1-t)\nu}(f).
+$$ 
+\pau Cela conclut. \pau \vspace{0.2cm}
+
+\textbf{2.} Soit $\Pcal$ une partition. On note $\Pcal^n_f = \bigvee_{j=0}^n f^{-j}(\Pcal)$. \pau Alors
+$$
+\begin{aligned}
+\frac{1}{n} H_\mu(\Pcal^{nk}_f) &= \frac{1}{n}ÊH_\mu\left(\bigvee_{i=0}^{nk-1}f^{-i}(\Pcal)\right) \pau \\
+&= \frac{1}{n} H_\mu\left(\bigvee_{j=0}^{n-1}f^{-kj}\left(\bigvee_{i=0}^{k-1}f^{-i}(\Pcal)\right)\right).
+\end{aligned}
+$$
+\end{frame}
+\begin{frame}
+Par cons\'equent, on obtient 
+$$
+k h_\mu(f, \Pcal) = h_\mu(f^k, \Pcal^k_f).
+$$
+\pau Mais puisque $\Pcal \subset \Pcal^k_f$ on a
+$$
+h_\mu(f^k, \Pcal) \leqslant h_\mu(f^k, \Pcal^k_f).
+$$
+\pau Il vient donc
+$$
+h_\mu(f^k) = \sup_\Pcal h_\mu(f^k, \Pcal) \leqslant \sup_\Pcal h_\mu(f^k, \Pcal^k_f).
+$$
+\pau D'autre part on a \'evidemment
+$$
+\sup_\Pcal h_\mu(f^k, \Pcal^k_f) \leqslant \sup_\Pcal h_\mu(f^k, \Pcal).
+$$
+\pau Finalement 
+$$kh_\mu(f) = \sup_\Pcal h_\mu(f,\Pcal) = \sup_{\Pcal} h_\mu(f^k, \Pcal^k_f) = h_\mu(f^k).$$
+\end{frame}
+
+\begin{frame}
+\textbf{3.} On pose $\Qcal = \{A, X \setminus A\}.$ Alors par le cours
+$$
+H_\mu(\Pcal^n_f \vee \Qcal) = H_\mu(\Qcal) + H_\mu(\Pcal^n_f |\Qcal).
+$$
+\pau On a par d\'efinition
+$$
+\begin{aligned}
+H_\mu(\Pcal^n_f |\Qcal) &= \mu(A) \sum_{P \in \Pcal^n_f} \phi(\mu_A(P)) + \mu(\complement A) \sum_{P \in \Pcal^n_f} \phi(\mu_{\complement A}(P)) \pau \\
+&= \mu(A) H_{\mu_A}(\Pcal^n_f) + \mu(\complement A) H_{\mu_{\complement A}}(\Pcal^n_f).
+\end{aligned}
+$$
+\pau Puisque $(\Pcal \vee \Qcal)^n_f = \Pcal^n_f \vee \Qcal$ (car $A$ est invariant), on obtient
+$$
+h_\mu(f, \Pcal \vee \Qcal) = \mu(A) h_{\mu_A}(f,\Pcal) + \mu(\complement A) h_{\mu_{\complement A}}(f, \Pcal).
+$$
+\pau D\`es lors, puisque $\Pcal \subset \Pcal \vee \Qcal$ on a 
+$$
+\begin{aligned}
+h_\mu(f) &= \sup_\Pcal h_\mu(f, \Pcal) \pau \\
+&\leqslant \sup_\Pcal h_\mu(\Pcal \vee \Qcal) \pau \\
+&= \sup_\Pcal\left( \mu(A) h_{\mu_A}(f,\Pcal) + \mu(\complement A) h_{\mu_{\complement A}}(f, \Pcal)\right).
+\end{aligned}
+$$
+\end{frame}
+
+\begin{frame}
+Cela implique
+$$
+h_\mu(f) \leqslant \mu(A) h_{\mu_A}(f) + \mu(\complement A) h_{\mu_{\complement A}}(f).
+$$
+\pau Mais par la question \textbf{1.} on a 
+$$
+\begin{aligned}
+h_\mu(f) &= h_{\mu(A) \mu_A + \mu(\complement A) \mu_{\complement A}} \pau \\
+&\geqslant \mu(A) h_{\mu_A}(f) + \mu(\complement A) h_{\mu_{\complement A}}(f).
+\end{aligned}
+$$
+
+\textbf{4.} Puisque $(\Pcal^n_f)^{k}_f = \Pcal^{n+k}_f$ on a 
+$$
+h_\mu(f, \Pcal^n_f) = \lim_k \frac{1}{k} H_\mu((\Pcal^n_f)^k_f) = \lim_k \frac{n+k}{k} \frac{1}{n+k} H_\mu(\Pcal^{n+k}_f) = h_\mu(f, \Pcal).
+$$
+
+\end{frame}
+
+\begin{frame}{Exercice 3}
+Il s'agit de montrer que pour tout $\Pcal$ on a 
+$$
+h_\mu(f, \Pcal) \leqslant \sup_n h_\mu(f, \Pcal_n).
+$$
+\pau On a par le cours
+$$
+h_\mu(f, \Pcal) \leqslant h_\mu(f, \Pcal_n) + H_\mu(\Pcal|\Pcal_n).
+$$
+\pau Il suffit donc de montrer que $H_\mu(\Pcal|\Pcal_n) \to 0$ quand $n \to +\infty.$ \pau \vspace{0.2cm}
+
+Soit $\varepsilon > 0.$ On a  $\sigma\left(\bigcup_n \Acal_n\right) = \Fcal$ donc par un th\'eor\`eme du cours,il existe $\Ccal$ une alg\`ebre finie de $\bigcup_n \Acal_{n}$ telle que 
+$$
+H_\mu(\Pcal|\Ccal) < \varepsilon.
+$$
+\pau Il existe donc $n_0$ tel que $\Ccal \subset \Acal_{n_0}$, et donc pour tout $n \geqslant n_0$ on a
+$$
+H_\mu(\Pcal|\Pcal_n) \leqslant H_\mu(\Pcal|\Pcal_{n_0}) \leqslant H_\mu(\Pcal|\Ccal) < \varepsilon.
+$$
+\pau Ainsi $\lim_n H_\mu(\Pcal|\Pcal_n) = 0$, ce qui conclut.
+\end{frame}
+
+\begin{frame}{Exercice 4}
+\textbf{1.} Par l'exercice pr\'ec\'edent il suffit de montrer que
+$$
+\sigma\left(\bigcup_n \Pcal_n \right) = \Bcal.
+$$
+\pau Soit $U$ un ouvert et $x\in U$. Alors il existe $n(x) \in \N$ tel que $\Pcal_{n(x)}(x) \subset U$. \pau Ainsi,
+$$
+U = \bigcup_{x \in U} \Pcal_{n(x)}(x).
+$$
+\pau Cette union est en fait d\'enombrable, puisque $\bigcup_n \Pcal_n$ est d\'enombrable. \pau \vspace{0.2cm}
+
+Ainsi $\bigcup_n \Pcal_n$ engendre tous les ouverts, et donc la tribu engendr\'ee par $\bigcup_n \Pcal_n$ est la tribu des Bor\'eliens. \pau \vspace{0.2cm}
+
+\textbf{2.} On d\'ecoupe le cercle en une union d'intervalles $S^1 = I_1 \sqcup \cdots \sqcup I_n$ avec $\mathrm{diam}(I_j) < 1/n$. \pau \vspace{0.2cm}
+
+On note alors $\Pcal_n = \{I_1, \dots, I_n\}$, et $x_1, \dots x_n$ les extr\'emit\'es des intervalles.
+
+\end{frame}
+
+\begin{frame}
+Alors $f^{-k}(\Pcal_n)$ est une partition compos\'ee d'intervalles d'extr\'emit\'es $f^{-k}(x_j)$, de sorte que 
+$$
+\mathrm{Card}\left(\bigvee_{k=0}^{\ell-1}f^{-k}(\Pcal_n)\right) \leqslant n\ell.
+$$
+\pau On a donc par l'\textbf{Exercice 1.},
+$$
+\begin{aligned}
+h_\mu(f, \Pcal_n) &= \lim_\ell \frac{1}{\ell} H_\mu \left(\bigvee_{k=0}^{\ell-1}f^{-k}(\Pcal_n)\right) \pau \\
+&\leqslant \lim_\ell \frac{\log (n\ell)}{\ell} = 0.
+\end{aligned}
+$$
+\pau Par la question \textbf{1.}, on a puisque $\mathrm{diam}\Pcal_n(x) \to 0$ pour tout $x$, 
+$$
+h_\mu(f) = \lim h_\mu(f,\Pcal_n) = 0.
+$$
+\end{frame}
+
+\begin{frame}
+Il suffit de montrer que $\diam \Pcal^n_f \to 0$ quand $n \to +\infty$, o\`u
+\begin{equation}\label{eq:1}
+\diam \Pcal^n_f = \max_{P \in \Pcal^n_f} \diam P.
+\end{equation}
+\pau En effet, cela impliquerait par l'exercice pr\'ec\'edent que
+$$
+h_\mu(f) = \lim_n h_\mu(f, \Pcal^n_f).
+$$
+\pau
+Or pour tout $n \geqslant 1$ on a 
+$$
+h_\mu(f, \Pcal^n_f) = h_\mu(f, \Pcal)
+$$
+par l'\textbf{Exercice 2}. Ainsi (\ref{eq:1}) implique $h_\mu(f) = h_\mu(f, \Pcal)$. \pau\vspace{0.2cm}
+
+Puisque $\Pcal^k_f \leqslant \Pcal^\ell_f$ pour tous $k \leqslant \ell$, on a que $(\diam \Pcal^n_f)_n$ d\'ecro”t. \pau\vspace{0.2cm}
+
+Supposons que $\lim_n \diam \Pcal^n_f = \varepsilon > 0$. Alors pour tout $n$ on a $\diam \Pcal^n_f \geqslant \varepsilon$. \pau \vspace{0.2cm}
+
+Notons $\Pcal = \{P_1, \dots, P_r\}$. Alors les \'el\'ements de $\Pcal^n_f$ sont de la forme
+$$
+P_{i_0} \cap f^{-1}(P_{i_1}) \cap \cdots \cap f^{-n+1}(P_{i_{n-1}}), \quad i_j \in \{1,\dots, r\}.
+$$
+\end{frame}
+
+\begin{frame}
+Puisque $\diam \Pcal^n_f \geqslant \varepsilon$, on peut trouver $x_n, y_n \in X$ et $P\in \Pcal^n_f$ tels que $\dist(x_n, y_n) \geqslant \varepsilon / 2$ et $x_n, y_n \in P$. \pau \vspace{0.2cm}
+
+Ceci donne $N_{0,n}, N_{1,n}, \dots, N_{n-1,n} \in \{1, \dots, r\}$ tels que 
+$$
+f^j(x_n), f^j(y_n) \in P_{N_{j,n}}, \quad j = 0, \dots, n-1, \quad  n \geqslant 1.
+$$
+\pau
+En particulier on a
+ $$
+\dist(f^j(x_n), f^j(y_n)) \leqslant \diam \Pcal, \quad j=0, \dots, n-1.
+$$
+\pau
+Quitte a extraire, on peut supposer $x_n \to x$ et $y_n \to y$. Alors $\dist(x,y) \geqslant \varepsilon / 2$ et donc $x \neq y$. \pau \vspace{0.2cm}
+
+D'autre part, on a pour tout $j \in \N$,
+$$
+\dist(f^j(x),f^j(y)) = \lim_n \dist(f^j(x_n), f^j(y_n)) \leqslant \diam\Pcal.
+$$
+\pau
+Or $x\neq y$ donc par expansivit\'e on obtient $\diam \Pcal \geqslant \delta$, ce qui conclut.
+\end{frame}
+
+\begin{frame}{Exercice 6}
+\textbf{1.} On a $H_\mu(\Pcal \vee \Qcal) = H_\mu(\Qcal) + H_\mu(\Pcal|\Qcal)$ pour tous $\Pcal, \Qcal$. \pau Donc 
+$$
+\begin{aligned}
+H_\mu(\Pcal|\Qcal) + H_\mu(\Qcal|\Rcal) &= H_\mu(\Pcal \vee \Qcal) + H_\mu(\Qcal \vee \Rcal) - H_\mu(\Qcal) - H_\mu(\Rcal) \pau \\
+&= H_\mu(\Rcal|\Qcal) + H_\mu(\Pcal \vee \Qcal) - H_\mu(\Rcal) \pau \\
+&= H_\mu(\Pcal \vee \Qcal \vee \Rcal) - H_\mu(\Rcal|\Pcal \vee \Qcal) \\ 
+&\quad \quad  + H_\mu(\Rcal|\Qcal) - H_\mu(\Rcal) \pau \\
+&\geqslant H_\mu(\Pcal \vee \Qcal \vee \Rcal) - H_\mu(\Rcal) \pau \\
+&\geqslant H_\mu(\Pcal \vee \Rcal) - H_\mu(\Rcal) \pau \\
+&= H_\mu(\Pcal|\Rcal).
+\end{aligned}
+$$
+\pau 
+Ainsi on a obtenu
+$$
+D(\Pcal, \Rcal) \leqslant D(\Pcal, \Qcal) + D(\Qcal, \Rcal).
+$$
+\pau
+D'autre part par l'exercice \textbf{1.} on a
+$$
+\begin{aligned}
+D(\Pcal, \Qcal) = 0 \quad &\iff \quad H_\mu(\Pcal|\Qcal) = 0 = H_\mu(\Qcal|\Pcal) \pau \\
+&\iff \quad \Pcal = \Qcal \mod 0.
+\end{aligned}
+$$
+
+
+\end{frame}
+
+\begin{frame}
+Enfin $D(\Pcal, \Qcal) = D(\Qcal, \Pcal)$ et donc $D$ est une distance. \pau \vspace{0.2cm}
+
+\textbf{2.} On a par le cours
+$$
+h_\mu(f, \Pcal) \leqslant h_\mu(f, \Qcal) + H(\Pcal|\Qcal).
+$$
+\pau
+Ainsi
+$$
+\begin{aligned}
+\left|h_\mu(f, \Pcal)-h_\mu(f,\Qcal)\right|Ê&\leqslant  \max(H_\mu(\Pcal|\Qcal), H_\mu(\Qcal|\Pcal)) \\
+&\leqslant D(\Pcal, \Qcal).
+\end{aligned}
+$$
+\end{frame}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+

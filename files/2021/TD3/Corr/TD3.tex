@@ -1,0 +1,281 @@
+\documentclass[a4paper,12pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}{Lemme}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\Corrig\'e 3}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill \texttt{chaubet@dma.ens.fr}} \\
+{2021/2022 \hfill}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent {\large \textbf{Exercice 1.} \textit{Ensemble $\omega$-limite non minimal}} \vspace{1.5mm} 
+
+\noindent Soit $X = \{0, 1\}^\N$ et $\sigma : X \to X$ le d\'ecalage. Soit
+$$
+x = 010011000111...
+$$
+Alors les singletons $\{000...\}$ et $\{111...\}$ sont deux parties ferm\'ees invariantes distinctes qui sont contenues dans $\omega(x)$.
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Croissance des orbites p\'eriodiques et entropie des applications expansives}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item Soient $n \in \N^*$ et $x \in X$ tels que $f^n(x) = x$. Soit $\varepsilon > 0$ tel que pour tous $y \in B(x, \varepsilon)$ on a
+$$
+\dd(f^k(x), f^k(y)) \leq \delta, \quad 0 \leq k \leq n.
+$$
+Alors si $f^n(y) = y$ et $\dd(x,y) \leq \varepsilon$, on a $\dd(f^k(x), f^k(y)) \leq \delta$ pour tout $k \in \N$, et donc $x = y$. En particulier l'ensemble $\mathcal{P}_n(f) = \{x  \in X,~ f^n(x) = x\}$ ne contient que des points isol\'es et donc $p_n(f)$ est fini par compacit\'e. 
+
+De plus, pour tous $x\neq y \in \mathcal{P}_n(f)$, on a $\dd^f_n(x,y) > \delta$ (sinon on aurait $x=y$ par expansivit\'e). Ainsi $\mathcal{P}_n(f)$ est une famille de points qui est $\delta$-s\'epar\'ee pour la distance $\dd^f_n$. Ceci donne que pour tout $\alpha < \delta$ on a (avec les notations du cours)
+$$
+N(\alpha, n) \geq N(\delta, n) \geq p_n(f).
+$$
+Cela conclut.
+\item On consid\`ere $E_m : \R/\Z \to \R/\Z$ d\'efinie par $x \mapsto mx$, pour $m \geq 2$. Alors
+$$
+p_n(E_m) = m^n-1
+$$
+ce qui implique que $p(E_m) = \log(m) = \htop(E_m)$ (cf. le cours).
+
+\item On a
+$$
+\#\{ x \in \T^m,~A^n(x) = x\} = \#\{x \in \T^m,~(A^n-\mathrm{Id})x = 0\} = |\mathrm{det}(A^n-1)|
+$$
+par le TD 1. On a 
+$$
+\mathrm{sp}(A^n-1) = \{ \lambda^n - 1,~\lambda \in \mathrm{sp}(A)\}.
+$$
+ Il suit que (la somme porte sur les valeurs propres compt\'ees avec multiplicit\'e alg\'ebrique)
+ $$
+\log|\mathrm{det} (A^n-1)| = \sum_{\substack{\lambda \in \mathrm{sp}(A)}} \log |\lambda^n-1|.
+$$
+On a
+$$
+\lim_n \frac{1}{n} \log |\lambda^n-1| = \left\{\begin{matrix} \log |\lambda| \text{ si }|\lambda| > 1, \\ 0 \text{ sinon.}
+\end{matrix} \right.
+$$
+Le lemme suivant permet de conclure par la question 1.
+\begin{lem}
+$f_A$ est expansive dans le sens o\`u il existe $\delta > 0$ tel que pour tous $x,y \in X$,
+$$
+\sup_{n \in \Z} \dd(f^n_A(x), f^n_A(y)) \leq \delta \quad \implies \quad x = y.
+$$
+\end{lem}
+\begin{proof}
+Supposons d'abord que $A \in \mathrm{Mat}_{n \times n}(\Z)$ est une matrice telle que $\mathrm{sp}(A) \subset \{z \in \C,~|z|> 1\}$. On pose $\mu = \min_{\lambda \in \mathrm{sp}(A)} |\lambda|$. Alors pour tout $\nu \in ]1, \mu[$, il existe une constante $C > 0$ telle que pour tout $N \geq 0$ on a 
+$$
+\|A^NX \| \geq C \nu^N \|X\|, \quad X \in \R^n.
+$$
+Cela se v\'erifie ais\'ement en utilisant la d\'ecomposition de Jordan. Soit $0 < \varepsilon < \displaystyle{ \frac{1}{4 \|A\|}}$ (ici $\|A\|$ d\'esigne la norme d'op\'erateur de $A$), et $y \in \R^n \setminus 0$ tel que $\|y \|\leq \varepsilon.$ Soit 
+$$N_0 = \max\{N \geq 0,~\|A^nY\|\leq 2 \varepsilon\} + 1.$$
+Alors $\|A^{N_0}Y\| \geq 2 \varepsilon$ et 
+$$
+\|A^{N_0}Y\| \leq \|A\|\|A^{N_0-1}Y\|\leq \|A\| (2\varepsilon) \leq \frac{1}{2}.
+$$
+On a montr\'e que pour tout $X \in \R^{n}\setminus 0$
+$$
+ \|X\|\leq \varepsilon \quad \implies \quad \exists n \in \N, \quad 2\varepsilon \leq \|A^nX\| \leq 1/2.
+$$
+Ceci implique que pour tous $x\neq y \in \T^n$,
+\begin{equation}\label{eq:exp}
+\dd(x, y) \leq \varepsilon \quad \implies \quad \exists n \in \N, \quad \dd(f^n_A(x), f^n_A(y)) \geq 2\varepsilon,
+\end{equation}
+et donc $f_A$ est expansive.
+
+Si on suppose juste que $\mathrm{sp}(A) \cap \{z \in \C, |z| = 1\} = \emptyset$ alors on peut appliquer le raisonnement pr\'ec\'edent \`a $(A^{\pm 1})|_{E_\pm}$ o\`u
+$$
+E_\pm = \lim_{N \to \infty} \bigoplus_{|\lambda|^{\pm 1} > 1} \mathrm{ker}(A - \lambda\mathrm{Id})^N ;
+$$
+on obtient alors (\ref{eq:exp}) en rempla\c ant $\N$ par $\Z$, ce qui conclut.
+\end{proof}
+\end{enumerate}
+
+
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 3.} \textit{Codage symbolique de l'application du Chat d'Arnold}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item On consid\`ere $B = (b_{ij}) \in \mathrm{Mat}_{5\times 5}(\Z)$ d\'efinie par
+$$
+B = \begin{pmatrix}
+1 & 1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 1 & 0 \\
+1 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 0 & 1
+\end{pmatrix}.
+$$
+On note 
+$\Sigma_B = \{\omega = (\omega_n)_{n \in \Z},~ b_{\omega_n \omega_{n+1}} = 1\}$
+l'alphabet associ\'e \`a $B$. Alors pour tout $\omega \in \Sigma_B$, on a 
+$$
+\Delta(\omega) = \bigcap_{n \in \Z} f^{-n}( \Delta_{\omega_n}) \neq \emptyset,
+$$
+puisque pour tout $N \geq 1,$ l'intersection $ \Delta(\omega, N) = \bigcap_{|n|\leq N} f^{-n}(\Delta_{\omega_n})$ est non vide. De plus, il existe une constante $C>0$ telle que pour tout $N$, on a que $\Delta(\omega, N)$ est un rectangle qui v\'erifie que
+\begin{equation}\label{eq:deltaw}
+\mathrm{diam}(\Delta(\omega, N)) \leq C \lambda^{-N}.
+\end{equation}
+Il s'en suit que $\Delta(\omega)$ est r\'eduit \`a un point, not\'e $x(\omega)$. Soit $h : \Sigma_B \to \T^2$ d\'efinie par $h(\omega) = x(\omega).$ 
+
+Alors $h$ est surjective. En effet, si $x \in \T^2$, on choisit pour tout $n \in \Z$ un $\omega_n \in \{0,1\}$ tel que $f^n(x) \in \Delta_{\omega_n}$ ; ceci implique que $h((\omega_n)_n) = x$.
+
+L'application $h$ est aussi continue. En effet, soit $\varepsilon > 0$ et $N \geq 1$ tels que $C\lambda^{-N} \leq \varepsilon.$ Soient $\omega, \omega' \in \Sigma_B$ tels que $\omega_j = \omega_j'$ pour tout $|j| \leq N$. Alors $h(\omega), h(\omega') \in \Delta(\omega, N)$, et (\ref{eq:deltaw}) implique que $\dd(h(\omega), h(\omega')) \leq \varepsilon.$
+
+On a bien s \^ur $f_L\circ h = h \circ \sigma_B$, o\`u $\sigma_B$ est le d\'ecalage sur $\Sigma_B$, ce qui montre que $(\T^2, f_L)$ est un facteur topologique de $(\Sigma_B, \sigma_B)$.
+
+\item Par la question pr\'ec\'edente et le cours on obtient pour $\lambda = (3 + \sqrt{5})/2$
+$$
+\htop(f_L) \leq \htop(\sigma_B) = \log \rho(B) = \log \lambda.
+$$
+On a aussi par l'exercice pr\'ec\'edent 
+$$
+\htop(f_L) \geq p(f_L) = \log \lambda.
+$$
+Ainsi 
+$$\htop(f_L) = \log \frac{3 + \sqrt{5}}{2}.$$
+\end{enumerate}
+
+
+\vspace{0.6cm}
+%%%
+
+\noindent {\large \textbf{Exercice 4.} \textit{Fonctions z\^eta dynamiques}} \vspace{1.5mm} 
+
+\noindent
+
+\begin{enumerate}
+\item Soit $|z|<\exp(-p(f))$ et $\varepsilon > 0$ tel que $|z|<\exp(-p(f)-\varepsilon)$. Il existe $C$ tel que tout $n$ assez grand $p_n(f) \leq C \exp((p(f) + \varepsilon/2)n)$ pour tout $n$ assez grand, par d\'efinition de $p(f)$. Alors pour tout $n$ assez grand on a
+$$
+\left|\frac{p_n(f)}{n}z^n\right| \leq \frac{C}{n} \e^{-n\varepsilon/2},
+$$
+et donc $\zeta_f(z)$ est bien d\'efinie.
+\item Montrer, dans les cas suivants, que $\zeta_f$ est une fonction rationnelle admettant un p \^ole simple au point $z = \exp \left(-h_\mathrm{top}(f)\right)$, et que
+$$
+p_n(f) \sim \exp\left(n\htop(f)\right) \quad (n \to \infty).
+$$
+\begin{enumerate}
+\item On a $p_n(E_m) = m^n-1$ pour tout $n \geq 1$. On calcule
+$$
+\begin{aligned}
+\zeta_{E_m}(z) = \exp \sum_{n=1}^\infty \frac{m^n-1}{n}z^n 
+= \frac{1-z}{1-mz}.
+\end{aligned}
+$$
+Ainsi $\zeta_{E_m}$ a un p \^ole simple en $z = 1/m = \exp(-\log m) = \exp(-\htop(E_m))$.
+
+\item On a $p_n(f_L) = |\mathrm{det}(L^n-1)| = -\mathrm{det}(L^n-1)$ et donc, si $\lambda = (3+\sqrt{5})/2$,
+$$
+\begin{aligned}
+\zeta_{f_L}(z) &= \exp -\sum_{n=1}^\infty \frac{\mathrm{det}(L^n-1)}{n} z^n \\
+&= \exp -\sum_{n=1}^\infty \frac{(\lambda^n-1)(\lambda^{-n}-1)}{n} z^n \\
+&= \exp-\sum_{n=1}^\infty \frac{2 - \lambda^n - \lambda^{-n}}{n}z^n,
+\end{aligned}
+$$
+ce qui donne comme \`a la question pr\'ec\'edente
+$$
+\zeta_{f_L}(z) = \frac{(1-z)^2}{(1-z\lambda)(1-z/\lambda)}.
+$$
+Encore une fois, $\zeta_{f_L}$ a un p \^ole simple en $\lambda^{-1} = \exp(-\log \lambda) = \exp(-\htop(f_L))$.
+
+\item Par le cours on a $p_n(\sigma_A) = \tr A^n.$ Ainsi
+$$
+\zeta_{\sigma_A}(z) = \exp \sum_{n=1}^\infty \frac{\tr A^n}{n}z^n = \frac{1}{\det(1-zA)}.
+$$
+Par le th\'eor\`eme de Perron-Frobenius, on a $\det(1-zA) = (1-z\rho(A))P(z)$ o\`u $P$ est un polyn \^ome qui n'admet que des racines de modules strictement inf\'erieurs \`a $\rho(A)$. Cela conclut puisque $\htop(\sigma_A) = \log \rho(A)$. 
+
+\end{enumerate}
+
+\item On note $\mathcal{Q}_n(f)$ l'ensemble des points p\'eriodique de p\'eriode exactement $n$, et $\mathcal{O}(n)$ l'ensemble des orbites de p\'eriode $n$. Alors $\# \mathcal{Q}_n(f) = n \# \mathcal{O}(n)$ et (toutes les op\'erations sont licites pour $|z| < \e^{-p(f)}$)
+$$
+\begin{aligned}
+\zeta_f(z) &= \exp \sum_{n=1}^\infty \frac{\#\mathcal{P}_n(f)}{n} z^n \\
+&= \exp \sum_{n=1}^\infty \frac{\sum_{k|n} \#\mathcal{Q}_k(f)}{n}z^n \\
+&= \exp \sum_{k=1}^\infty \sum_{j=1}^\infty \#\mathcal{Q}_k(f)\frac{z^{kj}}{kj} \\
+& = -\exp \sum_{k=1} ^\infty  \#\mathcal{O}(k) \log(1-z^k) \\
+& = \prod_{p \in \mathcal{P}} \frac{1}{1 - z^{|p|}}.
+\end{aligned}
+$$
+
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 5.} \textit{Toute transformation continue surjective est facteur d'un hom\'eomorphisme}} \vspace{1.5mm} 
+
+
+Soit $\hat X = X^{-\N}$ et $\hat f : \hat X \to \hat X$ d\'efinie par 
+$$
+\hat f : (x_n)_{n \leq 0} \mapsto (f(x_n))_{n \leq 0}.
+$$
+On note 
+$$
+\tilde X = \{\tilde x = (x_n)_{n\leq 0} \in X^{-\N},~k<0 \implies x_{k+1} = f(x_k) \}.
+$$
+Alors $\tilde X$ est une partie ferm\'ee et positivement invariante par $\hat f$. On note $\widetilde f$ la restriction de $\hat f$ \`a $\tilde X$. Soit $h : \tilde X \to X$ d\'efinie par 
+$$h : (x_n)_{n\leq0} \mapsto x_0.$$
+ Alors $h$ est continue et v\'erifie $h \circ \tilde f = f \circ h$. 
+
+Montrons que $h$ est surjective. Soit $x \in X$. Par surjectivit\'e de $f$, il existe $x_{-1}$ tel que $f(x_{-1}) = x$. En it\'erant ce processus, on obtient $\tilde x = (x_{-n})_{n \geq 0} \in \tilde X$ tel que $\tilde f( \tilde x) = x$. 
+
+Il reste \`a montrer que $\tilde f$ est un hom\'eomorphisme. On d\'efinit $ \tilde g : \tilde X \to \tilde X$ par 
+$$
+\tilde g : (x_k)_{k \leq 0} \mapsto (x_{k-1})_{k \leq 0}.
+$$
+Alors $g$ est continue et v\'erifie $\tilde g \circ \tilde f = \tilde f \circ \tilde g = \mathrm{id}_{\tilde X}$, ce qui conclut.
+\end{document} 

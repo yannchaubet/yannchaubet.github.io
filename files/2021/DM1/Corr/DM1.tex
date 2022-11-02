@@ -1,0 +1,412 @@
+\documentclass[french, 12pt]{article}
+
+
+\usepackage[applemac]{inputenc}
+\usepackage{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{array,epsfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage[mathscr]{eucal}
+\usepackage{color}
+\usepackage[all]{xy}
+\usepackage{hyperref}
+%\usepackage[notref,notcite]{showkeys}
+\usepackage{graphicx}
+
+
+
+
+
+
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{\textbf{\alph{enumii}.}}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
+
+
+
+
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{D\'efinition}
+\newtheorem{thm}{Th\'eor\`eme}
+\newtheorem{cor}{Corollaire}
+\newtheorem*{rmk}{Remarque}
+\newtheorem{lem}{Lemme}
+\newtheorem{ex}{Exercice}
+\newtheorem*{soln}{Solution}
+\newtheorem{prop}{Proposition}
+
+
+
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\tuple}[1]{\left(#1\right)}
+\newcommand{\oin}[1]{\left]#1\right[}
+\newcommand{\cin}[1]{\left[#1\right]}
+\newcommand{\olin}[1]{\left]#1\right]}
+\newcommand{\orin}[1]{\left[#1\right[}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\sprod}[1]{\left<#1\right>}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+
+
+
+
+
+
+
+\newcommand{\indi}{\mathds{1}}
+\newcommand{\emb}{\hookrightarrow}
+\newcommand{\proj}{\twoheadrightarrow}
+\newcommand{\funct}{\rightsquigarrow}
+\newcommand{\del}{\partial}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\Lra}{\Leftrightarrow}
+
+
+
+
+
+\renewcommand{\H}{\mathrm{H}}
+\newcommand{\N}{\mathrm{N}}
+
+
+
+
+
+\renewcommand{\Bbb}{\mathbb{B}}
+\newcommand{\Cbb}{\mathbf{C}}
+\newcommand{\Dbb}{\mathbb{D}}
+\newcommand{\Ebb}{\mathbb{E}}
+\newcommand{\Fbb}{\mathbb{F}}
+\newcommand{\Hbb}{\mathbb{H}}
+\newcommand{\Ibb}{\mathbb{I}}
+\newcommand{\Kbb}{\mathbb{K}}
+\newcommand{\kbb}{\mathbb{K}}
+\newcommand{\Nbb}{\mathbf{N}}
+\newcommand{\Obb}{\mathbb{O}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\Qbb}{\mathbf{Q}}
+\newcommand{\Rbb}{\mathbf{R}}
+\newcommand{\Sbb}{\mathbb{S}}
+\newcommand{\Tbb}{\mathbf{T}}
+\newcommand{\Zbb}{\mathbf{Z}}
+
+
+
+
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\Ucal}{\mathcal{U}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Ncal}{\mathcal{N}}
+
+
+
+
+
+
+
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Homeo}{\operatorname{Homeo}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Var}{\operatorname{Var}}
+
+
+
+
+
+
+
+
+
+
+
+\newcommand{\ds}{\displaystyle}	
+
+
+\title{\textsc{Syst\`emes dynamiques} \\Corrig\'e DM 1}
+\date{}
+\author{Bas\'e sur la copie de Manh-Linh Nguyen}
+
+\begin{document}
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Pour toute question :}
+\\
+{2021/2022\hfill\hfill \texttt{chaubet\at dma.ens.fr}}
+{\let\newpage\relax\maketitle}
+\maketitle
+
+
+
+\section*{Notations et pr\'eliminaires}
+\begin{enumerate}
+	\item Soit $f \in \Homeo(\Tbb)$. Soit $x \in \pi^{-1}(f(\hat{\frac{1}{2}}))$. Les restrictions
+	    $$\pi |_{\oin{-\tfrac{1}{2},\tfrac{1}{2}}}: \oin{-\tfrac{1}{2},\tfrac{1}{2}} \to \Tbb - \set{\hat{\tfrac{1}{2}}}, \qquad \pi |_{\oin{x,x+1}}: \oin{x,x+1} \to \Tbb - \set{f\tuple{\hat{\tfrac{1}{2}}}}$$
+	  sont des hom\'eomorphismes. Donc $F:=\pi |_{\oin{x,x+1}}^{-1} \circ f \circ \pi |_{\oin{-\tfrac{1}{2},\tfrac{1}{2}}}$ d\'efinit un hom\'eomorphisme de $\oin{-\tfrac{1}{2},\tfrac{1}{2}}$ dans $]x,x+1[$ (en particulier, il est monotone). On peut \'etendre $F$ \`a un hom\'eomorphisme de $\oin{-1,\tfrac{1}{2}}$ dans un intervalle ouvert contenant $]x,x+1[$ en \'etendant $F|_{\oin{-\tfrac{1}{2},0}}$ \`a $]-1,0[$ (qui est hom\'eomorphe \`a $\Tbb - \set{\hat{0}}$) de mani\`ere similaire (cette extension est monotone et continue, donc elle est n\'ecessairement un hom\'eomorphisme). De m\^eme, $F$ s'\'etend \`a un hom\'eomorphisme de $\Rbb$ dans $\Rbb$.
+	  
+	  Soient maintenant $F$ et $G$ deux relev\'es de $f$, alors
+	    $$\forall x \in \Rbb, \qquad \pi(F(x)) = f(\pi(x)) = \pi(G(x)),$$
+	  d'o\`u $F(x) - G(x) \in \Zbb$. Comme $\Zbb$ est compl\`etement discontinu, l'application continue $x \mapsto F(x) - G(x)$ prend une seule valeur $k \in \Zbb$.
+	  
+	  \item \begin{enumerate}
+	      \item Comme 
+	        $$\forall x \in \Rbb, \qquad \pi(F(x+1)) = f(\pi(x+1)) = f(\pi(x)),$$
+	      on voit que $x \mapsto F(x+1)$ est encore un relev\'e de $f$. Par la partie pr\'ec\'edent, il existe $d \in \Zbb$ satisfaisant
+	        $$\forall x \in \Rbb, \qquad F(x+1) = F(x) + d.$$
+	      \item On sait que $F^{-1}$ rel\`eve $f^{-1}$. Il existe donc $e \in \Zbb$ tel que 
+	        $$\forall y\in\Rbb, \qquad F^{-1}(y+1) = F^{-1}(y) + e.$$
+	   Mais alors $1 = F^{-1}(F(1)) = F^{-1}(F(0) + d) = F^{-1}(F(0)) + de = de$. Il suit que $d = \pm 1$.
+	  \end{enumerate}
+\end{enumerate}
+
+
+
+\section*{Le nombre de rotation de Poincar\'e}
+    \begin{enumerate}
+    \setcounter{enumi}{2}
+        \item Pour $0 \le x \le y < 1$, on a
+            $$\varphi(x) - \varphi(y) = F(x) - F(y) - x + y \ge F(x) - F(y) > F(0) - F(1) = -1.$$  
+        De plus,
+            $$\varphi(x) - \varphi(y) = F(x) - F(y) - x + y \le y - x < 1 - 0 = 1.$$
+        Ainsi,
+            \begin{equation} \label{eqVarphi}
+                -1 < \varphi(x) - \varphi(y) < 1
+            \end{equation}
+        pour $x,y \in [0,1[$ (par symm\'etrie). Par p\'eriodicit\'e de $\varphi$, \eqref{eqVarphi} est vraie pour $x,y \in \Rbb$.
+        
+        \item Comme $F^n \in \wt{\Homeo}_+(\Tbb)$, \eqref{eqVarphi} s'applique en rempla\c cant $F$ par $F^n$. De plus, la fonction $F^n - \id_{\Rbb}$ est continue, p\'eriodique, donc $m_n$ et $M_n$ sont bien d\'efinis et v\'erifient a fortiori l'in\'egalit\'e
+            \begin{equation} \label{eqMn}
+                0 \le M_n - m_n < 1.
+            \end{equation}
+            
+        \item Pour tout $x \in \Rbb$, on a
+            $$(F^n(F^{n'}(x)) - F^{n'}(x)) + (F^{n'}(x) - x) = F^{n+n'}(x) - F(x),$$
+        d'o\`u
+            $$\forall x \in \Rbb, \qquad m_n + m_{n'} \le F^{n+n'}(x) - F(x) \le M_n + M_{n'}.$$
+        Il suit que
+        \begin{equation} \label{eqMnMnPrime}
+            m_n + m_{n'} \le m_{n + n'} \le M_{n + n'} \le M_n + M_{n'}.
+        \end{equation}
+        
+        \item
+        Un r\'esultat basique dit que
+            $$\lim_{n \to \infty}\frac{M_n}{n} = \inf_{n \ge 1} \frac{M_n}{n}, \qquad \lim_{n \to \infty}\frac{m_n}{n} = \sup_{n \ge 1} \frac{m_n}{n}.$$
+        De \eqref{eqMn}, les deux valeurs ci-dessus sont \'egales.
+        
+        \item \label{Partie7} On a $\frac{m_n}{n} \le \rho \le  \frac{M_n}{n}$. La fonction $x \mapsto \frac{F^n(x) - x}{n}$ a pour valeurs minimale et minimale respectivement $\frac{m_n}{n}$ et $\frac{M_n}{n}$. Par continuit\'e, il existe $z_n \in \Rbb$ avec 
+            $$\frac{F^n(z_n) - z_n}{n} = \rho.$$
+            
+        \item Invoquons \eqref{eqVarphi} en rempla\c cant $F$ par $F^n$ et $y$ par $z_n$ et nous obtenons
+            \begin{equation} \label{eqInequality1}
+                \forall n \ge 1, \qquad \forall x \in \Rbb, \qquad \qquad -1 < F^n(x) - x - n\rho < 1.
+            \end{equation}
+        En rempla\c cant $x$ par $F^{-n}(x)$, on voit que
+            $$\forall n \ge 1, \qquad \forall x \in \Rbb, \qquad -1 < x - F^{-n}(x) - np < 1,$$
+        i.e. \eqref{eqInequality1} reste vraie pour $n \le -1$. Bien s\^ur, elle est vraie pour $n = 0$. En particulier, pour tout $x \in \Rbb$, on a
+            $$\lim_{n \to \pm \infty}\frac{F^n(x)}{n} = \rho.$$
+    \end{enumerate}
+    
+\section*{Quelques propri\'et\'es du nombre de rotation}
+\begin{enumerate}
+    \setcounter{enumi}{8}
+    \item \label{Partie9} Si $\rho(F) = p/q$, on prend $x = z_q$ dans la partie {\bf \ref{Partie7}.}. Inversement, s'il existe $x \in \Rbb$ avec $F^q(x) = x + p$, alors on peut montrer par r\'ecurrence que
+        $$\forall n \ge 1, \qquad F^{nq}(x) = x + np.$$
+    Ainsi
+        $$\rho(F) = \lim_{n \to \infty}\frac{F^{nq}(x)}{nq} = \lim_{n \to \infty}\tuple{ \frac{x}{nq} + \frac{p}{q}} = \frac{p}{q}.$$
+        
+    \item \label{Partie10} On sait que $\rho(F) \neq p/q$ ssi $F^q(x) - x \neq p$ pour tout $x \in \Rbb$ par la partie pr\'ec\'edente. Par connexit\'e, on sait que ou bien $F^q(x) - x > p$ pour tout $x \in \Rbb$, ou bien $F^q(x) - x < p$ pour tout $x \in \Rbb$. On consid\'ere le premier cas. Par r\'ecurrence, on a 
+        $$\forall n \ge 1, \qquad F^{nq}(0) > np,$$
+    d'o\`u 
+        $$\rho(F) = \lim_{n \to \infty} \frac{F^{nq}(0)}{nq} \ge \frac{p}{q}.$$
+    Mais comme $\rho(F) \neq p/q$, on a $\rho(F) > p/q$. Le cas $F^q(x) - x < p$ peut \^etre trait\'e de mani\`ere similaire.
+    
+    \item On a 
+        $$\rho(T_\alpha) = \lim_{n \to \infty} \frac{T^n_\alpha(0)}{n} = \lim_{n \to \infty}\frac{n\alpha}{n} = \alpha.$$
+        
+    \item \label{Partie12} Soit $G:\Rbb \to \Rbb$ la fonction $x \mapsto F(x) + p$. Alors
+        $$\rho(G) = \lim_{n \to \infty} \frac{G^n(0)}{n} = \lim_{n \to \infty} \frac{F^n(0) + np}{n} = \lim_{n \to \infty} \frac{F^n(0)}{n} + p = \rho(F) + p.$$
+    Il suit que $\wh{\rho(F)} = \wh{\rho(G)}$. On en d\'eduit que pour tout $f \in \Homeo_+(\Tbb)$, la classe $\wh{\rho(F)}$ ne d\'epend pas du relev\'e $F$ choisi.
+    
+    \item On a
+        $$\rho(F^q) = \lim_{n \to \infty}\frac{(F^q)^n(0)}{n} =  \lim_{n \to \infty} q\cdot \frac{F^{nq}(0)}{nq} = q\rho(F).$$
+\end{enumerate} 
+
+\section*{Dynamique des hom\'eomorphismes de nombre de rotation rationel}
+\begin{enumerate}
+    \setcounter{enumi}{13}
+    \item \label{Partie14} Il suit de la partie {\bf\ref{Partie9}.} que $F$ admet un point fixe ssi $\rho(F) = 0$.
+    
+    \item \label{Partie15} Let $x \in \Rbb$ et $y \in \omega_F(x)$. Il existe alors une suite strictement croisssante $(n_k)_{k \in \Nbb}$ d'entiers telle que 
+        $$\lim_{k \to \infty} F^{n_k}(x) = y.$$
+    Par continuit\'e,
+        $$\lim_{k \to \infty} F^{n_k + 1}(x) = F(y).$$
+    Consid\'erons le cas o\`u $F(x) \ge x$. Pour $k \in \Nbb$, on a $n_k + 1 \le n_{k+1}$, d'o\`u
+        $$F^{n_k}(x) \le F^{n_k + 1}(x) \le F^{n_{k+1}}(x).$$
+    En prennant limite quand $n \to \infty$, on obtient $F(y) = y$. Le cas o\`u $F(x) < x$ est trait\'e de mani\`ere similaire. Ainsi $\omega_F(x) \subseteq \Fix(F)$. Finalement,
+        $$\alpha_F(x) = \omega_{F^{-1}}(x) \subseteq \Fix(F^{-1}) = \Fix(F).$$
+    
+    \item Soit $F$ un relev\'e de $f$. Quitte \`a translater, on peut supposer que $\rho(F) = p/q$. \\
+    
+    {\bf Fait.} {\it Si $\hat{x} \in \Tbb$ est un point $r$-p\'eriodique de $f$, alors $q | r$.}
+    \begin{proof}
+        Soit $x \in \pi^{-1}(\hat{x})$. On a $F^r(x) = x + n$ pour un certain $n \in \Zbb$. De {\bf\ref{Partie9}.}, $\frac{p}{q} = \rho(F) = \frac{n}{r}$. Ainsi, $q | qn = pr$. L'affirmation suit du fait que $p$ et $q$ sont premiers entre eux.
+    \end{proof}
+    La fonction $G: x \mapsto F^q(x) - p$ est un relev\'e de $f^q$ et
+        $$\rho(G) = q\rho(F) - p = 0.$$
+    De {\bf\ref{Partie14}.}, $G$ admet un point fixe $x$, i.e. $\hat{x}$ est un point $q$-p\'eriodique de $f$. Le fait ci-dessus implique $\hat{x}$ est de p\'eriode exactement $q$, i.e., $\gamma_F(x)$ est une orbite de p\'eriode $q$. Supposons maintenant que $\hat{y} \in \Tbb$ est un point p\'eriodique. Soit $rq$ sa p\'eriode, alors 
+        $$G^r(y) - y = F^{rq}(y) - rq - y \in \Zbb,$$ 
+    o\`u $y \in \pi^{-1}(\hat{y})$. Comme $\rho(G^r) = r\rho(G) = 0$, il est n\'ecessaire que
+        $$G^r(y) = y.$$
+    Donc, $y \in \gamma_G(y) = \omega_G(y) \subseteq \Fix(G)$ par la partie \ref{Partie15}, d'o\`u $G(y) = y$ et puis $f^q(\hat{y}) = \hat{y}$. Le fait ci-dessus assure que $\hat{y}$ est de p\'eriode $q$.
+    
+    \item Soit $x$ le point fixe de $G$ comme dans la partie pr\'ec\'edente. Alors $G$ induit un hom\'eomorphisme de $]x,x+1[$ dans lui-m\^eme. Bien s\^ur, $\omega_f(\hat{x}) = \{x,f(x),\ldots,f^{q-1}(x)\}$ est une orbite p\'eriodique. Pour $\hat{y} \in \Tbb - \{\hat{x}\}$, soit $y$ l'unique point de $]x,x+1[ \cap \pi^{-1}(\hat{y})$. La suite $(G^n(y))_{n \in \Nbb}$ est monotone donc converge. Soit $z \in \Rbb$ sa limite, alors
+        $$z \in \omega_G(y) \subseteq \Fix(G).$$
+    En particulier, $\lim\limits_{n \to \infty}f^{nq}(\hat{y}) = \hat{z}.$ Affirmons que
+        $$\omega_f(\hat{y}) = \{\hat{z},f(\hat{z}),\ldots,f^{q-1}(\hat{z})\}.$$
+    En effet, soit $\hat{u} \in \omega_f(\hat{y})$. Il existe alors une suite strictement croissante $(n_k)_{k \in \Nbb}$ d'entiers telle que
+        $$\lim_{k \to \infty} f^{n_k}(\hat{y}) = \hat{u}.$$
+    Quitte \`a choisir une sous-suite, on peut supposer que 
+        $$\forall k \in \Nbb, \qquad n_k = b_kq + r$$
+    pour un certain $r \in \{0,1,\ldots,q-1\}$ et une suite strictement croissante $(b_k)_{k \in \Nbb}$ d'entiers. On a alors
+        $$f^{-r}(\hat{u}) = \lim_{k \to \infty}f^{b_kq}(\hat{y}) = \hat{z},$$
+    d'o\`u $\hat{u} = f^r(\hat{z})$. On conclut que
+        $\omega_f(\hat{y}) \subseteq \{\hat{z},f(\hat{z}),\ldots,f^{q-1}(\hat{z})\}.$ L'inclusion inverse est claire: pour tout $0 \le i \le q-1$, on a
+            $$f^i(\hat{z}) = \lim_{n \to \infty}f^{nq + i}(\hat{y}).$$
+\end{enumerate}
+
+
+
+\section*{Le cas irrationnel}
+\begin{enumerate}
+    \setcounter{enumi}{17}
+    \item On se donne $(p,q),(p',q') \in \Zbb$. Si $\psi(p,q) = \psi(p',q')$, on aura
+        $$q\rho - p = q'\rho - p'.$$
+    Il est n\'ecessaire que $q = q'$ (sinon, $\rho = \frac{p - p'}{q - q'} \in \Qbb$), d'o\`u $p = p'$. Ainsi, $\psi$ est injective. On suppose maintenant que $\psi'(p,q) = \psi'(p',q')$, i.e., $F^{q}(x) - p = F^{q'}(x) - p'$. Si, par exemple, $q > q'$, on aura 
+        $$F^{q-q'}(F^{q'}(x)) = F^{q'}(x) + p - p'.$$
+    Il suit que $\rho = \frac{p - p'}{q - q'} \in \Qbb$. De conclure, $q = q'$ et donc $p = p'$. Autrement dit, $\psi'$ est aussi injective.
+    Le fait que $Z = \psi(\Zbb^2)$ est dense est un r\'esultat bien connu. 
+        
+    \item Montrons que $H$ est croissante. Supposons $F^q(x) - p > F^{q'}(x) - p'$ et $q  - q' > 0$. Alors
+    $$
+    F^{q-q'}(x) > x + p - p'
+    $$
+    et donc par la question \textbf{10.} on obtient $\rho > \frac{p-p'}{q-q'},$ c'est-\`a-dire $q \rho - p > q'\rho - p'$. On proc\`ede de m\^eme pour les cas $q < q'$, et le cas $q = q'$ est clair. \\
+    
+    Pour \'etendre $H$ sur $\mathbf R$ on proc\`ede de la mani\`ere suivante. Soit $x \in \mathbf{R}$; on pose
+    $$
+    H(x) = \lim_{\substack{z\uparrow x \\Êz \in Z'}} H(z).
+    $$
+     La limite existe par croissance de $H$ sur $Z'$.  La fonction $H : \mathbf R \to \mathbf R$ est croissante et d'image dense, donc continue. En particulier elle est surjective. Puisque $H(z' + 1) = H(z') + 1$ pour tout $z' \in Z'$, on obtient que $H(x+1) = H(x) + 1$ pour tout $x \in \mathbf R$. La conclusion suit.
+     
+    \item La composition $\pi \circ H: \Rbb \to \Tbb$ satisfait $\pi(H(y+1)) = \pi(H(y)+1) = \pi(H(y))$ pour tout $y \in \Rbb$, donc elle se factorise par $\pi: \Rbb \to \Tbb$. Autrement dit, il existe une fonction surjective continue $h:\Tbb \to \Tbb$ telle que $H$ soit un relev\'e de $h$. Montrons que 
+        $$h \circ f = R_{\rho} \circ h.$$
+    En effet, pour tout $y \in \Rbb$, on a
+        \begin{align*}
+            H(F(y)) & = \sup\{q\rho - p | F^q(x) - p  < F(y)\}\\
+            & = \sup\{q\rho - p | F^q(x - p)  < F(y)\}\\
+            & = \sup\{q\rho - p | F^{q-1}(x-p) < y\}\\
+            & = \sup\{q\rho - p | F^{q-1}(x) - p < y\}\\
+            & = \sup\{(q+1)\rho - p | F^{q}(x) - p < y\}\\
+            & = \sup\{q\rho - p | F^{q}(x) - p < y\} + \rho \\
+            & = H(y) + \rho.
+        \end{align*}
+    Il suit que
+        $$h(f(\hat{y})) = h(\hat{y}) + \hat{\rho} = R_\rho(h(\hat{y})).$$
+\end{enumerate}
+
+
+-\section*{Le th\'eor\`eme de Denjoy}
+\begin{enumerate}
+    \setcounter{enumi}{20}
+    \item On suppose que $\hat{y},\hat{z}$ sont deux points diff\'erents dans $\Tbb$ qui sont envoy\'es par $h$ sur $\hat{x}$. Soit $x \in \pi^{-1}(\hat{x}), y \in \pi^{-1}(\hat{y})$ et $z \in $ tels que $H(y) = x$ et que $y < z < y+1$. Alors $H(z) - H(y) \in \Zbb$ et
+        $$x = H(y) \le H(z) \le H(y+1) = H(y) + 1 = x + 1.$$
+    Donc $H(z) \in \{x,x+1\}$. Consid\'erons le cas o\`u $H(z) = x$. Comme $H$ est croissante, on a $H(u) = x$ pour tout $y \le u \le z$. L'intervalle
+        $$I:=\{\hat{u} | y < u < z\}$$
+    de $\Tbb$ est errant. En effet, $h(I) = \{\hat{x}\}$ et pour tout $n \ge 1$, on a
+        $$\forall \hat{u} \in I, \qquad h(f^n(\hat{u})) = h(\hat{u}) + n\hat{\rho} = \hat{x} + n\hat{\rho}.$$
+    Il suit que $h(f^n(I)) = \{\hat{x} + n\hat{\rho}\}$. Comme $\rho$ est irrationnel, on sait que $h(f^n(I)) \cap h(I) = \varnothing$. Dans le cas o\`u $H(z) = x+1$, l'intervalle 
+        $$\{\hat{u}|z < u < y+1\}$$
+    est errant. On en d\'eduit que si $f$ n'a pas d'intervalle errant, alors $h$ est injective, donc bijective. Comme $\Tbb$ est compact et s\'epar\'e, $h$ est un hom\'eomorphisme, i.e., $f$ est conjugu\'e \`a $R_\rho$.
+    
+    \item  Comme $f$ est un hom\'eomorphisme, les intervalles $f^n(I)$ et $f^m(I)$ sont disjoints pour tous $n,m \in \Zbb$ satisfaisant $n \neq m$. Par $\sigma$-additivit\'e,
+        $$1 = \ell(\Tbb) \ge \sum_{n \in \Zbb} \ell(f^n(I)),$$
+    qui implique que $\ell(f^n(I)) + \ell(f^{-n}(I)) \to 0$ quand $n \to \infty$.
+    
+    \item Soit $d$ une distance sur $\Tbb$ qui induit sa topologie. On va montrer qu'il existe une infinit\'e d'indices $q_n \in \Nbb$ tels qu'il existe un intervalle ferm\'e $J_n$ joignant $\hat{0}$ et $q_n\hat{\rho}$ v\'erifiant la propri\'et\'e que $k\hat{\rho}$ ne soit pas dans $J_n$ pour tout $k \in \Zbb$ tel que $0 < |k| < q_n$. Pour ce faire, posons
+        $$\forall n \ge 1, \qquad A_n:=\{k\hat{\rho}\, |\, 0 < |k| < n\}.$$
+    On suppose par l'absurde qu'il existe $N \in \Nbb$ tel que pour tout $n \ge N$, il existe $k_n \in \Zbb$ avec $0 < |k_n| < n$ tel que l'une des in\'egalit\'es suivante
+        $$0 < \beta_n < \alpha_n \le \frac{1}{2} \qquad \text{ou} \qquad -\frac{1}{2} < \alpha_n < \beta_n < 0,$$
+    o\`u $\beta_n \in \pi^{-1}(k_n\hat{\rho})$ et $\alpha_n \in \pi^{-1}(n\hat{\rho})$. Dans les deux cas, $d(\hat{0},k_n\hat{\rho}) < d(\hat{0},n\hat{\rho})$ et $d(\hat{0},-k_n\hat{\rho}) < d(\hat{0},-n\hat{\rho})$. Il suit que $d(\hat{0},A_n) = d(\hat{0},A_{n+1})$. Ainsi
+        $$\lim_{n \to \infty} d(\hat{0},A_n) = d(\hat{0},A_N) > 0,$$
+    qui contradit le fait que $\{k\hat{\rho} \, | \, k > 0\}$ est dense dans $\Tbb$. On conclut.
+    
+    Soit $\hat{x} \in \Tbb$. Soit $I_n$ une composante connexe de $h^{-1}(h(\hat{x}) + J_n))$, qui est un intervalle ferm\'e joignant $\hat{x}$ et $f^{q_n}(\hat{x})$. En effet, 
+        $$h(\hat{x}) \qquad \text{et} \qquad h(f^{q_n}(\hat{x})) = h(\hat{x}) + q_n\hat{\rho}$$
+    sont les deux extr\'emit\'es de $J_n$. Comme $h$ est continue est croissante, $\hat{x}$ et $f^{q_n}(\hat{x})$ sont les deux extr\'emit\'es de $I_n$. Affirmons que les intervalles $f^k(I_n)$, $k = 0,\ldots,q_n-1$ sont disjoints deux \`a deux. Supposons par l'absurde qu'il existe $0 \le k < k' < q_n$ et un point $\hat{y} \in I_n$ tels que $f^{k}(\hat{y}) \in f^{k'}(I_n)$. Mais alors
+        $$h(\hat{y}) + k\hat{\rho} = h(f^{k}(\hat{y})) \in h(f^{k'}(I_n)) = k'\hat{\rho}+h(I_n) = h(\hat{x}) + k'\hat{\rho} + J_n.$$
+    De plus, $h(\hat{y}) \in h(I_n) = h(\hat{x}) + J_n$, donc
+        $$h(\hat{y}) - h(\hat{x}) \in J_n \cap ((k' - k)\hat{\rho} + J_n).$$
+    Il suit que l'un des extr\'emit\'es de $J_n$ (\`a savoir $\hat{0}$ et $q_n\hat{\rho}$) appartient \`a $(k' - k)\hat{\rho} + J_n$. Si $\hat{0} \in (k' - k)\hat{\rho} + J_n$, $(k - k')\hat{\rho} \in J_n$ (qui est contradictoire comme $-q_n < k-k' < 0$). Si $q_n\hat{\rho} \in (k' - k)\hat{\rho} + J_n$, $(q_n + k - k')\hat{\rho} \in J_n$ (impossible car $0 < q_n + k - k' < q_n$).
+    
+    \item On note par $\Var(g)$ la variation d'une fonction $g:\Tbb \to \Rbb$. On observe que pour $0 < u < v$,
+        \begin{equation} \label{eqLogarithm}
+            0 < \ln v - \ln u = \ln\tuple{1 + \frac{v-u}{u}} \le \frac{v-u}{u}.
+        \end{equation}
+    $\Tbb$ \'etant compact, soit $\varepsilon:=\min\limits_{x \in [0,1]}f'(\hat{x}) > 0$.  Pour tout $q \ge 1$ et toute s\'equence $0 \le x_{q+1} = x_1 < \cdots < x_q < 1$, en appliquant \eqref{eqLogarithm}, on obtient
+        \begin{align*}
+            \sum_{i=1}^q|\ln f'(\hat{x}_{i+1}) - \ln f'(\hat{x}_i)| & = \sum_{i=1}^q\abs{\ln\tuple{1 + \frac{f'(\hat{x}_{i+1}) - f'(\hat{x}_i)}{f'(\hat{x}_i)}}} \\
+            & \le \sum_{i=1}^q \frac{|f'(\hat{x}_{i+1}) - f'(\hat{x}_i)|}{\min\{f'(\hat{x}_{i+1}), f'(\hat{x}_i)\}}\\
+            & \le \frac{1}{\varepsilon}\sum_{i=1}^q |f'(\hat{x}_{i+1}) - f'(\hat{x}_i)|\\
+            & \le \frac{\Var(f')}{\varepsilon}.
+        \end{align*}
+    Ainsi, $\Var(\ln f') \le \frac{\Var(f')}{\varepsilon} < +\infty$.
+    Pour tout $\hat{x} \in \Tbb$ et $n \ge 1$, soit $I_n$ l'intervalle comme dans la partie pr\'ec\'edente. Comme les intervalles $f^k(I_n)$, $k = 0,\ldots,q_n-1$ sont deux \`a deux disjoints,
+        \begin{align*}
+            \Var(\ln f') & \ge \sum_{k=0}^{q_n-1}|\ln f'(f^{k}(f^{q_n}(\hat{x}))) - \ln f'(f^{k}(\hat{x}))| \\
+            & \ge \abs{\ln\prod_{k=0}^{q_n-1}(f'\circ f^{k})(f^{q_n}(\hat{x})) - \ln\prod_{k=0}^{q_n-1}(f'\circ f^{k})(\hat{x})}\\
+            & = \abs{\ln (f^{q_n})'(f^{q_n}(\hat{x})) - \ln (f^{q_n})'(\hat{x})}.
+        \end{align*}
+    En rempl\c cant $\hat{x}$ par $f^{-q_n}(\hat{x})$ et utilisant le th\'eor\`eme de la d\'eriv\'ee de la fonction inverse,
+        $$ |\ln (f^{q_n})'(\hat{x})+\ln (f^{-q_n})'(\hat{x})| \le \Var(\ln f').$$
+        
+    Il suit que 
+        $$\frac{1}{C} \le (f^{q_n})'(\hat{x}) (f^{-q_n})'(\hat{x}) \le C,$$
+    o\`u $C = e^{\Var(\ln f')}$.
+    
+    \item Pour tout $n \ge 1$, on a
+        \begin{align*}
+            \ell(f^{q_n}(I)) + \ell(f^{-q_n}(I)) & = \int_I (f^{q_n})'(\hat{x})d\ell(\hat{x}) + \int_I (f^{-q_n})'(\hat{x})d\ell(\hat{x}) \\
+            & \ge 2\int_I \sqrt{ (f^{q_n})'(\hat{x}) (f^{-q_n})'(\hat{x})} d\ell(\hat{x}) \\
+            & = \frac{2\ell(I)}{\sqrt{C}} > 0,
+        \end{align*}
+    qui contradit le fait que $\ell(f^{q_n}(I)) + \ell(f^{-q_n}(I)) \to 0$ quand $n \to \infty$. On en d\'eduit que $f$ n'a pas d'intervalle errant, donc il est conjugu\'e \`a $R_\rho$.
+\end{enumerate}
+    
+\end{document}
+
+

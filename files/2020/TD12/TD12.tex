@@ -1,0 +1,201 @@
+\documentclass[a4paper,10pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Feuille d'exercices 12}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2020/2021 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+Dans la suite, si $(X, \mathcal{F}, \mu)$ est un espace de probabilit\'es et $\mathcal{A} \subset \mathcal{F}$ est une alg\`ebre finie, on notera $H_\mu(\mathcal{A})$ l'entropie de $\mathcal{A}$ par rapport \`a $\mu$. Si $f$ est une transformation mesurable de $X$, on notera $h_\mu(f, \mathcal{A})$ l'entropie de $f$ par rapport \`a $(\mathcal{A},\mu)$ et $h_\mu(f) = \sup_{\mathcal{A}} h_\mu(f,\mathcal{A})$ son entropie m\'etrique par rapport \`a $\mu$, o\`u la borne sup\'erieure est prise sur toutes les sous-alg\`ebres finies de $\mathcal{F}$. \\
+
+Si $\mathcal{P}$ est une partition mesurable finie de $X$, on notera $H_\mu(\mathcal{P}) = H_\mu(\mathcal{A})$ et $h_\mu(f, \mathcal{P}) = h_\mu(f, \mathcal{A})$ o\`u $\mathcal{A}$ est l'alg\`ebre finie dont les atomes sont les \'el\'ements de $\mathcal{P}$. Si $\mathcal{Q}$ est une autre partition finie, on notera $\mathcal{P} \vee \mathcal{Q}$ la partition associ\'ee \`a l'alg\`ebre $\mathcal{A} \vee \mathcal{B}$, o\`u $\mathcal{B}$ est l'alg\`ebre associ\'ee \`a $\mathcal{Q}$. \\
+
+Enfin, on notera $\mathcal{P} = \mathcal{Q} \mod 0$ (resp $\mathcal{P} \leq \mathcal{Q} \mod 0$) si pour tout $Q \in \mathcal{Q}$ de mesure non nulle, il existe $P \in \mathcal{P}$ tel que $\mu(P \Delta Q) = 0$ (resp. $\mu(Q \setminus P) = 0$).
+ \\ \\
+
+\noindent {\large \textbf{Exercice 1.} \textit{Quelques propri\'et\'es de l'entropie d'une partition}} \vspace{1.5mm} 
+
+\noindent Soit $(X,\mathcal{F},\mu)$ un espace probabilis\'e et $\mathcal{P}, \mathcal{Q}$ deux partitions mesurables finies de $X$. Montrer les propri\'et\'es suivantes.
+\begin{enumerate}
+\item $H_\mu(\mathcal{P}) \leq \log \mathrm{card} (\mathcal{P})$.
+\item $H_\mu(\mathcal{P}| \mathcal{Q}) = 0$ si et seulement si $\mathcal{P}\leq \mathcal{Q} \mod 0$.
+\item $H_\mu(\mathcal{P}| \mathcal{Q}) \leq H_\mu(\mathcal{P})$ avec \'egalit\'e si et seulement si $\mathcal{P}$ et $\mathcal{Q}$ sont ind\'ependantes, i.e.
+$$
+\mu(P\cap Q) = \mu(P)\mu(Q), \quad P \in \mathcal{P}, \quad Q \in \mathcal{Q}.
+$$
+\item Pour tout autre probabilit\'e $\nu$, $H_{t\mu+(1-t)\nu}(\mathcal{P}) \geq t H_\mu(\mathcal{P}) + (1-t)H_\mu(\mathcal{P}).$
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Quelques propri\'et\'es de l'entropie m\'etrique}} \vspace{1.5mm} 
+
+\noindent Soit $(X,\mathcal{F},\mu)$ un espace probabilis\'e et $f: X \to X$ une transformation pr\'eservant $\mu$.
+\begin{enumerate}
+\item Soit $\nu$ une autre mesure de probabilit\'es pr\'eserv\'ee par $f$. Montrer que
+$
+h_{t\mu + (1-t)\nu}(f) \geq th_{\mu}(f) + (1-t)h_\nu(f). 
+$
+\item Montrer que $h_\mu(f^k) = kh_\mu(f)$ pour tout $k \in \N$.
+\item Soit $A$ un ensemble $f$ invariant avec $\mu(A) > 0$. Montrer que 
+$h_\mu(f) = \mu(A) h_\mu(f|_A) + \mu(A^c) h_\mu(f|_{A^c}).$
+\item Soit $\Pcal$ une partition finie mesurable. Montrer que pour tout $n \geqslant 0$ on a $h_\mu(f, \Pcal) = h_\mu(f, \Pcal^n_f)$ o\`u
+$$
+\Pcal^n_f = \bigvee_{j=0}^{n-1} f^{-j}(\Pcal).
+$$
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Une autre version du th\'eor\`eme de Kolmogorov-Sinai}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \mathcal{F}, \mu)$ un espace probabilis\'e, $f$ une transformation de $X$ pr\'eservant $\mu$ et $\mathcal{P}_n$ une suite croissante de sous-alg\`ebres finies de $\mathcal{F}$ telle que $\sigma\left(\bigcup_{n \in \N} \mathcal{P}_n\right) = \mathcal{F}$. Reprendre la d\'emonstration du th\'eor\`eme de Kolmogorov-Sinai et montrer que 
+$$
+h_\mu(f) = \lim_n h_\mu(f, \Pcal_n).
+$$
+
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 4.} \textit{Entropie m\'etrique et mesures bor\'eliennes}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact, $\mu$ une mesure de probabilit\'e bor\'elienne et $f : X \to X$ une transformation mesurable pr\'eservant $\mu$.
+\begin{enumerate}
+\item Pour toute partition finie de bor\'eliens $\mathcal{P}$ et tout $x \in X$, on note $\mathcal{P}(x)$ l'\'element de $\mathcal{P}$ contenant $x$. Soit $(\mathcal{P}_n)_{n \in \N}$ une suite croissante de partitions finies telle que pour tout $x \in X$,
+$$
+\mathrm{diam}~ \mathcal{P}_n(x) \to 0.
+$$
+Montrer que $h_\mu(f) = \lim_n h_\mu(f, \mathcal{P}_n).$
+\item On suppose $X = S^1$, $\mu$ est la mesure de Haar et $f$ est un hom\'eomorphisme de $X$. Montrer que $h_\mu(f) = 0$. \\
+\textit{Indication : on pourra consid\'erer des partitions de $S^1$ form\'ees d'intervalles et utiliser l'exercice \textbf{1.}}
+\end{enumerate}
+
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 5.} \textit{Entropie m\'etrique pour les applications expansives}} \vspace{1.5mm} 
+
+\noindent Soit $(X,\dd)$ un espace m\'etrique compact et $f : X \to X$ une transformation continue. On suppose que $f$ est expansive, c'est-\`a-dire qu'il existe $\delta > 0$ tel que pour tous $x,y \in X$,
+$$
+\sup_{n \in \N} \dd(f^n(x), f^n(y)) < \delta \implies x = y.
+$$
+Soit $\mathcal{P}$ une partition finie de $X$ telle que $\mathrm{diam}(P) < \delta$ pour tout $P \in \mathcal{P}$, et $\mu$ une probabilit\'e bor\'elienne sur $X$ pr\'eserv\'ee par $f$. Montrer que 
+$$
+h_\mu(f) = h_\mu(f, \mathcal{P}).
+$$
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 6.} \textit{In\'egalit\'e de Rokhlin}} \vspace{1.5mm}
+
+\noindent Soit $(X, \mathcal{F}, \mu)$ un espace de probabilit\'e. Si $\mathcal{P}$ et $\mathcal{Q}$ sont deux partitions finies de $X$, on note
+$$
+D(\mathcal{P}, \mathcal{Q}) = H_\mu(\mathcal{P}|\mathcal{Q}) + H_\mu(\mathcal{Q}|\mathcal{P}).
+$$
+
+\begin{enumerate}
+\item Montrer que $H_\mu(\mathcal{P}|\mathcal{Q}) \leq H_\mu(\mathcal{P}|\mathcal{R}) + H_\mu(\mathcal{R}|\mathcal{Q})$, et en d\'eduire que $D$ est une distance sur l'ensemble des partitions mesurables finies de $X$ (modulo les ensembles n\'egligeables).
+\item Montrer que pour toute transformation $f : X \to X$ pr\'eservant $\mu$ on a
+$$
+\left|h_\mu(f, \mathcal{P}) - h_\mu(f, \mathcal{Q})\right| \leq D(\mathcal{P}, \mathcal{Q}).
+$$
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 7.} \textit{Entropie m\'etrique et entropie topologique}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact et $f : X \to X$ une hom\'eomorphisme. Soit $\mu$ une mesure bor\'elienne de probabilit\'e pr\'eserv\'ee par $f$. Le but de l'exercice est de montrer que $h_\mu(f) \leq h_\mathrm{top}(f)$.
+
+\begin{enumerate}
+\item Soit $\mathcal{P} = \{P_1, \dots, P_k\}$ une partition mesurable. Montrer qu'il existe des ferm\'es $C_j \subset P_j,~j \in \{1,\dots,k\}$ tels que
+$$
+H_\mu(\mathcal{P}| \mathcal{C}) < 1,
+$$
+o\`u on a not\'e
+$$
+\mathcal{C} = \{C_0, C_1, \dots, C_k\}, \quad C_0 = X \setminus \bigcup_{j=1}^k C_k.
+$$
+\item Soit $\mathcal{R} = \{C_0 \cup C_1, \dots, C_0 \cup C_n\}$. Montrer que 
+$$
+\mathrm{card}\left( \bigvee_{j=0}^{n-1} f^{-j}(\mathcal{P})\right) \leq 2^n \mathrm{card}\left(\bigvee_{j=0}^{n-1} f^{-j}(\mathcal{R})\right), \quad n \in \N.
+$$
+\end{enumerate}
+Pour tout recouvrement ouvert fini $\mathcal{U} = \{U_1, \dots, U_\ell\}$ de $X$, on note
+$$
+\delta(\mathcal{U}, \dd) = \sup \Bigl\{ \delta \geq 0,~\forall x \in X,~\exists j \in \{1, \dots, \ell\},~B_\dd(x, \delta) \subset U_j \Bigr\}. 
+$$
+\begin{enumerate}[resume]
+\item Montrer que $\delta(\mathcal{U}, \dd) > 0$ pour tout recouvrement ouvert fini $\mathcal{U}$.
+\item Montrer que
+$$
+\delta\left(\bigvee_{j=0}^{n-1} f^{-j}(\mathcal{R}),~ \dd_n^f\right) = \delta(\mathcal{R}, \dd), \quad n \in \N,
+$$
+o\`u $\dd_n^f(x,y) = \max_{0 \leq j \leq n-1} \dd(f^j(x), f^j(y))$.
+\item En d\'eduire que $h_\mu(f) \leq h_\mathrm{top}(f) + \log 2 + 1$.
+\item Conclure.
+\end{enumerate}
+
+\end{document}
+ 
+ 
+ 
+

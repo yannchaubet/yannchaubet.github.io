@@ -1,0 +1,282 @@
+\documentclass[a4paper,10pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\  Corrig\'e 10}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2021/2022 \hfill  \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+ 
+ 
+\vspace{1cm}
+\noindent {\large \textbf{Exercice 1.} \textit{Moyennes de Birkhoff pour les permutations}} \vspace{1.5mm} 
+
+\noindent Soit $\sigma$ une permutation de $X = \{1, \dots, p\}$. Montrer que pour toute fonction $\varphi : X \to \C$ et tout $x \in X$ on a
+$$
+\lim_{n \to +\infty} \frac{1}{n} \sum_{k=0}^{n-1} \varphi\left(\sigma^k(x)\right) = \frac{1}{\left|\mathcal{O}(x)\right|} \sum_{y \in \mathcal{O}(x)}  \varphi(y),
+$$
+o\`u $\mathcal{O}(x) = \{\sigma^k(x),~k \in \N\}$ est l'orbite de $x$.
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Th\'eor\`eme ergodique et isom\'etries}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact, $f : X \to X$ une isom\'etrie (i.e. $\dd(f(x), f(y)) = \dd(x,y)$ pour tous $x,y \in X$) et $\mu$ une mesure bor\'elienne de probabilit\'es invariante par $f$ telle que $\mu(U) > 0$ pour tout ouvert $U$ non vide. Soit $\varphi : X \to \C$ une fonction continue et 
+$$
+S_n \varphi = \frac{1}{n}  \sum_{k=0}^{n-1} \varphi \circ f^k.
+$$ 
+Montrer que $S_n\varphi$
+converge uniform\'ement sur $X$ vers une fonction continue.
+\iffalse
+\begin{enumerate}
+\item Montrer que pour tout $\delta > 0$, il existe $J \in \N$ et $x_1, \dots, x_J \in X$ tels que $\displaystyle{X = \bigcup_{j = 1}^J B(x_j, \delta)}$ et pour tout $j = 1, \dots J$, la suite
+$
+S_n \varphi (x_j) 
+$
+converge quand $n \to +\infty$.
+\item Montrer que $S_n\varphi$
+converge uniform\'ement sur $X$ vers une fonction continue.
+\end{enumerate}
+\fi
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Th\'eor\`eme ergodique sur les espaces m\'etriques compacts}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact et $f : X \to X$ une transformation mesurable pr\'eservant une mesure bor\'elienne de probabilit\'es $\mu$. Montrer qu'il existe un ensemble mesurable $G \subset X$ de mesure totale tel que pour tout fonction continue $\varphi$ et tout $x \in G$,
+$$
+\frac{1}{n} \sum_{k=0}^{n-1} \left(\varphi \circ f^k\right)(x) \underset{n \to +\infty}{\longrightarrow} \bar{\varphi}(x),
+$$
+o\`u $\bar{\varphi}$ est la fonction limite des moyennes de Birkhoff de $\varphi$ donn\'ee par le th\'eor\`eme ergodique.
+ \vspace{0.1cm}
+
+%\noindent \textit{Indication : on pourra consid\'erer une suite $(\varphi_k)$ dense dans $\mathcal{C}(X, \C)$ (muni de la norme infinie), et 
+%$$
+%G = \bigcap_{k=0}^\infty G(\varphi_k),
+%$$
+%o\`u $G(\varphi_k)$ est un ensemble de mesure totale tel que les moyennes de Birkhoff de $\varphi_k$ convergent sur $G(\varphi_k)$.
+%}
+\vspace{0.6cm} 
+
+\noindent {\large \textbf{Exercice 4.} \textit{Unique ergodicit\'e et densit\'e des orbites}\vspace{1.5mm}}
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact et $f : X \to X$ une transformation continue. On suppose qu'il existe une unique mesure bor\'elienne de probabilit\'es invariante $\mu$ et que $\mu(A) > 0$ pour tout ouvert non vide $A$. Montrer que toutes les orbites de $f$ sont denses dans $X$. 
+ \vspace{0.1cm}
+ 
+%\noindent \textit{Indication : pour $x \in X$ on pourra consid\'erer les mesures $\displaystyle{\frac{1}{n}  \sum_{k=0}^{n-1} \delta_{f^k(x)}}$.}
+
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 5.} \textit{Le th\'eor\`eme de Von Neumann via le th\'eor\`eme de Birkhoff}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \mathscr{A}, \mu)$ un espace probabilis\'e, $\varphi \in L^2(\mu)$ et $\bar \varphi \in L^1(\mu)$ sa fonction associ\'ee dans le th\'eor\`eme de Birkhoff. On note aussi $\displaystyle{S_n\varphi = \frac{1}{n} \sum_{k=0}^{n-1} \varphi \circ f^k}$. On cherche \`a retrouver le th\'eor\`eme de Von Neumann.
+
+\begin{enumerate}
+\iffalse
+\item Montrer que 
+$\displaystyle{
+\left(\int_X |\bar \varphi|^2 \dd \mu \right)^{1/2} \leq \liminf_n \left(\int_X \left|S_n\varphi\right|^2\right)^{1/2}.}
+$
+\fi
+\item Montrer que $\bar \varphi \in L^2(\mu)$ et que $\|\bar \varphi\|_{L^2(\mu)} \leq \|\varphi\|_{L^2(\mu)}$.
+\item Montrer que $S_n \varphi \to \bar \varphi$ dans $L^2(\mu).$
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 6.} \textit{Explosion des sommes de Birkhoff et positivit\'e de la moyenne}} \vspace{1.5mm} 
+
+\noindent Soit $(X,\mathscr{A},\mu)$ un espace de probabilit\'es et $f : X \to X$ une application mesurable pr\'eservant $\mu$. Soit $\varphi \in L^1(\mu)$. On suppose que pour $\mu$ presque tout $x$,
+$$
+\lim_{n\to + \infty}\sum_{j=0}^n \varphi\left(f^k(x)\right) = + \infty.
+$$
+On cherche \`a montrer que $\displaystyle{\int_X \varphi ~\dd \mu }> 0$.
+
+\noindent On note $T_n \varphi = \displaystyle{\sum_{k=0}^{n-1} \varphi \circ f^k}$ et pour tout $\varepsilon > 0$,
+$$
+A_\varepsilon = \bigcap_{n \geq 1} \Bigl\{T_n\varphi \geq \varepsilon\Bigr\}, \quad B_\varepsilon = \bigcup_{k \geq 0} f^{-k}(A_\varepsilon).
+$$
+\begin{enumerate}
+\item Montrer que $\int_X \varphi ~\dd \mu \geq 0.$
+\item Soit $x \in A_\varepsilon$. Montrer que pour tout $n \geq 1$,
+$$
+T_n\varphi(x) \geq \varepsilon \sum_{k=0}^{n-1} \chi_{A_\varepsilon}\left(f^k(x)\right).
+$$
+\item Montrer que si $\int_X \varphi~\dd \mu = 0$ alors $\mu(B_\varepsilon) = 0$.
+\item Conclure.
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 7.} \textit{Applications uniform\'ement quasi-p\'eriodiques sur $\N$}} \vspace{1.5mm} 
+
+\noindent Une application $\varphi : \Z \to \R$ sera dite \textit{uniform\'ement quasi-p\'eriodique} si pour tout $\varepsilon > 0$ il existe $L(\varepsilon) \in \N$ tel que 
+$$
+\forall n \in \Z,~ \exists \tau \in \{n+1, \dots, n +L(\varepsilon)\},~\forall k \in \Z, \quad |\varphi(k+ \tau) - \varphi(k)| < \varepsilon.
+$$
+\begin{enumerate}
+\item Montrer que si $\varphi$ est uniform\'ement quasi-p\'eriodique, elle est born\'ee.
+\item Montrer que pour tout $\varepsilon > 0$, il existe $\rho \geq 1$ tel que
+$$
+\frac{1}{\rho} \left|\sum_{j=n\rho}^{n(\rho+1)} \varphi(j) - \sum_{j=1}^\rho \varphi(j) \right| < 2\varepsilon, \quad n \geq 1.
+$$
+\item Montrer que $\displaystyle{\frac{1}{n} \sum_{j=1}^n} \varphi(j)$ converge quand $n \to +\infty$.
+\item Montrer plus g\'en\'eralement que la limite 
+$$\lim_n \frac{1}{n}\sum_{j=1}^n \varphi(x+j)$$
+existe pour tout $x \in \Z$ et est ind\'ependante de $x$.
+\end{enumerate}
+
+\end{document}
+
+\noindent {\large \textbf{Exercice 1.} \textit{Th\'eor\`eme ergodique et isom\'etries}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact, $f : X \to X$ une isom\'etrie (i.e. $\dd(f(x), f(y)) = \dd(x,y)$ pour tous $x,y \in X$) et $\mu$ une mesure bor\'elienne de probabilit\'es invariante par $f$ telle que $\mu(U) > 0$ pour tout ouvert $U$ non vide. Soit $\varphi : X \to \C$ une fonction continue et 
+$$
+S_n \varphi = \frac{1}{n}  \sum_{k=0}^{n-1} \varphi \circ f^k.
+$$ 
+\begin{enumerate}
+\item Montrer que pour tout $\delta > 0$, il existe $J \in \N$ et $x_1, \dots, x_J \in X$ tels que $\displaystyle{X = \bigcup_{j = 1}^J B(x_j, \delta)}$ et pour tout $j = 1, \dots J$, la suite
+$
+S_n \varphi (x_j) 
+$
+converge quand $n \to +\infty$.
+\item Montrer que $S_n\varphi$
+converge uniform\'ement sur $X$ vers une fonction continue.
+\end{enumerate}
+
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{\'Equidistribution des rotations irrationnelles du cercle}} \vspace{1.5mm} 
+
+\noindent Soit $\alpha \in \T^d = \R^d/ \Z^d$ et $R_\alpha : \T^d \to \T^d$ donn\'ee par $R_\alpha(x) = x + \alpha.$
+\begin{enumerate}
+\item Montrer que $R_\alpha$ pr\'eserve la mesure de Haar $\mu$ sur $\T^d$.
+\item Soit $\varphi \in L^2(\T^d)$. Montrer qu'il existe $\bar{\varphi} \in L^2(\T^d)$ telle que 
+$$
+\frac{1}{n} \sum_{k=0}^{n-1} \varphi \circ R_\alpha^k \to \bar \varphi,
+$$
+la convergence \'etant presque sre, mais aussi ayant lieu dans $L^2(\T^d)$.
+\end{enumerate}
+On suppose que la famille $(1, \alpha_1, \dots, \alpha_d)$ est lin\'eairement ind\'ependante sur $\Q$, o\`u $\alpha = (\alpha_1, \dots, \alpha_d).$
+\begin{enumerate}[resume]
+\item Montrer que $\bar{\varphi}$ est presque partout \'egale \`a $\displaystyle{\int_{\T^d} \varphi ~\dd \mu}$.
+\item Soit $C \subset \T^d$ un produit d'intervalles. Montrer que pour $\mu$ presque tout $x \in \T^d$, 
+$$
+\frac{1}{n} \#\Bigl\{k \in \{1, \dots, n\},~x + k\alpha \in C \Bigr\} \underset{n \to +\infty}{\longrightarrow} \mu(C).
+$$
+\item Montrer que la propri\'et\'e pr\'ec\'edente est vraie pour tout $x \in \T^d$. \\
+\textit{Indication : on pourra approximer la fonction indicatrice de $C$ par des fonctions continues et utiliser l'exercice pr\'ec\'edent.}
+\item On consid\`ere la suite des premiers chiffres des puissances de $2$ : $1, 2, 4, 8, 1 \dots$ Montrer que la fr\'equence d'apparition du chiffre $7$ dans cette suite est environ \'egale \`a $5.8\%$.
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Applications dilatantes du cercle}} \vspace{1.5mm} 
+
+\noindent Pour tout $m \in \N_{\geq 2}$ on note $E_m$ la multiplication par $m$ sur $\R/\Z$. 
+
+\begin{enumerate}
+\item Soit $\varphi \in L^2(\R/\Z)$ et $m \in \N_{\geq 2}$. Montrer que $\displaystyle{S_n \varphi = \frac{1}{n}\sum_{k=0}^{n-1}{\varphi \circ (E_m)^k}}$ converge vers $\displaystyle{\int_{\R/\Z} \varphi ~\dd \mu}$ dans $L^2(\mu)$, o\`u $\mu$ est la mesure de Haar.
+\end{enumerate}
+On dira qu'un nombre $x \in [0,1)$ est normal si pour tout $m \geq 2$, son d\'eveloppement en base $m$
+$$
+x = 0,a_1a_2\dots,
+$$
+(qui est unique si on demande que pour tout $k$, il existe $k' \geq k$ tel que $a_{k'} \neq m-1$) satisfait
+$$
+\frac{1}{n} \#\Bigl\{k \in \{1, \dots, n\},~a_k = j\Bigr\} \underset{n \to +\infty}{\longrightarrow} \frac{1}{m}, \quad j = 0, \dots, m-1.
+$$
+\begin{enumerate}[resume]
+\item Montrer que presque tout $x \in [0,1)$ est normal.
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 4.} \textit{Explosion des sommes de Birkhoff et positivit\'e de la moyenne}} \vspace{1.5mm} 
+
+\noindent Soit $(X,\mathscr{A},\mu)$ un espace de probabilit\'es et $f : X \to X$ une application mesurable pr\'eservant $\mu$. Soit $\varphi \in L^1(\mu)$. On suppose que pour $\mu$ presque tout $x$,
+$$
+\lim_{n\to + \infty}\sum_{j=0}^n \varphi\left(f^k(x)\right) = + \infty.
+$$
+On cherche \`a montrer que $\displaystyle{\int_X \varphi ~\dd \mu }> 0$.
+
+\noindent On note $T_n \varphi = \displaystyle{\sum_{k=0}^{n-1} \varphi \circ f^k}$ et pour tout $\varepsilon > 0$,
+$$
+A_\varepsilon = \bigcap_{n \geq 1} \Bigl\{T_n\varphi \geq \varepsilon\Bigr\}, \quad B_\varepsilon = \bigcup_{k \geq 0} f^{-k}(A_\varepsilon).
+$$
+\begin{enumerate}
+\item Soit $x \in A_\varepsilon$. Montrer que pour tout $n \geq 1$,
+$$
+T_n\varphi(x) \geq \varepsilon \sum_{k=0}^{n-1} \chi_{A_\varepsilon}\left(f^k(x)\right).
+$$
+\item Montrer que si $\int_X \varphi~\dd \mu = 0$ alors $\mu(B_\varepsilon) = 0$.
+\item Conclure.
+\end{enumerate}
+\vspace{0.6cm}
+
+
+ 
+\noindent {\large \textbf{Exercice 5.} \textit{Moyenne temporelle des temps de retour}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \mu)$ un espace de probabilit\'es et $f : X \to X$ une application mesurable pr\'eservant $\mu$. Soit $A \subset X$ un ensemble mesurable de mesure non nulle, pour tout $x \in A$ on note $\displaystyle{\tau(x) = \inf \{ n \geq 1,  f^n(x) \in A \}}$ le temps de premier retour dans $A$, et $g(x) = f^{\tau(x)}(x)$ l'application de retour associ\'ee (d\'efinie presque partout sur $A$). On suppose que pour tout $\varphi \in L^1(\mu),$ les moyennes de Birkhoff associ\'ees \`a $\varphi$ convergent presque srement vers une constante. Montrer que pour $\mu$ presque tout $x$ de $A$,
+$$
+\lim_{n \to + \infty}\frac{1}{n} \sum_{k=0}^{n-1} \tau\left(g^k(x)\right) = \frac{1}{\mu(A)}.
+$$
+
+\vspace{0.6cm}

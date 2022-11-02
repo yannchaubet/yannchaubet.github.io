@@ -1,0 +1,191 @@
+\documentclass[a4paper,12pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Qcal}{\mathcal{Q}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Feuille d'exercices 14}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2020/2021 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+
+{\noindent On se propose de d\'emontrer le r\'esultat suivant.
+
+\begin{thm*}[Principe variationnel]
+Soit $(X, \dd)$ un espace m\'etrique compact et $f : X \to X$ un hom\'eomorphisme. Alors 
+$$
+h_\mathrm{top}(f) = \sup_\mu h_\mu(f)
+$$
+o\`u le supremum est pris sur les mesures bor\'eliennes de probabilit\'es qui sont invariantes par $f$.
+\end{thm*}
+ }
+ \vspace{0.6cm}
+
+\noindent {\large \textit{Premi\`ere in\'egalit\'e}} \vspace{1.5mm}
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact et $f : X \to X$ une hom\'eomorphisme. Soit $\mu$ une mesure bor\'elienne de probabilit\'e pr\'eserv\'ee par $f$. 
+
+\begin{enumerate}
+\item Soit $\mathcal{P} = \{P_1, \dots, P_k\}$ une partition mesurable. Montrer qu'il existe des ferm\'es $C_j \subset P_j,~j \in \{1,\dots,k\}$ tels que
+$$
+H_\mu(\mathcal{P}| \mathcal{C}) < 1,
+$$
+o\`u on a not\'e
+$$
+\mathcal{C} = \{C_0, C_1, \dots, C_k\}, \quad C_0 = X \setminus \bigcup_{j=1}^k C_k.
+$$
+\item Soit $\mathcal{R} = \{C_0 \cup C_1, \dots, C_0 \cup C_k\}$. Montrer que 
+$$
+\mathrm{card}\left( \bigvee_{j=0}^{n-1} f^{-j}(\mathcal{C})\right) \leq 2^{n+1} \mathrm{card}\left(\bigvee_{j=0}^{n-1} f^{-j}(\mathcal{R})\right), \quad n \in \N.
+$$
+\end{enumerate}
+Pour tout recouvrement ouvert fini $\mathcal{U} = \{U_1, \dots, U_\ell\}$ de $X$, on note
+$$
+\delta(\mathcal{U}, \dd) = \sup \Bigl\{ \delta \geq 0,~\forall x \in X,~\exists j \in \{1, \dots, \ell\},~B_\dd(x, \delta) \subset U_j \Bigr\}. 
+$$
+\begin{enumerate}[resume]
+\item Montrer que $\delta(\mathcal{U}, \dd) > 0$ pour tout recouvrement ouvert fini $\mathcal{U}$.
+\item Montrer que
+$$
+\delta\left(\bigvee_{j=0}^{n-1} f^{-j}(\mathcal{R}),~ \dd_n^f\right) = \delta(\mathcal{R}, \dd), \quad n \in \N,
+$$
+o\`u $\dd_n^f(x,y) = \max_{0 \leq j \leq n-1} \dd(f^j(x), f^j(y))$.
+\item En d\'eduire que $h_\mu(f) \leq h_\mathrm{top}(f) + \log 2 + 1$.
+\item Montrer finalement que $h_\mu(f) \leqslant h_\mathrm{top}(f).$
+\end{enumerate}
+
+
+\vspace{0.6cm}
+
+\noindent {\large \textit{Deuxi\`eme in\'egalit\'e} \vspace{1.5mm}}
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact et $f : X \to X$ une hom\'eomorphisme. On note $\mathcal{M}$ l'espace des mesures de probabilit\'es bor\'eliennes sur $X$, et $\mathcal{M}_f$ celles qui sont $f$-invariantes.
+
+\begin{enumerate}[resume]
+\item Montrer que pour tous $\mu \in \mathcal{M}$, $x \in X$ et $\delta > 0$, il existe $\delta' \in ]0, \delta[$ tel que $\mu(\partial B(x,\delta')) = 0$.
+\end{enumerate}
+Pour toute partition finie $\Pcal= \{P_1, \dots, P_r\}$ de $X$, on notera $\partial \Pcal = \cup_{j=1}^r \partial P_j.$
+\begin{enumerate}[resume]
+\item \label{q:2} Montrer que pour tout $\delta > 0$, il existe une partition finie $\Pcal = \{P_1, \dots, P_r\}$ de $X$ telle que 
+$
+\diam P_i < \delta 
+$
+pour tout $i$ et $\mu(\partial \Pcal) = 0.$
+\end{enumerate}
+Soit $\varepsilon > 0$. Pour tout $n \geqslant 1$ on se donne $E_n  \subset X$ un ensemble $(n,\varepsilon)$ s\'epar\'e, c'est-\`a-dire
+$$
+\dd^f_n(x, y) > \varepsilon, \quad x \neq y \in E_n.
+$$
+On consid\`ere les mesures $\nu_n, \mu_n \in \Mcal$ d\'efinies par
+$$
+\nu_n = \frac{1}{\mathrm{card}(E_n)} \sum_{x \in E_n} \delta_x, \quad \mu_n = \frac{1}{n} \sum_{i=0}^{n-1} f^i_* \nu_n.
+$$
+o\`u $\delta_x$ d\'esigne le Dirac en $x$.
+\begin{enumerate}[resume]
+\item Montrer qu'il existe $\mu \in \Mcal_f$ et une extraction $(n_k)$ telle que l'on a la convergence faible
+$$
+\mu_{n_k} \to \mu, \quad k \to +\infty,
+$$
+et aussi
+$$
+\limsup_n \frac{\log \mathrm{card}(E_n)}{n} = \lim_k  \frac{\log \mathrm{card}(E_{n_k})}{n_k}.
+$$
+\end{enumerate}
+Soit $\Pcal$ une partition comme dans la question \ref{q:2} avec $\delta = \varepsilon.$
+ \begin{enumerate}[resume]
+\item Montrer que 
+$$
+\log \mathrm{card}(E_n) = H_{\nu_n}(\Pcal_f^n).
+$$
+\end{enumerate}
+Soit $0 < q < n$. Pour tout $ 0 \leqslant k < q$ on note $a(k)$ la partie enti\`ere de $(n-k) / q$.
+\begin{enumerate}[resume]
+\item Montrer que pour tout $0 \leqslant k < q$ on a 
+$$
+\Pcal_f^n = \left( \bigvee_{r=0}^{a(k) - 1} f^{-(rq + k)}(\Pcal_f^q) \right) \vee \left( \bigvee_{j \notin ]k, k+a(k)q[} f^{-j}(\Pcal)\right).
+$$
+\item Montrer que
+$$
+\log \mathrm{card}(E_n) \leqslant \sum_{r=0}^{a(k)-1} H_{f_*^{rq+k}\nu_n}(\Pcal_f^q) + 2q \log \mathrm{card}(\Pcal).
+$$
+\item Montrer que 
+$$
+\log \mathrm{card}(E_n) \leqslant \frac{n}{q} H_{\mu_n} (\Pcal_f^q) + 2q \log \mathrm{card}(\Pcal).
+$$
+\item En d\'eduire que 
+$$
+\limsup \frac{\log \mathrm{card}(E_n)}{n} \leqslant h_\mu(f).
+$$
+\item Conclure.
+\end{enumerate}
+\vspace{0.6cm}
+
+
+
+ 
+\end{document}
+ 
+ 
+ 
+

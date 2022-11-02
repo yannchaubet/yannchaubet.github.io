@@ -1,0 +1,184 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{tikz,tkz-tab}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Théorème}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propriété}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\wto}{\rightharpoonup}
+\newcommand{\Z}{\mathbf{Z}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\SL}{\mathrm{SL}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\newcommand{\Isom}{\mathrm{Isom}}
+\newcommand{\Leb}{\mathrm{Leb}}
+
+\title{\textsc{Systèmes dynamiques} \\ DM n°1}
+\date{{Pour le 06/10/20}}
+\author{}
+
+\begin{document}
+{\noindent École Normale Supérieure  \hfill  \texttt{chaubet@dma.ens.fr} \\
+{2020/2021}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+Soit $G_n = \mathrm{SL}(n, \R)$ que l'on munit de la topologie naturelle, et $\H$ un espace de Hilbert séparable. Une action unitaire $\rho$ de $G_n$ sur $\H$ est un morphisme
+$
+\rho : G_n \to \Isom(\H),
+$
+où $\Isom(\H)$ désigne l'espace des isométries de $\H$. On dira qu'une telle action est fortement continue si l'application
+$$
+\begin{aligned}
+G_n \times \H &\longrightarrow \H \\
+(g, v) &\longmapsto \rho(g) \cdot v
+\end{aligned}
+$$
+est continue.
+
+\section*{Préliminaires}
+On note $K = \mathrm{SO}(n, \R)$ et 
+$$
+A_{+}=\left\{\begin{pmatrix} t_1 & & 0 \\ & \ddots & \\ 0 & & t_{N}\end{pmatrix}, ~t_{1} \geq \ldots \geq t_{n}>0,~\prod_{i=1}^{n} t_{i}=1\right\}.
+$$
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item Montrer que pour tout $g \in G_n$, il existe $k_1, k_2 \in K$ et $a \in A_+$ tels que $g = k_1 a k_2$.
+\end{enumerate}
+Pour tous $1 \leq i,j \leq n$ on note $E_{ij} \in \mathrm{Mat}_{n \times n}(\R)$ la matrice dont les coefficients sont nuls sauf le coefficient en place $(i,j)$ qui vaut $1$, et
+$$
+\begin{aligned}
+U_{ij} &= \{\Id + \tau E_{ij},~\tau \in \R\}, \\
+A_{ij} &= \{\Id + (t-1)E_{ii} + (t^{-1} - 1) E_{jj},~t > 0 \}, \\
+S_{ij} &= \{\Id + (a-1)E_{ii} + b E_{ij} + c E_{ji} + (d-1)E_{jj},~ad-bc = 1\}.
+\end{aligned}
+$$
+\begin{enumerate}[label=\textbf{\arabic*.}, resume]
+\item Montrer que le sous-groupe $S_{ij}$ de $G_n$ est isomorphe à $G_2$.
+\item Montrer que $G_n$ est engendré par les sous-groupes $A_{ij}$ et $U_{ij}$ avec $1 \leq i,j \leq n$ et $i \neq j$.
+\end{enumerate}
+
+\section*{Vecteurs $G_2$-invariants}
+Pour tout $t > 0$ et $\tau \in \R$ on note
+$$
+a_t = \begin{pmatrix} t & 0 \\ 0 & t^{-1} \end{pmatrix}, \quad u_\tau = \begin{pmatrix} 1 & \tau \\ 0 & 1 \end{pmatrix}, \quad s_\tau = \begin{pmatrix} 1 & 0 \\ \tau & 1 \end{pmatrix}.
+$$
+Soit $(\H, \rho)$ une représentation unitaire et fortement continue de $G_2$. Pour tout $v \in \H$, on note $G_v = \{g \in G_2,~\rho(g)v = v\}$.
+\begin{enumerate}[label=\textbf{\arabic*.}, resume]
+\item Montrer que $G_v$ est un sous-groupe fermé de $G$ et que pour tout $v \in \H$,
+$$
+g \in G_v \iff \langle \rho(g)v, v \rangle = \|v\|^2.
+$$
+\item Soit $g \in G_2$ tel qu'il existe des suites $(g_m)$ dans $G$ et $(s_m), (s_m')$ dans $G_v$ avec 
+$$
+\lim_m g_m = g, \quad \lim_m s_m g_m s_m' = 1.
+$$
+Montrer que $g \in G_v$.
+\end{enumerate}
+Pour $g \in G_2$, on dira que $v \in \H$ est $g$-invariant si $\rho(g)v = v$.
+\begin{enumerate}[label=\textbf{\arabic*.}, resume]
+\item Soit $v \in \H$ et $t \neq 1$. Montrer que si $v$ est $a_t$-invariant, alors pour tout $\tau \in \R$, $v$ est $u_\tau$-invariant et $s_\tau$-invariant.
+\item Soit $v \in \H$ et $\tau \neq 0$. Montrer que si $v$ est $u_\tau$-invariant ou $s_\tau$-invariant, alors pour tout $t > 0$, $v$ est $a_t$-invariant.
+\item En déduire que si $v \in \H$ est invariant par $a_t$ pour un $t \neq 1$ (ou par $u_\tau$, ou par $s_\tau$, pour $\tau \neq 0$), alors $G_v = G$.
+\end{enumerate}
+
+
+
+
+
+\section*{Théorème de Howe--Moore}
+Soit $\rho : G_n \to \H$ une représentation unitaire fortement continue telle que
+$$
+\{v \in \H,~ \forall g \in G_n,~\rho(g)v = v \} = \{0\}.
+$$
+Le but est de montrer que pour tous $u,v \in \H$,
+$$
+\lim_{\|g\|\to \infty} \langle \rho(g) u, v \rangle = 0.
+$$
+Pour cela on raisonne par l'absurde et on suppose qu'il existe $\varepsilon > 0$, $v,w \in \H$ et une suite $(g_m)$ de $G_n$ tels que $\|g_m\| \to \infty$ et
+$$
+|\langle \rho(g_m)v, w \rangle|>\varepsilon, \quad k \in \N.
+$$
+Pour tout $m \in \N$, on se donne $k_m, k'_m \in K$ et $a_m \in A_+$ tels que $g_m = k_m a_m k'_m.$ \\
+
+
+On dit qu'une suite $(v_m)$ de $\H$ converge faiblement vers $v \in \H$, ce qu'on notera $v_m \wto v$, si pour tout $w \in \H$ on a quand $m \to \infty$,
+$$
+\langle v_m, w \rangle \to \langle v, w \rangle.
+$$
+\begin{enumerate}[label=\textbf{\arabic*.}, resume]
+\item Montrer que toute suite bornée de $\H$ admet une sous-suite qui converge faiblement.
+\item Montrer que quitte à extraire, on peut supposer qu'il existe $v_0 \in \H$ et $k, k' \in K$ tels que, quand $m \to \infty,$
+\begin{enumerate}[label=(\roman*)]
+\item $k_m \to k$ et $k'_m \to k'$,
+\item $\rho(a_mk')v \wto v_0$,
+\item $\rho(g_m)v \wto \rho(k) v_0.$
+\end{enumerate}
+\item Montrer qu'il existe $k \in \{1, \dots, n-1\}$ tel que pour tous $1 \leq i \leq k < j \leq n$, on a 
+$$
+\rho(g)v_0 = v_0, \quad g \in U_{ij}.
+$$
+\textit{Indication : on pourra montrer l'existence d'un $k \in \{1, \dots, n-1\}$ tel que $\lim_m t_{m}^{(k)} / t_m^{(k+1)} = \infty$ où $t_m^{(j)}$ désigne le coefficient en place $(j,j)$ de la matrice $a_m$.}
+\item Conclure.
+\end{enumerate}
+
+
+\section*{Application au mélange}
+Pour tout borélien $A \subset G_n$, on note
+$$
+\nu(A)=\mathrm{Leb}\left(\left\{x \in \mathrm{Mat}_{n \times n}(\R),~ 1 \leq \operatorname{det} (x) \leq 2,~\det(x)^{-1/n} x \in A\right\}\right),
+$$
+où $\Leb$ désigne la mesure de Lebesgue sur l'espace $\mathrm{Mat}_{n \times n}(\R) \simeq \R^{n^2}$ des matrices $n \times n$. On note
+$$
+R_g(x) = xg^{-1}, \quad L_g(x) = gx, \quad g,x \in G_n.
+$$
+\begin{enumerate}[label=\textbf{\arabic*.}, resume]
+\item Montrer que $\nu$ définit une mesure borélienne sur $G_n$ telle que $(R_g)_* \nu = (L_g)_* \nu = \nu.$
+\end{enumerate}
+Soit $\Gamma \subset G_n$ un sous-groupe discret. La mesure $\nu$ étant $G_n$-invariante, elle induit une mesure $\mu$ sur $X = \Gamma \backslash G_n.$ On suppose que $\Gamma$ est un réseau, c'est-à-dire que $\mu(\Gamma \backslash G_n) < +\infty$. 
+\begin{enumerate}[label=\textbf{\arabic*.}, resume]
+\item Montrer que pour tout $g \in G_n$ tel que $\displaystyle{\lim_{k \to +\infty} \|g^k\| = + \infty}$, on a 
+$$
+\lim_{k \to \infty} \int_X \varphi(x) \psi(xg^k) \dd \mu(x) = \left(\int_X \varphi ~\dd \mu \right)\left(\int_X \psi~ \dd \mu \right), \quad \varphi, \psi \in L^2(X, \mu).
+$$
+\end{enumerate}
+
+
+\end{document} 
+\textit{Indication : on pourra considérer $\H = \{\varphi \in L^2(X, \mu),~\int_X \varphi~ \dd \mu = 0\}$ et la représentation $\rho$ de $G_n$ sur $\H$ définie par 
+$$(\rho(g) \varphi)(x) = \varphi(xg), \quad x \in X, \quad g \in G_n, \quad \varphi \in \H.$$
+}

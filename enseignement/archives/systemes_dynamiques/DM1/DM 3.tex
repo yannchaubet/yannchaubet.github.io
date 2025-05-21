@@ -1,0 +1,547 @@
+\documentclass[french]{article}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{array,epsfig}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsxtra}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{dsfont}
+\usepackage{mathrsfs}
+\usepackage[mathscr]{eucal}
+\usepackage{color}
+\usepackage[all]{xy}
+\usepackage{hyperref}
+%\usepackage[notref,notcite]{showkeys}
+\usepackage{graphicx}
+
+
+
+
+
+
+\renewcommand{\labelenumi}{\textbf{\arabic{enumi}.}}
+\renewcommand{\labelenumii}{(\alph{enumii})}
+\renewcommand{\labelenumiii}{(\roman{enumiii})}
+\renewcommand{\labelenumiv}{$\bullet$}
+
+
+
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{D\'efinition}
+\newtheorem{thm}{Th\'eor\`eme}
+\newtheorem{cor}{Corollaire}
+\newtheorem*{rmk}{Remarque}
+\newtheorem{lem}{Lemme}
+\newtheorem{ex}{Exercice}
+\newtheorem*{soln}{Solution}
+\newtheorem{prop}{Proposition}
+
+
+
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\tuple}[1]{\left(#1\right)}
+\newcommand{\oin}[1]{\left(#1\right)}
+\newcommand{\cin}[1]{\left[#1\right]}
+\newcommand{\olin}[1]{\left(#1\right]}
+\newcommand{\orin}[1]{\left[#1\right)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\sprod}[1]{\left<#1\right>}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\wh}[1]{\widehat{#1}}
+\newcommand{\wt}[1]{\widetilde{#1}}
+
+
+
+
+
+
+
+\newcommand{\indi}{\mathds{1}}
+\newcommand{\emb}{\hookrightarrow}
+\newcommand{\proj}{\twoheadrightarrow}
+\newcommand{\funct}{\rightsquigarrow}
+\newcommand{\del}{\partial}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\Lra}{\Leftrightarrow}
+
+
+
+
+
+\renewcommand{\H}{\mathrm{H}}
+\newcommand{\N}{\mathrm{N}}
+
+
+
+
+
+\renewcommand{\Bbb}{\mathbb{B}}
+\newcommand{\Cbb}{\mathbb{C}}
+\newcommand{\Dbb}{\mathbb{D}}
+\newcommand{\Ebb}{\mathbb{E}}
+\newcommand{\Fbb}{\mathbb{F}}
+\newcommand{\Hbb}{\mathbb{H}}
+\newcommand{\Ibb}{\mathbb{I}}
+\newcommand{\Kbb}{\mathbb{K}}
+\newcommand{\kbb}{\mathbb{K}}
+\newcommand{\Nbb}{\mathbb{N}}
+\newcommand{\Obb}{\mathbb{O}}
+\newcommand{\Pbb}{\mathbb{P}}
+\newcommand{\Qbb}{\mathbb{Q}}
+\newcommand{\Rbb}{\mathbb{R}}
+\newcommand{\Sbb}{\mathbb{S}}
+\newcommand{\Tbb}{\mathbb{T}}
+\newcommand{\Zbb}{\mathbb{Z}}
+
+
+
+
+\newcommand{\Acal}{\mathcal{A}}
+\newcommand{\Bcal}{\mathcal{B}}
+\newcommand{\Ccal}{\mathcal{C}}
+\newcommand{\Dcal}{\mathcal{D}}
+\newcommand{\Ecal}{\mathcal{E}}
+\newcommand{\Fcal}{\mathcal{F}}
+\newcommand{\Gcal}{\mathcal{G}}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\Jcal}{\mathcal{J}}
+\newcommand{\Lcal}{\mathcal{L}}
+\newcommand{\Mcal}{\mathcal{M}}
+\newcommand{\Pcal}{\mathcal{P}}
+\newcommand{\Ocal}{\mathcal{O}}
+\newcommand{\Ucal}{\mathcal{U}}
+\newcommand{\Vcal}{\mathcal{V}}
+\newcommand{\Ncal}{\mathcal{N}}
+
+
+
+
+
+
+
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Homeo}{\operatorname{Homeo}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Var}{\operatorname{Var}}
+\newcommand{\abf}{\mathbf{a}}
+
+
+
+
+
+
+
+
+
+
+\newcommand{\ds}{\displaystyle}	
+
+
+
+
+
+\begin{document}
+	
+	
+\begin{center}
+	{\Large Devoir \`a la maison}\\
+	\textbf{Manh-Linh NGUYEN}\\ Pour le  10 decembre 2019
+\end{center}
+	
+\vspace{0.2 cm}
+\section{\'Echauffement}
+\begin{enumerate}
+    \item \label{Partie1}
+    \begin{enumerate}
+        \item Si $f(q) \ge \frac{1}{2}$, le r\'esultat est \'evident. On suppose donc que $f(q) < \frac{1}{2}$. Pour $x \in [0,1]$, s'il existe $p \in \Nbb_{\ge 1}$ tel que 
+        \begin{equation} \label{eq1}
+            \abs{x - \frac{p}{q}} < \frac{f(p)}{q}
+        \end{equation}
+    alors $|qx - p| < f(q)$, d'o\`u $p < qx + f(q) < q + \frac{1}{2}$, i.e. $p \le q$. Ainsi
+        $$A_q = \bigcup_{p = 1}^q A_{q,p}, \qquad A_{q,p}:=[0,1] \cap \oin{\tfrac{f(q) - p}{q}, \tfrac{f(q) + p}{q}}.$$
+    Pour$p = 1,\ldots,q$, $\ell(A_{q,p}) \le \ell\tuple{\oin{\tfrac{f(q) - p}{q}, \tfrac{f(q) + p}{q}}} = \frac{2f(q)}{q}$. Donc
+        \begin{equation} \label{eq2}
+            \ell(A_q) \le \sum_{p = 1}^q \ell(A_{q,p}) \le \sum_{p=1}^q  = \sum_{p=1}^q \frac{2f(q)}{q} = 2f(q).
+        \end{equation}
+    \item Pour $x \in [0,1]$, \eqref{eq1} est vrai pour une infinit\'e de couples $(p,q)$ ssi pour tout $n \ge 1$, il existe $(p,q)$ avec $q \ge 1$ v\'erifiant \eqref{eq1}, i.e. $x \in A_q$. Il s'agit d'\'etudier la mesure de Lebesgue de l'ensemble $\bigcap_{n \ge 1}\bigcup_{q \ge n}A_q$. Sous l'hypoth\`ese du second point du {\bf Th\'eor\`eme}, la s\'eries $\sum_{n \ge 1} \ell(A_q)$ converge. Par le lemme de Borel-Cantelli
+        $$\ell\tuple{\bigcap_{n \ge 1} \bigcup_{q \ge n}A_q} = 0,$$
+    i.e. pour presque tout $x \in [0,1]$, \eqref{eq1} n'est vraie pour qu'un nombre fini de couples $(p,q)$.
+    \end{enumerate}
+\end{enumerate}
+
+
+\section*{D\'eveloppement en fractions continues}
+\begin{enumerate}
+    \setcounter{enumi}{1}
+    \item \label{Partie2} Pour $m = 1$, on a
+        $$[a_1(x);T^1(x)] = \frac{1}{a(x) + T(x)} = \frac{1}{\floor{1/x} + \set{1/x}} = \frac{1}{1/x} = x.$$
+    Pour $m \ge 2$, on a
+        $$a_m(x) + T^m(x) = a(T^{m-1}(x)) + T^m(x) = \floor{\tfrac{1}{T^{m-1}(x)}} + \set{\tfrac{1}{T^{m-1}(x)}} = \frac{1}{T^{m-1}(x)}.$$
+    Ainsi
+        \begin{align*}
+            [a_1(x),\ldots,a_m(x);T^m(x)] & = \frac{1}{a_1(x) + \dfrac{1}{\ddots + \dfrac{1}{a_{m-1}(x) + \dfrac{1}{a_m(x) + T^m(x)}}}} \\
+            & = \frac{1}{a_1(x) + \dfrac{1}{\ddots + \dfrac{1}{a_{m-1}(x) + T^{m-1}(x)}}} \\
+            & = [a_1(x),\ldots,a_{m-1}(x);T^{m-1}(x)],
+        \end{align*}
+    d'o\`u le r\'esultat.
+    
+    \item \label{Partie3} Le sens \og si \fg{} est clair. On d\'emontre le sens \og seulement si \fg{}. Pour $x \in I$ rationnel, on \'ecrit $x = \tfrac{a}{b}$ avec $(a,b) \in \Nbb_{\ge 1}^2$, $\gcd(a,b) = 1$ et $a < b$ (les cas o\`u $x = 0$ ou $x=1$ sont faciles). \'Ecrivons $b = qa + c$ $(0 \le c < a)$, alors 
+        $$T(x) = \set{\frac{1}{x}} = \set{\frac{qa + c}{a}} = \frac{c}{a}.$$
+    On voit que $T(x) \in \Qbb$ et que le d\'enominateur de $T(x)$ (sous forme r\'eduite) est strictement plus petit que celui de $x$. Ainsi, il existe $n \ge 1$ tel que $T^n(x)$ a d\'enominateur $1$, i.e. $T^n(x) \in \{0,1\}$. Donc $T^{n+1}(x) = 0$.
+    
+    \item \label{Partie4} 
+    \begin{enumerate}
+        \item \label{Partie4a}
+             Quand $n = 0$, c'est clair.  Pour $n \ge 1$
+                \begin{align*}
+                    & p_{n-1}(x)q_n(x) - p_n(x)q_{n-1}(x) \\
+                    = & \  p_{n-1}(x)(a_n(x) q_{n-1}(x) + q_{n-2}(x)) - (a_n(x) p_{n-1}(x) + p_{n-2}(x))q_{n-1}(x) \\
+                    = & \  -(p_{n-2}(x)q_{n-1}(x) - p_{n-1}(x)q_{n-1}(x)),
+                \end{align*}
+            d'o\`u le r\'esultat suit (r\'ecurrence sur $n$).
+            
+        \item \label{Partie4b} Quand $n = 1$, on a
+            $$\frac{p_1(x) + tp_0(x)}{q_1(x) + tq_0(x)} = \frac{1}{a_1(x) + t} = [a_1(x);t].$$
+        Quand $n = 2$, on a
+            \begin{align*}
+                \frac{p_2(x) + tp_1(x)}{q_2(x) + tq_1(x)} & = \frac{a_2(x) + t}{a_1(x)a_2(x) + 1 + a_1(x)t} \\
+                & = \frac{1}{a_1(x) + \dfrac{1}{a_2(x) + t}} \\
+                & = [a_1(x),a_2(x);t].
+            \end{align*}
+        On consid\`ere $n \ge 3$. Si $a_n(x) = 1$ et $t = 0$, par r\'ecurrence
+            \begin{align*}
+                [a_1(x),\ldots,a_{n-1}(x),1;0] & = \frac{1}{a_1(x) + \dfrac{1}{\ddots + \dfrac{1}{a_{n-2}(x) + \dfrac{1}{a_{n-1}(x) + 1}}}} \\
+                & = \cin{a_1(x),\ldots,a_{n-2}(x); \tfrac{1}{a_{n-1}(x) + 1}}\\
+                & = \frac{p_{n-2}(x) + \tfrac{p_{n-3}(x)}{a_{n-1}(x) + 1}}{q_{n-2}(x) + \tfrac{q_{n-3}(x)}{a_{n-1}(x) + 1}} \\
+                & = \frac{a_{n-1}(x)p_{n-2}(x) + p_{n-3}(x) + p_{n-2}(x)}{a_{n-1}(x)q_{n-2}(x) + q_{n-3}(x) + q_{n-2}(x)} \\
+                & = \frac{p_{n-1}(x) + p_{n-2}(x)}{q_{n-1}(x) + q_{n-2}(x)}\\
+                & = \frac{p_{n}(x)}{q_n(x)} & (a_n(x) = 1).
+            \end{align*}
+        Si $a_n(x) > 1$ ou $t > 0$, alors $\tfrac{1}{a_n(x) + t} < 1$. Par r\'ecurrence
+            \begin{align*}
+                [a_1(x),\ldots,a_{n}(x);t] & = \frac{1}{a_1(x) + \dfrac{1}{\ddots + \dfrac{1}{a_{n-1}(x) + \dfrac{1}{a_{n}(x) + t}}}} \\
+                & = \cin{a_1(x),\ldots,a_{n-1}(x); \tfrac{1}{a_{n}(x) + t}}\\
+                & = \frac{p_{n-1}(x) + \tfrac{p_{n-2}(x)}{a_{n}(x) + t}}{q_{n-1}(x) + \tfrac{q_{n-2}(x)}{a_{n}(x) + t}} \\
+                & = \frac{a_{n}(x)p_{n-1}(x) + p_{n-2}(x) + tp_{n-1}(x)}{a_{n}(x)q_{n-1}(x) + q_{n-2}(x) + tq_{n-1}(x)} \\
+                & = \frac{p_{n}(x) + tp_{n-1}(x)}{q_{n}(x) + tq_{n-1}(x)}.
+            \end{align*}
+        D'o\`u le r\'esultat.
+        
+        \item \label{Partie4c} De {\bf\ref{Partie1}.} et (\ref{Partie4b}), on a
+            \begin{align*}
+                \abs{x - \frac{p_n(x)}{q_n(x)}} & = \abs{\frac{p_n(x) + T^n(x)p_{n-1}(x)}{q_n(x) + T^n(x)q_{n-1}(x)} - \frac{p_n(x)}{q_n(x)}} \\
+                & = \frac{T^n(x) \abs{p_{n-1}(x)q_n(x) - p_n(x)q_{n-1}(x)}}{q_n(x)(q_n(x) + T^n(x)q_{n-1}(x))} \\
+                & = \frac{1}{q_n(x)\tuple{\frac{q_n(x)}{T^n(x)} + q_{n-1}(x)}} & (\ref{Partie4a}).
+            \end{align*}
+        Il suffit de montrer que
+            $$q_n(x) + q_{n+1}(x) \ge \frac{q_n(x)}{T^n(x)} + q_{n-1}(x) \ge q_{n+1}(x).$$
+        En effet, comme $a_{n+1}(x) = \floor{\frac{1}{T_n(x)}}$, on a
+            $$a_{n+1}(x) \le \frac{1}{T_n(x)} < a_{n+1}(x) + 1.$$
+        Il suit que
+            $$a_{n+1}(x)q_n(x) + q_{n-1} \le \frac{q_n(x)}{T_n(x)} + q_{n-1}(x) < a_{n+1}(x)q_n(x) + q_n(x) + q_{n-1}(x),$$
+        i.e.
+            $$q_{n+1}(x) \le \frac{q_n(x)}{T_n(x)} + q_{n-1}(x) < q_{n+1}(x) + q_n(x),$$
+        ce que nous voulions.
+    \end{enumerate}
+    
+    \item Les suites $(p_n(x))_{n \ge 1}$ et $(q_n(x))_{n \ge 1}$ sont croissantes et positives. Pour $n \ge 3$, on a
+        $$p_n(x) = a_n(x)p_{n-1}(x) + p_{n-2}(x) \ge p_{n-1}(x) + p_{n-2}(x) \ge 2\sqrt{p_{n-1}(x)p_{n-2}(x)}.$$
+    Il suit que
+        $$p_n(x) \cdots p_3(x) \ge 2\sqrt{p_{n-1}(x)p_{n-2}(x)} \cdots \sqrt{p_{2}(x)p_{1}(x)},$$
+    i.e. $p_n(x)\sqrt{p_{n-1}(x)} \ge 2^{n-2}p_2(x)\sqrt{p_1(x)} \ge 2^{n-2}$. Donc $p_n(x)^2 \ge 2^{n-2}$ et on trouve que $p_n(x) \ge 2^{\frac{n-2}{2}}$. De m\^eme, $q_n(x) \ge 2^{\frac{n-2}{2}}$, donc 
+        \begin{equation} \label{eq3}
+            p_n(x)q_n(x) \ge 2^{n-2}.
+        \end{equation}
+    On consid\`ere deux cas.
+    \begin{enumerate}
+        \item $n$ est pair. De {\bf \ref{Partie2}.}, (\ref{Partie4a}) et (\ref{Partie4b}), on a
+            \begin{align*}
+                \frac{x}{p_n(x)/q_n(x)} & = \frac{q_n(x)(p_n(x) + T^n(x)p_{n-1}(x))}{p_n(x)(q_n(x) + T^n(x)q_{n-1}(x))} \\
+                & = 1 + \frac{T^n(x)(p_{n-1}(x)q_n(x) - p_n(x)q_{n-1}(x))}{p_n(x)(q_n(x) + T^n(x)q_{n-1}(x))} \\
+                & = 1 + \frac{T^n(x)}{p_n(x)(q_n(x) + T^n(x)q_{n-1}(x))}\\
+                & = 1 + \frac{1}{p_n(x)\tuple{\frac{q_n(x)}{T^n(x)} + q_{n-1}(x)}} > 1.
+            \end{align*}
+        Donc
+            \begin{align*}
+                \abs{\log \frac{x}{p_n(x)/q_n(x)}} & = \log\tuple{1 + \frac{1}{p_n(x)\tuple{\frac{q_n(x)}{T^n(x)} + q_{n-1}(x)}}} \\
+                & \le \frac{1}{p_n(x)\tuple{\frac{q_n(x)}{T^n(x)} + q_{n-1}(x)}}\\
+                & \le \frac{1}{p_n(x)q_n(x)} & (T^n(x) \le 1) \\
+                & \le \frac{1}{2^{n-2}} & (\text{d'apr\`es \eqref{eq3}}).
+            \end{align*}
+        
+    \item $n$ est impair. Dans ce cas
+        \begin{align*}
+                \frac{p_n(x)/q_n(x)}{x} & = \frac{p_n(x)(q_n(x) + T^n(x)q_{n-1}(x))}{q_n(x)(p_n(x) + T^n(x)p_{n-1}(x))} \\
+                & = 1 + \frac{T^n(x)(p_{n}(x)q_{n-1}(x) - p_{n-1}(x)q_{n}(x))}{q_n(x)(p_n(x) + T^n(x)p_{n-1}(x))} \\
+                & = 1 + \frac{T^n(x)}{q_n(x)(p_n(x) + T^n(x)p_{n-1}(x))}\\
+                & = 1 + \frac{1}{q_n(x)\tuple{\frac{p_n(x)}{T^n(x)} + p_{n-1}(x)}} > 1,
+            \end{align*}
+        et l'argument est similaire.
+    \end{enumerate}
+\end{enumerate}
+
+
+
+\section*{La mesure de Gauss}
+\begin{enumerate}
+    \setcounter{enumi}{5}
+    \item \label{Partie6}
+        On \'ecrit $(0,1] = \bigsqcup_{n = 1}^\infty \olin{\frac{1}{n+1},\frac{1}{n}}$. Pour $n \in \Nbb_{\ge 1}$ et $x \in \olin{\frac{1}{n+1},\frac{1}{n}}$, on a $n \le \frac{1}{x} < n+1$, d'o\`u 
+            $$T(x) = \set{\frac{1}{x}} = \frac{1}{x} - \floor{\frac{1}{x}} = \frac{1}{x} - n.$$
+        Ainsi, pour toute fonction continue $f:I \to \Rbb_{\ge 0}$, on a
+            \begin{align*}
+                & \int_I f d(T_\ast \mu)\\
+                = & \ 
+                \int_{I} f \circ T \,d\mu \\
+                = & \ \frac{1}{\log 2}\int_0^1 \frac{f(T(x))\,dx}{1 + x} \\
+                = & \ \frac{1}{\log 2}\sum_{n = 1}^\infty \int_{\frac{1}{n+1}}^{\frac{1}{n}} \frac{f\tuple{\frac{1}{x} - n}dx}{1 + x} & \text{(convergence monotone)}\\
+                = & \ \frac{1}{\log 2}\sum_{n = 1}^\infty \int_1^0 \frac{f(y)}{1 + \frac{1}{y+n}} \cdot \tuple{-\frac{dy}{(y+n)^2}} & (y = \frac{1}{x} - n) \\
+                = & \ \frac{1}{\log 2}\sum_{n = 1}^\infty \int_0^1 \frac{f(y)dy}{(y+n)(y+n+1)} \\
+                = & \ \frac{1}{\log 2}\sum_{n=1}^\infty \int_0^1 \tuple{\frac{1}{y+n} - \frac{1}{y+n+1}}f(y)dy \\
+                = & \ \frac{1}{\log 2}\int_0^1 \frac{f(y)dy}{y+1} & \text{(convergence monotone)}\\
+                = & \ \int_I f\, d\mu.
+            \end{align*}
+        Donc $T_\ast \mu = \mu$.
+        
+    \item \label{Partie7}
+        \begin{enumerate}
+            \item \label{Partie7a} Soit $t \in [0,1)$ et $x = \psi_{a_1,\ldots,a_m}(t) = [a_1,\ldots,a_m;t]$. On va montrer que $a_j(x) = a_j$ pour tout $j = 1,\ldots,m$ par r\'ecurrence sur $m$ (d'o\`u on a $x \in I_{a_1,\ldots,a_m}$). Quand $m = 1$, on a $x = \frac{1}{a_1 + t}$, donc $\frac{1}{a_1 + 1} < x \le \frac{1}{a_1}$, d'o\`u $a_1 \le \frac{1}{x} < a_1 + 1$. Mais alors $a_1(x) = a(x) = \cin{\frac{1}{x}} = a_1$. \\
+            On consid\`ere $m \ge 2$. De {\bf\ref{Partie2}.}, on sait que
+                $$x = [a_1(x),a_2(x),\ldots,a_m(x);T^m(x)] = \frac{1}{a_1(x) + [a_2(x),\ldots,a_m(x);t]}.$$
+            Il suit que 
+                \begin{equation} \label{eq4}
+                    a_1 + [a_2,\ldots,a_m;t] = \frac{1}{x} = a_1(x) + [a_2(x),\ldots,a_m(x);T^m(x)].
+                \end{equation}
+            Si $m = 2$ et $t = 0$, alors $x = \frac{1}{a_1 + \frac{1}{a_2}} = [a_1;\frac{1}{a_2}]$. Il suit du cas o\`u $m=1$ que $a_1(x) = a_1$. Si $m \ge 3$ o\`u $t > 0$, on aura
+                $$a_2 + \frac{1}{a_3 + \dfrac{1}{ \ddots + \dfrac{1}{a_m + t}}} > 1,$$
+            donc $0 \le [a_2,\ldots,a_m;t] < 1$. En particulier $x \notin \Zbb$. De \eqref{eq4}, $[a_2(x),\ldots,a_m(x);T^m(x)] \notin \Zbb$, donc $[a_2(x),\ldots,a_m(x);T^m(x)] < 1$. Il suit que $a_1 = a_1(x)$. Dans tous cas, on a $a_1(x) = a_1$ et puis $[a_2,\ldots,a_m;t] = [a_2(x),\ldots,a_m(x);T^m(x)]$. Par l'hypoth\`ese de r\'ecurrence, $a_j(x) = a_j$ pour tout $2 \le j \le m$. \\
+            Reciproquement, pour tout $x \in I_{a_1,ldots,a_m}$, on a $a_j(x) = a_j$ pour $1 \le j \le m$. De {\bf \ref{Partie2}.}
+                $$x = [a_1,\ldots,a_m;T^m(x)] = \psi_{a_1,\ldots,a_m}(T^m(x)).$$
+                
+            \item \label{Partie7b}
+                Soit $x = \psi_{a_1,\ldots,a_m}(t)$. Il suit du partie pr\'ec\'edent que $x \in I_{a_1,\ldots,a_m}$, i.e. $a_j(x) = a_j$ pour $j=1,\ldots,m$. Par r\'ecurrence, on a $p_j(x) = p_j$ et $q_j(x) = q_j$ pour tout $j = 1,\ldots,m$. En outre, de (\ref{Partie4b}), on a
+                    $$\psi_{a_1,\ldots,a_m}(t) = [a_1(x),\ldots,a_m(x);t] = \frac{p_m(x) + tp_{m-1}(x)}{q_m(x) + tq_{m-1}(x)} = \frac{p_m + tp_{m-1}}{q_m + tq_{m-1}}.$$
+            \item \label{Partie7c}
+                Il suit de (\ref{Partie7b}) que la fonction $\psi_{a_1,\ldots,a_m}$ est continue est monotone. En particulier $I_{a_1,\ldots,a_m} = \psi_{a_1,\ldots,a_m}([0,1))$ est un intervalle dont les extr\'emit\'es sont $\frac{p_m + p_{m-1}}{q_m + q_{m_1}}$ et $\frac{p_m}{q_m}$. Ainsi
+                    $$\ell(I_{a_1,\ldots,a_m}) = \abs{\frac{p_m + p_{m-1}}{q_m + q_{m-1}} - \frac{p_m}{q_m}} = \frac{\abs{p_{m-1}q_m - p_m q_{m-1}}}{q_m(q_m + q_{m-1})} = \frac{1}{q_m(q_m + q_{m-1})}$$
+                (en effet, pour n'importe quel $x \in I_{a_1,\ldots,a_m}$, on a $p_{m-1}q_m - p_mq_{m-1} = p_{m-1}(x)q_m(x) - p_m(x)q_{m-1}(x) = (-1)^m$ par (\ref{Partie4b})).
+                
+            \item \label{Partie7d} On a vu dans (\ref{Partie7c}) que les $I_{a_1,\ldots,a_m}$ sont des intervalles, donc un sens est trivial. Pour le sens reciproque, il faut montrer que les bor\'eliens sont dans la tribu $\Fcal$ engendr\'ee par les intervalles de cette forme (et $I$). On divise la preuve en plusieurs \'etapes.
+            \begin{enumerate}
+                \item On a $$\forall n \in \Nbb_{n \ge 1}, \qquad I_n = \psi_n([0,1)) = \set{\tfrac{1}{n+t} | t \in [0,1)} = \olin{\tfrac{1}{n+1},\tfrac{1}{n}}.$$
+                Ainsi les intervalles $\olin{\tfrac{1}{n+1},\tfrac{1}{n}}$ sont $\Fcal$-mesurables. De plus, pour tout $n \in \Nbb_{n \ge 1}$
+                    $$\olin{0,\tfrac{1}{n}} = \bigcup_{k \ge n} \olin{\tfrac{1}{k+1},\tfrac{1}{k}} \in \Fcal.$$
+                    
+                \item Pour tous $n, k \in \Nbb_{n \ge 1}$, on a
+                    $$I_{n,k} = \set{\tfrac{1}{n + \frac{1}{k+t}} | t \in [0,1)} = \orin{\tfrac{k}{nk+1}, \tfrac{k+1}{n(k+1)+1}}.$$
+                Donc, puor tout $n \in \Nbb_{n \ge 1}$
+                    $$\Fcal \owns \bigcup_{k \ge 1}  \orin{\tfrac{k}{nk+1}, \tfrac{k+1}{n(k+1)+1}} = \orin{\tfrac{1}{n+1},\tfrac{1}{n}}.$$
+                Ainsi
+                    $$\oin{0,\tfrac{1}{n}} = \bigcup_{k \ge n} \orin{\tfrac{1}{k+1},\tfrac{1}{k}} \in \Fcal.$$
+                En particulier, le singletons $\set{\tfrac{1}{n}}$, $n \in \Nbb_{\ge 1}$ sont $\Fcal$-mesurables.
+                
+                \item {\it Pour tout $k \in \Nbb_{\ge 1}$, la fonction $\psi_k$ est $\Fcal$-mesurable}. En effet $\psi_k$ est \'evidemment injective d'image $I_k$. De plus, $\psi_k([0,1)) \cap \psi_{k'}([0,1)) = \varnothing$ si $k \neq k'$. 
+                
+                On consid\`ere un intervalle $I_{a_1,\ldots,a_m}$. Par r\'ecurrence triviale, on a $\psi_{a_1,\ldots,a_m} = \psi_{a_1} \circ \cdots \circ \psi_{a_m}$. En particulier 
+                    $$I_{a_1,\ldots,a_m} = \psi_{a_1,\ldots,a_m}([0,1)) \subseteq \psi_{a_1}([0,1)) = I_{a_1}.$$
+                Il suit que $\psi^{-1}_k(I_{a_1,\ldots,a_m}) = \varnothing$ quand $a_1 \neq k$.  Si $a_1 = k$, on aura
+                    $$ \psi^{-1}_{k}(I_{a_1,\ldots,a_m}) = \psi^{-1}_k(\psi_{a_1} \circ \cdots \circ \psi_{a_m})([0,1)) = \begin{cases}
+                       I_{a_2,\ldots,a_m} & \text{si } m \ge 2\\
+                       [0,1) & \text{si } m = 1.
+                    \end{cases}$$
+                Dans tous cas, $\psi^{-1}_k(I_{a_1,\ldots,a_m}) \in \Fcal$ ($[0,1) \in \Fcal$) car $\{1\} \in \Fcal$). La collection $\{A \in \Fcal | \psi_k^{-1}(A) \in \Fcal\}$ est une tribu contenant les intervalles $I_{a_1,\ldots,a_m}$, donc \'egal \`a $\Fcal$.
+                
+                \item Les intervalles $\olin{0,\tfrac{k}{n}}$ et $\oin{0,\tfrac{k}{n}}$  (o\`u $1 \le k \le n$) sont $\Fcal$-mesurables. On le d\'emontre par r\'ecurrence sur $n$. Quand $n = k$ (en pariculier quand $n = 1$), c'est trait\'e. Pour $n \ge 2$ et $k < n$, \'ecrivons
+                    $$n = km + r, \qquad m \ge 1, \qquad 0 \le r < k.$$
+                Si $r = 0$, alors $\olin{0,\tfrac{k}{n}} = \olin{0,\tfrac{1}{m}} \in \Fcal$ (cas (i)) et $\oin{0,\tfrac{k}{n}} = \oin{0,\tfrac{1}{m}} \in \Fcal$  (cas (ii)). On suppose alors que $r > 0$. Sans peine, on voit que
+                    $$\olin{0,\tfrac{k}{n}} = \psi^{-1}_m\tuple{\cin{\tfrac{r}{k},1}} \in \Fcal, \qquad \oin{0,\tfrac{k}{n}} = \psi^{-1}_m\tuple{\olin{\tfrac{r}{k},1}} \in \Fcal$$
+                car $(0,1] \in \Fcal$ et $\oin{0,\tfrac{r}{k}},\olin{0,\tfrac{r}{k}}\in \Fcal$ par l'hypoth\`ese de r\'ecurrence.
+                
+                \item Il suit du cas pr\'ec\'edent que tous les intervalles $(u,v] = (0,v] \setminus (0,u]$ avec $u,v \in \Qbb$ sont $\Fcal$-mesurables. Ils engendrent la tribu bor\'elienne sur $I$, donc $\Fcal$ co\"incide avec cette tribu.
+            \end{enumerate}
+        \end{enumerate}
+        
+    \item \label{Partie8}
+        C'est vrai pour n'importe quel bor\'elien $J$.\\
+        Observons tout d'abord que pour tous $x \in [0,1)$ et $k \in \Nbb_{\ell \ge 1}$
+            $$T(\psi_k(x)) = T\tuple{\tfrac{1}{x + k}} = \set{x + k} = x.$$
+        Il suit que $T^m \circ \psi_{a_1,\ldots,a_m} = \id_{[0,1)}$. Or, par l'injectivit\'e de $\psi_{a_1,\ldots,a_m}$
+            \begin{align*}
+                \allowdisplaybreaks
+                \ell(T^{-m}(J) \cap I_{a_1,\ldots,a_m}) & = \int_{I_{a_1,\ldots,a_m}} \indi_{T^{-m}(J)}\,d\ell \\
+                & = \int_I (\indi_{T^{-m}(J)} \circ \psi_{a_1,\ldots,a_m}) \,d(\psi_{a_1,\ldots,a_m})_\ast \ell \\
+                & = \int_I \indi_{J} \abs{\psi'_{a_1,\ldots,a_m}} \,d\ell \\
+                & = \int_0^1 \indi_{J}(x) \frac{|p_{m-1}q_m - p_mq_{m-1}|}{(q_m + xq_{m-1})^2}\,dx\\
+                & = \int_0^1 \indi_{J}(x) \frac{dx}{(q_m + xq_{m-1})^2}.
+            \end{align*}
+        Pour tout $x \in I$, on a $(q_m + xq_{m-1})^2 \le (q_m + q_{m-1})^2 \le 2q_m(q_m + q_{m-1})$ (car $(q_m)_{m \ge 1}$ est croissante).
+        De m\^eme
+            \begin{align*}
+                (q_m + xq_{m-1})^2 \ge q_m^2 \ge q_m \cdot \frac{q_m + q_{m-1}}{2}.
+            \end{align*}
+        Ainsi, par (\ref{Partie7b})
+            $$\int_0^1  \frac{\indi_{J}(x) dx}{(q_m + xq_{m-1})^2} \ge \frac{1}{2q_m(q_m + q_{m-1})} \int_0^1 \indi_{J}(x)\,dx = \frac{1}{2}\ell(I_{a_1,\ldots,a_m})\ell(J)$$
+        et
+            $$\int_0^1  \frac{\indi_{J}(x)dx}{(q_m + xq_{m-1})^2} \le \frac{2}{q_m(q_m + q_{m-1})} \int_0^1 \indi_{J}(x)\,dx = 2\ell(I_{a_1,\ldots,a_m})\ell(J).$$
+        On conclut que  
+            $$\frac{1}{2}\ell(I_{a_1,\ldots,a_m}) \le \frac{\ell(T^{-m}(J) \cap I_{a_1,\ldots,a_m})}{\ell(J)} \le 2\ell(I_{a_1,\ldots,a_m}).$$
+
+    \item \label{Partie9} Soit $J \subseteq I$ un bor\'elien tel que $T^{-1}(J) = J$. En particulier, pour tout intervalle $I_{a_1,\ldots,a_m}$, on a (de {\bf \ref{Partie8}.})
+        $$\ell(J) \ell( I_{a_1,\ldots,a_m}) \le 2\ell(J \cap I_{a_1,\ldots,a_m}).$$
+    On va montrer que soit $\ell(J) = 0$ soit $\ell(J^c) = 0$ (d'o\`u soit $\mu(J) = 0$ soit $\mu(J) = 1$ car $\mu \ll \ell$). Fixons $\varepsilon > 0$. Par la construction de $\ell$ comme mesure ext\'erieure, il existe un bor\'elien $J' \supseteq J^c$, qui est une r\'eunion disjointe d'intervalles de la forme $I_{a_1,\ldots,a_m}$, tel que $0 \le \ell(J' \setminus J^c) < \varepsilon$. Ainsi, $\ell(J)\ell(J^c) \le \ell(J)\ell(J') \le 2\ell(J \cap J') = 2\ell(J' \setminus J^c) < 2\varepsilon$. C'est vrai pour tout $\varepsilon$, donc $\ell(J)\ell(J^c) = 0$, d'o\`u le r\'esultat.
+\end{enumerate}
+
+
+
+
+\section*{Applications aux approximations diophantiennes}
+\begin{enumerate}
+    \setcounter{enumi}{9}
+    \item \label{Partie10} Montrons par r\'ecurrence sur $m = 1,\ldots,n$ que
+        $$\prod_{k = 1}^m [a_k(x),\ldots,a_n(x)] =  \frac{1}{q_{m-2}(x) + \dfrac{q_{m-1}(x)}{[a_m(x),\ldots,a_n(x)]}}.$$
+    Quand $m = 1$, les deux c\^ot\'es sont \'egales car $q_{-1}(x) = 0$ et $q_0(x) = 1$. Soit $m \ge 2$. Par l'hypoth\`ese de r\'ecurrence, on a
+        \begin{align*}
+            \prod_{k = 1}^m [a_k(x),\ldots,a_n(x)] & = \frac{[a_m(x),\ldots,a_n(x)]}{q_{m-3}(x) + \dfrac{q_{m-2}(x)}{[a_{m-1}(x),\ldots,a_n(x)]}} \\
+            & = \frac{[a_m(x),\ldots,a_n(x)]}{q_{m-3}(x) + (a_{m-1}(x) + [a_m(x),\ldots,a_n(x)])q_{m-2}(x)} \\
+            & = \frac{[a_m(x),\ldots,a_n(x)]}{q_{m-1}(x) + [a_m(x),\ldots,a_n(x)]q_{m-2}(x)}\\
+            & = \frac{1}{q_{m-2}(x) + \dfrac{q_{m-1}(x)}{[a_m(x),\ldots,a_n(x)]}}.
+        \end{align*}
+    D'o\`u l'affirmation. En particulier, quand $n = 1$
+        $$\prod_{k = 1}^n [a_k(x),\ldots,a_n(x)] = \frac{1}{q_{n-2}(x) + a_n(x)q_{n-1}(x)} = \frac{1}{q_n(x)}.$$
+        
+    \item \label{Partie11}
+        Pour tous $k > k' \in \Nbb_{\ge 1}$, on a 
+            $$a_{k} = a \circ T^{k-1} = (a \circ T^{k-k'-1}) \circ T^{k'} = a_{k - k'} \circ T^\ell.$$
+        Donc, de (\ref{Partie4b}), on a
+            $$[a_k(x),\ldots,a_n(x)] = [a_1(T^{k-1}(x)),\ldots,a_{n-k+1}(T^{k-1}(x))] = \frac{p_{n-k+1}(T^{k-1}(x))}{q_{n-k+1}(T^{k-1}(x))}.$$
+        En outre, il suit de (\ref{Partie4c}) que
+            $$|\log T^{k-1}(x) - [a_k(x),\ldots,a_n(x)]| \le \frac{1}{2^{n-k+1}}.$$
+        En sommant par rapport \`a $k = 1,\ldots,n$, on obtient
+            $$\abs{\sum_{k=1}^n \log T^{k-1}(x) - \log\prod_{k=1}^n [a_k(x),\ldots,a_n(x)]} \le \sum_{k=1}^n \frac{1}{2^{n-k+1}}$$
+        i.e. (par {\bf \ref{Partie10}.})
+            $$\abs{\sum_{k=1}^n \log T^{k-1}(x) - \log \frac{1}{q_n(x)}} \le 1 - \frac{1}{2^{n}} < 1.$$
+        Il suit que
+            $$\abs{\frac{1}{n}\log \frac{1}{q_n(x)} - \frac{1}{n}\sum_{k=1}^n \log T^{k-1}(x)} = O\tuple{\frac{1}{n}}, \qquad n \to \infty.$$
+    \item \label{Partie12}
+        Puisque $\mu$ est ergodique pour $T$, il suit du th\'eor\`eme ergodique de Birkhoff et {\bf \ref{Partie11}.} que pour presque tout $x \in I \setminus \Qbb$ ($\mu(\Qbb) = 0$), 
+            \begin{align*}
+                \lim_{n \to \infty}\frac{1}{n}\log\frac{1}{q_n(x)} & = \lim_{n \to \infty}\frac{1}{n}\sum_{k=1}^n \log T^{k-1}(x) = \int_I \log d\mu = \frac{1}{\log 2}\int_0^1 \frac{\log x\, dx}{1+x}.
+            \end{align*}
+        Pour tout $x \in (0,1)$, on a
+            $$\frac{\log x}{1 + x} = \sum_{k = 0}^{\infty}(-1)^k x^k\log x.$$
+        On a, pour tout $k \in \Nbb$
+            $$\int_0^1 x^k \log x\,dx = \left. \frac{x^{k+1}\log x}{k+1} \right|_0^1 - \int_0^1 \frac{x^{k+1}}{k+1}\cdot \frac{dx}{x} = -\int_0^1 \frac{x^k\,dx}{k+1} = -\frac{1}{(k+1)^2}.$$
+        De plus
+            $$\sum_{k = 0}^{\infty}\int_0^1 |x^k \log x|\,dx = \sum_{k = 0}^{\infty} \int_0^1(-x^k \log x)\,dx = \sum_{k=0}^{\infty} \frac{1}{(k+1)^2} < \infty.$$
+        Par convergence domin\'ee, on a
+            \begin{align*}
+                \frac{\log x}{1 + x} & = \sum_{k=0}^{\infty}(-1)^k \cdot \oin{-\frac{1}{(k+1)^2}} \\
+                & = -\sum_{k=1}^{\infty} \frac{(-1)^k}{k^2}\\
+                & = -\sum_{k=1}^{\infty}\frac{1}{k^2} + 2\cdot \sum_{k=1}^{\infty} \frac{1}{(2k)^2}\\
+                & = -\frac{\pi^2}{6} + 2\cdot \frac{1}{4} \cdot \frac{\pi^2}{6}\\
+                & = -\frac{\pi^2}{12}.
+            \end{align*}
+        Donc $\lim\limits_{n \to \infty}\dfrac{1}{n}\log\dfrac{1}{q_n(x)} = -\dfrac{\pi^2}{12 \log 2}$ pour presque tout $x \in I \setminus \Qbb$. Finalement, pourt tel $x$, il suit de (\ref{Partie4c}) que
+            $$\frac{1}{2q_n(x)q_{n+1}(x)} \le \abs{x - \frac{p_n(x)}{q_n(x)}} \le \frac{1}{q_n(x)q_{n+1}(x)}.$$
+        Ainsi
+           \begin{align*}
+                \frac{1}{n}\oin{\log\frac{1}{q_n(x)} + \log\frac{1}{q_{n+1}(x)} - \log 2} & \le \frac{1}{n}\log\abs{x - \frac{p_n(x)}{q_n(x)}} \\
+                & \le  \frac{1}{n}\oin{\log\frac{1}{q_n(x)} + \log\frac{1}{q_{n+1}(x)}}.
+           \end{align*}
+        Il suit que $\dfrac{1}{n}\log\abs{x - \dfrac{p_n(x)}{q_n(x)}} \to -\dfrac{\pi^2}{6\log 2}$ quand $n \to \infty$.
+            
+    \item \label{Partie13}
+        \begin{enumerate}
+            \item \label{Partie13a} Pour tous $x \in I$ et $n,k \in \Nbb_{\ge 1}$, On a \'equivalence
+                $$a_n(x) = k \Leftrightarrow a(T^{n-1}(x)) = k \Leftrightarrow k \le \tfrac{1}{T^{n-1}(x)} < k+1 \Leftrightarrow T^{n-1}(x) \in \olin{\tfrac{1}{k+1},\tfrac{1}{k}}.$$
+            Donc
+                \begin{align*}
+                    \mu\{x \in I : a_n(x) = k \} & = \mu\tuple{T^{n-1}\tuple{\olin{\tfrac{1}{k+1},\tfrac{1}{k}}}} \\
+                    & = \mu\tuple{\olin{\tfrac{1}{k+1},\tfrac{1}{k}}} & (T \text{ est } \mu \text{-invariant})\\
+                    & = \int_{\tfrac{1}{k+1}}^{\tfrac{1}{k}} \frac{dx}{1+x}\\
+                    & = \log(1+x) \Big|^{1/k}_{1/(k+1)}\\
+                    & = \log \tuple{1 + \tfrac{1}{k}} - \log\tuple{1 + \tfrac{1}{k+1}}.
+                \end{align*}
+            Il suit que
+                 $$\mu\{x \in I : a_n(x) \ge k\} = \sum_{\ell = k}^{\infty} \tuple{\log \tuple{1 + \tfrac{1}{\ell}} - \log\tuple{1 + \tfrac{1}{\ell+1}}} = \log\tuple{1 + \tfrac{1}{k}} \le \tfrac{1}{k}.$$
+            Pour une suite $\abf = (a_n)_{n \ge 1}$ de r\'eels strictement positifs, on note
+                $$E_n(\abf):=\{x \in I : a_n(x) > a_n\} = \{x \in I: a_n(x) \ge \floor{a_n} + 1\}$$
+            Alors
+                $$A(\abf)^c = \bigcap_{n \ge 1} \bigcup_{m \ge n} E_m(\abf).$$
+            On a
+                $$\sum_{n \ge 1}\mu(E_n(\abf)) = \sum_{n \ge 1}\frac{1}{\floor{a_n} + 1} < \sum_{n \ge 1}\frac{1}{a_n} < \infty$$
+            Donc $\mu(A(\abf)^c) = 0$ (par le lemme de Borel-Cantelli), i.e. $\mu(A(\abf)) = 1$.
+            
+            \item \label{Partie13b} On a
+                $$A(\abf) = \bigcup_{n \ge 1}\bigcap_{m \ge n}E_m(\abf)^c.$$
+            Il faut donc d\'emontrer que pour tout $n \ge 1$
+                $$\mu\tuple{\bigcap_{m \ge n} E_m(\abf)^c} = 0.$$
+            Commen\c cons par le cas o\`u $n = 1$. Comme $\mu \ll \ell$, il suffira de d\'emontrer que $\ell\tuple{\bigcap_{m \ge 1} E_m(\abf)^c} = 0$. Pour tout $m \in \Nbb_{\ge 1}$, on a
+                \begin{align*}
+                    \bigcap_{k = 1}^m E_k(\abf)^c & = \{x \in I: \forall k = 1,\ldots,m, \ a_k(x) \le \floor{a_k}\} \\
+                    & = \bigsqcup_{b_1 \le \floor{a_1}, \ldots,b_m \le \floor{a_m}} I_{b_1,\ldots,b_m}.
+                \end{align*}
+            Pour tous $m, b_1,\ldots,b_{m+1} \in \Nbb_{\ge 1}$ et $x \in I_{b_1,\ldots,b_m}$, on a \'equivalence
+                $$T^m(x) \in I_{b_m+1} \Leftrightarrow a(T^m(x)) = b_{m+1} \Leftrightarrow a_{m+1}(x) = b_{m+1} \Leftrightarrow x \in I_{b_1,\ldots,b_{m+1}}$$
+            i.e. $T^{-m}(I_{b_{m+1}}) \cap I_{b_1,\ldots,b_m} = I_{b_1,\ldots,b_{m+1}}$. En appliquant {\bf \ref{Partie8}.}, on a
+                $$\ell(I_{b_1,\ldots,b_{m+1}}) \le 2\ell(I_{b_{m+1}})\ell(I_{b_1,\ldots,b_m}) = 2\tuple{\tfrac{1}{b_{m+1}} - \tfrac{1}{b_{m+1} + 1}}\ell(I_{b_1,\ldots,b_m}).$$
+           En sommant, on obtient
+                \begin{align*}
+                   & \sum_{b_1 \le \floor{a_1},\ldots,b_{m+1}\le \floor{a_{m+1}}} \ell(I_{b_1,\ldots,b_{m+1}})\\
+                   \le & \ 2\sum_{b_{m+1}
+                   \le \floor{a_{m+1}}} \tuple{\tfrac{1}{b_{m+1}} - \tfrac{1}{b_{m+1} + 1}}\sum_{b_1 \le \floor{a_1},\ldots,b_{m}\le \floor{a_m}}\ell(I_{b_1,\ldots,b_m}),
+                \end{align*}
+            i.e., pour tout $m \in \Nbb_{\ge 1}$
+                $$\ell\tuple{\bigcap_{k = 1}^{m+1} E_k(\abf)^c} \le \tuple{1 - \tfrac{1}{\floor{a_{m+1}} + 1}} \ell\tuple{\bigcap_{k = 1}^m E_k(\abf)^c} \le \tuple{1 - \tfrac{1}{a_{m+1} + 1}} \ell\tuple{\bigcap_{k = 1}^m E_k(\abf)^c}.$$
+            Donc, pour tout $m \in \Nbb_{\ge 1}$
+                $$\log \ell\tuple{\bigcap_{k = 1}^{m+1} E_k(\abf)^c} \le \log\tuple{1 - \tfrac{1}{a_{m+1} + 1}} + \log \ell\tuple{\bigcap_{k = 1}^m E_k(\abf)^c}.$$
+            Par continuit\'e des mesures, on obtient
+                $$\log\ell\tuple{\bigcap_{m \ge 1} E_m(\abf)^c} \le \sum_{m \ge 1} \log \tuple{1 - \tfrac{1}{a_{m+1} + 1}} + \log \ell(E_1(\abf)^c).$$
+            La s\'erie $\sum_{m \ge 1} \frac{1}{a_m + 1}$ diverge (si elle converge, on aura $\frac{1}{a_m + 1} \to 0$, donc $a_m \to \infty$; en particulier, $\frac{1}{a_m} \le \frac{2}{a_{m} + 1}$ pour $m$ assez grand, qui implique que $\sum_{m \ge 1} \frac{1}{a_m}$ converge, c'est absurde). Il suit que
+                $$\sum_{m \ge 1}\log \tuple{1 - \tfrac{1}{a_{m+1} + 1}} \le -\sum_{m \ge 1}\frac{1}{a_{m+1} + 1} = -\infty,$$
+            En cons\'equence, $\ell\tuple{\bigcap_{m \ge 1} E_m(\abf)^c} = 0$, d'o\`u $\mu\tuple{\bigcap_{m \ge 1} E_m(\abf)^c} = 0$. \\
+            Consid\'erons maintenant $n \ge 1$ quelconque. Soit  $\abf':=(a'_{k})_{k \ge 1}$, o\`u $a'_k = a_{k+n-1}$. Pour tout $x \in I$ et tout $m \ge n$, on a \'equivalence
+                \begin{align*}
+                    x \in E_m(\abf) & \Leftrightarrow a_m(x) > a_m \Leftrightarrow a(T^{m-1}(x)) > a_m \Leftrightarrow a(T^{m-n}(T^{n-1}(x)) > a_m\\
+                    & \Leftrightarrow a_{m-n+1}(T^{n-1}(x)) > a'_{m-n+1} \Leftrightarrow T^{n-1}(x) \in E_{m-n+1}(\abf').
+                \end{align*}
+            Donc $E_m(\abf) = T^{-n+1}(E_{m-n+1}(\abf'))$. Par la $\mu$-invariance de $T$, on a
+                $$\mu\tuple{\bigcap_{m \ge n} E_m(\abf)^c} = \mu\tuple{\bigcap_{m \ge n} E_{m-n+1}(\abf')^c} = \mu\tuple{\bigcap_{m \ge 1} E_{m}(\abf')^c} = 0.$$
+            La derni\`ere \'egalit\'e vient du fait que la s\'erie $\sum_{m \ge 1}\frac{1}{a_m'} = \sum_{m \ge n}\frac{1}{a_m}$ diverge, et qu'on a trait\'e le cas o\`u $n = 1$.
+                
+        \end{enumerate}
+        
+    \item \label{Partie14}
+        \begin{enumerate}
+            \item \label{Partie14a}
+                Pour presque tout $x \in I$, on a $\lim\limits_{n \to \infty} \frac{1}{n}\log q_n(x) = \frac{\pi^2}{12 \log 2} < \log 4$ (Partie {\bf \ref{Partie12}.}), donc il existe $N(x) \in \Nbb_{n \ge 1}$ tel que
+                    $$\forall n \ge N(x), \qquad q_n(x) < 4^n.$$
+                La suite $(qf(q)_{q}$ est d\'ecroissante, donc 
+                    $$\varphi(n) = 4^nf(4^n) \le q_n(x)f(q_n(x))$$
+                pour tout $n \ge N(x)$.
+                
+            \item \label{Partie14b} On a n\'ecessairement $f(q) > 0$ pour tout $q$ (s'il existe $q_0$ tel que $f(q_0) = 0$, comme $(qf(q))_{q}$ est d\'ecroissante, on aura $f(q) = 0$ pour tout $q \ge q_0$, qui contradit le fait que $\sum_q f(q)$ diverge). Montrons que la s\'erie $\sum_n \varphi(n)$ diverge. En effet, la suite $(f(q))_q$ est d\'ecroissante car $f(q+1) \le \frac{qf(q)}{q+1} < f(q)$, donc
+                $$\sum_{q \ge 1} f(q) = \sum_{n \ge 0} \sum_{q = 4^n}^{4^{n+1} - 1} f(q) < \sum_{n \ge 0} 3 \cdot 4^n f(4^{n}) = 3\sum_{n \ge 0}\varphi(n).$$
+            Il suit de {\bf \ref{Partie12}.} que pour presque tout $x$, $a_{n+1}(x) > \frac{1}{\varphi(n)}$ infiniment souvent. Pour tel $x$ et $n$, par (\ref{Partie4c})
+                $$\abs{x - \frac{p_n(x)}{q_n(x)}} \le \frac{1}{q_n(x)q_{n+1}(x)} \le \frac{1}{a_{n+1}(x)q_n(x)^2} < \frac{\varphi(n)}{q_n(x)^2}.$$
+            De (\ref{Partie14a}), on a
+                $$\abs{x - \frac{p_n(x)}{q_n(x)}} < \frac{f(q_n(x))}{q_n(x)}$$
+            infiniment souvent. Mais la suite $(q_n(x))_{n \ge 1}$ est strictement croissante, d'o\`u la preuve de la premi\`ere partie du {\bf Th\'eor\`eme}.
+        \end{enumerate}
+\end{enumerate}
+
+\end{document}
+
+

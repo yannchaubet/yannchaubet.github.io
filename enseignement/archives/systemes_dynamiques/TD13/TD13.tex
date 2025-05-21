@@ -1,0 +1,193 @@
+\documentclass[a4paper,10pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{mathrsfs}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Feuille d'exercices 13}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2021/2022 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+
+\noindent {\large \textbf{Exercice 1.} \textit{Th\'eor\`eme de Furstenberg-Kesten}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \mathscr{F}, \mu)$ un espace de probabilit\'es et $f : X \to X$ une transformation mesurable pr\'eservant $\mu$. Soit $d \in \N_{\geq 1}$ et $A : X \to \mathrm{GL}(d, \R)$. Pour tout $n \geq 1$ et tout $x \in X$ on notera
+$$
+A^n(x) = A(f^{n-1}(x)) \cdots A(f(x)) A(x).
+$$
+On se donne $\| \cdot \|$ une norme sur $\mathrm{GL}(d,\R)$ et on suppose que $\log^+ \left\|A^{\pm 1}\right\| \in L^1(\mu)$ (on a not\'e $\log^+(z) = \max(0, \log(z))$). Montrer que pour $\mu$ presque tout point $x \in X$, les limites
+$$
+\lambda_{+}(x) = \lim_n \frac{1}{n}\log \left \|A^{n}(x)\right\|, \quad \lambda_{-}(x) = \lim_n \frac{1}{n}\log \left \|A^{-n}(x)\right\|^{-1}
+$$
+existent dans $\R \cup \{-\infty\}$, sont ind\'ependantes de la norme $\| \cdot \|$ choisie et que les fonctions $\lambda_+$ et $\lambda_-$ sont invariantes par $f$, que leurs parties positives sont dans $L^1(\mu)$ et que (dans $\R \cup \{-\infty\}$)
+$$
+\int \lambda_+ \dd \mu = \lim_n \frac{1}{n} \int \log \|A^n\| \dd \mu, \quad \int \lambda_- \dd \mu = \lim_n \frac{1}{n} \int \log \left\|A^{-n}\right\|^{-1} \dd \mu.
+$$
+\vspace{0.6cm}
+
+
+
+\noindent {\large \textbf{Exercice 2.} \textit{Formule d'Herman}} \vspace{1.5mm}
+
+\noindent On consid\`ere $X = \R/\Z$ et $\mu$ la mesure de Haar sur $X$. Soit $\alpha \in (\R - \Q)$ et $f = R_\alpha : X \to X$ la rotation associ\'ee. On d\'efinit $A : X \to \mathrm{SL}(2, \R)$ par
+$
+A(x) = A_\sigma R_{2 \pi x},   x \in X,$
+o\`u $\sigma > 0$ et 
+$$
+A_\sigma = \begin{pmatrix} \sigma & 0 \\ 0 & \sigma^{-1} \end{pmatrix}, \quad R_{\theta} = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix}.
+$$
+\begin{enumerate}
+\item Montrer que la fonction $\lambda_+$ associ\'ee \`a $f$ et $A$ (donn\'ee par l'exercice pr\'ec\'edent) est constante $\mu$ presque s\^urement. 
+\end{enumerate}
+Pour tout $z \in \C$ on note
+$
+Q(z) = \begin{pmatrix} \displaystyle{\frac{1+ z^2}{2}} & \displaystyle{\frac{1-z^2}{2i}} \\ \displaystyle{-\frac{1 - z^2}{2i}} & \displaystyle{\frac{1 + z^2}{2}} \end{pmatrix}.
+$
+\begin{enumerate}[resume]
+\item Montrer que pour tout $\theta \in \R$ on a 
+$
+Q\left(\e^{i\theta}\right) = \e^{i\theta} R_\theta.
+$
+\item Montrer que pour un choix de norme $\|\cdot\|$ adapt\'e sur $M_{2}(\C)$, la fonction $z \mapsto \log \|C_n(z)\|$ est sous-harmonique sur $\C$, o\`u
+$$
+C_n(z) = A_\sigma Q\left(\e^{2(n-1)i \pi\alpha}z\right) \cdots A_\sigma Q\left(\e^{2i \pi \alpha}z\right) A_\sigma Q(z).
+$$
+\item En d\'eduire que
+$$
+\lambda_+ \geq \log \frac{\sigma + \sigma^{-1}}{2}.
+$$
+\end{enumerate}
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 3.} \textit{Produits de matrices al\'eatoires}} \vspace{1.5mm}
+
+\noindent Soient $A_1, \dots, A_m \in \mathrm{GL}(d, \R)$ et $p_1, \dots, p_m \in [0,1]$ tels que $p_1 + \dots + p_m = 1$. Soit $(B_n)_{n \in \N}$ une famille de variables al\'eatoires \`a valeurs dans $\mathrm{GL}(d, \R)$, ind\'ependantes et identiquement distribu\'ees telles que la probablit\'e de chaque \'ev\`enement
+$
+\{B_n = A_i\}
+$
+est \'egale \`a $p_i$ pour tout $i \in \{1, \dots, m\}$ et tout $n \in \N$.
+Montrer qu'il existe $\lambda \in \R$ tel que, avec probabilit\'e $1$,
+$$
+\lim_n \frac{1}{n} \log \left\| B_{n-1} \cdots B_0 \right\| = \lambda.
+$$
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 4.} \textit{Th\'eor\`eme d'Osedelets en dimension 2}} \vspace{1.5mm}
+
+\noindent On se place dans les conditions de l'exercice \textbf{1.} et on suppose de plus que $d=2$ et que $A$ prend ses valeurs dans $\mathrm{SL}(2,\R)$. Soit $G \subset X$ l'ensemble de mesure pleine des points $x \in X$ v\'erifiant la conclusion du th\'eor\`eme de Furstenberg-Kesten.
+
+\begin{enumerate}
+
+\item Soit $x \in G$. Montrer que $\lambda_+(x) = - \lambda_-(x) \geq 0$.
+
+\item On suppose que $\lambda_+(x) = 0$. Montrer que pour tout $v \in \R^2$,
+$$
+\lim_n \frac{1}{n} \log \left\|A^n(x)v\right\| = 0.
+$$
+\end{enumerate}
+\noindent On suppose d\'esormais $\lambda_+(x) > 0$.
+\begin{enumerate}[resume]
+\item Montrer pour tout $n \geq 1$, il existe une base orthonorm\'ee $(s_n(x), v_n(x))$ de $\R^2$ tels que
+$$
+\|A^n(x)s_n(x)\| = \|A^n(x)\|^{-1}, \quad \|A^n(x)u_n(x)\| = \|A^n(x)\|.
+$$
+\item Montrer que si $\alpha_n$ est l'angle entre $s_n(x)$ et $s_{n+1}(x)$ on a 
+$$
+\limsup_n \frac{1}{n}\log |\sin \alpha_n| \leq - 2 \lambda_+(x).
+$$
+\item Montrer que $(s_n(x))_n$ est de Cauchy dans $\R P^1$.
+\item Montrer que si la limite $s(x) = \lim_n s_n(x)$ existe, alors
+$$
+\limsup_n \frac{1}{n} \log \|A^n(x)s(x)\| = -\lambda_+(x).
+$$
+\item Montrer que si $v \in \R^2$ n'est pas colin\'eaire \`a $s(x)$ alors
+$$
+\limsup_n \frac{1}{n} \log \|A^n(x)v\| = \lambda_+(x).
+$$
+\item Montrer que $A(x)s(x)$ est colin\'eaire \`a $s(f(x))$.
+\end{enumerate}
+\noindent On suppose maintenant $f$ inversible. 
+\begin{enumerate}[resume]
+\item Montrer le th\'eor\`eme d'Osedelets : pour $\mu$-presque tout point de $X$, on a
+\begin{enumerate}[label=(\roman*)]
+\item Ou bien $\lambda_+(x) = \lambda_-(x) = 0$ auquel cas $\lim_n \frac{1}{n} \|A^n(x)v\| = 0$ pour tout $v \in \R^2$
+\item Ou bien $\lambda_+(x) > 0$ et il existe une d\'ecomposition $\R^2 = E_s(x) \oplus E_u(x)$ telle que
+$$
+\lim _{n \rightarrow+\infty} \frac{1}{n} \log \left\|A^{n}(x) v\right\|=\left\{\begin{array}{ll}{-\lambda_{+}(x)} & {\text { si } v \in E_s(x) \setminus\{0\}} \\ {\lambda_{+}(x)} & {\text { si } v \in \R^{2} \setminus E_s(x)}\end{array}\right.,
+$$
+$$
+\lim _{n \rightarrow-\infty} \frac{1}{n} \log \left\|A^{n}(x) v\right\|=\left\{\begin{array}{ll}{\lambda_{+}(x)} & {\text { si } v \in E_u(x) \setminus\{0\}} \\ {-\lambda_{+}(x)} & {\text { si } v \in \R^{2} \setminus E_u(x)}\end{array}\right..
+$$
+On a de plus $A(x)E_\bullet(x) = E_\bullet(f(x))$, $\bullet = s,u$, et 
+$$
+\lim _{n \rightarrow \pm \infty} \frac{1}{n} \log \left|\sin \angle\left(E_{u}(f^n(x)), E_s(f^n(x))\right)\right|=0.
+$$
+\end{enumerate}
+\item Relaxer l'hypoth\`ese que $A$ est \`a valeurs dans $\mathrm{SL}(2, \R)$.
+\item Montrer que le th\'eor\`eme s'applique dans le cas o\`u $X = \T^2$, $f : X \to X$ est un diff\'eomorphisme pr\'eservant une mesure lisse $\mu$, et $A = \dd f$. 
+\end{enumerate}
+
+\end{document}
+ 
+ 
+ 
+

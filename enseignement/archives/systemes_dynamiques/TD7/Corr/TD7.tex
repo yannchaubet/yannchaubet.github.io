@@ -1,0 +1,527 @@
+\documentclass[a4paper,12pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}{Lemme}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\x}{\mathbf{x}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Corrig\'e 7}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2021/2022 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent {\large \textbf{Exercice 1.} \textit{Normes adapt\'ees}} \vspace{1.5mm} 
+
+On supose que pour des contantes $C > 0$ et $\lambda \in (0, 1)$ on a pour tout $n \geqslant 1$
+$$
+\begin{aligned}
+\left \|\dd f_x v \right\| &\leqslant C\lambda^n \| v \|, \quad &v \in E^s(x), \\
+\left \|\dd f^{-n}_x v \right\| &\leqslant C\lambda^n \| v \|, \quad &v \in E^u(x).
+\end{aligned}
+$$
+%\pause
+On pose pour tout $x \in M$ et tout $v \in E^s(x)$
+$$
+\|v\|_{s,x} = \sum_{k = 0}^N \|\dd (f^k)_x  v\| \mu^k,
+$$
+o\`u $1 < \mu < \lambda^{-1}$ et $N \geqslant 1$.
+Alors
+$$
+\begin{aligned}
+\| (\dd f)_x v\|_{s, f(x)} &= \mu^{-1} \sum_{k=1}^{N+1} \|(\dd f^k)_xv\| \mu^{k} \\
+&= \mu^{-1} \|v\|_{s,x} + \mu^{-1}\left(\mu^N\|(\dd f^{N+1})_xv\| -\|v\|\right).
+\end{aligned}
+$$
+Or 
+$
+\|(\dd f^{N+1})_x v\| \leq C \lambda^{N+1} \| v \|$, donc si $N$ est assez grand de sorte que $\mu^N \lambda^{N+1} C \leqslant 1$, on obtient
+$$
+\| (\dd f)_x v\|_{s, f(x)} \leqslant \mu^{-1} \|v\|_{s,x}, \quad x \in M, \quad v \in E^s(x).
+$$
+%\pause
+On d\'efinit de m\^eme une norme $\|\cdot\|_{u,x}$ sur $E^u(x)$ et on pose
+$$
+\|v\|^{'}_x = \|\pi_s(x)v\|_{s,x} + \|\pi_u(x)v\|_{u,x}, \quad x \in M, \quad v \in T_xM,
+$$
+o\`u $\pi_{s/u}(x)$ est la projection $T_xM \to E^{s/u}(x)$. Puisque $\pi_s(x)$ et $\pi_u(x)$ d\'ependent continument de $x$ (car c'est le cas pour $E^s(x)$ et $E^u(x)$), la norme $\|\cdot\|'$ est continue. On approxime la norme $\|\cdot\|^{'}$ par une norme lisse $\|\cdot\|^{''}$ telle que 
+$$(1- \varepsilon) \|\cdot\|^{''} \leq \| \cdot \|^{'} \leq (1+\varepsilon)\|\cdot\|^{''}.$$
+On a alors, si $x \in M$ et $v \in E^s(x)$, et $\varepsilon > 0$ est assez petit,
+$$\|(\dd f)_xv\|^{''} \leqslant \frac{1}{1-\varepsilon} \|(\dd f)_xv\|^{'} \leqslant \frac{1}{1-\varepsilon} \mu^{-1} \|v\|^{'} \leqslant \underset{\displaystyle{ \tilde\lambda < 1}}{\underbrace{\frac{1 + \varepsilon}{1-\varepsilon}\mu^{-1}}} \|v\|^{''},$$
+ce qui conclut.
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Points p\'eriodiques des diff\'eomorphismes d'Anosov}} \vspace{1.5mm} 
+
+\noindent Soit $M$ une vari\'et\'e compacte connexe
+ et $f : M \to M$ un diff\'eomorphisme d'Anosov. 
+
+\begin{enumerate}
+\item Soit $x$ tel que $f^n(x) = x$ ; on pose $g = f^n$. Alors $A = (\dd g)_x : T_x M \to T_xM$. Supposons par l'absurde qu'il existe $\lambda \in \mathrm{sp}((\dd g)_x)$ avec $|\lambda| = 1$.
+
+
+
+
+Alors on sait qu'il existe $v \in T_xM$ et $C > 0$ tel que $C^{-1} \leqslant \|A^kv\| \leqslant C$ pour tout $k$, o\`u $\| \cdot\|$ est la norme donn\'ee dans la d\'efinition du diff\'eomorphisme d'Anosov.
+
+
+
+
+Alors on a (pour diff\'erentes constantes) aussi $C^{-1} \leqslant \|\pi_s(x)A^k v\| + \|\pi_u(x)A^k v\| \leqslant C$ pour tout $k$. 
+
+
+
+Or $A$ pr\'eserve $E^s(x)$ et $E^u(x)$ donc $\pi_s(x)$ et $\pi_u(x)$ commutent avec $A$ de sorte que si $v_s = \pi_s(x) v \in E^s(x)$ et $v_u =  \pi_u(x) v \in E^u(x)$ on a $\pi_{s/u}(x)A^kv = A^kv_{s/u}$.
+
+
+
+Puisque $v \neq 0$, on a (puisque $A$ est hyperbolique)
+$$\limsup_{|k| \to +\infty}\left(\|A^kv_s\| + \|A^kv_u\|\right) = +\infty,$$
+ce qui est absurde.
+
+\item
+\begin{enumerate}
+\item Il suffit de remplacer $x_k$ et $y_k$ par $f^{n(k)}(x_k)$ et $f^{n(k)}(y_k)$ o\`u 
+$$
+\dd\left(f^{n(k)}(x_k), f^{n(k)}(y_k)\right) \geqslant \frac{1}{2} \sup_{n \in \Z} \dd\left(f^n(x_k), f^n(y_k)\right).
+$$
+
+
+\item C'est imm\'ediat par compacit\'e de $M$.
+\item C'est imm\'ediat par compacit\'e de $M$.
+\item Soient $U_+$ et $U_-$ des cartes autour de $z_+$ et $z_-$. On suppose que $j$ est assez grand de sorte que $f^{\pm n_j^\pm}(z)$ soit contenu dans $U_\pm$.
+
+
+
+
+Alors pour tout $k$ assez grand, $f^{\pm n_j^\pm}(x_k)$ et $f^{\pm n_j^\pm}(y_k)$ sont contenus dans $U_\pm$, et (ici $n_j = n_j^+$ ou $n_j^-$)
+$$
+f^{\pm n_j^\pm}(y_k) - f^{\pm n_j^\pm}(x_k) = \left(\dd f^{\pm n_j^\pm}\right)_{x_k}(y_k-x_k) + o_j(\|x_k - y_k\|).
+$$
+
+%
+Ainsi,
+$$
+\frac{f^{\pm n_j^\pm}(y_k) - f^{\pm n_j^\pm}(x_k)}{\|x_k - y_k\|} = \left(\dd f^{\pm n_j^\pm}\right)_{x_k}\left(\frac{y_k - x_k}{\|y_k - x_k\|}\right) + o_j(1). \quad (*)
+$$
+
+
+
+
+
+On a $C > 0$ telle que pour tout $k$
+$$
+\left\|\frac{f^{\pm n_j^\pm}(y_k) - f^{\pm n_j^\pm}(x_k)}{\|x_k - y_k\|}\right\| \leq \frac{C\dd\left(f^{\pm n_j^\pm}(x_k), f^{\pm n_j^\pm}(y_k)\right)}{C^{-1}\dd(x_k, y_k)} \leq 2C,
+$$
+par (a), puisque pour tous $x',y'$ dans un support de carte, on a $C^{-1}\dd(x',y')\leqslant \|x'-y'\| \leqslant C \dd(x',y')$ pour un certain $C$ (exercice).
+
+
+
+On obtient finalement, en faisant tendre $k$ vers $+\infty$ dans $(*)$,
+$$
+\left\|\left(\dd f^{\pm n_j^\pm}\right)_zv\right\| \leqslant 2C, \quad j \gg 1.
+$$
+
+%
+Ceci est impossible car pour tout $(x,v) \in TM$ avec $v \neq 0$ on a
+$$
+\liminf_{|n| \to +\infty} \left\|(\dd f^n)_xv\right\| = +\infty,
+$$
+puisque $f$ est d'Anosov.
+\end{enumerate}
+\item C'est une application directe de l'\textbf{Exercice 2} du TD 3, qui donne 
+$$
+\limsup_{n} \frac{1}{n} \log(1 + p_n(f)) \leqslant h_\mathrm{top}(f).
+$$
+
+%
+Ceci implique que si $\varepsilon > 0$, on a que pour tout $n > n_0$ assez grand 
+$$
+p_n(f) \leqslant \exp((n+\varepsilon)h_\mathrm{top}(f)).
+$$
+
+%
+Si $C  = \sup_{n \leqslant n_0} p_n(f) \exp\left({-(n+\varepsilon)h_\mathrm{top}(f)}\right)$, on obtient
+$$
+p_n(f) \leqslant C \exp((n+\varepsilon)h_\mathrm{top}(f)), \quad n \geqslant 1.
+$$
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Hyperbolicit\'e et transversalit\'e}} \vspace{1.5mm}
+ 
+\noindent On \'ecrit 
+$$
+T_{(p,p)} \mathrm{Gr}(f) = \left\{\left((\dd f)_pv,~v\right),~v\in T_pM\right\} \subset T_{(p,p)}(M \times M),
+$$
+et 
+$$
+T_{(p,p)}\Delta(M) = \{(v,v), v \in T_pM\}.
+$$
+Ce sont deux sous-espaces vectoriels de $T_{(p,p)}(M\times M)$ de dimension $\dim(M)$. En particulier on a 
+$$
+\begin{aligned}
+\Delta(M) \pitchfork_{(p,p)} \mathrm{Gr}(f) &\iff T_{(p,p)} \mathrm{Gr}(f) \cap T_{(p,p)}\Delta(M) = \{0\} \\
+&\iff \forall v \in T_pM, \quad  \left(\dd f_p - \id\right)v = 0 \implies v = 0 \\
+&\iff 1 \notin \mathrm{sp}(\dd f_p).
+\end{aligned}
+$$
+
+
+
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 4.} \textit{Pistage}} \vspace{1.5mm} 
+
+\noindent Soit $f : \T^2 \to \T^2$ un diff\'eomorphisme d'Anosov.
+
+\begin{enumerate}
+\item Soit $p = (x,y) \in \R^2.$ On \'ecrit 
+$$
+F(p + (k,\ell)) = F(p) + (r_p(k,\ell), s_p(k,\ell)), \quad (k, \ell) \in \Z^2,
+$$
+o\`u $r_p, s_p : \Z^2 \to \Z$.
+
+
+
+
+La fonction $p \mapsto F(p + (k, \ell)) - F(p)$ est continue, et \`a valeurs dans $\Z^2$, donc $r_p(k, \ell)$ et $s_p(k, \ell)$ ne d\'ependent pas de $p$ ; on les note $r(k, \ell)$ et $s(k,\ell)$.
+
+
+
+
+On montre que $r$ et $s$ sont additifs. D'un c\^ot\'e on a
+$$
+F(p + (k, \ell) + (k',\ell')) = F(p) + (r(k) + r(k'), s(\ell) + s(\ell')),
+$$
+
+%
+et de l'autre
+$$
+F(p + (k, \ell) + (k',\ell'))  = F(p + (k + k', \ell + \ell')) = F(p) + (r(k + k'), s(\ell + \ell')),
+$$
+
+%
+de sorte que
+$$
+r(k + k') = r(k) + r(k'), \quad s(\ell + \ell') = s(\ell) + s(\ell'), \quad k,k',\ell,\ell' \in \Z.
+$$
+
+
+
+
+On note alors $A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$ o\`u
+$
+(a,c) = (r,s)(1,0)$ et $ (b,d) = (r,s)(0,1).
+$
+Alors $A$ convient.
+\end{enumerate}
+On note $f_\star = f_A : \T^2 \to \T^2$.
+\begin{enumerate}[resume]
+\item Montrons d'abord que $F$ est un diff\'eomorphisme de $\R^2$. Soit $G : \R^2 \to \R^2$ qui rel\`eve $f^{-1}$. Alors on v\'erifie que $(x,y) \mapsto (G \circ F)(x,y) - (x,y)$ est \`a valeurs dans $\Z^2$, donc constante, disons \'egale \`a $(k, \ell)$. 
+
+
+
+
+Si $\tilde G = G - (k, \ell)$ on a donc $\tilde G \circ F = \Id_{\R^2}$ et donc $F$ est un diff\'eomorphisme d'inverse $\tilde G$.
+
+
+
+
+Notons $F^{-1}(p + (k, \ell)) = F^{-1}(p) + B(k, \ell)$ o\`u $B \in M_2(\Z).$ Alors 
+$$
+p + (k, \ell) = p + AB(k, \ell), \quad (k, \ell) \in \Z^2.
+$$
+
+
+%
+Ceci montre que $A$ est inversible d'inverse $B$ (par densit\'e de $\Q^2$ dans $\R^2$ par exemple). Ainsi $|\mathrm{det}(A)| = 1$.
+
+\item L'homotopie $F_t = tF + (1-t)A$ passe au quotient.
+
+\item On pose $p_n = a_n v + b_n w$ o\`u $Av = \lambda v$ et $A w = \lambda^{-1}$ o\`u $|\lambda| > 1.$
+
+
+
+
+Alors $|\lambda a_n - a_{n+1}| \leqslant r$ pour tout $n \in \Z$, et donc 
+$$
+\begin{aligned}
+\left|a_n - \lambda^{-k}a_{n+k}\right| &\leqslant \left|a_n - \lambda^{-1}a_{n+1} + \dots + \lambda^{-(k-1)}a_{n+k-1} - \lambda^{-k}a_{n+k}\right| \\ 
+&\leqslant r\left(1 + |\lambda|^{-1} + \cdots + |\lambda|^{-(k-1)}\right) \\
+& \leqslant \frac{r|\lambda|}{|\lambda| - 1}.
+\end{aligned}
+$$
+On obtient pour tout $k \in \N$ et tout $n \in \Z$,
+$$
+\left|\lambda^{-n}a_n-\lambda^{-(n+k)}a_{n+k}\right| \leqslant \frac{|\lambda|^{-n+1}r}{|\lambda|-1}, \quad (*)
+$$
+et donc $\lambda^{-n}a_n \to a$ quand $n \to +\infty$ pour un $a \in \R$.
+
+
+
+De m\^eme on a $\lambda^{n} b_{n} \to b$ quand $n \to -\infty$ pour un $b \in \R$.
+
+
+
+
+
+On pose $q = av + bw$. Alors
+$
+A^nq =\lambda^na v + \lambda^{-n}bw.
+$
+
+
+
+Par $(*)$ (en faisant $k \to +\infty$) on a 
+$$|\lambda^na - a_n| \leqslant \frac{|\lambda|r}{|\lambda| - 1}, \quad n \in \Z,$$
+et la m\^eme in\'egalit\'e est vraie pour $|\lambda^{-n}b - b_{n}|$.
+
+
+
+On conclut que $\|A^n q - p_n\| \leq C\displaystyle{ \frac{|\lambda|r}{|\lambda| - 1} = \delta(r)}$ pour tout $n \in \Z.$
+
+
+
+
+L'unicit\'e est claire puisque $\|A^n(q-q')\| \leq 2 \delta$ pour tout $n \in \Z$ implique $y = y'$.
+
+\item Soit $p \in \R^2$. On note $G_p : x \mapsto g(-x) - p$. 
+
+
+
+Alors $\|G_p(x)\| \leqslant \|g\|_\infty + \|p\|$ pour tout $x \in \R^2$.  En particulier on a 
+$$
+G\left(\overline{B}(0, \delta + \|p\|)\right) \subset\overline{B}(0, \delta + \|p\|).
+$$
+
+Le th\'eor\`eme de Brouwer donne alors $z$ tel que $G_p(z) = z$, ce qui \'equivaut \`a $g(-z) - z = p$, i.e. $(\Id + g)(-z) = p.$
+
+\item Soit $p \in \R^2.$ On note $p_n = F^n(p)$. Alors pour tout $n \in \Z$ on a
+$$
+\|Ap_n - p_{n+1}\| = \|AF^n(p) - F^{n+1}(p)\| \leqslant \|F-A\|_{\infty}.
+$$
+
+Puisque $F(p' + (k, \ell)) = F(p') + A(k, \ell)$ pour tout $p'$ et tous $k,\ell$ on a $r = \|F-A\|_\infty < \infty.$ 
+
+
+
+Par la question \textbf{4.} il existe un unique $H(p) \in \R^2$ tel que $\|A^nH(p) - F^n(p)\| \leqslant \delta(r)$ pour tout $n \in \Z.$
+
+
+
+
+Ceci s'\'ecrit aussi $\|A^{n-1}(AH(p)) - F^{n-1}(F(p))\| \leqslant \delta(r)$ pour tout $n \in \Z$ et donc $AH(p) = H(F(p))$ par unicit\'e.
+ 
+ 
+
+
+On v\'erifie ais\'ement que $H : \R^2 \to \R^2$ passe au quotient en une application $h : \T^2 \to \T^2$, qui v\'erifie la propri\'et\'e de semi-conjugaison demand\'ee.
+
+ 
+
+
+Montrons que $H$ est continue. Soit $(p_k)$ une suite qui tend vers $p$. Alors la suite $(H(p_k))$ est born\'ee car $\|H(p) - p\| \leqslant \delta(r)$. Soit $q$ une valeur d'adh\'erence de cette suite.
+ 
+
+ 
+
+
+
+
+
+
+Soit $n \in \Z$ ; on a $\|A^nH(p_k) - F^n(p_k)\| \leq \delta(r)$ et donc en faisant $k \to +\infty$ on obtient $\|A^nq - F^n(p)\| \leq \delta(r)$. 
+ 
+
+
+Ceci implique que $q = H(p)$ par unicit\'e du pistage. Ainsi $H(p)$ est l'unique valeur d'adh\'erence de la suite $(H(p_k))$ et donc $H(p_k) \to H(p).$
+
+ 
+
+
+$H$ est donc continue et $H - \Id$ est born\'ee, on peut donc appliquer la question \textbf{5.} pour obtenir que $H = \Id + (H - \Id)$ est surjective.
+
+\item Soit $A \in M_2(\Z)$ de d\'eterminant $\pm1$. On note $f_A : \T^2 \to \T^2$ l'automorphisme associ\'e. Soit $\varepsilon > 0$ et $f : \T^2 \to \T^2$ tel que $\|f - f_A\|_\infty < \varepsilon$. Alors il existe un relev\'e $F$ de $f$ tel que $\|A - F\|_\infty < \varepsilon$. 
+
+ 
+
+
+Par ce qui pr\'ec\`ede, il existe une semiconjugaison $h : \T^2 \to \T^2$ telle que $h \circ f = f_A \circ h,$ qui v\'erifie de plus que $\|h - \Id\|_\infty < \delta(\varepsilon).$
+
+ 
+
+
+Montrons que $h$ est injective : si $p,p' \in \T^2$ v\'erifient $h(p) = h(p')$ alors $h(f^n(p)) = h(f^n(p'))$ pour tout $n \in \Z$. En particulier 
+$$\dd(f^n(p), f^n(p')) < 2 \delta(\varepsilon), \quad n \in \Z.$$
+
+
+
+
+
+\begin{lem}
+Soit $f : M \to M$ un diff\'eomorphisme d'Anosov. Alors il existe $\delta > 0$ tel que tout diff\'eomorphisme assez proche de $f$ en norme $C^1$ est expansif de constante d'expansivit\'e $\delta$.
+\end{lem} 
+
+En admettant le lemme, on obtient que $p = p'$ si $\delta(\varepsilon) < \delta$, ce qui sera v\'erifi\'e si $\varepsilon > 0$ est assez petit. Ainsi $h$ est injective, et donc continue bijective. Par compacit\'e de $\T^2$, c'est un hom\'eomorphisme.
+
+\begin{proof}[Preuve du lemme]
+On raisonne par l'absurde et on suppose qu'il existe une suite de fonctions $(f_k)$ qui tend vers $f$ dans $C^1(M, M)$, et des points $x_k \neq y_k$ tels que $\dd(f_k^n(x_k), f_k^n(y_k)) < 1 / k$ pour tout $n \in \Z$ et tout $k$.
+
+ 
+
+
+On peut alors adapter la d\'emonstration faite \`a la question \textbf{2.} de l'\textbf{Exercice 2} pour obtenir une contradiction, en \'ecrivant notamment
+$$
+\begin{aligned}
+f_k^{\pm n_j^\pm}(y_k) - f_k^{\pm n_j^\pm}(x_k) &= \int_0^1 \left(\dd f^{\pm n_j^\pm}\right)_{(1-t)x_k + ty_k}(y_k - x_k) \dd t \\
+& \quad \quad \quad \quad  +  \int_0^1 \left(\dd f_k^{\pm n_j^\pm} - \dd f^{\pm n_j^\pm}\right)_{(1-t)x_k + ty_k}(y_k - x_k) \dd t.
+\end{aligned}
+$$
+\end{proof}
+
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 5.} \textit{Gradients de fonctions de Morse}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item On consid\`ere une fonction $f$ d\'efinie au voisinage de $0 \in \R^n$ telle que $\dd f_0 = 0$, et $\varphi = (\varphi^1, \dots, \varphi^n)$  un diff\'eomorphisme local au voisinage de $0$, tel que $\varphi(0) = 0$.
+
+ 
+
+
+On calcule
+$$
+\begin{aligned}
+\partial_k \partial_\ell (f\circ \varphi) &= \sum_{i} \partial_k\left([(\partial_i f) \circ \varphi] \partial_\ell \varphi^i \right) \\
+&= \sum_{i} [(\partial_if) \circ \varphi] \partial _k \partial_\ell \varphi^i + \sum_{j,i} [(\partial_i \partial_j f) \circ \varphi] (\partial_k \varphi^i)(\partial_\ell \varphi^j).
+\end{aligned}
+$$
+
+ 
+
+
+Puisque $\dd f_0 = 0$ on obtient
+$$
+\mathrm{Hess}_{f\circ \varphi}(0) = (\dd \varphi_0)^{\top} \mathrm{Hess}_f(0) (\dd \varphi_0),
+$$
+ce qui conclut.
+\item On remarque qu'une fonction de Morse a un nombre fini de points critiques, car ils sont isol\'es. 
+
+De plus la condition "$\mathrm{Hess}_f(0)$ est non d\'eg\'en\'er\'ee" est ouverte, ce qui conclut.
+
+\item On suppose $\varphi_{\tau}(x) = x$ avec $\tau > 0$. Calculons 
+$$
+\begin{aligned}
+\partial_t f(\varphi_t(x)) &= \dd f_{\varphi_t(x)}(X(\varphi_t(x))) \\
+&= - \dd f_{\varphi_t(x)}(\nabla^g f(\varphi_t(x)))  \\
+&= -g_{\varphi_t(x)}(\nabla^g f(\varphi_t(x)), \nabla^g f(\varphi_t(x))) \leqslant 0.
+\end{aligned}
+$$
+
+ 
+
+
+Puisque $f(\varphi_\tau(x)) = x$ avec $\tau > 0$ on obtient que pour tout $t \in [0, \tau]$, $\nabla^g f(\varphi_t(x)) = 0$. 
+\item C'est la m\^eme d\'emonstration : $f$ d\'ecro\^it strictement le long des lignes de flots de $X$ qui ne sont pas r\'eduites \`a un point. Ainsi si $\nabla_gf(x) \neq 0$, on a que $f(\varphi_t(x)) < f(x) - \varepsilon$ pour tout $t > \delta$ (pour certains $\delta, \varepsilon > 0$) et donc $\varphi_t(x)$ ne peut pas repasser pr\`es de $x$ pour $t > \delta$.
+\item Soit $x \in M$, et $p$ une valeur d'adh\'erence de $(\varphi_t(x))_{t \geqslant 0}.$ Alors de m\^eme que pr\'ec\'edemment, on a $\nabla^g f(p) = 0.$ 
+
+ 
+
+
+Comme $t \mapsto f (\varphi_t(x))$ d\'ecro\^it, on a $f(\varphi_t(x)) \geqslant f(p)$ pour tout $t$. 
+
+ 
+
+
+Par hypoth\`ese, des coordonn\'ees $(x^1, \dots, x^n)$ autour de $p$ telles que 
+$$
+f(x^1, \dots, x^n) = f(p) + \sum_{i=1}^r (x^i)^2 - \sum_{i = r+1}^n (x^i)^2,
+$$
+
+et 
+$$
+-\nabla^g f = 2(-x^1, \dots, -x^r, x^{r+1}, \dots, x^n).
+$$
+
+Ainsi, le fait que $f(\varphi_t(x)) \geqslant p$ pour tout $t$ implique que si $\varphi_t(x)$ est assez proche de $p$, on a n\'ecessairement $\varphi_t(x) \in \{x^{r+1} = \dots = x^{n} = 0\}$, car sinon on aurait $f(\varphi_{t'}(x)) < f(p)$ pour un $t' > t$.
+
+ 
+
+
+Ceci montre que $\varphi_t(x) \to p$ quand $t \to +\infty$. De m\^eme on montre que $\varphi_{-t}(x) \to q$ quand $t \to +\infty$ avec $q \in \mathrm{Crit}(f)$.
+\end{enumerate}
+
+
+\end{document}
+
+\noindent {\large \textbf{Exercice 8.} \textit{Flots hamiltoniens}} \vspace{1.5mm} 
+
+\noindent Soit $H : \R^{2n} \to \R$ une fonction lisse. Le champ hamiltonien $X$ associ\'e \`a $H$ est le champ de vecteurs sur $\R^{2n}$ d\'efini par
+
+$$ X(x, \xi) = J \cdot \nabla H (x,\xi), \quad (x,\xi) \in \R^{2n},$$
+o\`u $J = \begin{pmatrix} 0 & I_n \\ -I_n & 0 \end{pmatrix}$. On suppose qu'il existe une application lisse $A : \R^n \to S_n(\R)$ telle que $A(x)$ est d\'efinie positive pour tout $x$ et
+$$
+H(x,\xi) = \frac{1}{2} \bigl\langle A(x)\xi, \xi \bigr\rangle, \quad (x,\xi) \in \R^{2n}.
+$$
+\vspace{0.6cm}
+
+ 

@@ -1,0 +1,412 @@
+\documentclass[a4paper,12pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{mathrsfs}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Corrig\'e 4}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill \texttt{chaubet@dma.ens.fr}} \\
+{2021/2022 \hfill}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent {\large \textbf{Exercice 1.} \textit{Exposants de Lyapunov pour les syst\`emes lin\'eaires}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item On a 
+$$
+\exp(-|t| \|A\|) \leq \|\exp(tA)\| \leq \exp(|t|\|A\|), \quad t \in \R.
+$$
+En particulier si $x_0 \neq 0$ on a 
+$$
+-\|A\| + \frac{1}{|t|} \log \|x_0\| \leq \frac{1}{t} \log \|\e^{tA}x_0\| \leq \|A\| + \frac{1}{|t|} \log \|x_0\|, \quad t \in \R.
+$$
+Ceci montre que $\lambda(x_0, A)$ est fini. Si $\|\cdot\|'$ est une autre norme sur $\R^n$, alors il existe des constantes $c,C > 0$ telles que
+$$
+\log c + \log \|\e^{tA}x_0\| \leq \log \|\e^{tA}x_0\|' \leq \log C + \log \|\e^{tA}x_0\|, \quad t \in \R,
+$$
+ce qui conclut.
+\item On a 
+$$
+\begin{aligned}
+\lambda(y_0, B) &= \limsup \frac{1}{t} \log \|\e^{tB}y_0\| \\
+&= \limsup \frac{1}{t} \log \|\e^{tP^{-1}AP}y_0 \| \\
+&= \limsup \frac{1}{t} \log \|P^{-1}\e^{tA}Py_0\| \\
+&= \lambda(Py_0, A),
+\end{aligned}
+$$
+par la question 1., puisque $\|P^{-1} \cdot\|$ est une norme sur $\R^n$.
+\end{enumerate}
+
+\begin{enumerate}[resume]
+\item Soit $\lambda \in \R$ ; on suppose que $A$ est un bloc de Jordan pour $\lambda$, de sorte que
+\begin{equation}\label{eq:jordan1}
+A = \begin{pmatrix} \lambda & 1 & & (0) \\  & \ddots & \ddots&  \\ & & \ddots & 1 \\ (0) & & & \lambda \end{pmatrix},
+ \quad  \quad
+\e^{tA} = \exp(\lambda t) 
+\begin{pmatrix}
+1 & t & \cdots &\displaystyle{ \frac{t^{m-1}}{(m-1)!}} \\
+& \ddots & & \vdots \\
+& & \ddots & t \\
+(0) & & & 1
+\end{pmatrix}.
+\end{equation}
+Soit $x_0 = \begin{pmatrix} \alpha_1 \\ \vdots \\ \alpha_n \end{pmatrix} \in \R^n \setminus 0$. On note $\e^{tA}x_0 = \begin{pmatrix} \alpha_1(t) \\ \vdots \\ \alpha_n(t) \end{pmatrix}$ ; on a 
+$$
+\alpha_j(t) = \e^{\lambda t}\sum_{k=j}^n \frac{t^{k-j}}{(k-j)!}\alpha_k, \quad j = 1, \dots, n, \quad t \in \R.
+$$
+Soit $i = \max\{j \in \{1, \dots, n\}, ~\alpha_j \neq 0\}.$ Alors $\alpha_i(t) = \e^{\lambda t} \alpha_i$ pour tout $t$, et donc
+$$
+\log  \|\e^{tA}x_0\|_\infty \geq \lambda t + \log |\alpha_i|.
+$$
+On a aussi, pour un certain polyn\^ome $P$,
+$$
+\log \|\e^{tA}x_0\|_\infty \leq \lambda t + \log |P(t)| + \log \|x_0\|_\infty, \quad t \in \R.
+$$
+On obtient bien
+$$
+\lim_{|t|\to \infty} \frac{1}{t} \log \|\e^{tA}x_0\| = \lambda.
+$$
+On suppose maintenant que $\lambda = r + i \nu$ avec $r, \nu \in \R$, et que $A$ est un bloc de Jordan pour $\lambda$, i.e. $n=2m$ est pair et
+\begin{equation}\label{eq:jordan2}
+A = \begin{pmatrix} D & I_2 & & (0) \\  & \ddots & \ddots&  \\ & & \ddots & I_2 \\ (0) & & & D \end{pmatrix}, \quad D = \begin{pmatrix} r & -\nu \\ \nu & r \end{pmatrix}.
+\end{equation}
+Soit $x_0 = \begin{pmatrix} \alpha_1 \\ \beta_1 \\ \vdots \\ \alpha_m \\ \beta_m \end{pmatrix}  \in \R^n \setminus 0$. Alors en notant $\alpha_j(t)$ et $\beta_j(t)$ les coordonn\'ees $2j-1$ et $2j$ de $\e^{tA}x_0$ ($j = 1, \dots, m$), on a, pour tout $t \in \R$,
+$$
+\begin{aligned}
+\alpha_j(t) = \e^{rt}\sum_{k=j}^m (\alpha_k \cos(\nu t) - \beta_k \sin(\nu t)) \frac{t^{k-j}}{(k-j)!}, \\
+\beta_j(t) = \e^{rt}\sum_{k=j}^m (\alpha_k \sin(\nu t) + \beta_k \cos(\nu t)) \frac{t^{k-j}}{(k-j)!}.
+\end{aligned}
+$$
+Soit $i = \max\{j \in \{1, \dots, m\},~(\alpha_j, \beta_j) \neq (0, 0)\}.$ Alors
+$$
+\alpha_i(t) = \e^{rt}(\alpha_i \cos(\nu t) - \beta_i \sin(\nu t)), \quad \beta_i(t) = \e^{rt}(\alpha_i \sin(\nu t) + \beta_i \cos(\nu t)), \quad t \in \R.
+$$
+En particulier $\|(\alpha_i(t), \beta_i(t))\|_2= \e^{rt} \|(\alpha_i, \beta_i)\|_2$, ce qui donne 
+$$
+\log\|e^{tA}x_0\|_2 \geq rt + \log \|(\alpha_i, \beta_i)\|_2, \quad t \in \R.
+$$
+On a par ailleurs, pour un certain polyn\^ome $P$,
+$$
+\log\|\e^{tA}x_0\|_2 \leq rt + \log |P(t)|, \quad t \in \R.
+$$
+Cela donne encore une fois 
+$$
+\lim_{|t|\to \infty} \frac{1}{t} \log \|\e^{tA}x_0\| = r.
+$$
+Dans le cas o\`u $A$ n'est pas un bloc de Jordan, le th\'eor\`eme de d\'ecomposition de Jordan et la question 2. permettent de se ramener aux cas pr\'ec\'edents.
+
+\item Soit $v \in V_j \setminus V_{j+1}$. Alors $v$ est de la forme $v = v' + w$ avec $v' \in L_j \setminus 0$ et $w \in V_{j+1}.$ On sait par la question pr\'ec\'edente que
+$$
+\lim_{t\to+\infty} \frac{1}{t} \log \|\e^{tA}v'\| = r_j.
+$$
+En particulier, pour tout $r < r_j$, il existe $C>0$ telle que
+$$
+\|\e^{tA}v'\|\geq C\e^{rt}, \quad t \in \R.
+$$
+On fixe deux r\'eels $r,r'$ tels que $r_{j+1} < r' < r < r_j$. Alors il existe $C'>0$ telle que $\|\e^{tA}w\|\leq C' \e^{r't}$ pour tout $t\geq 0$. En particulier on a $\|\e^{tA}w\|/\|\e^{tA}v'\|\to 0$ quand $t \to + \infty$. Ceci donne alors
+$$
+\frac{1}{t}\log\|\e^{tA}v\| = \frac{1}{t} \log \|\e^{tA}v' + \e^{tA}w\|\to r_j, \quad t \to +\infty.
+$$
+La r\'eciproque est alors imm\'ediate puisque $\R^n = \bigoplus_j L_j.$ 
+
+On proc\`ede identiquement pour la seconde \'equivalence.
+
+\item Soit $M \in U_{a,b}$ et
+$$
+d_M(z) = \frac{\chi_M'(z)}{\chi_M(z)}, \quad z \in \C \setminus \mathrm{sp}(M).
+$$
+o\`u $\chi_M$ est le polyn\^ome caract\'eristique de $M$. Alors $d$ est m\'eromorphe sur $\C$ et a un p\^ole simple en $\lambda$ pour tout $\lambda \in \mathrm{sp}(M)$, avec r\'esidu \'egal \`a $\dim_\C C_{\lambda,\C}$, o\`u 
+$$
+C_{\lambda, \C} = \{u \in \C^n,~\exists N \in \N,~(A-\lambda)^Nu = 0\}.
+$$
+En particulier, puisque pour tout $\lambda \notin \R$ on a $\dim_\C C_{\lambda, \C} = \frac{1}{2} \dim_\R C_{\lambda, \bar \lambda},$ on obtient
+$$
+\dim L(a, b, M) = \int_{\mathscr{C}_{a,b}} d_M(z) \dd z,
+$$
+o\`u $\mathscr{C}_{a,b}$ est un chemin lisse ferm\'e entourant dans le sens direct les valeurs propres de $M$ qui ont une partie r\'eelle dans $]a,b[$, et qui ne rencontre pas le spectre de $M$. On choisit aussi deux autres lacets $\mathscr{C}_{<a}$ et $\mathscr{C}_{>b}$ qui entourent dans le sens direct les valeurs propres de $M$ ayant une partie r\'eelle respectivement dans $]-\infty, a[$ et dans $]b, +\infty[$, et n'intersectant pas le spectre de $M$. 
+
+En particulier on a $|\chi_M|>\varepsilon$ sur $\mathscr{C}_{<a} \cup \mathscr{C}_{a,b} \cup \mathscr{C}_{>b} $ pour un $\varepsilon > 0$. Par continuit\'e de $M' \mapsto \chi_M'$, on sait qu'il existe un voisinage connexe $U$ de $M$ tel que pour toute matrice $M' \in U$, on a $|\chi_{M'}|>\varepsilon/2$ sur $\mathscr{C}_{a,b}$. 
+
+En particulier, les applications
+$$
+M' \mapsto \int_{\mathscr{C}} d_{M'}(z) \dd z, \quad \mathscr{C} = \mathscr{C}_{<a}, ~\mathscr{C}_{a,b},~\mathscr{C}_{>b},
+$$
+sont bien d\'efinies et continues $U \to \C$. Comme elles sont \`a valeurs dans $\Z$, elles sont constantes. En particulier on a
+$$
+n = \int_{\mathscr{C}_{<a}} d_{M'}(z) \dd z + \int_{\mathscr{C}_{a,b}} d_{M'}(z) \dd z + \int_{\mathscr{C}_{>b}} d_{M'}(z) \dd z,
+$$
+puisque cette \'egalit\'e est vraie pour $M' = M$ (par le lemme des noyaux). Ceci implique que toutes les valeurs propres de $M'$ sont contenues dans les zones d\'elimit\'ees par $\mathscr{C}_{<a}$, $\mathscr{C}_{a,b}$ et $\mathscr{C}_{>b}$, ce qui conclut.
+
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 2.} \textit{Stabilit\'e de $0$ pour les syst\`emes lin\'eaires}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item \underline{(i) $\implies$ (iii)}. Supposons que $0$ est un point fixe asymptotiquement stable. Soit $\lambda$ une valeur propre de $A$. Alors tout $u \in C_{\lambda, \bar \lambda}$ (avec les notations de l'exercice pr\'ec\'edent) v\'erifie $\frac{1}{t} \log \|\e^{tA}u\| \to \Re(\lambda)$ quand $t \to +\infty$. Puisque $\e^{tA}u \to 0$ on a n\'ecessairement $\Re(\lambda) \leq 0$. Supposons $\Re(\lambda) = 0$. Alors la correction de la question 3. de l'\textbf{Exercice 1.} montre qu'on peut trouver $u \in \R^n$ tel que $\|\e^{tA} u\| \geq \delta$ pour tout $t$, pour un $\delta > 0$. C'est absurde, donc $\Re(\lambda) < 0$. \newline
+
+\underline{(iii) $\implies$ (ii)}. Pour tout $\lambda \in \mathrm{sp}(A)$ et $u \in C_{\lambda, \bar \lambda}$ on a pour un certain polyn\^ome $P$
+$$
+\|\e^{tA}u\| \leq C \e^{\Re(\lambda) t} |P(t)|, \quad t \geq 0.
+$$
+Puisque $\R^n = \bigoplus_\lambda C_{\lambda, \bar \lambda}$, on que pour tout $0 > a > \sup_{\lambda \in \mathrm{sp}(A)} \Re \lambda$, il existe $c > 0$ tel que 
+\begin{equation}\label{eq:exp}
+\|\e^{tA}x\| \leq c \e^{-at} \|x\|, \quad x \in \R^n, \quad t \geq 0.
+\end{equation}
+
+\underline{(ii) $\implies$ (iv)}. Par lin\'earit\'e de $\e^{tA}$, il existe $c, a >0$ tels que (\ref{eq:exp}) est v\'erifi\'ee. On pose alors
+$$
+\|x\|_A = \int_0^\tau \e^{bt} \|\e^{tA}x\| \dd t, \quad x \in \R^n,
+$$
+o\`u $b,\tau > 0$ satisfont 
+$$
+c\e^{-(a-b)\tau} < 1.
+$$
+On peut supposer $c \geq 1$, sinon la norme $\|\cdot\|$ convient. Ceci implique $a \geq b$. Alors
+$$
+\begin{aligned}
+\|\e^{TA}x\|_A &= \int_0^\tau \e^{bt}\|\e^{(t+T)A}x\| \dd t \\
+&= \int_T^{T+ \tau} \e^{b(t-T)}\|\e^{tA}x\| \dd t \\
+&= \e^{-bT}\int_T^{T+\tau} \e^{bt}\|\e^{tA}x\| \dd t \\
+&= \e^{-bT} \left( \int_T^0 \e^{bt} \|\e^{tA}x\| \dd t + \int_0^\tau \e^{bt} \|\e^{tA}x\| \dd t+ \int_\tau^{\tau + T} \e^{bt} \|\e^{tA}x\| \dd t\right) \\
+&= \e^{-bT}\|x\|_A + \e^{-bT} \left(\int_\tau^{\tau+T} \e^{bt} \|\e^{tA}x\| \dd t - \int_0^T \e^{bt} \|\e^{tA}x\| \dd t\right).
+\end{aligned}
+$$
+On a 
+\iffalse
+$$
+\int_\tau^{\tau+T} \e^{bt} \|\e^{tA}x\| \dd t \leq T\e^{b(\tau+T)} c \e^{-a\tau} \|x\| \leq Tc \e^{-(a-b)\tau} \e^{bT} \|x\| \leq T\e^{bT} \|x\|.
+$$
+\fi
+$$
+\begin{aligned}
+\int_\tau^{\tau+T} \e^{bt} \|\e^{tA}x\| \dd t &\leq c\int_{\tau}^{\tau + T} \e^{bt} \e^{-at} \|x\| \dd t \\
+&\leq c\e^{-(a-b)\tau}\frac{\left(1- \e^{-(a-b)T}\right)}{a-b}\|x\|
+\end{aligned}
+$$
+D'autre part on a
+$$
+\int_0^T \e^{bt} \|\e^{tA}x\| \dd t \geq \int_0^T \e^{bt} \e^{-t\|A\|} \|x\| \dd t \geq \frac{1 - \e^{-T(\|A\|-b)}}{\|A\|-b}\|x\|.
+$$
+On a
+$$
+c\e^{-(a-b)\tau}\frac{1 - \e^{-(a-b)T}}{a-b} - \frac{1 - \e^{-T(\|A\|-b)}}{\|A\|-b} =\left(c\e^{-(a-b)\tau} - 1\right) T + \mathcal{O}(T^2), \quad T \to 0.
+$$
+En particulier cette quantit\'e est n\'egative pour $T > 0$ assez petit. On a donc obtenu $\delta > 0$ tel que pour $T \leq \delta$ on a 
+$$
+\|\e^{TA}\|_{A} \leq \e^{-bT} \|x\|_A, \quad x \in \R^n.
+$$
+Soit $T' > 0$. On \'ecrit $T' = n\delta + T$ avec $0 \leq T < \delta$ et $n \in \N$. Alors pour tout $x \in \R^n$,
+$$
+\|\e^{T'A}x\|_A \leq \|\e^{\delta A} \cdots \e^{\delta A} \e^{TA} x\|_A \leq \e^{- bn\delta} \e^{-bT} \|x\|_A \leq \e^{-bT'} \|x\|_A,
+$$
+ce qui conclut.
+\newline
+
+\underline{(iv) $\implies$ (i)}. \'evident.
+
+\item Supposons que $\lambda = r+ i \nu \in \mathrm{sp}(A)$ avec $\nu \in \R$ et $r\geq 0$. On suppose que $A$ est un bloc de Jordan associ\'e \`a $\lambda$, qui est non trivial (i.e. de la forme (\ref{eq:jordan1}) et de taille $>1$ ou de la forme (\ref{eq:jordan2}) et de taille $>2$ selon que $\nu$ soit nul ou non). Alors si $x = \begin{pmatrix} 0, \dots, 0, 1 \end{pmatrix}^{\perp}$, on v\'erifie ais\'ement que $ \limsup_{t\to +\infty}\|\e^{tA}x\| = +\infty$.
+
+R\'eciproquement, supposons que les valeurs propres de $A$ ont toutes des parties r\'eelles n\'egatives ou nulles, et que les valeurs propres ayant une partie r\'eelle nulle v\'erifient la condition de semi-simplicit\'e. Alors on v\'erifie ais\'ement que $\sup_{t\in \R} \|\e^{tA}\| < + \infty$ (en regardant la d\'ecomposition de Jordan), ce qui conclut.
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Syst\`emes linaires topologiquement conjugu\'es}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item Soit $x \in \R^n$ non nul. Alors $\lim_{t \to \pm \infty} \log \|\e^{tA}x\|_A = \mp \infty$ ; de plus $t \mapsto \log \|\e^{tA}x\|_A$ est strictement d\'ecroissante sur $\R$ puisque
+$$
+\|\e^{tA}y\|_A \leq \e^{-at} \|y\|_A, \quad t \geq 0, \quad y \in \R^n,
+$$
+pour un certain $a>0$, ce qui implique aussi
+$$
+\|\e^{-tA}y\|_A \geq \e^{at} \|y\|_A, \quad t \geq 0, \quad y \in \R^n.
+$$
+Par le th\'eor\`eme des valeurs interm\'ediaires il existe un unique $\tau(x) \in \R$ tel que $\e^{\tau(x)A}x \in S_A.$
+
+Montrons que $\tau$ est continue. Soit $x_0 \in \R^n \setminus 0$. Il existe $C>0$ tel que pour tout $x \in \R^n$,
+$$
+\|\e^{\tau(x_0)A}x_0 - \e^{\tau(x_0)}x\|_A \leq C \|x-x_0\|_A.
+$$
+Soit $\varepsilon >0$ ; si $\|x-x_0\|_A \leq \varepsilon$ on a
+$$
+1- C\varepsilon \leq \|\e^{\tau(x_0)A}x\| \leq 1 + C\varepsilon.
+$$
+Posons 
+$$
+t_\pm = \pm \frac{1}{a} \log(1 \pm C \varepsilon).
+$$
+Alors
+$$
+\|\e^{t_+A} \e^{\tau(x_0)A}x \|_A \leq \e^{-at_+}(1+C\varepsilon) = 1
+$$
+et de m\^eme
+$$
+\|\e^{-t_-A} \e^{\tau(x_0)A} \|\geq 1
+$$
+En particulier, on a que $|\tau(x)-\tau(x_0)| \leq \max(t_+, t_-)$, avec $t_\pm \to 0$ quand $\varepsilon \to 0$, et donc $\tau$ est continue.
+
+
+\item On a que $\tau(\e^{tA}x) = \tau(x)-t$ pour tout $x \in \R^n$ non nul et tout $t \in \R$. Ceci implique que
+$$
+\begin{aligned}
+\e^{-\tau(\e^{tA}x)B}\varphi(\e^{\tau(\e^{tA}x)A}\e^{tA}x) &= \e^{-(\tau(x)-t)B}\varphi(\e^{(\tau(x)-t)A}\e^{tA}x) \\
+&= \e^{tB} \e^{-\tau(x)B}\varphi(\e^{\tau(x)A}x).
+\end{aligned}
+$$
+On a bien $\Phi \circ \e^{tA} = \e^{tB} \circ \Phi$. De plus $\Phi$ est continue sur $\R^n\setminus 0$ par continuit\'e de $\tau$ et de $\varphi$. Elle est continue en $0$ car $\tau(x) \to -\infty$ quand $x \to 0$, et donc pour un $b>0$ on a
+$$
+\|\Phi(x)\|_B \leq \e^{-\tau(x)b} \|\varphi(\e^{\tau(x)A}x)\|_B \leq C \e^{-\tau(x)b} \to 0, \quad x \to 0.
+$$
+Enfin, si $\Psi : \R^n \to \R^n$ est d\'efinie comme $\Phi$ en interchangeant les r\^oles de $A$ et de $B$, on obtient $\Phi \circ \Psi = \Psi \circ \Phi = \Id_{\R^n}$, ce qui conclut.
+
+\item On pose pour $M = A,B$, avec les notations de l'\textbf{Exercice 1.},
+$$
+E^s(M) = \bigoplus_{\Re(\lambda) < 0} C_{\lambda, \bar \lambda}(M), \quad E^u(M) = \bigoplus_{\Re(\lambda) > 0} C_{\lambda, \bar \lambda}(M).
+$$
+
+Par la question \textbf{1.}5., on a que $\dim E^s(A_t) = \dim E^s(A)$ pour tout $t$ et donc $\dim E^s(A) = \dim E^s(B)$. En particulier, par la question pr\'ec\'edente, il existe des isomorphismes $\Phi^\bullet : E^\bullet(A) \to E^\bullet(B),~\bullet = s,u$ qui conjuguent $\exp(tA|_{E^\bullet(A)})$ \`a $\exp(tB|_{E^\bullet(B)})$, pour $\bullet = s,u.$ On note
+$$
+\pi_\bullet : \R^n \to E^\bullet(A), \quad \bullet = s,u,
+$$
+les projecteurs spectraux associ\'es \`a la d\'ecomposition $\R^n = E^s(A) \oplus E^u(A).$ On pose
+$$
+\Phi = \Phi^u \circ \pi_u + \Phi^s \circ \pi_s : \R^n \to \R^n.
+$$
+Alors on v\'erifie ais\'ement que $\Phi$ conjugue $\e^{tA}$ \`a $\e^{tB}$.
+
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 4.} \textit{Syst\`emes lin\'eaires avec second membre}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item En cherchant une solution particuli\`ere sous la forme $t \mapsto \e^{tA}c(t)$, on trouve que les solutions sont de la forme
+$$
+x(t) = \e^{tA} \left(x_0 + \int_0^t \e^{-sA}z(s) \dd s\right), \quad t \in \R^n,
+$$
+o\`u $x_0 \in \R^n$.
+\item Soit $\varepsilon > 0$ et $x_0 \in \R^n$. Soit $T > 0$ tel que pour tout $t \geq T$ on a $\|z(t)-z_\infty\|_A \leq \varepsilon$, o\`u $\|\cdot\|_A$ est une norme adapt\'ee \`a $A$. Alors 
+$$
+\int_0^t\e^{(t-s)A}z(s)\dd s = \int_0^T \e^{(t-s)A}z(s)\dd s + \int_T^t \e^{(t-s)A}z(s)\dd s.
+$$
+On a 
+$$
+\int_T^t \e^{(t-s)A}z(s)\dd s = \int_T^t\e^{(t-s)A}(z(s) - z_\infty) \dd s + \left(\int_T^t \e^{(t-s)A}\dd s \right)z_\infty.
+$$
+Or pour tout $t\geq T$ on a 
+$$
+\left\|\int_T^t\e^{(t-s)A}(z(s) - z_\infty) \dd s\right\|_A \leq \varepsilon \int_T^t \e^{-a(t-s)} \dd s \leq \frac{\varepsilon}{a}.
+$$
+D'autre part, 
+$$
+\int_{T}^t\e^{(t-s)A} \dd s = \e^{tA}\left[-A^{-1}\e^{-sA}\right]_{s=T}^{s=t} = -A^{-1} + A^{-1}\e^{(t-T)A}.
+$$
+En particulier puisque $A$ est une contraction on a
+$$
+\left(\int_T^t \e^{(t-s)A}\dd s \right)z_\infty \to -A^{-1}z_\infty, \quad t \to +\infty.
+$$
+On a aussi que $\displaystyle{\e^{tA} \int_0^T \e^{-s}z(s) \dd s + \e^{tA}x_0 \to 0}$ quand $t \to +\infty$. Tout ce qui pr\'ec\`ede montre que pour $t$ assez grand on a (pour une constante $C$ d\'ependant seulement de $a$)
+$$
+\left\|x(t) +A^{-1}z_\infty\right\| \leq C \varepsilon.
+$$
+On a obtenu que 
+$$
+\lim_{t \to +\infty} x(t) = -A^{-1} z_\infty.
+$$
+\end{enumerate}
+
+\vspace{0.6cm}
+
+
+\iffalse
+\noindent Soit $A$ une matrice carr\'ee d'ordre $n$. 
+\begin{enumerate}
+\item Montrer que les conditions suivantes sont \'equivalentes :
+\begin{enumerate}[label=(\roman*)]
+\item Toutes les valeurs propres de $A$ ont un module strictement inf\'erieur \`a $1$ ;
+\item Il existe une norme adapt\'ee pour $A$, c'est \`a dire une norme $\|\cdot\|_A$ sur $\R^n$ telle que pour un certain $a < 1$,
+$$
+\left\|A^Nx\right\|_A \leq a^N \|x\|_A, \quad x \in \R^n, \quad N \in \mathbb{N}.
+$$
+\end{enumerate}
+\end{enumerate}
+On se donne dans la suite deux matrices $A$ et $B$ v\'erifiant ces conditions. On suppose qu'il existe une famille continue de matrices inversibles $A_t,  ~t \in [0,1]$, telle que $A_0 = B$, $A_1 = A$ et $\mathrm{sp}(A_t) \subset \{z\in \C,~ |z| < 1\}$ pour tout $t \in [0,1]$. On se donne deux normes $\|\cdot\|_A$ et $\|\cdot\|_B$, adapt\'ees \`a $A$ et $B$. On note
+$$
+D_A = \{x \in \R^n,~\|x\|_A < 1\}, \quad S_A = \{x \in \R^n, ~ \|x\|_A = 1\}
+$$
+et on d\'efinit $D_B$ et $S_B$ identiquement. Finalement on note
+$$
+C_A = \overline{D_A \setminus AD_A}, \quad C_B = \overline{D_B \setminus BD_B}.
+$$
+\begin{enumerate}[resume]
+\item Soit $\tau_A : [0,1] \times \mathbf{S}^{n-1} \to \R_+$ et $h_A : [0,1] \times \mathbf{S}^{n-1} \to F_A$ les applications d\'efinise par
+$$
+h_A(t,x) = \tau_A(t,x)x, \quad \tau_A(t,x) = \frac{t}{\|x\|_A} + \frac{1-t}{\left\|A^{-1}x\right\|_A}, \quad t \in [0,1], \quad x \in \mathbf{S}^{n-1},
+$$
+o\`u $\mathbf{S}^{n-1}$ est la sph\`ere de rayon $1$ dans $\R^n$. On d\'efinit identiquement $\tau_B, h_B$. En utilisant les applications $h_A$ et $h_B$, montrer qu'il existe un hom\'eomorphisme $h : C_A \to C_B$ tel que $h \circ A = B \circ h$
+\item Montrer que les syst\`emes dynamiques discrets associ\'es \`a $A$ et $B$ sont topologiquement conjugu\'es.
+\end{enumerate}
+\fi
+
+\vspace{0.6cm}
+
+\end{document} 

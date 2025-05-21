@@ -1,0 +1,3 @@
+Position : [3.06978873, 3.07038791, -0.00034485, 0.00045421]
+Transformation : sinus
+Itérations : 727

@@ -1,0 +1,177 @@
+\documentclass[a4paper,10pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Feuille d'exercices 1}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2021/2022 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+\noindent {\large \textbf{Exercice 1.} \textit{Points pr\'ep\'eriodiques}} \\ 
+
+\noindent Soit $f : X \to X$ une application d\'efinie sur une ensemble $X$. On dit qu'un point $x \in X$ est \textit{pr\'ep\'eriodique} si $x$ n'est pas p\'eriodique et s'il existe $n \in \N$ tel que $f^n(x)$ est p\'eriodique.
+{\begin{enumerate}
+\item Donner un exemple d'application ayant un point pr\'ep\'eriodique. Peut-on trouver un exemple
+bijectif ?
+\item Montrer que si $X$ est fini, alors tout point est p\'eriodique ou pr\'ep\'eriodique. Montrer \'egalement qu'il existe des points p\'eriodiques.
+\end{enumerate}
+}
+\hfill \break 
+%% \\
+
+\noindent {\large \textbf{Exercice 2.} \textit{Lemme de prolongation}} \\ 
+
+\noindent Soit $V : \R^n \to \R^n$ un champ de vecteurs continu et
+$$
+\dot{x} = V(x)
+$$
+l'\'equation diff\'erentielle associ\'ee. Soit $x : (a,b) \to \R^n$ une solution de cette \'equation. On suppose qu'il existe un compact $K$ tel que $x(t) \in K$ pour tout $t \in (a,b)$. Montrer que la limite $\lim_{t \to b} x(t)$ existe.
+\hfill \break \\
+
+\noindent {\large \textbf{Exercice 3.} \textit{Automorphismes lin\'eaires du tore de dimension 2}} \\ 
+
+\noindent On note $\T^2 = \R^2/\Z^2$ le tore de dimension $2$. On appellera \textit{feuilletage} de $\T^2$ une partition $\T^2 = \bigsqcup_{F \in \F} F$ o\`u pour tout $F \in \mathcal{F}$, il existe une immersion $\R \to \T^2$ (i.e. une application $\mathcal{C}^\infty$ de diff\'erentielle partout non nulle) d'image $F$. 
+\begin{enumerate}
+\item Donner une condition n\'ecessaire et suffisante pour que l'endomorphisme $f_A : \T^2 \to \T^2$ associ\'e \`a une matrice $A \in \mathrm{Mat}_{2\times 2}(\Z)$ soit un automorphisme.
+\end{enumerate}
+Dans toute la suite, $A$ d\'esigne une matrice de $\mathrm{SL}(2,\Z)$.
+\begin{enumerate}[resume]
+\item On suppose que $|{\tr  A}| \in \{0,1\}$. Montrer qu'il existe $n \in \N$ tel que $(f_A)^n = \id_{\T^2}.$
+\item On suppose que $|{\tr A}| = 2.$ Montrer qu'il existe un feuilletage en cercles de $\T^2$, pr\'eserv\'e par $f_A$ et que $f_A$ (resp. $f_A^2$) agit par rotation sur chacun des cercles si $\tr(A) = 2$ (resp. $\tr(A) = -2$). On dit que $f_A$ est un \textit{twist de Dehn}.
+\item On suppose que $|{\tr A}| > 2$.
+\begin{enumerate}
+\item Montrer que $A$ admet deux valeurs propres r\'eelles distinctes $\lambda, \lambda^{-1}$ avec $|\lambda| > 1$ et que les vecteurs propres associ\'es ont des pentes irrationnelles.
+\item Montrer qu'il existe deux feuilletages $\F^s$ et $\F^u$ de $\T^2$, globalement pr\'eserv\'es par $f_A$, tels que chaque feuille est dense dans $\T^2$, et tels que la diff\'erentielle de $f_A$ multiplie par $\left|\lambda^{-1}\right|$ la norme des vecteurs tangents aux feuilles de $\F^s$ et par $|\lambda|$ celle des vecteurs tangents aux feuilles de $\F^u$. 
+
+\end{enumerate}
+\end{enumerate}
+\hfill \break 
+
+%%%
+\noindent {\large \textbf{Exercice 4.} \textit{Persistance des orbites p\'eriodiques non d\'eg\'en\'er\'ees pour les flots}} \\ 
+
+\noindent On consid\`ere un champ de vecteur $V : \R^n \to \R^n$ lisse (i.e. de classe $\mathcal{C}^\infty$) et complet (i.e. son flot existe en tout temps). On note $\varphi : \R \times \R^n \to \R^n$ son flot,
+$$
+\frac{\dd}{\dd t} \varphi(t,x) = V(\varphi(t,x)), \quad t \in \R, \quad x \in \R^n.
+$$
+On suppose qu'il existe $x_0 \in \R^n$ et $\tau_0 > 0$ tels que $\varphi(\tau_0, x_0) = x_0$ et $V(\varphi(t,x_0)) \neq 0$ pour tout $t \in \R$. 
+\begin{enumerate}
+\item Montrer que pour tout hyperplan affine $\Sigma$ contenant $x_0$ et transverse \`a $V(x_0)$ il existe un voisinage $U$ de $x_0$ dans $\R^n$ et une application lisse $\tau : U \to \R$ telle que $\tau(x_0) = \tau_0$ et
+$$
+\varphi(\tau(x), x) \in \Sigma, \quad x \in U.
+$$ 
+\end{enumerate}
+En d'autres termes, $\Sigma$ est une section de Poincar\'e locale pour le flot $\varphi$. On note
+$$
+\begin{matrix}
+P_\Sigma : &\Sigma \cap U &\to &\Sigma \\
+&x &\mapsto &\varphi(\tau(x), x)
+\end{matrix}
+$$
+l'application de retour associ\'ee \`a $\tau$. 
+\begin{enumerate}[resume]
+\item On suppose dans la suite que $x_0$ est une orbite p\'eriodique \textit{non d\'eg\'en\'er\'ee} du flot $\varphi$, c'est-\`a-dire que $1$ n'est pas valeur propre de $(\dd P_\Sigma)_{x_0}.$ Montrer que cette condition est intrins\`eque, i.e. qu'elle ne d\'epend pas de l'hypersurface affine $\Sigma$ choisie. 
+\item On consid\`ere maintenant une famille $(V_s)_{s \in [-1,1]}$ de champs de vecteurs telle que l'application $(s, x) \mapsto V_s(x)$ est lisse et $V_0 = V$. Montrer qu'il existe $\varepsilon > 0$ tel que pour tout $s \in (-\varepsilon, \varepsilon),$ il existe $x_s \in \Sigma$ et $\tau_s > 0$ tels que 
+$$
+\varphi_s(\tau_s, x_s) = x_s,
+$$
+o\`u $\varphi_s$ est le flot associ\'e \`a $V_s$. Montrer de plus que $x_s$ et $\tau_s$ d\'ependent de mani\`ere lisse du param\`etre $s \in (-\varepsilon, \varepsilon).$
+\end{enumerate}
+
+\hfill \break 
+
+\noindent {\large \textbf{Exercice 5.} \textit{Classes de conjugaison des applications expansives du cercle}} \\ 
+
+\noindent On note $\T = \R / \Z$ le tore de dimension $1$ et on note $[y] = y \mod 1$ pour tout $y \in \R$. On dit qu'une application continue $F : \R \to \R$ \textit{rel\`eve} une application continue $f : \T \to \T$ si $\left[F(x)\right] = f\left([x]\right)$ pour tout $x \in \R$.
+\begin{enumerate}
+\item Montrer que pour tout $f : \T \to \T$ continue, il existe un rel\`evement de $f$, et que tous les rel\`evements diff\`erent d'un entier.
+\end{enumerate}
+Dans toute la suite, on fixe une application continue $f : \T \to \T$.
+\begin{enumerate}[resume]
+\item Montrer qu'il existe $p \in \Z$ tel que $F(x+1) = F(x) + p$ pour tout rel\`evement $F$ de $f$ et tout $x \in \R$. Cet entier s'appelle le \textit{degr\'e} de $f$.
+\end{enumerate}
+On suppose dans la suite que $p \geq 1$.
+\begin{enumerate}[resume]
+\item Montrer que $f$ a au moins $p-1$ points fixes.
+\item En d\'eduire que 
+$$
+\liminf_{n \to \infty} \frac{\log \# \mathrm{Fix}(f^n)}{n} \geq \log p,
+$$
+o\`u $\mathrm{Fix}(f^n)$ est l'ensemble des points fixes de $f^n$.
+\item Calculer $\# \mathrm{Fix}(f^n).$
+\end{enumerate}
+On suppose dans la suite que $p>1$ et on fixe un relev\'e $F$ de $f$. On note $\mathcal{E}$ l'ensemble des fonctions continues $H: \R \to \R$ telles que $H(x+1) = H(x)+1$ pour tout $x \in \R$. Pour tout $H \in \mathcal{E}$ on d\'efinit une application $\Phi(H) : \R \to \R$ par
+$$
+\Phi(H)(x) = \frac{1}{p}H(F(x)), \quad x \in \R.
+$$
+\begin{enumerate}[resume]
+\item Montrer que $\Phi$ pr\'eserve $\mathcal{E}$ et que $\Phi : \mathcal{E} \to \mathcal{E}$ a un unique point fixe $H_0$. \\
+\textit{Indication : on pourra montrer que $\mathcal{E}$ muni de la distance $d(H,G) = \sup_{\R} |H-G|$ est un espace m\'etrique complet.}
+\item Montrer que $H_0$ rel\`eve une application continue $h_0 : \T  \to \T$ de degr\'e $1$, et que 
+$$
+h_0 \circ f = E_p \circ h_0
+$$
+o\`u $E_p : \T \to \T$ est l'application $[x] \mapsto [px]$.
+\item On suppose de plus que $F$ est $\mathcal{C}^1$ et que $F'>1$. En consid\'erant l'application $\Psi : \mathcal{E} \to \mathcal{E} $ d\'efinie par $\Psi(H)(x) = F^{-1}(H(px))$, montrer que $h_0$ est un hom\'eomorphisme de $\T^2$.
+
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document} 

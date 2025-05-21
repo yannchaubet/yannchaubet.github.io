@@ -1,0 +1,235 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{mathrsfs}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\N}{\mathbf{N}}
+\renewcommand{\x}{x}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\renewcommand{\sp}{\mathrm{sp}}
+\newcommand{\CC}{\mathscr{C}}
+
+\title{\textsc{Syst\`emes dynamiques} \\ DM 2}
+\date{{Pour le 18/11/2021}}
+\author{}
+
+\begin{document}
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Pour toute question :} \\
+{2021/2022 \hfill  \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+
+\noindent On note $M_n(k)$ l'espace vectoriel des matrices carr\'ees de taille $n$ \`a coefficients dans $k= \R$ ou $\C$. Pour tout $A \in M_n(\C)$, on note $\mathrm{sp}(M) \subset \C$ son spectre et
+$$
+C_{\lambda, k} = \Bigl\{u \in k^n ~:~\exists N \in \N,~(A-\lambda)^Nu = 0\Bigr\},
+$$
+le $k$-espace propre g\'en\'eralis\'e de $A$ associ\'e \`a $\lambda \in \C$. Si $\lambda \in \C \setminus \R$, on d\'efinit aussi
+$$
+C_{\lambda, \bar{\lambda}} = \Bigl\{u \in \R^n~:~ \exists N \in \N,~ (A-\lambda)^N(A-\bar{\lambda})^{N}u = 0 \Bigr\}
+$$
+l'espace propre g\'en\'eralis\'e r\'eel associ\'e \`a $\lambda$ et $\bar{\lambda}$. On note aussi $D(z, \rho) =  \{\zeta \in \C,~ |z-\zeta| < \rho\}$, sa fermeture $\bar{D}(z,\rho) = \overline{D(z,\rho)}$ et $\CC_{\lambda,\rho} = \partial D(z,\rho)$ pour tout $z \in \C$ et $\rho > 0$. \\
+
+%
+\noindent Le but du probl\`eme est de montrer le r\'esultat suivant. \\
+
+\noindent \textbf{Proposition} (Stabilit\'e structurelle des flots lin\'eaires hyperboliques). \textit{Soit $A \in M_n(\R)$ une matrice dont toutes les valeurs propres ont une partie r\'eelle non nulle. Alors il existe un voisinage $\mathcal{U}$ de $A$ dans $M_n(\R)$ et une application continue $\Phi : \mathcal{U} \times \R^n \to \R^n$ telle que pour tout $M \in \mathcal{U}$, l'application $x \mapsto \Phi(M,x)$ est un hom\'eomorphisme de $\R^n$ et
+$$
+\Phi(M, \e^{tM}x) = \e^{tA}\Phi(M,x), \quad t \in \R, \quad x \in \R^n.
+$$
+}
+\section*{Perturbation des valeurs propres}
+Soit $A \in M_n(\C)$.
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+\item\label{q:resolventformula} Montrer que pour tous $\lambda, \mu \in \C\setminus \sp(A)$, on a 
+$$
+(A-\lambda)^{-1}(A-\mu)^{-1} = \frac{(A-\lambda)^{-1} - (A-\mu)^{-1}}{\lambda - \mu}.
+$$
+\end{enumerate}
+Soit $\lambda \in \sp(A)$. On fixe $\rho > 0$ tel que
+\begin{equation}\label{eq:petitrho}
+\bar{D}(\lambda, \rho) \cap \sp(A) = \{\lambda\}.
+\end{equation}
+ On d\'efinit la matrice $\Pi_\lambda \in M_n(\C)$ par
+$$
+\Pi_\lambda = \frac{1}{2\pi i} \int_{\CC_{\lambda,\rho}} (z-A)^{-1} \dd z,
+$$
+o\`u l'on a int\'egr\'e sur le contour $\CC_{\lambda, \rho}$ dans le sens anti-horaire.
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que $\Pi_\lambda$ ne d\'epend pas du choix de $\rho$ v\'erifiant (\ref{eq:petitrho}).
+
+\item En utilisant la question \ref{q:resolventformula}, montrer que $\Pi_\lambda^2 = \Pi_\lambda$.
+
+\item Soit $z \mapsto B(z) \in M_n(\C)$ une application holomorphe sur un ouvert $U \subset \C$ et $d(z) = \det B(z)$.  Montrer que pour tout $z \in U$ tel que $d(z) \neq 0$,
+$$
+d'(z) = d(z) ~ \tr\bigl(B(z)^{-1} B'(z)\bigr).
+$$
+\item En d\'eduire que $\tr ~\Pi_\lambda = \dim_\C C_{\lambda,\C}$ et que l'application induite par $\Pi_\lambda$ est un projecteur d'image $C_{\lambda,\C}$.
+
+\item Montrer que les matrices $\left\{\Pi_\mu, \mu \in \sp(M)\right\}$  sont les matrices des projecteurs spectraux complexes associ\'es \`a $A$, i.e. les projecteurs associ\'es \`a la d\'ecomposition
+$$
+\C^n = \bigoplus_{\mu \in \sp(M)} C_{\mu,\C}.
+$$
+
+\item Soit $U \subset \C$ un ouvert born\'e tel que $\partial U \cap \sp(A) = \emptyset$. Montrer qu'il existe un voisinage $\mathcal{U}$ de $A$ dans $M_n(\C)$ tel que l'application $\Pi_U : \mathcal{U} \to M_n(\C)$ d\'efinie par
+$$
+\Pi_U(M) = \sum_{\lambda \in \sp(M) \cap U} \Pi_{\lambda}(M), \quad M \in \mathcal{U},
+$$
+o\`u $\Pi_\lambda(M)$ est le projecteur spectral sur l'espace caract\'eristique de $M$ associ\'e \`a $\lambda$, est holomorphe en chaque coefficient de $M$.
+
+\end{enumerate}
+\noindent On suppose maintenant que $A \in M_n(\R)$.
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item On suppose que $\lambda \in \R$. Montrer que $\Pi_\lambda$ est \`a coefficients r\'eels.
+\item On suppose que $\lambda \in \C \setminus \R$. Montrer que
+$$
+\Pi_{\lambda, \bar{\lambda}} = \Pi_\lambda + \Pi_{\bar\lambda}.
+$$
+est \`a coefficients r\'eels et que $\Pi_{\lambda,\bar\lambda}^2 = \Pi_{\lambda, \bar \lambda}$.
+
+\item Montrer que les matrices $\{\Pi_\mu\} \cup \left\{\Pi_{\mu, \bar\mu}\right\}$ sont les matrices des projecteurs spectraux r\'eels associ\'es \`a $A$, i.e. les projecteurs associ\'es \`a la d\'ecomposition
+$$
+\R^n = \left(\bigoplus_{\mu \in \R} C_\mu\right) \oplus \left(\bigoplus_{\Im \mu > 0} C_{\mu, \bar\mu}\right).
+$$
+
+
+
+\end{enumerate}
+
+\section*{Classification topologique des flots contractants}
+
+Soit $M_n^{-}(\R) = \{A \in M_n(\R),~\sp(A) \subset \R_{<0}\}$. Pour $A \in M_n^{-}(\R)$ on note
+$$
+\alpha(A)= - \sup_{\lambda \in \sp(A)} \Re{\lambda} > 0.
+$$
+Soit $f : \R_{>0} \to \R_{>0}$ une fonction continue telle que $f(t) < t$ pour tout $t > 0$. On note $\beta = f \circ \alpha : M_n^{-}(\R) \to \R_{>0}$.
+
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que $A \mapsto \alpha(A)$ est continue $M_n^{-}(\R) \to \R_{>0}$.
+\item Montrer que l'on peut trouver une famille de normes $\{\|\cdot\|_A,~A \in M_n^{-}(\R)\}$ telle que l'application $(A,x) \mapsto \|x\|_A $ est continue $M_n^{-}(\R) \times \R^n \to \R_{\geqslant 0}$ et
+$$
+\left\|\e^{tA}x\right\|_A \leqslant \e^{-t\beta(A)}\|x\|_A, \quad t \geqslant 0.
+$$
+\end{enumerate}
+Pour tout $A \in M_n^{-}(\R)$ on note $S_A = \{x \in \R^n,~\|x\|_A = 1\}$.
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+
+\item Montrer que pour tout $A \in M_n^{-}(\R)$ et tout $x \in \R^n \setminus \{0\}$, il existe un unique $\tau_A(x) \in \R$ tel que $\e^{\tau_A(x)A}x \in S_A.$
+\end{enumerate}
+Pour $A \in M_n^{-}(\R)$ on d\'efinit $\varphi(A) : \R^n \to \R^n$ par $\varphi(A)(0) = 0$ et 
+$$
+\varphi(A)(x) = \e^{\tau_A(x)}\bigl(\e^{\tau_A(x)A}x\bigr), \quad x \in \R^n \setminus \{0\}.
+$$ 
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que l'application $(A,x) \mapsto \varphi(A)(x)$ est continue $M_n^{-}(\R) \times \R^n \to \R^n$.
+
+\item Montrer que $\varphi(A)$ est un hom\'eomorphisme de $\R^n$ dans lui-m\^eme et que
+$$
+\e^{-t} \varphi(A) = \varphi(A) \circ \e^{tA}, \quad t \in \R.
+$$
+
+\item En d\'eduire que pour toutes matrices $A,B \in M_n^{-}(\R)$, les flots $\e^{tA}$ et $\e^{tB}$ sont conjugu\'es.
+
+\end{enumerate}
+
+\section*{Stabilit\'e structurelle des flots lin\'eaires hyperboliques}
+
+\noindent On note $\mathrm{Hyp}_n(\R) \subset \mathrm{GL}(n,\R)$ les matrices r\'eelles engendrant un flot hyperbolique, c'est-\`a-dire les matrices dont toutes les valeurs propres ont une partie r\'eelle non nulle. Pour $A \in \mathrm{Hyp}_n(\R)$ on note
+$$
+m(A) = \sum_{\Re(\lambda) > 0} \dim_\C C_{\lambda, \C},
+$$
+On note aussi
+$$
+E^s(A) = \left\{x \in \R^n, ~\e^{tA}x \underset{t \to +\infty}{\longrightarrow} 0\right\}, \quad E^u(A) = \left\{x \in \R^n, ~\e^{tA}x \underset{t \to -\infty}{\longrightarrow} 0\right\}.
+$$
+
+
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+
+\item Montrer que $\mathrm{Hyp}_n(\R)$ est ouvert dans $M_n(\R)$ et que 
+$$\R^n = E^s(A) \oplus E^u(A)$$ pour tout $A \in \mathrm{Hyp}_n(\R)$. On notera $\pi_s(A)$ et $\pi_u(A)$ les projections associ\'ees \`a cette d\'ecomposition.
+
+
+\item Montrer que $A \mapsto (\pi_{s}(A), \pi_u(A))$ est continue $\mathrm{Hyp}_n(\R) \to \mathcal{L}(\R^n)^2$.
+
+\end{enumerate}
+On fixe dans la suite $A \in \mathrm{Hyp}_n(\R)$.  
+
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+
+\item Montrer qu'il existe un voisinage $\mathcal{U}$ de $A$ dans $\mathrm{Hyp}_n(\R)$ tel que pour tout $M \in \mathcal{U}$, l'application
+$$
+\pi_s(M)|_{E^s(A)} : E^s(A) \to E^s(M)
+$$
+est un isomorphisme. 
+
+\end{enumerate}
+Pour $M \in \mathcal{U}$ on note $q_s(M) : E^s(M) \to E^s(A)$ l'inverse de $\pi_s(M)|_{E^s(A)}$ et 
+$$\widetilde{M} = q_s(M) M \pi_s(M)|_{E^s(A)} : E^s(A) \to E^s(A).$$
+
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+
+\item Montrer que $M \mapsto \widetilde{M}$ est continue $\mathcal{U} \to \mathcal{L}(E^s(A)).$
+
+\item Montrer qu'il existe une application continue $\widetilde{\Phi}_s : \mathcal{U} \times E^s(A) \to E^s(A)$ telle que $\widetilde{\Phi}_s(M, \cdot)$ est un hom\'eomorphisme de $E^s(A)$ et
+$$
+\e^{tA}\widetilde{\Phi}_s(M,x_s) = \widetilde{\Phi}_s(M, \e^{t\widetilde{M}}x_s), \quad t \in \R, \quad x_s \in E^s(A).
+$$
+
+\item D\'emontrer le r\'esultat voulu. \\
+\textit{Indication : on pourra consid\'erer l'application $\Phi_s$ d\'efinie par
+$$
+\Phi_s(M,x) = \widetilde{\Phi}_s(M, q_s(M)\pi_s(M)x).
+$$}
+\end{enumerate}
+
+\section*{Application : conjugaisons en famille}
+
+\begin{enumerate}[resume, label=\textbf{\arabic*.}]
+\item Montrer que les composantes connexes de $\mathrm{Hyp}_n(\R)$ sont exactement les ensembles $\mathcal{U}_j = \{A \in \mathrm{Hyp}_n(\R),~m(A) = j\}$ pour $j=0, \dots, n$.
+
+\item Soient $j \in \{0, \dots, n\}$ et $A,B \in \mathcal{U}_j$ ; on se donne $M : [0,1] \to \mathcal{U}_j$ une application continue telle que $M(0) = A$ et $M(1) = B$. Montrer qu'il existe une application continue $\Psi : [0,1] \times \R^n \to \R^n$ telle que $\Psi(s, \cdot)$ est un hom\'eomorphisme de $\R^n$ pour tout $s \in [0,1]$ et 
+$$
+\e^{tA} \Psi(s, x) = \Psi(s, \e^{tM(s)}x), \quad t \in \R, \quad x \in \R^n.
+$$
+
+\end{enumerate}
+\end{document} 

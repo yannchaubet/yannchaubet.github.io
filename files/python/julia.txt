@@ -1,0 +1,7 @@
+Fractale : Julia
+Position : [-1.2, 1.2, -1.2, 1.2]
+Coloris : twilight_shifted
+Echelle : 0.38
+Transformation : square
+c : (0.35540320398848696-0.337292j)
+Elapsed_time : 34.57

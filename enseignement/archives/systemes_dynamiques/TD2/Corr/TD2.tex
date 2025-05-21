@@ -1,0 +1,362 @@
+\documentclass[a4paper,12pt,openany]{article}
+\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage[applemac]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{dsfont}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathenv}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage[all]{xy}
+\usepackage{lipsum}       % for sample text
+\usepackage{changepage}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem*{thm*}{Th\'eor\`eme}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{propr}[thm]{Propri\'et\'e}
+\theoremstyle{definition}
+\newtheorem{deff}[thm]{Definition}
+\newtheorem{rqq}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercice}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\prodscal}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\devp}[3]{\frac{\partial^{#1} #2}{\partial {#3}^{#1}}}
+\newcommand{\w}{\omega}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\x}{\times}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\pa}{\partial}
+\newcommand{\vol}{\operatorname{vol}}
+\newcommand{\dive}{\operatorname{div}}
+\newcommand{\T}{\mathbf{T}}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\N}{\mathbf{N}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\Homeo}{\mathrm{Homeo}}
+\newcommand{\Matn}{\mathrm{Mat}_{n \times n}}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\htop}{h_\mathrm{top}}
+
+
+\title{\textsc{Syst\`emes dynamiques} \\ Corrig\'e 2}
+\date{}
+\author{}
+
+\begin{document}
+
+{\noindent \'Ecole Normale Sup\'erieure  \hfill Yann Chaubet } \\
+{2021/2022 \hfill \texttt{chaubet@dma.ens.fr}}
+
+{\let\newpage\relax\maketitle}
+\maketitle
+\noindent {\large \textbf{Exercice 1.} \textit{Familles d'applications transitives}} \vspace{0.15cm}
+
+\noindent Soit $(U_k)_{k \in \N}$ une base d'ouverts de $X$. Pour tous $k,i \in \N$, l'ensemble
+$$
+A_{i,k}= \bigcup_{n \in \N} f_i^{-n}(U_k)
+$$
+est un ouvert dense, par transitivit\'e des $f_i$. D\`es lors l'ensemble 
+$$
+Y = \bigcap_{i \in \N} \bigcap_{k \in \N} A_{i,k}
+$$
+est dense, par le th\'eor\`eme de Baire, puisque $X$ est localement compact. Tout \'el\'ement $y \in Y$ v\'erifie donc que son orbite $\mathcal{O}_+(y)$ est dense dans $X$. Comme $X$ est s\'epar\'e et qu'il n'a pas de points isol\'es, cela implique que pour tout $p \geqslant 1$, l'ensemble
+$$
+\mathcal{O}_{+, p}(y) = \{f^k(y)~:~k \geqslant p\}
+$$
+est dense (en effet, dans un espace s\'epar\'e et sans points isol\'es, si une suite $\{u_n~:~n \geqslant 0\}$ est dense, alors la suite $\{u_n~:~n\geqslant 1\}$ est aussi dense). Ainsi on a que 
+$$
+\displaystyle{
+y \in \bigcap_{p \geqslant 1} \overline{\mathcal{O}_{+, p}(y)} = \omega(y),
+}
+$$
+c'est-\`a-dire $y$ est r\'ecurrent.
+
+\vspace{0.6cm}
+%% \\
+
+\noindent {\large \textbf{Exercice 2.} \textit{Transformations minimales}} \vspace{1.5mm}
+
+\begin{enumerate}
+\item Soient $U,V$ deux ouverts non vides, et $Y = \overline{\bigcup_{n \geqslant 1} f^{n}(V)}.$ Alors $Y$ est ferm\'e et $f(Y) \subset Y$ ; ainsi $Y=X$ et il existe $n \in \N$ tel que $f^{n}(U) \cap V = \emptyset$.
+\item Soit 
+$
+\mathcal{F} = \{F \subset X,~ F \text{ est un ferm\'e non vide tel que } f(F) \subset F\}.
+$
+Alors $\mathcal{F}$ est partiellement ordonn\'e pour l'inclusion. Soit $\mathcal{C} \subset \mathcal{F}$ une famille totalement ordonn\'ee. Alors
+$$
+G = \bigcap_{F \in \mathcal{C}} F
+$$
+est non vide. En effet, supposons que ce ne soit pas le cas. Alors $X = \bigcup_F \complement F$ et par compacit\'e, il existe $F_1, \dots, F_N \in \mathcal{C}$ tels que
+$$
+X = \bigcup_{i = 1}^N \complement F_i.
+$$
+Par suite $\bigcap_{j=1}^N F_j = \emptyset$, ce qui est absurde puisque la famille $\{F_1, \dots, F_N\}$ est totalement ordonn\'ee. 
+
+Ainsi $G$ est non vide et c'est un minorant pour $\mathcal{C}$. Par le lemme de Zorn, il existe un \'el\'ement minimal de $\mathcal{F}$, not\'e $Y$. Soit $F \subset Y$ un ferm\'e non vide tel que $f(F) \subset F$. Alors $F = Y$ par minimalit\'e de $Y$ et donc $f|_Y$ est minimale.
+\item Soit $f : X \to X$ continue. Alors par la questions pr\'ec\'edente, $f$ admet une partie ferm\'ee minimale non vide $Y$. Soit $y \in Y$ et $p \geqslant 1$ ; on consid\`ere
+$
+\mathcal{O}_{+,p}(y) = \{f^n(y)~:~n \geqslant p\}.
+$
+Alors $\overline{\mathcal{O}_{+,p}(y)}$ est une partie ferm\'ee non vide de $Y$, invariante par $f$. Par minimalit\'e de $f|_F$, $\overline{\mathcal{O}_{+,p}(y)} = Y$ et en particulier 
+$$
+\displaystyle{
+y \in \bigcap_{p \geqslant 1} \overline{\mathcal{O}_{+, p}(y)} = \omega(y).
+}
+$$
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 3.} \textit{Ensemble non-errant}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item  Supposons que pour tout $n > m$, $f^n(U) \cap U = \emptyset$. Alors $x$ n'est pas p\'eriodique et il existe un voisinage $V$ de $x$ tel que $f^j(V) \cap V = \emptyset$ pour tout $j = 1, \dots, m$ (en effet, on peut choisir des voisinages $U_i$ de $f^i(x)$ pour $i = 0, \dots, m$, qui sont deux \`a deux disjoints, et consid\'erer $V = \bigcap_i f^{-i}(U_i)$) Quitte \`a r\'eduire $V$, on peut supposer $V \subset U$. On a donc $f^k(V) \cap V = \emptyset$ pour tout $k \in \N_{\geqslant 1}$ et $x \notin \Omega(f)$.
+
+
+\item Soit $x \notin \Omega(f)$ et $U$ un voisinage ouvert de $x$ tel que $f^n(U) \cap U = \emptyset$ pour tout $n \geqslant 1$. Alors tout $y \in U$ est errant, et donc $\Omega(f)$ est ferm\'e. Pour l'invariance, on raisonne par contraposition. Si $x \in X$ v\'erifie que $f(x) \notin \Omega(f)$, alors on peut trouver un voisinage $U$ de $f(x)$ tel que $f^n(U) \cap U = \emptyset$ pour tout $n \geqslant 1.$ Mais alors $V = f^{-1}(U)$ est un voisinage de $x$ et on a
+$$
+f(f^n(V) \cap V) \subset f^{n+1}(f^{-1}(U)) \cap U \subset f^{n}(U) \cap U = \emptyset
+$$
+pour tout $n \geqslant 1$, ce qui implique que $f^n(V) \cap V = \emptyset$. Donc $x \notin \Omega(f).$
+
+Enfin, soit $x \in X$ et $y \in \omega(x)$. Soit $U$ un voisinage ouvert de $y$. Alors il existe $m > n> 0$ tels que $f^m(x), f^n(x) \in U$. Il suit que $f^{m-n}(U) \cap U \neq \emptyset$, donc $y \in \Omega(f).$
+
+\item Pour $x \in \mathrm{Per}(f)$, l'orbite $\mathcal{O}_+(x)$ est un ensemble minimal et donc $\mathrm{Per}(f) \subset M(f)$.
+
+Soit $F\subset X$ un sous-ensemble minimal pour $f$. Alors tout point de $F$ est r\'ecurrent (cf. la question 3. de l'\textbf{Exercice 2.}) et donc $M(f) \subset R(f)$.
+
+Si $x$ est r\'ecurrent, on a $x \in \omega(x) \subset \Omega(f)$. Comme $\Omega(f)$ est ferm\'e, on a $R(f) \subset \Omega(f)$.
+
+\end{enumerate}
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 4.} \textit{Entropie d'un flot}} \vspace{1.5mm} \\
+\noindent La compacit\'e de $X$ et la continuit\'e de $\Phi|_{[0,1] \times X}$ donnent
+$$
+\forall \varepsilon > 0, \quad \exists \delta(\varepsilon) > 0, \quad \forall x,y \in X, \quad \mathrm{dist}(x,y) \leqslant \delta(\varepsilon) \implies \mathrm{d}^\Phi_1(x,y) \leqslant \varepsilon.
+$$
+Pour $f : X\to X$, on rappelle que
+$$
+\dd^{f}_n(x,y) = \max \{ \dd(f^k(x), f^k(y)),~k = 0, \dots, n-1\}.
+$$
+De plus, on peut supposer que $\delta(\varepsilon) \to 0$ quand $\varepsilon \to 0$. Par cons\'equent, puisque $\dd_T^\Phi \geqslant \dd_{\lfloor T \rfloor}^{\varphi^1}$, on a pour tout $\varepsilon > 0$ et tout $T > 1$
+$$
+B_{\dd^{\varphi^1}_{\lfloor T \rfloor}}(x, \varepsilon) \supset B_{\dd^\Phi_T}(x, \varepsilon) \supset B_{\dd^{\varphi^1}_{\lfloor T \rfloor}}(x, \delta(\varepsilon)).
+$$
+Ainsi, en notant pour toute application $f : X \to X$
+$$
+M^{f}(n, \varepsilon) = \min \left\{m \geqslant 1,~ \exists x_1, \dots, x_m \in X,~\bigcup_{i=1}^m B_{d^{f}_n}(x_i, \varepsilon) = X\right\},
+$$
+on a
+$$
+M^{\varphi^1}(\lfloor T \rfloor, \varepsilon) \leqslant M^{\Phi}(T, \varepsilon) \leqslant M^{\varphi^1}(\lfloor T \rfloor, \delta(\varepsilon)),
+$$
+o\`u $M^{\Phi}(T, \varepsilon)$ est d\'efini comme $M^f(n, \varepsilon)$ en rempla\c{c}ant $\dd^f_n$ par $\dd^\Phi_T$. Il suit que 
+$$
+\limsup_n \frac{1}{n} \log M^{\varphi^1}(n, \varepsilon) \leqslant \limsup_T \frac{1}{T} \log  M^{\Phi}(T, \varepsilon) \leqslant \limsup_n \frac{1}{n} \log M^{\varphi^1}(n, \delta(\varepsilon)),
+$$
+ce qui conclut.
+
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 5.} \textit{Propri\'et\'es de l'entropie topologique}} \vspace{1.5mm} 
+
+On d\'efinit comme dans le cours, pour tout $f : X \to X$, tout $n \in \N_{\geqslant 1}$ et tout $\varepsilon > 0$,
+$$
+C^f(n, \varepsilon) = \min \left\{ m \geqslant 1,~\exists U_1, \dots, U_m \subset X,~\forall j,~\mathrm{diam}_{\dd^f_n}(U_i) \leqslant \varepsilon, ~X \subset \bigcup_{i=1}^m U_i \right\},$$
+et 
+$$
+N^f(n, \varepsilon) = \max \left\{ m \in \N,~ \exists x_1, \dots, x_m \in X,~\forall i \neq j,~\dd^f_n(x_i, x_j) \geqslant \varepsilon \right\}.
+$$
+
+\begin{enumerate}
+\item On a $C^f(n, \varepsilon) \geqslant C^{f|_\Lambda}(n, \varepsilon)$ pour tous $n, \varepsilon$, ce qui conclut.
+\item Par la question pr\'ec\'edente on a $\htop(f_j) \leqslant \htop(f)$ pour tout $j$. De plus, on a que
+$$
+C^f(n, \varepsilon) \leqslant \sum_{i=1}^m C^{f|_{\Lambda_i}}(n, \varepsilon).
+$$
+Ceci implique qu'il existe $i \in \{1, \dots, m\}$ tel que 
+$$C^{f|_{\Lambda_i}}(n, \varepsilon) \geqslant \frac{1}{m}C^f(n, \varepsilon),$$
+qui v\'erifie donc $\htop(f|_{\Lambda_i}) \geqslant \htop(f)$.
+\item On a que $\dd^{f^m}_n \leqslant \dd^{f}_{mn-m+1}$ pour tous $m,n \geqslant 1$. Par suite, $M^{f^m}(n, \varepsilon) \leqslant M^{f}(mn -m + 1, \varepsilon) \leqslant M^f(mn, \varepsilon).$ 
+
+Par continuit\'e de $f$, pour tout $\varepsilon > 0$, il existe $\delta(\varepsilon) > 0$ tel que $B(x, \delta(\varepsilon)) \subset B_{\dd^f_m}(x, \varepsilon).$ Alors 
+$$
+\begin{aligned}
+B_{\dd^{f^m}_n}(x, \delta(\varepsilon)) &= \bigcap_{i=0}^{n-1} f^{-im} B(f^{im}(x), \delta(\varepsilon)) \\
+&\subset \bigcap_{i=0}^{n-1} f^{-im} B_{\dd^f_m}(f^{im}(x), \varepsilon) \\
+&= B_{\dd^{f}_{mn}}(x, \varepsilon).
+\end{aligned}
+$$
+Ici, on a utilis\'e que
+$$
+B_{\dd^f_n}(x) = \bigcap_{k=0}^{n-1} f^{-k}B(f^k(x), \varepsilon).
+$$
+Il suit que $M^{f^m}(n, \delta(\varepsilon)) \geqslant M^{f}(mn, \varepsilon)$, et donc 
+$$
+M^{f}(mn, \varepsilon) \leqslant M^{f^m}(n, \delta(\varepsilon)) \leqslant M^f(mn, \delta(\varepsilon)),
+$$
+ce qui donne $\htop(f^m) = m\htop(f)$. 
+
+Si $f$ est inversible on a $B_{\dd^f_n}(x, \varepsilon) = B_{\dd^{f^{-1}}_n}(f^{n-1}(x), \varepsilon)$ pour tous $n, x, \varepsilon$, ce qui conclut.
+
+\item On a que $\id : (X, \dd) \to (X, \dd')$ est un hom\'eomorphisme puisque $\dd$ et $\dd'$ engendrent la m\^eme topologie. De plus $f \circ \id = \id \circ f$ donc les syst\`emes dynamiques topologiques $(X, \dd, f)$ et $(X, \dd', f)$ sont conjugu\'es. Cela conclut par un th\'eor\`eme du cours.
+
+
+\item On a que
+$
+B_{\dd^{f\times g}_n}((x,y), \varepsilon) = B_{\dd^f_n}(x, \varepsilon) \times B_{\dd^g_n}(y, \varepsilon).
+$
+Ceci implique que $M^{f \times g}(n, \varepsilon) \leqslant M^f(n, \varepsilon) M^g(n, \varepsilon)$, et donc $\htop(f\times g) \leqslant \htop(f) + \htop(g)$.
+
+Soient $x_1, \dots, x_m \in X$ (resp. $y_1, \dots y_p \in Y$) tels que pour tous $1 \leqslant i \neq i' \leqslant m$ (resp. $1 \leqslant j \neq j' \leqslant p$) on ait
+$
+\dd_{n}^f(x_i, x_j) \geqslant \varepsilon$ (resp. $\dd^g_n(y_i, y_j) \geqslant \varepsilon$). Alors pour tous $(i,j) \neq (i',j')$ on a 
+$$
+\dd^{f\times g}_{n}((x_i, y_j), (x_{i'}, y_{j'})) \geqslant \varepsilon.
+$$
+Par cons\'equent $N^{f\times g}(n, \varepsilon) \geqslant N^f(n, \varepsilon) N^g(n, \varepsilon)$, et donc $\htop(f \times g) \geqslant \htop(f) + \htop(g)$.
+
+\end{enumerate}
+\vspace{0.6cm}
+
+
+\noindent {\large \textbf{Exercice 6.} \textit{Entropie des transformations Lipschitziennes}} \vspace{1.5mm} 
+
+
+\begin{enumerate}
+\item Soit $n \geqslant 1$. Il existe $c > 0$ telle que pour tout $\varepsilon > 0$ on a
+$$
+c^{-1} \varepsilon^{-n} \leqslant M([0,1]^n, \varepsilon) \leqslant c  \varepsilon^{-n}.
+$$
+Par suite
+$$
+\frac{-c + n \log 1/ \varepsilon}{\log 1 / \varepsilon} \leqslant \frac{\log M([0,1]^n, \varepsilon)}{\log 1/\varepsilon} \leqslant \frac{n \log 1/\varepsilon}{\log 1 / \varepsilon},
+$$
+ce qui conclut.
+
+\item Soit $L > \max(1, L(f)).$ Alors $\dd(f(x), f(y)) \leqslant L \dd(x,y)$ pour tous $x,y \in X$. Cela implique que
+$$
+f^m\left(B(x, \varepsilon / L^n)\right) \subset B(f^m(x), \varepsilon), \quad 0 \leqslant m \leqslant n,
+$$
+et donc 
+$$
+B(x, \varepsilon / L^n) \subset \bigcap_{m=0}^{n-1} f^{-m} B(f^m(x), \varepsilon) = B_{\dd^f_n}(x, \varepsilon), \quad \forall x, \varepsilon.
+$$
+Ainsi on obtient
+$$
+\begin{aligned}
+\frac{1}{n} \log M^f(n, \varepsilon) &\leqslant \frac{1}{n} \log M(X, \varepsilon / L^n) \\
+&= \frac{\log(L^n/ \varepsilon)}{n} \frac{\log M(X, \varepsilon / L^n)}{\log(L^n/ \varepsilon)} \\
+&= \left(\log L - \frac{\log \varepsilon}{n}\right) \frac{\log M(X, \varepsilon / L^n)}{\log(L^n/ \varepsilon)}.
+\end{aligned}
+$$
+Puisque $\log L > 0$ on obtient 
+$$
+\limsup_n \frac{1}{n} M^f(n, \varepsilon) \leqslant \log(L) \mathrm{bdim}(X),
+$$
+et donc $\htop(f) \leqslant \log(L) \mathrm{bdim}(X)$.
+
+\item Par le cours, l'application doublante $E_2 : [x] \mapsto [2x]$ sur $X = S^1$ satisfait cette \'egalit\'e, puisque $\mathrm{bdim}(S^1) = 1$, et $\htop(E_2) = \log 2$. 
+\end{enumerate}
+\vspace{0.6cm}
+
+\noindent {\large \textbf{Exercice 7.} \textit{Entropie alg\'ebrique}} \vspace{1.5mm} 
+
+\begin{enumerate}
+\item Soit $i \in \{1, \dots, s\}$. et $m,n \geqslant 0$. Alors $F^n(\gamma_i)$ peut s'\'ecrire 
+$$
+F^n(\gamma_i) = \lambda_1 \cdots \lambda_{L(n, \Gamma)}, \quad \lambda_j \in \Gamma.
+$$
+On a donc
+$$
+F^{m+n}(\gamma_i) = F^m(\lambda_1) \cdots F^m(\lambda_{L(n,\Gamma)}).
+$$
+Chaque $F^m(\lambda_j)$ peut s'\'ecrire comme un produit d'\'el\'ements $\Gamma$ de $L(m, \Gamma)$ termes. Ceci montre que
+$$
+L_{n+m}(F, \Gamma) \leqslant L_n(F, \Gamma)L_m(F, \Gamma).
+$$
+Ainsi la suite $(\log L_n(F,\Gamma))_n$ est sous-additive, ce qui conclut.
+
+
+\item Soit $\Gamma' = \{\gamma_1', \dots, \gamma_r'\}$ est un autre syst\`eme de g\'en\'erateurs. Soient 
+$$
+k = \max_{1 \leqslant j \leqslant r} L(\gamma_j', \Gamma), \quad k' = \max_{1 \leqslant i \leqslant s} L(\gamma_i, \Gamma').
+$$
+Alors pour tout $g \in G$ on a 
+$$
+L(g, \Gamma) \leqslant k' L(g, \Gamma') \leqslant kk' L(g, \Gamma).
+$$
+En particulier $L_n(F, \Gamma) \leqslant k' L_n(F, \Gamma') \leqslant kk' L_n(F, \Gamma)$, ce qui conclut.
+
+\item Soit $\Gamma$ un syst\`eme de g\'en\'erateurs de $G$. Alors on a
+$$
+L_n(I_{\gamma_0} F, \Gamma) -2c \leqslant  L_n(F, \Gamma) \leqslant L_n(I_{\gamma_0} F, \Gamma) + 2c
+$$
+o\`u $c = \max(L(\gamma_0, \Gamma), L(\gamma_0^{-1}, \Gamma)).$ Cela conclut.
+
+
+\item Soit $x_\star' \in X$ un autre point base et $\alpha'$ un chemin joignant $x_\star'$ \`a $f(x_\star')$. Soit $G' = \pi_1(M, x_\star')$. Soit $\beta$ un chemin joignant $x_\star$ \`a $x_\star'$ Alors l'application $\psi : G \to G'$ d\'efinie par $\psi(\gamma) = \beta^{-1} \gamma \beta$ est un isomorphisme de groupes. On a
+$$
+\begin{aligned}
+F_{x_\star, \alpha}(\gamma) &=  \alpha^{-1}(f \circ \gamma) \alpha \\
+&= \alpha^{-1}(f \circ \beta)^{-1}(f \circ \beta) (f \circ \gamma) (f \circ \beta)^{-1}(f \circ \beta) \alpha \\
+&= \alpha^{-1} (f \circ \beta)^{-1} \alpha' \alpha'^{-1}(f \circ (\beta \gamma \beta^{-1})) \alpha' \alpha'^{-1}(f \circ \beta) \alpha,
+\end{aligned}
+$$
+ce qui montre que $F_{x_\star, \alpha} = \phi^{-1} F_{x_\star', \alpha'} \psi$ o\`u $\phi : G \to G'$ est un isomorphisme de la forme $\gamma \mapsto \beta'^{-1} \gamma \beta'$ o\`u $\beta'$ est un chemin joignant $x_\star$ \`a $x_\star'$. En proc\'edant comme \`a la question pr\'ec\'edente, on conclut.
+
+
+\end{enumerate}
+
+
+\iffalse
+\noindent {\large \textbf{Exercice 5.} \textit{Croissance des orbites p\'eriodiques et entropie des applications expansives}} \vspace{1.5mm} 
+
+\noindent Soit $(X, \dd)$ un espace m\'etrique compact et $f : X \to X$ une application expansive, c'est-\`a-dire qu'il existe $\delta > 0$ tel que pour tous $x, y \in X$,
+$$
+\quad \sup_{n\in \Z} \dd(f^n(x),f^n(y)) \leqslant \delta \implies x = y.
+$$
+Pour tout $n \in \N$, on note
+$$
+p_n(f) = \#\{x \in X, f^n(x) = x\}.
+$$
+On d\'efinit aussi le taux de croissance exponentielle de la s\'equence $p_n(f)$,
+$$
+p(f) = \limsup_{n \to \infty} \frac{\log(1 + p_n(f))}{n}.
+$$
+\begin{enumerate}
+\item Montrer que $p_n(f)$ est fini pour tout $n \in \N.$
+\item Montrer que 
+\begin{equation}\label{eq:lowerboundentropy}
+p(f) \leqslant h_{\mathrm{top}}(f),
+\end{equation}
+\item Donner un exemple d'application $f$ telle que (\ref{eq:lowerboundentropy}) soit une \'egalit\'e.
+\item Montrer que pour toute matrice $A \in \mathrm{GL}(m,\mathbb{Z})$ hyperbolique (i.e. dont les valeurs propres sont toutes de module diff\'erent de $1$), on a
+$$
+\sum_{\substack{\lambda \in \mathrm{sp}(A) \\ |\lambda| > 1 }} \log |\lambda| \leqslant h_\mathrm{top}(f_A),
+$$
+o\`u $f_A : \T^m \to \T^m$ est l'automorphisme toral associ\'e \`a $A$.
+\end{enumerate}
+
+
+\vspace{0.6cm}
+\fi
+
+
+
+%%%
+
+
+\end{document} 

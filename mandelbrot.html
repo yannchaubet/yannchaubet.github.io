@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mandelbrot Explorer</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.min.js"></script>
+  <style>
+    body { margin: 0; font-family: sans-serif; background: #f0f8f5; color: #222; }
+    #info { padding: 0.5em 1em; background: #357266; color: white; }
+    canvas { display: block; margin: 0 auto; }
+  </style>
+</head>
+<body>
+  <div id="info">Scroll to zoom — Click to center</div>
+  <script>
+    let centerX = 0;
+    let centerY = 0;
+    let zoom = 200;
+    let maxIterations = 100;
+
+    function setup() {
+      createCanvas(windowWidth, windowHeight - 30);
+      pixelDensity(1);
+    }
+
+    function draw() {
+      loadPixels();
+      for (let x = 0; x < width; x++) {
+        for (let y = 0; y < height; y++) {
+          let a = map(x, 0, width, centerX - width / 2 / zoom, centerX + width / 2 / zoom);
+          let b = map(y, 0, height, centerY - height / 2 / zoom, centerY + height / 2 / zoom);
+
+          let ca = a;
+          let cb = b;
+          let n = 0;
+
+          while (n < maxIterations) {
+            let aa = a * a - b * b;
+            let bb = 2 * a * b;
+            a = aa + ca;
+            b = bb + cb;
+            if (abs(a + b) > 16) break;
+            n++;
+          }
+
+          let bright = map(n, 0, maxIterations, 0, 1);
+          bright = map(sqrt(bright), 0, 1, 0, 255);
+
+          let pix = (x + y * width) * 4;
+          let col = n === maxIterations ? 0 : bright;
+          pixels[pix + 0] = 0;
+          pixels[pix + 1] = col;
+          pixels[pix + 2] = col;
+          pixels[pix + 3] = 255;
+        }
+      }
+      updatePixels();
+    }
+
+    function mousePressed() {
+      centerX += (mouseX - width / 2) / zoom;
+      centerY += (mouseY - height / 2) / zoom;
+    }
+
+    function mouseWheel(event) {
+      zoom *= event.delta > 0 ? 0.9 : 1.1;
+      return false;
+    }
+
+    function windowResized() {
+      resizeCanvas(windowWidth, windowHeight - 30);
+    }
+  </script>
+</body>
+</html>

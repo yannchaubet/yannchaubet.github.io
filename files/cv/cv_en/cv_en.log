@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.4.2)  20 MAY 2025 18:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.4.2)  5 DEC 2025 10:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -9,8 +9,8 @@ LaTeX2e <2020-02-02> patch level 5
 L3 programming layer <2020-03-06> (./moderncv.cls
 Document Class: moderncv 2015/07/28 v2.0.0 modern curriculum vitae and letter d
 ocument class
-(/usr/local/texlive/2020/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
 )
 (/usr/local/texlive/2020/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
@@ -578,12 +578,16 @@ Package babel Info: Making ? an active character on input line 422.
 \FBfnindent=\dimen199
 ))
 (/usr/local/texlive/2020/texmf-dist/tex/latex/carlisle/scalefnt.sty)
+(/usr/local/texlive/2020/texmf-dist/tex/latex/eurosym/eurosym.sty
+Package: eurosym 1998/08/06 v1.1 European currency symbol ``Euro''
+\@eurobox=\box60
+)
 (/usr/local/texlive/2020/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
 \labelindent=\skip80
 \enit@outerparindent=\dimen256
 \enit@toks=\toks34
-\enit@inbox=\box60
+\enit@inbox=\box61
 \enit@count@id=\count282
 \enitdp@description=\count283
 )
@@ -766,7 +770,7 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count297
 \scratchdimen=\dimen269
-\scratchbox=\box61
+\scratchbox=\box62
 \nofMPsegments=\count298
 \nofMParguments=\count299
 \everyMPshowfont=\toks36
@@ -819,23 +823,23 @@ LaTeX Info: Redefining \up on input line 32.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(67.22147pt, 463.06494pt, 67.22147pt)
-* v-part:(T,H,B)=(76.05627pt, 654.90614pt, 114.08443pt)
+* h-part:(L,W,R)=(44.81126pt, 507.88533pt, 44.81128pt)
+* v-part:(T,H,B)=(50.70074pt, 718.29497pt, 76.05113pt)
 * \paperwidth=597.50787pt
 * \paperheight=845.04684pt
-* \textwidth=463.06494pt
-* \textheight=654.90614pt
-* \oddsidemargin=-5.04852pt
-* \evensidemargin=-5.04852pt
-* \topmargin=-33.21371pt
+* \textwidth=507.88533pt
+* \textheight=718.29497pt
+* \oddsidemargin=-27.45872pt
+* \evensidemargin=-27.45872pt
+* \topmargin=-58.56924pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=10.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=57.0pt
-* \marginparsep=11.0pt
+* \marginparwidth=50.0pt
+* \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -845,7 +849,7 @@ LaTeX Info: Redefining \up on input line 32.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box62
+\AtBeginShipoutBox=\box63
 Package hyperref Info: Link coloring OFF on input line 32.
 (/usr/local/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -866,7 +870,7 @@ LaTeX Info: Redefining \nameref on input line 32.
 \@outlinefile=\write4
 \openout4 = `cv_en.out'.
 
-\makecvheaddetailsbox=\box63
+\makecvheaddetailsbox=\box64
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 3
 3.
 
@@ -892,65 +896,67 @@ LaTeX Font Info:    Trying to load font information for OMX+lmex on input line
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <9> on input line 33.
+(Font)              <10> on input line 33.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 33.
+(Font)              <7> on input line 33.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 33.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/microtype/mt-mvs.cfg
 File: mt-mvs.cfg 2006/07/05 v1.1 microtype config. file: Marvosym Euro (RS)
 )
-\makecvheadpicturebox=\box64
+\makecvheadpicturebox=\box65
 \makecvheaddetailswidth=\skip82
 \makecvheadpicturewidth=\skip83
-\makecvheadnamebox=\box65
+\makecvheadnamebox=\box66
 
 Underfull \hbox (badness 10000) in paragraph at lines 33--33
 
  []
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 35.
+(Font)              <10.95> on input line 35.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 35.
+(Font)              <8> on input line 35.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 35.
 [1
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-[2]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 134.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 134.
+[2] [3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 148.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 148.
  (./cv_en.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 134.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 134.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 148.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 148.
 Package rerunfilecheck Info: File `cv_en.out' has not changed.
-(rerunfilecheck)             Checksum: 18DC936C5DA389B8B67602F856FD4F5E;823.
+(rerunfilecheck)             Checksum: EC1B2CEE06C03FFB52D6BD5B5B3EF0FA;1058.
  )
 (\end occurred inside a group at level 1)
 
-### simple group (level 1) entered at line 85 ({)
+### simple group (level 1) entered at line 94 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 23848 strings out of 480608
- 429994 string characters out of 5903631
- 731747 words of memory out of 5000000
- 39252 multiletter control sequences out of 15000+600000
- 586452 words of font info for 73 fonts, out of 8000000 for 9000
+ 23921 strings out of 480608
+ 431186 string characters out of 5903631
+ 733174 words of memory out of 5000000
+ 39321 multiletter control sequences out of 15000+600000
+ 591616 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 76i,11n,68p,798b,444s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,12n,68p,798b,447s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.en
-c}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
-cal/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive
-/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf
--dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts
-/type1/public/lm/lmr9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/publi
-c/lm/lmri9.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmro10
-.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmro9.pfb></usr/
-local/texlive/2020/texmf-dist/fonts/type1/public/marvosym/marvosym.pfb>
-Output written on cv_en.pdf (2 pages, 239282 bytes).
+c}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/eurosym/feymr10.pfb></
+usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/
+texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/202
+0/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dis
+t/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2020/texmf-dist/fonts/typ
+e1/public/lm/lmri10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/
+lm/lmro10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/marvosym/m
+arvosym.pfb>
+Output written on cv_en.pdf (3 pages, 195862 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
- 20037 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 94 PDF objects out of 1000 (max. 8388607)
+ 80 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
+ 20557 words of extra memory for PDF output out of 20736 (max. 10000000)
 

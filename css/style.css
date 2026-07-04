@@ -112,3 +112,35 @@ img.profile {
   font-size: 0.9rem;
 
 }
+
+.photo-wrap {
+
+  position: relative;
+
+  display: inline-block;
+
+}
+
+.photo-wrap img {
+
+  display: block;
+
+  max-width: 100%;
+
+}
+
+.easter-board {
+
+  position: absolute;
+
+  left: 5%;
+
+  bottom: 0%;
+
+  width: 18%;
+
+  height: 20%;
+
+  cursor: pointer;
+
+}
